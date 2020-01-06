@@ -9,14 +9,30 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$mat-custom: (
+  50 : #dcffd7,
+  100 : #c8ffc1,
+  200 : #b8ffaf,
+  300 : #a1ff94,
+  400 : #83fc73,
+  500 : #73fd61,
+  600 : #5ffd4a,
+  700 : #42ff29,
+  800 : #27ff0a,
+  900 : #1beb00,
+  A100 : #96c290,
+  A200 : #72d166,
+  A400 : #41cc2e,
+  A700 : #19cc01
+);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$diary-for-reader-primary: mat-palette($mat-indigo);
-$diary-for-reader-accent: mat-palette($mat-pink, A200, A100, A400);
+$diary-for-reader-primary: mat-palette($mat-custom);
+$diary-for-reader-accent: mat-palette($mat-amber);
 
 // The warn palette is optional (defaults to red).
-$diary-for-reader-warn: mat-palette($mat-red);
+$diary-for-reader-warn: mat-palette($mat-pink);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $diary-for-reader-theme: mat-light-theme($diary-for-reader-primary, $diary-for-reader-accent, $diary-for-reader-warn);
