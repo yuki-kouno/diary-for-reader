@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgb(230, 230, 230);
+
+  form {
+    border-radius: 20px;
+    box-shadow: 1px 1px 4px gray;
+    display: block;
+    width: 300px;
+    text-align: center;
+    padding: 100px 0;
+    background-color: white;
+
+    button {
+
+      text-align: center;
+      color: white;
+    }
+  }
+}
