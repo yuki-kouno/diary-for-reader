@@ -7,11 +7,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./welcome/welcome.module').then(mod => mod.WelcomeModule)
   },
-  {
-    path: 'create',
-    loadChildren: () =>
-      import('./create/create.module').then(mod => mod.CreateModule)
-  }
+
 ];
 
 @NgModule({
