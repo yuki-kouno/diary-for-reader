@@ -1,0 +1,83 @@
+.container {
+  padding: 35px 17px 0;
+
+  .header-date {
+    text-align: center;
+    position: relative;
+
+    .date {
+      font-size: 20px;
+    }
+    .page-add {
+      position: absolute;
+      top: -10px;
+      right: 0;
+      font-size: 12px;
+      line-height: 12px;
+      border-radius: 19px;
+      padding: 7px 10px;
+      opacity: .4;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 101px 202px;
+    grid-template-rows: 41px 41px 41px;
+    margin-bottom: 16px;
+
+    header {
+      grid-column: 2/3;
+      grid-row: 1/2;
+      text-align: center;
+      p {
+        margin-left: 10px;
+      }
+    }
+    main {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      input {
+        margin: 10px 20px 0;
+        border: 1px solid;
+      }
+    }
+    footer {
+      grid-column: 2/3;
+      grid-row: 3/4;
+      input {
+        margin: 10px 20px 0;
+        border: 1px solid;
+      }
+    }
+    aside {
+      grid-column: 1/2;
+      grid-row: 1/4;
+      .book-choice {
+        padding: 12px 20px;
+        opacity: .6;
+      }
+    }
+  }
+
+  .review-btns {
+    text-align: center;
+
+    .questions {
+      margin: 6px;
+      color: white;
+      line-height: 1;
+      font-size: 14px;
+      padding: 11px;
+      border-radius: 18px;
+    }
+    .free-text {
+      margin: 6px;
+      color: white;
+      line-height: 1;
+      font-size: 14px;
+      padding: 11px;
+      border-radius: 18px;
+    }
+  }
+}

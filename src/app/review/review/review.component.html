@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="header-date">
+    <div class="date">
+      {{nowDate | date:'yyyy.M.d'}}
+    </div>
+    <button class="page-add" mat-raised-button color="primary">この日付で<br>ページ追加</button>
+  </div>
+
+  <div class="grid">
+    <header>
+      <p>title</p>
+    </header>
+    <aside>
+      <button class="book-choice" mat-stroked-button color="primary">タッチで<br>本を<br>選ぶ</button>
+    </aside>
+    <main>
+        <input placeholder="１章、１−３">
+    </main>
+    <footer>
+        <input placeholder="１p 〜 ６０p">
+    </footer>
+  </div>
+
+  <div class="review-btns">
+    <button class="questions" mat-flat-button color="primary">質問を選択</button>
+    <button class="free-text" mat-flat-button color="accent">自由にレヴューを書く</button>
+  </div>
+</div>

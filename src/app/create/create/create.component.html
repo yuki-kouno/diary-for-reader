@@ -1,9 +1,12 @@
-<form class="example-form" (ngSubmit)="submit()">
-  <mat-form-field [formGroup]="form">
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field class="name-input" appearance="outline">
     <mat-label>ニックネームを記入してください</mat-label>
     <input formControlName="name" matInput type="text">
     <mat-error *ngIf="nameControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
 
-  <button [disabled]="form.invalid" mat-raised-button color="primary">O K</button>
-</form>
+  <button [disabled]="form.invalid" routerLink="/review" mat-raised-button color="primary">O K</button>
+  </form>
+</div>
+
