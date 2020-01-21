@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { NavService } from 'src/app/services/nav.service';
 
 
 export interface DialogData {
@@ -15,7 +16,9 @@ export interface DialogData {
 export class WelcomeComponent implements OnInit {
 
 
-  constructor() {}
+  constructor(private nav: NavService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.nav.hide();
+  }
 }
