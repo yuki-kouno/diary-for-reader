@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { NavService } from 'src/app/services/nav.service';
+import { DialogChoiceBookComponent } from '../dialog-choice-book/dialog-choice-book.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-review',
@@ -12,12 +14,18 @@ export class ReviewComponent implements OnInit {
 
   constructor(
     private datePipe: DatePipe,
-    private nav: NavService
-    ) {}
+    private nav: NavService,
+    public dialog: MatDialog
+  ) {}
+
+  openDialog() {
+    this.dialog.open(DialogChoiceBookComponent, {
+
+    });
+  }
 
   ngOnInit(): void {
     this.nowDate = new Date();
     this.nav.show();
   }
-
 }

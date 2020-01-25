@@ -7,11 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { DialogChoiceBookComponent } from './dialog-choice-book/dialog-choice-book.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
-  declarations: [ReviewComponent],
+  declarations: [ReviewComponent, DialogChoiceBookComponent],
   imports: [
     CommonModule,
     ReviewRoutingModule,
@@ -19,8 +21,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
-  providers: [DatePipe]
+  providers: [DatePipe],
+  entryComponents: [DialogChoiceBookComponent]
 })
 export class ReviewModule {}
