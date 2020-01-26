@@ -20,7 +20,8 @@ export class ReviewComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(DialogChoiceBookComponent, {
-
+      width: '100%',
+      height: '100%'
     });
   }
 
