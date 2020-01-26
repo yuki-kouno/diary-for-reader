@@ -7,16 +7,23 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+
 
 @NgModule({
-  declarations: [WelcomeComponent],
+  declarations: [WelcomeComponent, CreateDialogComponent],
   imports: [
     CommonModule,
     WelcomeRoutingModule,
     MatButtonModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  entryComponents: [WelcomeComponent]
+  entryComponents: [WelcomeComponent, CreateDialogComponent]
 })
 export class WelcomeModule {}

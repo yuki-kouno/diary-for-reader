@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Validators, FormControl, FormBuilder } from '@angular/forms';
 import { NavService } from 'src/app/services/nav.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  selector: 'app-create-dialog',
+  templateUrl: './create-dialog.component.html',
+  styleUrls: ['./create-dialog.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateDialogComponent implements OnInit {
   form = this.fb.group({
     name: ['', [Validators.required, Validators.maxLength(40)]]
   });
@@ -18,8 +19,13 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private nav: NavService
+    private nav: NavService,
+    public dialog: MatDialog
     ) {}
+
+  closeDialog() {
+    this.dialog.closeAll();
+  }
 
   ngOnInit() {
     this.nav.hide();

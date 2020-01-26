@@ -6,7 +6,6 @@
     <mat-error *ngIf="nameControl.hasError('required')">必須入力です</mat-error>
   </mat-form-field>
 
-  <button [disabled]="form.invalid" routerLink="/review" mat-raised-button color="primary">O K</button>
+  <button [disabled]="form.invalid" routerLink="/review" (click)="closeDialog()" mat-raised-button color="primary">O K</button>
   </form>
 </div>
-
