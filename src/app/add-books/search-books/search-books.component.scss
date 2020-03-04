@@ -1,0 +1,22 @@
+.container {
+  padding: 24px;
+
+  .inner {
+    text-align: center;
+
+    input {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid rgb(238, 238, 238);
+      border-radius: 5px;
+
+      &::placeholder {
+        color: rgb(194, 194, 194);
+      }
+    }
+
+    button {
+      color: white;
+    }
+  }
+}
