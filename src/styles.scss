@@ -46,3 +46,10 @@ $diary-for-reader-theme: mat-light-theme($diary-for-reader-primary, $diary-for-r
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-menu-content {
+  height: 120px;
+  .mat-menu-item {
+    font-size: 12px;
+  }
+}

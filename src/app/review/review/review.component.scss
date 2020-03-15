@@ -1,5 +1,9 @@
+* {
+  color: rgb(61, 61, 61);
+}
+
 .container {
-  padding: 35px 17px 0;
+  padding: 35px 17px 70px;
 
   .header-date {
     text-align: center;
@@ -22,7 +26,7 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 101px 202px;
+    grid-template-columns: 33% 66%;
     grid-template-rows: 41px 41px 41px;
     margin-bottom: 16px;
 
@@ -30,24 +34,22 @@
       grid-column: 2/3;
       grid-row: 1/2;
       text-align: center;
-      p {
-        margin-left: 10px;
-      }
     }
     main {
       grid-column: 2/3;
       grid-row: 2/3;
       input {
-        margin: 10px 20px 0;
-        border: 1px solid;
+        margin: 10px 0;
+        text-align: center;
+        box-sizing: border-box;
       }
     }
     footer {
       grid-column: 2/3;
       grid-row: 3/4;
       input {
-        margin: 10px 20px 0;
-        border: 1px solid;
+        margin: 10px 0;
+        text-align: center;
       }
     }
     aside {
@@ -58,6 +60,41 @@
         opacity: .6;
       }
     }
+  }
+
+  ul {
+    padding: 0;
+
+    .question-list {
+      list-style: none;
+      font-size: 10px;
+
+      &_textarea {
+        width: 100%;
+        height: auto;
+        resize: none;
+        outline: 1px solid #74ff0350;
+      }
+
+      .mat-form-field {
+        width: 100%;
+        font-size: 12px;
+      }
+    }
+    .free-text {
+      list-style: none;
+      font-size: 10px;
+      padding-bottom: 10px;
+
+      &_textarea {
+        width: 100%;
+        height: auto;
+        resize: none;
+        outline: 1px solid #ffc40050;
+      }
+    }
+
+
   }
 
   .review-btns {
@@ -80,4 +117,5 @@
       border-radius: 18px;
     }
   }
+
 }
