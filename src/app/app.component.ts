@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavService } from './services/nav.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,19 @@ import { NavService } from './services/nav.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'diary-for-reader';
+  user$ = this.authService.afUser$;
 
-  constructor(private nav: NavService) {}
+  constructor(
+    private nav: NavService,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit(){
+  logout() {
+    this.authService.logout();
+  }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnInit() {
     this.nav.show();
   }
 }

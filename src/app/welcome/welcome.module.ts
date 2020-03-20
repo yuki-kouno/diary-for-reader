@@ -10,10 +10,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 
 @NgModule({
-  declarations: [WelcomeComponent, CreateDialogComponent],
+  declarations: [
+    WelcomeComponent,
+    CreateDialogComponent,
+    LoginDialogComponent
+  ],
   imports: [
     CommonModule,
     WelcomeRoutingModule,
@@ -24,6 +29,10 @@ import { CreateDialogComponent } from './create-dialog/create-dialog.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  entryComponents: [WelcomeComponent, CreateDialogComponent]
+  entryComponents: [
+    WelcomeComponent,
+    CreateDialogComponent,
+    LoginDialogComponent
+  ]
 })
 export class WelcomeModule {}
