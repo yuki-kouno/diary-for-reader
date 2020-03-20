@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "diary-for-reader"
+  },
+  "targets": {
+    "diary-for-reader": {
+      "hosting": {
+        "diary-for-reader": [
+          "diary-for-reader"
+        ]
+      }
+    }
   }
 }

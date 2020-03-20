@@ -122,8 +122,13 @@
               "devServerTarget": "diary-for-reader:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "diary-for-reader"
 }
