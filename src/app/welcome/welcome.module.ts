@@ -11,13 +11,17 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 
 @NgModule({
   declarations: [
     WelcomeComponent,
     CreateDialogComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    LoginFormComponent,
+    SignupFormComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
   entryComponents: [
     WelcomeComponent,
     CreateDialogComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    LoginFormComponent,
+    SignupFormComponent
   ]
 })
 export class WelcomeModule {}

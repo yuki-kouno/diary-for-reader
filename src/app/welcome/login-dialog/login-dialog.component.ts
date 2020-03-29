@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { SignupFormComponent } from '../signup-form/signup-form.component';
 
 @Component({
   selector: 'app-login-dialog',
@@ -17,11 +18,23 @@ export class LoginDialogComponent implements OnInit {
 
   ngOnInit() {}
 
+  openDialog() {
+    this.dialog.open(SignupFormComponent, {});
+  }
+
   closeDialog() {
     this.dialog.closeAll();
   }
 
-  login() {
-    this.aushService.login();
+  googleLogin() {
+    this.aushService.googleLogin();
+  }
+
+  logIn(email, password) {
+    this.aushService.logIn(email, password);
+  }
+
+  signUp(email, password) {
+    this.aushService.signUp(email, password);
   }
 }

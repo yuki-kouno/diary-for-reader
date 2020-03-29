@@ -1,0 +1,17 @@
+<div class="container">
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+  <mat-form-field class="input" appearance="outline">
+    <mat-label>メールアドレスを記入してください</mat-label>
+    <input formControlName="email" matInput type="text">
+    <mat-error *ngIf="emailControl.hasError('required')">必須入力です</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input" appearance="outline">
+    <mat-label>パスワードを記入してください</mat-label>
+    <input formControlName="password" matInput type="text">
+    <mat-error *ngIf="passwordControl.hasError('required')">必須入力です</mat-error>
+  </mat-form-field>
+
+  <button [disabled]="signUpForm.invalid" (click)="closeDialog()" mat-raised-button color="primary">O K</button>
+  </form>
+</div>

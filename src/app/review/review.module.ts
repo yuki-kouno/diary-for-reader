@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { DialogChoiceBookComponent } from './dialog-choice-book/dialog-choice-book.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-import { QuestionMenuComponent } from './question-menu/question-menu.component';
 
 
 
@@ -19,7 +18,6 @@ import { QuestionMenuComponent } from './question-menu/question-menu.component';
   declarations: [
     ReviewComponent,
     DialogChoiceBookComponent,
-    QuestionMenuComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +31,6 @@ import { QuestionMenuComponent } from './question-menu/question-menu.component';
     MatMenuModule
   ],
   providers: [DatePipe],
-  entryComponents: [DialogChoiceBookComponent, QuestionMenuComponent]
+  entryComponents: [DialogChoiceBookComponent]
 })
 export class ReviewModule {}

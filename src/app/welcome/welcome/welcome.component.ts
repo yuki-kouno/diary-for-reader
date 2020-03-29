@@ -30,8 +30,4 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
     this.nav.hide();
   }
-
-  login() {
-    this.aushService.login();
-  }
 }
