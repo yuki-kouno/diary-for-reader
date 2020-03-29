@@ -29,6 +29,13 @@ const routes: Routes = [
       import('./add-books/add-books.module').then(mod => mod.AddBooksModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'calendar',
+    loadChildren: () =>
+      import('./calendar/calendar.module').then(mod => mod.CalendarModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
   }
 ];
 

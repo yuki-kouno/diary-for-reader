@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-choice-book',
@@ -8,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class DialogChoiceBookComponent implements OnInit {
 
 
-  constructor() {}
-
+  constructor(private dialog: MatDialog) {}
+  closeDialog() {
+    this.dialog.closeAll();
+  }
 
   ngOnInit() {}
 }
