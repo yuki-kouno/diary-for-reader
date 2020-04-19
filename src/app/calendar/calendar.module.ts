@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { CalendarRoutingModule } from './calendar-routing.module';
 import { CalendarComponent } from './calendar/calendar.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [CalendarComponent],
   imports: [
     CommonModule,
-    CalendarRoutingModule
+    CalendarRoutingModule,
+    MatButtonModule
   ]
 })
 export class CalendarModule { }

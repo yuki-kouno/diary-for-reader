@@ -18,12 +18,6 @@ export class GetBookComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getBookDetails(this.id);
   }
 
-  getBookDetails(id) {
-    this.googleBooksApi.getSpecificBook(this.id).subscribe((data: {}) => {
-      this.bookData = data;
-    });
-  }
 }

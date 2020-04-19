@@ -8,6 +8,7 @@ import { GoogleBooksApiService } from 'src/app/services/google-books-api.service
   styleUrls: ['./list-books.component.scss']
 })
 export class ListBooksComponent implements OnInit {
+  // tslint:disable-next-line: no-string-literal
   searchText = this.activatedRoute.snapshot.params['searchText'];
   bookData: any = {};
 
