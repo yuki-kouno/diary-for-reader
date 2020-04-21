@@ -13,17 +13,17 @@ export class UserService {
     private db: AngularFirestore,
 
   ) { }
-  createUser(user: User) {
-    const docUser: AngularFirestoreDocument<User> = this.db.doc(
-      `users/${user.uid}`
-    );
-    const data: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName || '',
-      photoURL: user.photoURL || '',
-      profile: user.profile || ''
-    };
-    return docUser.set(data);
-  }
+  // createUser(user: User) {
+  //   const docUser: AngularFirestoreDocument<User> = this.db.doc(
+  //     `users/${user.uid}`
+  //   );
+  //   const data: User = {
+  //     uid: user.uid,
+  //     email: user.email,
+  //     displayName: user.displayName || '',
+  //     photoURL: user.photoURL || '',
+  //     profile: user.profile || ''
+  //   };
+  //   return docUser.set(data);
+  // }
 }

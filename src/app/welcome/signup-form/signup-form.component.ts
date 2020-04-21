@@ -25,24 +25,16 @@ export class SignupFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private auth: AuthService,
+    private authService: AuthService,
     private router: Router
-    ) {}
-
-  signUp() {
-    const email = this.signUpForm.get('email').value;
-    const password = this.signUpForm.get('password').value;
-    this.auth.signUp(email, password).then(x => {
-      this.router.navigate(['/review']);
-    });
-  }
+  ) {}
 
   closeDialog() {
     this.dialog.closeAll();
   }
 
-  submit() {
-    console.log(this.signUpForm.value);
+  signUp() {
+    this.authService.createUser(this.signUpForm.value);
   }
 
   ngOnInit() {}

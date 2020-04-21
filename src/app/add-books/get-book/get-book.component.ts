@@ -8,7 +8,7 @@ import { GoogleBooksApiService } from 'src/app/services/google-books-api.service
   styleUrls: ['./get-book.component.scss']
 })
 export class GetBookComponent implements OnInit {
-  id = this.activatedRoute.snapshot.params['id'];
+  id = this.activatedRoute.snapshot.params.id;
   bookData: any = {};
 
   constructor(

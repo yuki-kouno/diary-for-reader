@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SignupFormComponent } from '../signup-form/signup-form.component';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { LoginFormComponent } from '../login-form/login-form.component';
 
 @Component({
   selector: 'app-login-dialog',
@@ -10,16 +12,27 @@ import { SignupFormComponent } from '../signup-form/signup-form.component';
   styleUrls: ['./login-dialog.component.scss']
 })
 export class LoginDialogComponent implements OnInit {
+  form = this.fb.group({
+    email: ['', [Validators.email, Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(6)]]
+  });
+
+
   constructor(
-    private aushService: AuthService,
+    private authService: AuthService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {}
 
-  openDialog() {
+  signUpDialog() {
     this.dialog.open(SignupFormComponent, {});
+  }
+
+  logInDialog() {
+    this.dialog.open(LoginFormComponent, {});
   }
 
   closeDialog() {
@@ -27,14 +40,20 @@ export class LoginDialogComponent implements OnInit {
   }
 
   googleLogin() {
-    this.aushService.googleLogin();
+    this.authService.googleLogin();
   }
 
-  logIn(email, password) {
-    this.aushService.logIn(email, password);
+
+  login() {
+    this.authService.login(this.form.value);
   }
 
-  signUp(email, password) {
-    this.aushService.signUp(email, password);
+  logout() {
+    this.authService.logout();
   }
+
+  resetPassword() {
+    this.authService.resetPassword(this.form.value.email);
+  }
+
 }

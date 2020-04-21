@@ -31,32 +31,57 @@ export class AuthService {
     });
   }
 
-  signUp(email: string, password: string) {
-    return this.afAuth.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(afUser$ => {
-        return this.userService.createUser(afUser$);
+  createUser(params: { email: string; password: string }) {
+    this.afAuth
+      .createUserWithEmailAndPassword(params.email, params.password)
+      .then(result => {
+        result.user.sendEmailVerification();
       })
-      .catch(err => console.log(err));
+      .catch(error => {
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            alert('このアドレスは既に登録されています。');
+            break;
+          case 'auth/invalid-email':
+            alert('メールアドレスが不正です');
+            break;
+        }
+      });
   }
 
-  logIn(email: string, password: string): Promise<any> {
-    return this.afAuth.auth
-      .signInWithEmailAndPassword(email, password)
-      .then(afUser$ => {
-        return this.userService.createUser(afUser$);
-      })
-      .catch(err => console.log(err));
+  resetPassword(email: string) {
+    this.afAuth.sendPasswordResetEmail(email).catch(error => {
+      console.log(error.code);
+      switch (error.code) {
+        case 'auth/user-not-found':
+          alert('このメールアドレスのユーザーは見つかりません');
+          break;
+        case 'auth/wrong-password':
+          alert('パスワードが間違っています');
+          break;
+        case 'auth/invalid-email':
+          alert('メールアドレスが不正です');
+          break;
+      }
+    });
   }
 
-  private oAuthLogin(provider) {
-    return this.afAuth.auth
-      .signInWithPopup(provider)
-      .then(credential => {
-        console.log(credential.user);
-        return this.userService.createUser(credential.user);
-      })
-      .catch(err => console.log(err));
+  login(params: { email: string; password: string }) {
+    this.afAuth
+      .signInWithEmailAndPassword(params.email, params.password)
+      .catch(error => {
+        switch (error.code) {
+          case 'auth/user-not-found':
+            alert('このメールアドレスのユーザーは見つかりません');
+            break;
+          case 'auth/wrong-password':
+            alert('パスワードが間違っています');
+            break;
+          case 'auth/invalid-email':
+            alert('メールアドレスが不正です');
+            break;
+        }
+      });
   }
 
   googleLogin() {

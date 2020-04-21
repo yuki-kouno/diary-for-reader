@@ -24,22 +24,20 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private auth: AuthService,
+    private authService: AuthService,
     private router: Router,
     private dialog: MatDialog
   ) {}
 
   ngOnInit() {}
 
-  logIn() {
-    const email = this.logInForm.get('email').value;
-    const password = this.logInForm.get('password').value;
-    this.auth.logIn(email, password).then(() => {
-      this.router.navigate(['/review']);
-    });
-  }
-
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  logIn() {
+    // this.authService.login(this.logInForm.value).then(() => {
+    //   this.router.navigate(['/review']);
+    // });
   }
 }
