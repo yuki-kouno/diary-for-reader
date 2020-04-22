@@ -8,10 +8,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from './user.service';
 import { switchMap } from 'rxjs/operators';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   afUser$: Observable<User> = this.afAuth.user;
@@ -26,7 +24,7 @@ export class AuthService {
     private userService: UserService,
     private afStore: AngularFirestore
   ) {
-    this.afUser$.subscribe(user => {
+    this.afUser$.subscribe((user) => {
       this.uid = user && user.uid;
     });
   }
@@ -34,10 +32,10 @@ export class AuthService {
   createUser(params: { email: string; password: string }) {
     this.afAuth
       .createUserWithEmailAndPassword(params.email, params.password)
-      .then(result => {
+      .then((result) => {
         result.user.sendEmailVerification();
       })
-      .catch(error => {
+      .catch((error) => {
         switch (error.code) {
           case 'auth/email-already-in-use':
             alert('このアドレスは既に登録されています。');
@@ -50,7 +48,7 @@ export class AuthService {
   }
 
   resetPassword(email: string) {
-    this.afAuth.sendPasswordResetEmail(email).catch(error => {
+    this.afAuth.sendPasswordResetEmail(email).catch((error) => {
       console.log(error.code);
       switch (error.code) {
         case 'auth/user-not-found':
@@ -67,9 +65,9 @@ export class AuthService {
   }
 
   login(params: { email: string; password: string }) {
-    this.afAuth
+    return this.afAuth
       .signInWithEmailAndPassword(params.email, params.password)
-      .catch(error => {
+      .catch((error) => {
         switch (error.code) {
           case 'auth/user-not-found':
             alert('このメールアドレスのユーザーは見つかりません');
@@ -81,6 +79,9 @@ export class AuthService {
             alert('メールアドレスが不正です');
             break;
         }
+      })
+      .then(() => {
+        this.router.navigate(['/review']);
       });
   }
 
@@ -92,7 +93,7 @@ export class AuthService {
       })
       .then(() => {
         this.snackBer.open('ようこそ', null, {
-          duration: 2000
+          duration: 2000,
         });
       });
   }
@@ -101,7 +102,7 @@ export class AuthService {
     this.afAuth.signOut();
     this.router.navigateByUrl('/welcome').then(() => {
       this.snackBer.open('ログアウトしました', null, {
-        duration: 2000
+        duration: 2000,
       });
     });
   }

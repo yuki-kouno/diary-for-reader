@@ -7,12 +7,12 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
   logInForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]]
+    password: ['', [Validators.required]],
   });
 
   get emailControl() {
@@ -36,8 +36,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   logIn() {
-    // this.authService.login(this.logInForm.value).then(() => {
-    //   this.router.navigate(['/review']);
-    // });
+    this.authService.login(this.logInForm.value);
   }
 }
