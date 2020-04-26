@@ -11,12 +11,12 @@ import { User } from '../interface/user';
 export class DatabaseBooksService {
   constructor(private db: AngularFirestore, private authService: AuthService) {}
 
-  setBook(data: Book) {
+  addBook(book: Book): Promise<void> {
     return this.db
-      .doc('users/' + this.authService.uid)
-      .set(data)
+      .collection(`users/${this.authService.uid}/favoriteBooks`)
+      .add(book)
       .then(() => {
-        console.log(`${data.volumeInfo.title}を保存しました`);
+        console.log(`${book.volumeInfo.title}を保存しました`);
       });
   }
 
