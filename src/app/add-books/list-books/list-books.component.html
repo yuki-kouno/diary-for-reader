@@ -23,7 +23,9 @@
         <tbody>
           <tr *ngFor="let book of bookData.items">
             <!-- <td>{{book.id}}</td> -->
-            <td (click)="setBook(book)">{{ book.volumeInfo.title }}</td>
+            <td (click)="addToFavoliteBook(book)">
+              {{ book.volumeInfo.title }}
+            </td>
             <td class="text-center">
               <img
                 [src]="book.volumeInfo.imageLinks.smallThumbnail"

@@ -11,7 +11,7 @@ import { User } from '../interface/user';
 export class DatabaseBooksService {
   constructor(private db: AngularFirestore, private authService: AuthService) {}
 
-  addBook(book: Book): Promise<void> {
+  addToFavoriteBook(book: Book): Promise<void> {
     return this.db
       .collection(`users/${this.authService.uid}/favoriteBooks`)
       .add(book)

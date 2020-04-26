@@ -31,7 +31,7 @@ export class ListBooksComponent implements OnInit {
       });
   }
 
-  setBook(data) {
-    this.databaseBooks.setBook(data);
+  addToFavoliteBook(data) {
+    this.databaseBooks.addToFavoriteBook(data);
   }
 }
