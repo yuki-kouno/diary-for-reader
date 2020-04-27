@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CalendarRoutingModule } from './calendar-routing.module';
 import { CalendarComponent } from './calendar/calendar.component';
 
-import { NgxEventCalendarModule } from 'ngx-event-calendar';
+// import { NgxEventCalendarModule } from 'ngx-event-calendar';
 import { FormsModule } from '@angular/forms';
 import {
   MatFormFieldModule,
@@ -15,14 +15,14 @@ import {
   MatNativeDateModule,
   MatButtonModule,
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [CalendarComponent],
   imports: [
     CommonModule,
     CalendarRoutingModule,
-    NgxEventCalendarModule,
+    // NgxEventCalendarModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -30,8 +30,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
-    FlexLayoutModule,
-    NgxEventCalendarModule,
+    // FlexLayoutModule,
+    // NgxEventCalendarModule,
   ],
 })
 export class CalendarModule {}
