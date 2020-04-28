@@ -4,11 +4,10 @@ import { NavService } from '../nav.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  constructor(private nav: NavService) {}
+  constructor(public nav: NavService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
