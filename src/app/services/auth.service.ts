@@ -81,7 +81,7 @@ export class AuthService {
         }
       })
       .then(() => {
-        this.router.navigate(['/review']);
+        this.router.navigate(['/']);
       });
   }
 
@@ -89,7 +89,7 @@ export class AuthService {
     this.afAuth
       .signInWithPopup(new auth.GoogleAuthProvider())
       .then(() => {
-        this.router.navigateByUrl('/review');
+        this.router.navigateByUrl('/');
       })
       .then(() => {
         this.snackBer.open('ようこそ', null, {
