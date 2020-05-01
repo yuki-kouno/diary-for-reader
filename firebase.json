@@ -12,7 +12,7 @@
   "hosting": [
     {
       "target": "diary-for-reader",
-      "public": "dist/diary-for-reader",
+      "public": "/dist/diary-for-reader",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
