@@ -18,9 +18,9 @@ export class GoogleBooksApiService {
     }),
   };
 
-  getListOfBooks(searchText): Observable<Book> {
+  getListOfBooks(searchText): Observable<Book[]> {
     return this.http
-      .get<Book>(this.apiUrl + '?q=' + searchText + '&maxResults=40')
+      .get<Book[]>(this.apiUrl + '?q=' + searchText + '&maxResults=40')
       .pipe(retry(1), catchError(this.handleError));
   }
 

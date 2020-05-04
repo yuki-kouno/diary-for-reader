@@ -5,6 +5,8 @@ import { Book } from 'src/app/interface/book';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
+import { map } from 'rxjs/operators';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-books',
@@ -26,8 +28,14 @@ export class ListBooksComponent implements OnInit {
   ngOnInit() {
     this.googleBooksApi
       .getListOfBooks(this.searchText)
-      .subscribe((data: {}) => {
-        this.bookData = data;
+      .pipe(
+        map((datas) => {
+          return datas.filter((data) => data.volumeInfo.imageLinks);
+        })
+      )
+      .subscribe((datas: {}) => {
+        this.bookData = datas;
+        console.log(this.bookData);
       });
   }
 
