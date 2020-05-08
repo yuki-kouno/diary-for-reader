@@ -5,22 +5,14 @@ import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   user$ = this.authService.afUser$;
 
-  constructor(
-    private nav: NavService,
-    private authService: AuthService
-  ) {}
+  constructor(private nav: NavService, private authService: AuthService) {}
 
   logout() {
     this.authService.logout();
-  }
-
-  // tslint:disable-next-line: use-lifecycle-interface
-  ngOnInit() {
-    this.nav.show();
   }
 }
