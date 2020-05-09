@@ -10,30 +10,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'full',
     loadChildren: () =>
-      import('./review/review.module').then((mod) => mod.ReviewModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'library',
-    loadChildren: () =>
-      import('./library/library.module').then((mod) => mod.LibraryModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'add-books',
-    loadChildren: () =>
-      import('./add-books/add-books.module').then((mod) => mod.AddBooksModule),
-    canLoad: [AuthGuard],
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'calendar',
-    loadChildren: () =>
-      import('./calendar/calendar.module').then((mod) => mod.CalendarModule),
+      import('./shell/shell.module').then((mod) => mod.ShellModule),
     canLoad: [AuthGuard],
     canActivate: [AuthGuard],
   },
