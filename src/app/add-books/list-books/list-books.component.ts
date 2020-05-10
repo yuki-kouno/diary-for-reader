@@ -6,7 +6,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { map } from 'rxjs/operators';
+<<<<<<< Updated upstream
 import { observable } from 'rxjs';
+=======
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-list-books',
@@ -30,7 +33,12 @@ export class ListBooksComponent implements OnInit {
       .getListOfBooks(this.searchText)
       .pipe(
         map((datas) => {
+<<<<<<< Updated upstream
           return datas.filter((data) => data.volumeInfo.imageLinks);
+=======
+          return datas
+            .filter(data => data.volumeInfo.imageLinks);
+>>>>>>> Stashed changes
         })
       )
       .subscribe((datas: {}) => {

@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Book } from '../interface/book';
+<<<<<<< Updated upstream
 import { retry, catchError, map } from 'rxjs/operators';
+=======
+import { retry, catchError, windowCount, map } from 'rxjs/operators';
+>>>>>>> Stashed changes
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +31,11 @@ export class GoogleBooksApiService {
       }>(this.apiUrl + '?q=' + searchText + '&maxResults=40')
       .pipe(
         retry(1),
+<<<<<<< Updated upstream
         map((result) => result.items),
+=======
+        map(result => result.items),
+>>>>>>> Stashed changes
         catchError(this.handleError)
       );
   }
