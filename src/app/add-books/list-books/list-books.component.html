@@ -1,7 +1,7 @@
 <div class="container">
   <h3 class="headTitle">{{ searchText }}</h3>
   <!--Show it when there is no employee-->
-  <div class="no-data" *ngIf="bookData.totalItems == 0">
+  <div class="no-data" *ngIf="!bookData?.length; else list">
     <p>見つかりませんでした</p>
     <button mat-flat-button color="primary" routerLink="/add-books">
       他の本を探す
@@ -9,7 +9,7 @@
   </div>
 
   <!--Employees list table, it hides when there is no employee-->
-  <div *ngIf="bookData.totalItems !== 0">
+  <ng-template #list>
     <div class="col-md-12">
       <table class="table table-bordered">
         <!-- <thead>
@@ -21,17 +21,14 @@
             </tr>
           </thead> -->
         <tbody>
-          <tr
-            *ngFor="let book of bookData.items"
-            (click)="addToFavoliteBook(book)"
-          >
+          <tr *ngFor="let book of bookData" (click)="addToFavoliteBook(book)">
             <!-- <td>{{book.id}}</td> -->
             <td>
               {{ book.volumeInfo.title }}
             </td>
             <td>
               <img
-                [src]="book.volumeInfo.imageLinks.smallThumbnail"
+                [src]="book.volumeInfo.imageLinks.thumbnail"
                 [alt]="book.volumeInfo.title"
                 class="img-responsive"
                 style="max-height: 250px; text-align: center;"
@@ -48,5 +45,5 @@
       </button>
       <!-- <button class="btn btn-outline-warning" routerLink="">Back</button> -->
     </div>
-  </div>
+  </ng-template>
 </div>

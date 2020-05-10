@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Book } from '../interface/book';
-import { retry, catchError, windowCount } from 'rxjs/operators';
+import { retry, catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +20,16 @@ export class GoogleBooksApiService {
 
   getListOfBooks(searchText): Observable<Book[]> {
     return this.http
-      .get<Book[]>(this.apiUrl + '?q=' + searchText + '&maxResults=40')
-      .pipe(retry(1), catchError(this.handleError));
+      .get<{
+        items: Book[];
+        kind: string;
+        totalItems: number;
+      }>(this.apiUrl + '?q=' + searchText + '&maxResults=40')
+      .pipe(
+        retry(1),
+        map((result) => result.items),
+        catchError(this.handleError)
+      );
   }
 
   // HttpClient API get() method => Fetch Specific Book based on ID
