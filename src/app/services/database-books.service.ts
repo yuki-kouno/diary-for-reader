@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { Book } from '../interface/book';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -20,15 +21,10 @@ export class DatabaseBooksService {
       });
   }
 
-  // getBook(): Observable<User> {
-  //   return this.db
-  //   .collection<User>('users', ref => ref.where('UID', '==', 'UID'))
-  // }
+  getToFavoriteBook(): Observable<Book[]> {
+    return this.db
+      .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
+      .valueChanges()
+      .pipe(tap((result) => console.log(result)));
+  }
 }
-//   getArticles(): Observable<Article[]> {
-//     return this.db.collection<Article>('articles', ref => {
-//       // 受け取るアイテムの条件や量を指定する
-//       return ref.limit(4); // 4件のみ取得する
-//     }).valueChanges();
-//   }
-// }
