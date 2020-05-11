@@ -6,11 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  styleUrls: ['./review.component.scss']
+  styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
   nowDate: Date;
@@ -24,7 +23,7 @@ export class ReviewComponent implements OnInit {
     private ngZone: NgZone
   ) {}
 
-  @ViewChild('autosize', { static: false }) autosize: CdkTextareaAutosize;
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
@@ -36,7 +35,7 @@ export class ReviewComponent implements OnInit {
   openDialogCB() {
     this.dialog.open(DialogChoiceBookComponent, {
       width: '100%',
-      height: '100%'
+      height: '100%',
     });
   }
 
@@ -49,7 +48,6 @@ export class ReviewComponent implements OnInit {
       this.questions.push('');
     }
   }
-
 
   ngOnInit(): void {
     this.nowDate = new Date();
