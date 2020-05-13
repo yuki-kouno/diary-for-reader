@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { NgxEventCalendarModule } from 'ngx-event-calendar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +13,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import 'firebase/firestore';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
-
-// import { FlexLayoutModule } from '@angular/flex-layout';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,8 +28,7 @@ import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
     AngularFirestoreModule,
     MatSnackBarModule,
     AngularFireFunctionsModule,
-    // FlexLayoutModule,
-    // NgxEventCalendarModule,
+    // FullCalendarModule
   ],
   providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
   bootstrap: [AppComponent],

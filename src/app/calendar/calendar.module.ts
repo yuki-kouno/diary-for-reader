@@ -12,8 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { NgxEventCalendarModule } from 'ngx-event-calendar';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [CalendarComponent],
@@ -29,9 +28,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatDividerModule,
     MatButtonModule,
     MatNativeDateModule,
-    FlexLayoutModule,
-    NgxEventCalendarModule,
+    FullCalendarModule,
   ],
-  // schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CalendarModule {}

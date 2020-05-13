@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventData } from 'ngx-event-calendar/lib/interface/event-data';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-calendar',
@@ -7,12 +7,5 @@ import { EventData } from 'ngx-event-calendar/lib/interface/event-data';
   styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent {
-  dataArray: EventData[] = [
-    {
-      id: 1,
-      title: 'aaa',
-      startDate: new Date(),
-      endDate: new Date(),
-    },
-  ];
+  calendarPlugins = [dayGridPlugin];
 }
