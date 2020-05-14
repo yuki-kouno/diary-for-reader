@@ -13,6 +13,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import 'firebase/firestore';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
     AngularFirestoreModule,
     MatSnackBarModule,
     AngularFireFunctionsModule,
+    // FullCalendarModule
   ],
   providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
   bootstrap: [AppComponent],
