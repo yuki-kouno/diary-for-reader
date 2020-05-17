@@ -1,8 +1,12 @@
-<div *ngFor="let book of books$ | async">
-  <img
-    [src]="book.volumeInfo.imageLinks.smallThumbnail"
-    [alt]="book.volumeInfo.title"
-    class="img-responsive"
-    style="max-height: 250px; text-align: center;"
-  />
+<div class="container">
+  <div class="grid">
+    <div *ngFor="let book of books$ | async">
+      <li>
+        <img
+          [src]="book.volumeInfo.imageLinks.smallThumbnail"
+          [alt]="book.volumeInfo.title"
+        />
+      </li>
+    </div>
+  </div>
 </div>
