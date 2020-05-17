@@ -3,8 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { Book } from '../interface/book';
 import { Observable } from 'rxjs';
-import { User } from '../interface/user';
 import { tap } from 'rxjs/operators';
+import { firestore } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root',
@@ -12,12 +12,14 @@ import { tap } from 'rxjs/operators';
 export class DatabaseBooksService {
   constructor(private db: AngularFirestore, private authService: AuthService) {}
 
-  addToFavoriteBook(book: Book): Promise<void> {
+  createToFavoriteBook(book: Book): Promise<void> {
+    const bookId = this.db.createId(); // IDを生成
     return this.db
-      .collection(`users/${this.authService.uid}/favoriteBooks`)
-      .add(book)
-      .then(() => {
-        console.log(`${book.volumeInfo.title}を保存しました`);
+      .doc(`users/${this.authService.uid}/favoriteBooks/${bookId}`)
+      .set({
+        bookId, // ドキュメントの内容にIDを持たせる
+        ...book,
+        craetedAt: firestore.Timestamp.now(), // firestore形式のタイムスタンプを追加
       });
   }
 
