@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 16px;
+}
+
+li {
+  list-style: none;
+  text-align: center;
+}
+
+@media screen and (max-width: 470px) {
+  img {
+    max-height: 160px;
+    max-width: 112px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  }
+}
