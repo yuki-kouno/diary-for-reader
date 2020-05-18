@@ -23,7 +23,7 @@ export class ListBooksComponent implements OnInit {
     public googleBooksApi: GoogleBooksApiService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
-    private databaseBooks: DatabaseBooksService
+    public databaseBooks: DatabaseBooksService
   ) {}
 
   ngOnInit() {
@@ -40,7 +40,7 @@ export class ListBooksComponent implements OnInit {
       });
   }
 
-  addToFavoliteBook(data) {
-    this.databaseBooks.addToFavoriteBook(data);
+  createBook(book: Book) {
+    this.databaseBooks.createToFavoriteBook(book);
   }
 }

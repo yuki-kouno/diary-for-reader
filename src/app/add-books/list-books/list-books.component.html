@@ -1,18 +1,9 @@
 <div class="container">
-  <h3 class="headTitle">{{ searchText }}</h3>
-  <!--Show it when there is no employee-->
-  <div class="no-data" *ngIf="!bookData?.length; else list">
-    <p>見つかりませんでした</p>
-    <button mat-flat-button color="primary" routerLink="/add-books">
-      他の本を探す
-    </button>
-  </div>
+  <div class="headTitle">{{ searchText }} <span>の検索結果</span></div>
 
-  <!--Employees list table, it hides when there is no employee-->
-  <ng-template #list>
-    <div class="col-md-12">
-      <table class="table table-bordered">
-        <!-- <thead>
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <!-- <thead>
             <tr>
               <th scope="col">Book ID</th>
               <th scope="col">Title</th>
@@ -20,30 +11,24 @@
               <th scope="col">Action</th>
             </tr>
           </thead> -->
-        <tbody>
-          <tr *ngFor="let book of bookData" (click)="addToFavoliteBook(book)">
-            <!-- <td>{{book.id}}</td> -->
-            <td>
-              {{ book.volumeInfo.title }}
-            </td>
-            <td>
-              <img
-                [src]="book.volumeInfo.imageLinks.thumbnail"
-                [alt]="book.volumeInfo.title"
-                class="img-responsive"
-                style="max-height: 250px; text-align: center;"
-              />
-            </td>
-            <!-- <td>
-                <button class="btn btn-outline-success" (click)="getBookDetails(book.id)">Get Book Details</button>
-              </td> -->
-          </tr>
-        </tbody>
-      </table>
-      <button mat-flat-button color="primary" routerLink="/add-books">
-        他の本を探す
-      </button>
-      <!-- <button class="btn btn-outline-warning" routerLink="">Back</button> -->
-    </div>
-  </ng-template>
+      <tbody>
+        <tr *ngFor="let book of bookData" (click)="createBook(book)">
+          <td>
+            {{ book.volumeInfo.title }}
+          </td>
+          <td>
+            <img
+              [src]="book.volumeInfo.imageLinks.thumbnail"
+              [alt]="book.volumeInfo.title"
+              class="img-responsive"
+              style="max-height: 250px; text-align: center;"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button mat-flat-button color="primary" routerLink="/add-books">
+      他の本を探す
+    </button>
+  </div>
 </div>
