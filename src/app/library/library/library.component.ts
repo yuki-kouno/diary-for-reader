@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Book } from 'src/app/interface/book';
+import { MatDialog } from '@angular/material/dialog';
+import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
 
 @Component({
   selector: 'app-library',
@@ -11,7 +13,21 @@ import { Book } from 'src/app/interface/book';
 export class LibraryComponent implements OnInit {
   books$: Observable<Book[]> = this.databaseBooks.getToFavoriteBook();
 
-  constructor(private databaseBooks: DatabaseBooksService) {}
+  constructor(
+    private databaseBooks: DatabaseBooksService,
+    public dialog: MatDialog
+  ) {}
+
+  openRemoveDialog(book) {
+    this.dialog
+      .open(RemoveDialogComponent)
+      .afterClosed()
+      .subscribe((status) => {
+        if (status) {
+          this.databaseBooks.removeToFavoriteBook(book.bookId);
+        }
+      });
+  }
 
   ngOnInit() {}
 }

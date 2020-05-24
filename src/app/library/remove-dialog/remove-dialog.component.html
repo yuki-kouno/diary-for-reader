@@ -1,0 +1,23 @@
+<div>
+  <p class="text">
+    この本に関する情報はすべて失われます。<br />よろしいですか？
+  </p>
+  <div class="buttons">
+    <button
+      class="buttons__cancel"
+      mat-raised-button
+      color="basic"
+      mat-dialog-close
+    >
+      キャンセル
+    </button>
+    <button
+      class="buttons__ok"
+      mat-raised-button
+      color="primary"
+      [matDialogClose]="true"
+    >
+      はい
+    </button>
+  </div>
+</div>

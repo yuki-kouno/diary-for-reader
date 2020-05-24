@@ -1,11 +1,22 @@
 <div class="container">
   <div class="grid">
     <div *ngFor="let book of books$ | async">
-      <li>
+      <li class="book">
         <img
           [src]="book.volumeInfo.imageLinks.smallThumbnail"
           [alt]="book.volumeInfo.title"
         />
+        <button
+          class="book__remove"
+          mat-icon-button
+          [matMenuTriggerFor]="remove"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu class="menu" #remove>
+          <mat-icon>delete</mat-icon>
+          <span (click)="openRemoveDialog(book)">削除</span>
+        </mat-menu>
       </li>
     </div>
   </div>

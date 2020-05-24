@@ -9,9 +9,25 @@
   gap: 16px;
 }
 
-li {
+.book {
   list-style: none;
   text-align: center;
+  position: relative;
+  &__remove {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(145, 145, 145, 0.5);
+  }
+}
+
+::ng-deep .mat-menu-panel {
+  min-height: initial !important;
+  .mat-menu-content {
+    height: auto;
+    display: flex;
+    margin-left: 16px;
+  }
 }
 
 @media screen and (max-width: 470px) {
