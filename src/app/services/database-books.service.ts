@@ -28,7 +28,6 @@ export class DatabaseBooksService {
     return this.db
       .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
       .valueChanges();
-    // .pipe(tap((result) => console.log(result)));
   }
 
   removeToFavoriteBook(bookId: string): Promise<void> {

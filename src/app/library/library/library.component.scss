@@ -22,7 +22,8 @@
 }
 
 ::ng-deep .mat-menu-panel {
-  min-height: initial !important;
+  min-height: initial;
+  max-height: initial;
   .mat-menu-content {
     height: auto;
     display: flex;
