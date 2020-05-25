@@ -14,8 +14,10 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu class="menu" #removeMenu="matMenu">
-          <mat-icon>delete</mat-icon>
-          <span (click)="openRemoveDialog(book)">削除</span>
+          <button mat-menu-item (click)="openRemoveDialog(book)">
+            <mat-icon>delete</mat-icon>
+            <span>削除</span>
+          </button>
         </mat-menu>
       </li>
     </div>
