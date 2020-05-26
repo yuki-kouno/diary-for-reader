@@ -15,7 +15,7 @@
     <aside>
       <button
         class="book-choice"
-        (click)="openDialogCB()"
+        (click)="openDialogChoiceBook()"
         mat-stroked-button
         color="primary"
       >
@@ -72,124 +72,10 @@
   </div>
 </div>
 
-<!-- [matMenuTriggerFor]="question"の中身 -->
-<mat-menu #question="matMenu">
-  <button
-    mat-menu-item
-    (click)="addQuestion('問題意識は何か、その解決策は何か ?')"
-  >
-    １ 問題意識は何か、その解決策は何か ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('どのようにはじまり、どのようにおわったか ?')"
-  >
-    ２ どのようにはじまり、どのようにおわったか ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('一言で何を学んだか ?')">
-    3 一言で何を学んだか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('キーポイント、コンセプトから重要なことは何か ?')"
-  >
-    ４ キーポイント、コンセプトから重要なことは何か ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('図解、用語集から何を学んだか ?')">
-    ５ 図解、用語集から何を学んだか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('ほかの本と似ているところと違うところは何か ?')"
-  >
-    ６ ほかの本と似ているところと違うところは何か ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('読んでどんな感覚になったか ?')">
-    ７ 読んでどんな感覚になったか ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('この本はなぜ大事なのか ?')">
-    ８ この本はなぜ大事なのか ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('作者の意図は何か ?')">
-    ９ 作者の意図は何か ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('この本にタイトルをつけるとすると ?')"
-  >
-    10　この本にタイトルをつけるとすると ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="
-      addQuestion(
-        '専門用語について作者はなんと言っているか（何を目的に専門用語を使っているのか） ?'
-      )
-    "
-  >
-    11　専門用語について作者はなんと言っているか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('１つだけ章をピックアップして、サマリーを書く ?')"
-  >
-    12　１つだけ章をピックアップして、サマリーを書く ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="
-      addQuestion(
-        '前書きは本全体を理解することに役立ったかどうか ?（どうすればもっと役に立つようになったか）'
-      )
-    "
-  >
-    13　前書きは本全体を理解することに役立ったかどうか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('本を面白くするためにどんな工夫があるか ?')"
-  >
-    14　本を面白くするためにどんな工夫があるか ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('前書きでどんな工夫があるか ?')">
-    15　前書きでどんな工夫があるか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('作者の主張のどこに賛成できるか、その理由は ?')"
-  >
-    16　作者の主張のどこに賛成できるか、その理由は ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('特徴的な部分はどこか ?')">
-    17　特徴的な部分はどこか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('終わり方がよかったか。それはなぜか ?')"
-  >
-    18　終わり方がよかったか。それはなぜか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="
-      addQuestion('テーマを説明するために、どのような例をだしているか ?')
-    "
-  >
-    19　テーマを説明するために、どのような例をだしているか ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('最も重要な一文はどれか、その理由は ?')"
-  >
-    20　最も重要な一文はどれか、その理由は ?
-  </button>
-  <button
-    mat-menu-item
-    (click)="addQuestion('どんな特別な言葉を使っているか ?')"
-  >
-    21　どんな特別な言葉を使っているか ?
-  </button>
-  <button mat-menu-item (click)="addQuestion('自分に刺さった言葉はどこか ?')">
-    22　自分に刺さった言葉はどこか ?
-  </button>
+<mat-menu class="question-panel" #question="matMenu">
+  <div *ngFor="let item of questionLists; index as i">
+    <button mat-menu-item (click)="addQuestion(item)">
+      {{ i + 1 + ' ' + item }}
+    </button>
+  </div>
 </mat-menu>

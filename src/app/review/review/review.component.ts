@@ -5,6 +5,7 @@ import { DialogChoiceBookComponent } from '../dialog-choice-book/dialog-choice-b
 import { MatDialog } from '@angular/material/dialog';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
+import { questionLists } from './question-lists';
 
 @Component({
   selector: 'app-review',
@@ -13,9 +14,10 @@ import { take } from 'rxjs/operators';
 })
 export class ReviewComponent implements OnInit {
   nowDate: Date;
-
+  questionLists = questionLists;
   questions = [];
   items = [];
+
   constructor(
     private datePipe: DatePipe,
     private nav: NavService,
@@ -32,15 +34,15 @@ export class ReviewComponent implements OnInit {
       .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
-  openDialogCB() {
+  openDialogChoiceBook() {
     this.dialog.open(DialogChoiceBookComponent, {
       width: '100%',
       height: '100%',
     });
   }
 
-  addQuestion(s) {
-    const message = s;
+  addQuestion(item) {
+    const message = item;
 
     if (message) {
       this.questions.push({ message });
