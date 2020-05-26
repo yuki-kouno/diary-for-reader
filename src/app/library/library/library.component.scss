@@ -9,9 +9,22 @@
   gap: 16px;
 }
 
-li {
+.book {
   list-style: none;
   text-align: center;
+  position: relative;
+  &__remove {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(145, 145, 145, 0.5);
+  }
+}
+
+.mat-menu-item {
+  .mat-icon {
+    margin-right: 8px;
+  }
 }
 
 @media screen and (max-width: 470px) {

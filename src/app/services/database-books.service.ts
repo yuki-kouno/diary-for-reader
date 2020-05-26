@@ -5,6 +5,7 @@ import { Book } from '../interface/book';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
+import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,12 @@ export class DatabaseBooksService {
   getToFavoriteBook(): Observable<Book[]> {
     return this.db
       .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
-      .valueChanges()
-      .pipe(tap((result) => console.log(result)));
+      .valueChanges();
+  }
+
+  removeToFavoriteBook(bookId: string): Promise<void> {
+    return this.db
+      .doc(`users/${this.authService.uid}/favoriteBooks/${bookId}`)
+      .delete();
   }
 }
