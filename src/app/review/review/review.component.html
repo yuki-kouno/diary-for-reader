@@ -75,7 +75,7 @@
 <mat-menu class="question-panel" #question="matMenu">
   <div *ngFor="let item of questionLists; index as i">
     <button mat-menu-item (click)="addQuestion(item)">
-      {{ i + 1 + ' ' + item }}
+      {{ i + 1 + '&emsp;' + item }}
     </button>
   </div>
 </mat-menu>
