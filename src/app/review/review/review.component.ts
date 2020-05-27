@@ -14,7 +14,7 @@ import { questionLists } from './question-lists';
 })
 export class ReviewComponent implements OnInit {
   nowDate: Date;
-  questionLists = questionLists;
+  questionLists: string[] = questionLists;
   questions = [];
   items = [];
 

@@ -1,4 +1,4 @@
-export const questionLists = [
+export const questionLists: string[] = [
   '問題意識は何か、その解決策は何か?',
   'どのようにはじまり、どのように終わったか ?',
   '一言で何を学んだか ?',
