@@ -20,7 +20,7 @@
       line-height: 12px;
       border-radius: 19px;
       padding: 7px 10px;
-      opacity: .4;
+      opacity: 0.4;
     }
   }
 
@@ -57,7 +57,7 @@
       grid-row: 1/4;
       .book-choice {
         padding: 12px 20px;
-        opacity: .6;
+        opacity: 0.6;
       }
     }
   }
@@ -93,8 +93,6 @@
         outline: 1px solid #ffc40050;
       }
     }
-
-
   }
 
   .review-btns {
@@ -117,5 +115,4 @@
       border-radius: 18px;
     }
   }
-
 }
