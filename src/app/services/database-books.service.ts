@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { Book } from '../interface/book';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
 import { promise } from 'protractor';
 
@@ -24,9 +24,15 @@ export class DatabaseBooksService {
       });
   }
 
-  getToFavoriteBook(): Observable<Book[]> {
+  getToFavoriteBooks(): Observable<Book[]> {
     return this.db
       .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
+      .valueChanges();
+  }
+
+  getToFavoriteBook(bookId: string): Observable<Book> {
+    return this.db
+      .doc<Book>(`users/${this.authService.uid}/favoriteBooks/book.${bookId}`)
       .valueChanges();
   }
 
