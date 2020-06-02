@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="book | async; else blank">
+  <div *ngIf="book$ | async as book; else blank">
     <div class="header-date">
       <div class="date">
         {{ nowDate | date: 'yyyy.M.d' }}
