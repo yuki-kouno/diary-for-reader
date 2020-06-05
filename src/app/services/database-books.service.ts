@@ -32,7 +32,7 @@ export class DatabaseBooksService {
 
   getToFavoriteBook(bookId: string): Observable<Book> {
     return this.db
-      .doc<Book>(`users/${this.authService.uid}/favoriteBooks/book.${bookId}`)
+      .doc<Book>(`users/${this.authService.uid}/favoriteBooks/${bookId}`)
       .valueChanges();
   }
 

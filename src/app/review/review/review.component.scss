@@ -30,34 +30,41 @@
     grid-template-rows: 41px 41px 41px;
     margin-bottom: 16px;
 
+    input {
+      margin: 10px 0;
+      text-align: center;
+      border: none;
+    }
+
     header {
       grid-column: 2/3;
       grid-row: 1/2;
       text-align: center;
+      max-height: 41px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     main {
       grid-column: 2/3;
       grid-row: 2/3;
-      input {
-        margin: 10px 0;
-        text-align: center;
-        box-sizing: border-box;
-      }
+      margin: 0 auto;
     }
     footer {
       grid-column: 2/3;
       grid-row: 3/4;
-      input {
-        margin: 10px 0;
-        text-align: center;
-      }
+      margin: 0 auto;
     }
     aside {
       grid-column: 1/2;
       grid-row: 1/4;
+      text-align: center;
       .book-choice {
         padding: 12px 20px;
         opacity: 0.6;
+      }
+      img {
+        max-height: 123px;
       }
     }
   }
