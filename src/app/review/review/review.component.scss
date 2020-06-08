@@ -71,34 +71,11 @@
 
   ul {
     padding: 0;
-
-    .question-list {
-      list-style: none;
-      font-size: 10px;
-
-      &_textarea {
-        width: 100%;
-        height: auto;
-        resize: none;
-        outline: 1px solid #74ff0350;
-      }
-
-      .mat-form-field {
-        width: 100%;
-        font-size: 12px;
-      }
-    }
-    .free-text {
-      list-style: none;
-      font-size: 10px;
-      padding-bottom: 10px;
-
-      &_textarea {
-        width: 100%;
-        height: auto;
-        resize: none;
-        outline: 1px solid #ffc40050;
-      }
+    list-style: none;
+    font-size: 10px;
+    .mat-form-field {
+      width: 100%;
+      font-size: 12px;
     }
   }
 
