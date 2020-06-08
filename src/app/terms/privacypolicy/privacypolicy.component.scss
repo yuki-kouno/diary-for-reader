@@ -1,0 +1,12 @@
+* {
+  color: rgb(75, 75, 75);
+}
+.inner {
+  padding: 30px;
+}
+
+@media screen and (max-width: 470px) {
+  li {
+    margin: 10px;
+  }
+}
