@@ -2,15 +2,7 @@
   <div class="headTitle">{{ searchText }} <span>の検索結果</span></div>
 
   <div class="col-md-12">
-    <table class="table table-bordered">
-      <!-- <thead>
-            <tr>
-              <th scope="col">Book ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Image</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead> -->
+    <table>
       <tbody>
         <tr *ngFor="let book of bookData" (click)="createBook(book)">
           <td>

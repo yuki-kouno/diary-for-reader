@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { map } from 'rxjs/operators';
-
-import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-list-books',
@@ -16,13 +12,12 @@ import { observable } from 'rxjs';
 })
 export class ListBooksComponent implements OnInit {
   // tslint:disable-next-line: no-string-literal
-  searchText = this.activatedRoute.snapshot.params['searchText'];
+  searchText = this.route.snapshot.params['searchText'];
   bookData: any = {};
 
   constructor(
     public googleBooksApi: GoogleBooksApiService,
-    public activatedRoute: ActivatedRoute,
-    public router: Router,
+    public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService
   ) {}
 
