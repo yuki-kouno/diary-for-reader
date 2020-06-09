@@ -42,6 +42,13 @@ const routes: Routes = [
         canLoad: [AuthGuard],
         canActivate: [AuthGuard],
       },
+      {
+        path: 'terms',
+        loadChildren: () =>
+          import('../terms/terms.module').then((mod) => mod.TermsModule),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];
