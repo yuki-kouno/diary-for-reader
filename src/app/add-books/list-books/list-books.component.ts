@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { map } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-books',
@@ -11,9 +11,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./list-books.component.scss'],
 })
 export class ListBooksComponent implements OnInit {
-  // tslint:disable-next-line: no-string-literal
-  searchText = this.route.snapshot.params['searchText'];
-  bookData: any = {};
+  bookData: { book?: Book } = {};
+  searchText: string;
 
   constructor(
     public googleBooksApi: GoogleBooksApiService,
@@ -22,9 +21,12 @@ export class ListBooksComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.googleBooksApi
-      .getListOfBooks(this.searchText)
+    this.route.paramMap
       .pipe(
+        switchMap((param) => {
+          this.searchText = param.get('searchText');
+          return this.googleBooksApi.getListOfBooks(this.searchText);
+        }),
         map((datas) => {
           return datas.filter((data) => data.volumeInfo.imageLinks);
         })
