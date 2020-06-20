@@ -1,26 +1,26 @@
-<div class="container">
-  <div class="headTitle">{{ searchText }} <span>の検索結果</span></div>
+<div *ngIf="searchText" class="container">
+  <div class="inner">
+    <div class="results-title">{{ searchText }} <span>の検索結果</span></div>
 
-  <div class="col-md-12">
-    <table>
-      <tbody>
-        <tr *ngFor="let book of bookData" (click)="createBook(book)">
-          <td>
-            {{ book.volumeInfo.title }}
-          </td>
-          <td>
+    <div>
+      <ul class="book-list">
+        <li
+          *ngFor="let book of bookData"
+          class="book-list-item"
+          (click)="createBook(book)"
+        >
+          <div class="book-list-item__left">
+            <p>{{ book.volumeInfo.title }}</p>
+            <p class="font-size__small">{{ book.volumeInfo.authors }}</p>
+          </div>
+          <figure class="book-list-item__right">
             <img
               [src]="book.volumeInfo.imageLinks.thumbnail"
               [alt]="book.volumeInfo.title"
-              class="img-responsive"
-              style="max-height: 250px; text-align: center;"
             />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button mat-flat-button color="primary" routerLink="/add-books">
-      他の本を探す
-    </button>
+          </figure>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
