@@ -3,36 +3,61 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { Book } from '../interface/book';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
-import { promise } from 'protractor';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DatabaseBooksService {
-  constructor(private db: AngularFirestore, private authService: AuthService) {}
+  constructor(
+    private db: AngularFirestore,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {}
 
   createToFavoriteBook(book: Book): Promise<void> {
-    const bookId = this.db.createId(); // IDを生成
+    const uid = this.authService.uid;
     return this.db
-      .doc(`users/${this.authService.uid}/favoriteBooks/${bookId}`)
+      .doc(`users/${this.authService.uid}/favoriteBooks/${book.id}`)
       .set({
-        bookId, // ドキュメントの内容にIDを持たせる
         ...book,
-        craetedAt: firestore.Timestamp.now(), // firestore形式のタイムスタンプを追加
+        uid,
+        createdAt: firestore.Timestamp.now(),
+      })
+      .then(() => {
+        this.snackBar.open(
+          `${book.volumeInfo.title}`,
+          'をライブラリに追加したよ',
+          {
+            duration: 2000,
+          }
+        );
       });
   }
 
   getToFavoriteBook(): Observable<Book[]> {
     return this.db
-      .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
+      .collection<Book>(
+        `users/${this.authService.uid}/favoriteBooks`,
+        (ref) => {
+          return ref.orderBy('createdAt', 'desc');
+        }
+      )
       .valueChanges();
   }
 
-  removeToFavoriteBook(bookId: string): Promise<void> {
+  getToFavoriteBookIds(): Observable<string[]> {
     return this.db
-      .doc(`users/${this.authService.uid}/favoriteBooks/${bookId}`)
+      .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
+      .valueChanges()
+      .pipe(map((books) => books.map((book) => book.id)));
+  }
+
+  removeToFavoriteBook(id): Promise<void> {
+    return this.db
+      .doc(`users/${this.authService.uid}/favoriteBooks/${id}`)
       .delete();
   }
 }

@@ -1,9 +1,10 @@
 export interface Book {
-  bookId: string;
+  id: string;
+  createdAt: Date;
   volumeInfo: {
     title: string;
     subtitle: string;
-    authors: string[];
+    authors: string;
     publisher: string;
     publishDate: string;
     description: string;
