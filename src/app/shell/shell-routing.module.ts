@@ -10,15 +10,15 @@ const routes: Routes = [
     component: ShellComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
+        path: 'review',
         loadChildren: () =>
           import('../review/review.module').then((mod) => mod.ReviewModule),
         canLoad: [AuthGuard],
         canActivate: [AuthGuard],
       },
       {
-        path: 'library',
+        path: '',
+        pathMatch: 'full',
         loadChildren: () =>
           import('../library/library.module').then((mod) => mod.LibraryModule),
         canLoad: [AuthGuard],
@@ -39,6 +39,13 @@ const routes: Routes = [
           import('../calendar/calendar.module').then(
             (mod) => mod.CalendarModule
           ),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'terms',
+        loadChildren: () =>
+          import('../terms/terms.module').then((mod) => mod.TermsModule),
         canLoad: [AuthGuard],
         canActivate: [AuthGuard],
       },

@@ -11,7 +11,7 @@ import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component'
   styleUrls: ['./library.component.scss'],
 })
 export class LibraryComponent implements OnInit {
-  books$: Observable<Book[]> = this.databaseBooks.getToFavoriteBook();
+  books$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks();
 
   constructor(
     private databaseBooks: DatabaseBooksService,
