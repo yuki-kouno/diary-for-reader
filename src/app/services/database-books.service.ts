@@ -50,6 +50,11 @@ export class DatabaseBooksService {
       .valueChanges();
   }
 
+  getToFavoriteBook(id): Observable<Book> {
+    return this.db
+      .doc<Book>(`users/${this.authService.uid}/favoriteBooks/${id}`)
+      .valueChanges();
+  }
 
   getToFavoriteBookIds(): Observable<string[]> {
     return this.db
@@ -59,7 +64,6 @@ export class DatabaseBooksService {
   }
 
   removeToFavoriteBook(id): Promise<void> {
-
     return this.db
       .doc(`users/${this.authService.uid}/favoriteBooks/${id}`)
       .delete();

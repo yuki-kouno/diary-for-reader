@@ -8,7 +8,7 @@ const routes: Routes = [
     component: ReviewComponent,
   },
   {
-    path: ':bookId',
+    path: ':book.id',
     component: ReviewComponent,
   },
 ];

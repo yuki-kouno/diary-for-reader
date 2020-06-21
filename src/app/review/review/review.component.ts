@@ -20,7 +20,7 @@ export class ReviewComponent implements OnInit {
   book$: Observable<Book> = this.route.paramMap
     .pipe(
       switchMap((map) => {
-        const bookId = map.get('bookId');
+        const bookId = map.get('book.id');
         console.log(bookId);
         return this.databaseBooks.getToFavoriteBook(bookId);
       })
