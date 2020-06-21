@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { Book } from '../interface/book';
+
 import { Observable } from 'rxjs';
+
 import { firestore } from 'firebase/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
@@ -37,7 +39,7 @@ export class DatabaseBooksService {
       });
   }
 
-  getToFavoriteBook(): Observable<Book[]> {
+  getToFavoriteBooks(): Observable<Book[]> {
     return this.db
       .collection<Book>(
         `users/${this.authService.uid}/favoriteBooks`,
@@ -48,6 +50,7 @@ export class DatabaseBooksService {
       .valueChanges();
   }
 
+
   getToFavoriteBookIds(): Observable<string[]> {
     return this.db
       .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
@@ -56,6 +59,7 @@ export class DatabaseBooksService {
   }
 
   removeToFavoriteBook(id): Promise<void> {
+
     return this.db
       .doc(`users/${this.authService.uid}/favoriteBooks/${id}`)
       .delete();

@@ -1,11 +1,13 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { NavService } from 'src/app/services/nav.service';
 import { DialogChoiceBookComponent } from '../dialog-choice-book/dialog-choice-book.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { take } from 'rxjs/operators';
+import { take, switchMap, tap } from 'rxjs/operators';
 import { questionLists } from './question-lists';
+import { ActivatedRoute } from '@angular/router';
+import { DatabaseBooksService } from 'src/app/services/database-books.service';
+import { Book } from 'src/app/interface/book';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-review',
@@ -15,14 +17,24 @@ import { questionLists } from './question-lists';
 export class ReviewComponent implements OnInit {
   nowDate: Date;
   questionLists: string[] = questionLists;
+  book$: Observable<Book> = this.route.paramMap
+    .pipe(
+      switchMap((map) => {
+        const bookId = map.get('bookId');
+        console.log(bookId);
+        return this.databaseBooks.getToFavoriteBook(bookId);
+      })
+    )
+    .pipe(tap((book) => console.log(book)));
+
   questions = [];
   items = [];
 
   constructor(
-    private datePipe: DatePipe,
-    private nav: NavService,
     public dialog: MatDialog,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private route: ActivatedRoute,
+    private databaseBooks: DatabaseBooksService
   ) {}
 
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
@@ -53,6 +65,5 @@ export class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.nowDate = new Date();
-    this.nav.show();
   }
 }
