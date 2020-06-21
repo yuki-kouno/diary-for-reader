@@ -1,7 +1,7 @@
 <div class="container">
   <div class="grid">
     <div *ngFor="let book of books$ | async">
-      <li class="book" [routerLink]="['/review', book.bookId]">
+      <li class="book" [routerLink]="['/review', book.id]">
         <img
           [src]="book.volumeInfo.imageLinks.smallThumbnail"
           [alt]="book.volumeInfo.title"
