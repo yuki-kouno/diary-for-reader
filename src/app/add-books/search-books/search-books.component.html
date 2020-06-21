@@ -1,24 +1,22 @@
 <div class="container">
   <div class="inner">
-    <h1>本を検索</h1>
-
-    <div class="form-group">
-      <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="本のタイトル、著者名">
-    </div>
-
-    <div class="form-group">
-      <button class="btn btn-success btn-lg btn-block" (click)="searchBook()" mat-flat-button color="primary">検索</button>
-    </div>
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="本のタイトル、著者名"
+    />
+    <button
+      *ngIf="searchText"
+      (click)="searchBook()"
+      mat-flat-button
+      color="accent"
+    >
+      検索
+    </button>
+    <button *ngIf="!searchText" mat-flat-button color="accent">
+      検索
+    </button>
   </div>
 </div>
 
-  <!-- <form [formGroup]="form">
-    <mat-form-field formControlName="searchText" appearance="outline">
-      <mat-label>本のタイトル、著者名</mat-label>
-      <input [(ngModel)]="searchText" matInput type="text" />
-    </mat-form-field>
-
-    <button (click)="searchBook()" mat-flat-button color="primary">
-      検索
-    </button>
-  </form> -->
+<app-list-books></app-list-books>

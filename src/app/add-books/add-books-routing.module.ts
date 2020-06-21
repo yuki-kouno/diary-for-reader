@@ -6,10 +6,9 @@ import { ListBooksComponent } from './list-books/list-books.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     component: SearchBooksComponent,
   },
-  { path: 'list-books/:searchText', component: ListBooksComponent },
+  { path: ':searchText', component: SearchBooksComponent },
 ];
 
 @NgModule({

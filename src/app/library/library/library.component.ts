@@ -24,7 +24,7 @@ export class LibraryComponent implements OnInit {
       .afterClosed()
       .subscribe((status) => {
         if (status) {
-          this.databaseBooks.removeToFavoriteBook(book.bookId);
+          this.databaseBooks.removeToFavoriteBook(book.id);
         }
       });
   }

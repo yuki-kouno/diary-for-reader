@@ -1,20 +1,18 @@
 .container {
-  padding: 24px;
-
   .inner {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
 
     input {
-      margin-bottom: 20px;
+      margin-right: 16px;
       padding: 10px;
-      border: 1px solid rgb(238, 238, 238);
+      border: 1px solid rgba(190, 190, 190, 0.3);
       border-radius: 5px;
-
       &::placeholder {
-        color: rgb(194, 194, 194);
+        color: rgb(190, 190, 190);
       }
     }
-
     button {
       color: white;
     }
