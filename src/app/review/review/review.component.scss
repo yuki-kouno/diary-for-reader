@@ -1,102 +1,52 @@
 * {
   color: rgb(61, 61, 61);
 }
+p {
+  margin: 0;
+}
 
 .container {
   padding: 35px 17px 70px;
+}
 
-  .header-date {
+.date {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 33% 66%;
+  grid-template-rows: 80px 40px;
+  margin-bottom: 24px;
+
+  input {
+    margin: 10px 0;
     text-align: center;
-    position: relative;
-
-    .date {
-      font-size: 20px;
-    }
-    .page-add {
-      position: absolute;
-      top: -10px;
-      right: 0;
-      font-size: 12px;
-      line-height: 12px;
-      border-radius: 19px;
-      padding: 7px 10px;
-      opacity: 0.4;
-    }
+    border: none;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: 33% 66%;
-    grid-template-rows: 41px 41px 41px;
-    margin-bottom: 16px;
-
-    input {
-      margin: 10px 0;
-      text-align: center;
-      border: none;
-    }
-
-    header {
-      grid-column: 2/3;
-      grid-row: 1/2;
-      text-align: center;
-      max-height: 41px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    main {
-      grid-column: 2/3;
-      grid-row: 2/3;
-      margin: 0 auto;
-    }
-    footer {
-      grid-column: 2/3;
-      grid-row: 3/4;
-      margin: 0 auto;
-    }
-    aside {
-      grid-column: 1/2;
-      grid-row: 1/4;
-      text-align: center;
-      .book-choice {
-        padding: 12px 20px;
-        opacity: 0.6;
-      }
-      img {
-        max-height: 123px;
-      }
-    }
+  header {
+    padding: 0 16px;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    max-height: 41px;
   }
-
-  ul {
-    padding: 0;
-    list-style: none;
-    font-size: 10px;
-    .mat-form-field {
-      width: 100%;
-      font-size: 12px;
-    }
+  footer {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    margin: 0 auto;
   }
-
-  .review-btns {
+  aside {
+    grid-column: 1/2;
+    grid-row: 1/2;
     text-align: center;
-
-    .questions {
-      margin: 6px;
-      color: white;
-      line-height: 1;
-      font-size: 14px;
-      padding: 11px;
-      border-radius: 18px;
+    .book-choice {
+      padding: 12px 20px;
+      opacity: 0.6;
     }
-    .free-text {
-      margin: 6px;
-      color: white;
-      line-height: 1;
-      font-size: 14px;
-      padding: 11px;
-      border-radius: 18px;
+    img {
+      max-height: 123px;
     }
   }
 }

@@ -1,15 +1,7 @@
 <div class="container">
-  <div *ngIf="book$ | async as book; else blank">
-    <div class="header-date">
-      <div class="date">
-        {{ nowDate | date: 'yyyy.M.d' }}
-      </div>
-      <button class="page-add" mat-raised-button color="primary">
-        この日付で<br />ページ追加
-      </button>
-    </div>
-
-    <div class="grid">
+  <ng-container *ngIf="book$ | async as book">
+    <div class="date">{{ nowDate | date: 'M月d日 E曜日' }}</div>
+    <div class="top">
       <header>
         <p>{{ book.volumeInfo.title }}</p>
       </header>
@@ -21,135 +13,11 @@
           />
         </figure>
       </aside>
-      <main>
-        <input matInput autocomplete="off" placeholder="章、セクション" />
-      </main>
       <footer>
         <input matInput autocomplete="off" placeholder="ページ" />
       </footer>
     </div>
 
-    <div id="reviews"></div>
-
-    <ul>
-      <li class="question-list" *ngFor="let question of questions">
-        <mat-form-field>
-          <mat-label>{{ question.message }}</mat-label>
-          <textarea
-            matInput
-            cdkTextareaAutosize
-            #autosize="cdkTextareaAutosize"
-            cdkAutosizeMinRows="1"
-            cdkAutosizeMaxRows="5"
-          ></textarea>
-        </mat-form-field>
-      </li>
-    </ul>
-    <ul>
-      <li class="free-text" *ngFor="let item of items">
-        {{ item.message }}<textarea class="free-text_textarea"></textarea>
-      </li>
-    </ul>
-
-    <div class="review-btns">
-      <button
-        class="questions"
-        mat-flat-button
-        color="primary"
-        [matMenuTriggerFor]="question"
-      >
-        質問を選択
-      </button>
-      <button
-        class="free-text"
-        mat-flat-button
-        color="accent"
-        (click)="addQuestion(null)"
-      >
-        自由にレヴューを書く
-      </button>
-    </div>
-  </div>
-
-  <ng-template #blank>
-    <div class="header-date">
-      <div class="date">
-        {{ nowDate | date: 'yyyy.M.d' }}
-      </div>
-      <button class="page-add" mat-raised-button color="primary">
-        この日付で<br />ページ追加
-      </button>
-    </div>
-
-    <div class="grid">
-      <header>
-        <p>title</p>
-      </header>
-      <aside>
-        <button
-          class="book-choice"
-          (click)="openDialogChoiceBook()"
-          mat-stroked-button
-          color="primary"
-        >
-          タッチで<br />本を<br />選ぶ
-        </button>
-      </aside>
-      <main>
-        <input matInput placeholder="章、セクション" />
-      </main>
-      <footer>
-        <input matInput placeholder="ページ" />
-      </footer>
-    </div>
-
-    <div id="reviews"></div>
-
-    <ul>
-      <li class="question-list" *ngFor="let question of questions">
-        <mat-form-field>
-          <mat-label>{{ question.message }}</mat-label>
-          <textarea
-            matInput
-            cdkTextareaAutosize
-            #autosize="cdkTextareaAutosize"
-            cdkAutosizeMinRows="1"
-            cdkAutosizeMaxRows="5"
-          ></textarea>
-        </mat-form-field>
-      </li>
-    </ul>
-    <ul>
-      <li *ngFor="let item of items">
-        {{ item.message }}<textarea></textarea>
-      </li>
-    </ul>
-
-    <div class="review-btns">
-      <button
-        class="questions"
-        mat-flat-button
-        color="primary"
-        [matMenuTriggerFor]="question"
-      >
-        質問を選択
-      </button>
-      <button
-        class="free-text"
-        mat-flat-button
-        color="accent"
-        (click)="addQuestion(null)"
-      >
-        自由にレヴューを書く
-      </button>
-    </div>
-  </ng-template>
+    <app-reviews [book]="book"></app-reviews>
+  </ng-container>
 </div>
-
-<mat-menu class="question-panel" #question="matMenu">
-  <div *ngFor="let item of questionLists; index as i">
-    <button mat-menu-item (click)="addQuestion(item)">
-      {{ i + 1 + '&emsp;' + item }}
-    </button>
-  </div>
-</mat-menu>
