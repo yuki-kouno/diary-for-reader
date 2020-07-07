@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { AllReviewsComponent } from './all-reviews/all-reviews.component';
+import { AutofocusFixModule } from 'ngx-autofocus-fix';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AllReviewsComponent } from './all-reviews/all-reviews.component';
     MatMenuModule,
     MatIconModule,
     MatTabsModule,
+    AutofocusFixModule.forRoot(),
   ],
   providers: [DatePipe],
   entryComponents: [DialogChoiceBookComponent],
