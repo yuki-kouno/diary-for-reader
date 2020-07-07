@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="revieweds">
+  <!-- <div class="revieweds">
     <div class="revieweds__body">
       <p class="revieweds__question">{{ review.question }}</p>
       <p class="revieweds__text">{{ review.text }}</p>
@@ -23,39 +23,44 @@
         </button>
       </mat-menu>
     </div>
-  </div>
+  </div> -->
   <div>
     <ul class="reviews">
-      <li class="reviews--item" *ngFor="let question of questions">
-        <form [formGroup]="reviewForm">
-          <mat-form-field>
-            <mat-label class="reviews--item__question">
-              {{ question.message }}
-            </mat-label>
-            <textarea
-              class="reviews--item__review"
-              matInput
-              formControlName="review"
-              type="textarea"
-              cdkTextareaAutosize
-              #autosize="cdkTextareaAutosize"
-              cdkAutosizeMinRows="1"
-              cdkAutosizeMaxRows="5"
-            ></textarea>
-          </mat-form-field>
-          <div class="reviews--item__editact-actions">
-            <button mat-button type="button" (click)="cancelReview()">
-              キャンセル
-            </button>
-            <button
-              class="font-color"
-              mat-flat-button
-              [disabled]=""
-              color="primary"
-              (click)="createReview(book)"
-            >
-              保存
-            </button>
+      <li
+        class="reviews--item"
+        *ngFor="let ctrl of reviews.controls; index as i"
+      >
+        <form [formGroup]="form">
+          <div [formGroupName]="i">
+            <mat-form-field>
+              <mat-label class="reviews--item__question">
+                {{ review.question }}
+              </mat-label>
+              <textarea
+                class="reviews--item__review"
+                matInput
+                formControlName="review"
+                type="textarea"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"
+              ></textarea>
+            </mat-form-field>
+            <div class="reviews--item__editact-actions">
+              <button mat-button type="button" (click)="removeReview(i)">
+                キャンセル
+              </button>
+              <button
+                class="font-color"
+                mat-flat-button
+                [disabled]=""
+                color="primary"
+                (click)="createReview(book)"
+              >
+                保存
+              </button>
+            </div>
           </div>
         </form>
       </li>
@@ -88,7 +93,7 @@
 
   <mat-menu class="question-panel" #question="matMenu">
     <div *ngFor="let item of questionsList; index as i">
-      <button mat-menu-item (click)="addQuestion(item)">
+      <button mat-menu-item (click)="addReview()" (click)="addQuestion(item)">
         {{ i + 1 + '&emsp;' + item }}
       </button>
     </div>

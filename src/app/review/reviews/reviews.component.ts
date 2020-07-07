@@ -10,8 +10,12 @@ import { Book } from 'src/app/interface/book';
 import { Observable } from 'rxjs';
 import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
-import { text } from 'body-parser';
+import {
+  FormBuilder,
+  Validators,
+  FormControl,
+  FormArray,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-reviews',
@@ -19,6 +23,7 @@ import { text } from 'body-parser';
   styleUrls: ['./reviews.component.scss'],
 })
 export class ReviewsComponent implements OnInit {
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
   review: Review = {
     reviewId: 'ai@jrg ',
     title: 'マリオ',
@@ -27,7 +32,6 @@ export class ReviewsComponent implements OnInit {
       'ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ',
   };
 
-  // @Input() review: Review;
   @Input() book: Book;
 
   nowDate: Date;
@@ -35,9 +39,15 @@ export class ReviewsComponent implements OnInit {
   questions = [];
   items = [];
 
-  reviewForm = this.fb.group({
-    review: ['', [Validators.required]],
+  public showSimpleInput = false;
+
+  form = this.fb.group({
+    reviews: this.fb.array([]),
   });
+
+  get reviews(): FormArray {
+    return this.form.get('reviews') as FormArray;
+  }
 
   constructor(
     public dialog: MatDialog,
@@ -48,7 +58,17 @@ export class ReviewsComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+  addReview(review?: Review) {
+    const formGroup = this.fb.group({
+      text: ['', [Validators.required]],
+    });
+
+    this.reviews.push(formGroup);
+  }
+
+  removeReview(index: number) {
+    this.reviews.removeAt(index);
+  }
 
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
@@ -73,19 +93,8 @@ export class ReviewsComponent implements OnInit {
     }
   }
 
-  cancelReview() {
-    const reviewItem = document.querySelector('li');
-    if (reviewItem) {
-      reviewItem.remove();
-    }
-  }
-
-  get reviewControl() {
-    return this.reviewForm.get('review') as FormControl;
-  }
-
   submit() {
-    console.log(this.reviewForm.value);
+    console.log(this.form.value);
   }
 
   getReview() {}
@@ -94,7 +103,7 @@ export class ReviewsComponent implements OnInit {
 
   createReview(book) {
     console.log(book.id);
-    this.databaseReview.createReview(book, this.reviewForm.value);
+    this.databaseReview.createReview(book, this.form.value);
   }
 
   updateReview() {}
