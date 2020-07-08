@@ -16,12 +16,20 @@ import { DatabaseReviewsService } from 'src/app/services/database-reviews.servic
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 757cbd2c1ecfb7805e033ea52c8297874c0542db
   review: Review = {
     reviewId: 'ai@jrg ',
     title: 'マリオ',
     question: '作者の主張のどこに賛成できるか、その理由は ?',
+<<<<<<< HEAD
     text:
       'ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ',
+=======
+    text: 'ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ'
+>>>>>>> 757cbd2c1ecfb7805e033ea52c8297874c0542db
   };
 
   nowDate: Date;
@@ -39,7 +47,11 @@ export class ReviewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private databaseBooks: DatabaseBooksService,
+<<<<<<< HEAD
     private databaseReview: DatabaseReviewsService
+=======
+    private databaseReview: DatabaseReviewsService,
+>>>>>>> 757cbd2c1ecfb7805e033ea52c8297874c0542db
   ) {}
 
   ngOnInit(): void {
