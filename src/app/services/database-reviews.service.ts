@@ -20,10 +20,10 @@ export class DatabaseReviewsService {
   nowDate = new Date();
   date = this.datePipe.transform(this.nowDate, 'yyyyMMdd');
 
-  getReviews(): Observable<Review[]> {
+  getReviews(book: Book): Observable<Review[]> {
     return this.db
       .collection<Review>(
-        `users/${this.authService.uid}/favoriteBooks/'-L8_DwAAQBAJ'
+        `users/${this.authService.uid}/favoriteBooks/${book.id}
     /reviews`,
         (ref) => {
           return ref

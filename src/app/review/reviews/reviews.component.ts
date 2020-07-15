@@ -21,7 +21,7 @@ export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   @Input() book: Book;
 
-  reviews$: Observable<Review[]> = this.databaseReviewService.getReviews();
+  reviews$: Observable<Review[]> = this.databaseReviewService.getReviews(book);
 
   selectedQuestion = [];
   questionsList = questionsList;
@@ -40,7 +40,7 @@ export class ReviewsComponent implements OnInit {
     private snackBer: MatSnackBar,
     public databaseReviewService: DatabaseReviewsService
   ) {
-    databaseReviewService.getReviews().pipe(tap((ref) => console.log(ref)));
+    databaseReviewService.getReviews(book).pipe(tap((ref) => console.log(ref)));
   }
 
   triggerResize() {
@@ -85,7 +85,7 @@ export class ReviewsComponent implements OnInit {
 
   getReviews(book: Book) {
     this.databaseReviewService
-      .getReviews()
+      .getReviews(book)
       .pipe(tap((reviews) => console.log(reviews)));
   }
 
