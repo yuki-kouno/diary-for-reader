@@ -1,21 +1,16 @@
 import { Component, OnInit, NgZone, ViewChild, Input } from '@angular/core';
-import { DialogChoiceBookComponent } from '../dialog-choice-book/dialog-choice-book.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { take, switchMap, tap } from 'rxjs/operators';
+import { take, tap, map, switchMap } from 'rxjs/operators';
 import { questionsList } from './questions-list';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Book } from 'src/app/interface/book';
-import { Observable } from 'rxjs';
 import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
-import {
-  FormBuilder,
-  Validators,
-  FormControl,
-  FormArray,
-} from '@angular/forms';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-reviews',
@@ -24,50 +19,28 @@ import {
 })
 export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
-  review: Review = {
-    reviewId: 'ai@jrg ',
-    title: 'マリオ',
-    question: '作者の主張のどこに賛成できるか、その理由は ?',
-    text:
-      'ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ',
-  };
-
   @Input() book: Book;
 
+  reviews$: Observable<Review[]> = this.databaseReviewService.getReviews();
+
+  selectedQuestion = [];
+  questionsList = questionsList;
   nowDate: Date;
-  questionsList: string[] = questionsList;
-  questions = [];
-  items = [];
 
   public showSimpleInput = false;
 
   form = this.fb.group({
-    reviews: this.fb.array([]),
+    answers: this.fb.array([]),
   });
-
-  get reviews(): FormArray {
-    return this.form.get('reviews') as FormArray;
-  }
 
   constructor(
     public dialog: MatDialog,
     private ngZone: NgZone,
-    private route: ActivatedRoute,
-    private databaseBooks: DatabaseBooksService,
-    private databaseReview: DatabaseReviewsService,
-    private fb: FormBuilder
-  ) {}
-
-  addReview(review?: Review) {
-    const formGroup = this.fb.group({
-      text: ['', [Validators.required]],
-    });
-
-    this.reviews.push(formGroup);
-  }
-
-  removeReview(index: number) {
-    this.reviews.removeAt(index);
+    private fb: FormBuilder,
+    private snackBer: MatSnackBar,
+    public databaseReviewService: DatabaseReviewsService
+  ) {
+    databaseReviewService.getReviews().pipe(tap((ref) => console.log(ref)));
   }
 
   triggerResize() {
@@ -77,33 +50,56 @@ export class ReviewsComponent implements OnInit {
       .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
-  openDialogChoiceBook() {
-    this.dialog.open(DialogChoiceBookComponent, {
-      width: '100%',
-      height: '100%',
-    });
+  get answers(): FormArray {
+    return this.form.get('answers') as FormArray;
   }
 
-  addQuestion(item) {
-    const message = item;
-    if (message) {
-      this.questions.push({ message });
+  addQuestion(question: string) {
+    if (!this.selectedQuestion.includes(question)) {
+      this.answers.push(
+        this.fb.group({
+          answer: ['', Validators.required],
+        })
+      );
+      this.selectedQuestion.push(question);
+    } else if (question === null) {
+      this.answers.push(
+        this.fb.group({
+          answer: ['', Validators.required],
+        })
+      );
+      this.selectedQuestion.push(question);
     } else {
-      this.questions.push('');
+      this.snackBer.open('その質問は既にあります', null, {
+        duration: 2000,
+      });
     }
   }
 
-  submit() {
-    console.log(this.form.value);
+  removeAnswer(index: number) {
+    this.answers.removeAt(index);
+    this.selectedQuestion.splice(index, 1);
   }
 
   getReview() {}
 
-  getReviews() {}
+  getReviews(book: Book) {
+    this.databaseReviewService
+      .getReviews()
+      .pipe(tap((reviews) => console.log(reviews)));
+  }
 
-  createReview(book) {
-    console.log(book.id);
-    this.databaseReview.createReview(book, this.form.value);
+  createReview(book: Book, index) {
+    // console.log(book.id);
+    const review: Review = {
+      createdDate: new Date(),
+      createdAt: new Date(),
+      title: book.volumeInfo.title,
+      question: this.selectedQuestion[index],
+      answer: this.answers.value[index].answer,
+    };
+
+    this.databaseReviewService.createReview(book, review);
   }
 
   updateReview() {}

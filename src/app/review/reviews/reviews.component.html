@@ -1,8 +1,8 @@
 <div class="container">
-  <!-- <div class="revieweds">
+  <div class="revieweds" *ngFor="let review of reviews$ | async">
     <div class="revieweds__body">
       <p class="revieweds__question">{{ review.question }}</p>
-      <p class="revieweds__text">{{ review.text }}</p>
+      <p class="revieweds__text">{{ review.answer }}</p>
     </div>
     <div>
       <button
@@ -23,24 +23,21 @@
         </button>
       </mat-menu>
     </div>
-  </div> -->
+  </div>
   <div>
-    <ul class="reviews">
-      <li
-        class="reviews--item"
-        *ngFor="let ctrl of reviews.controls; index as i"
-      >
-        <form [formGroup]="form">
+    <form [formGroup]="form">
+      <ng-container formArrayName="answers">
+        <ng-container *ngFor="let answer of answers.controls; index as i">
           <div [formGroupName]="i">
             <mat-form-field>
               <mat-label class="reviews--item__question">
-                {{ review.question }}
+                {{ selectedQuestion[i] }}
               </mat-label>
               <textarea
                 class="reviews--item__review"
                 matInput
-                formControlName="review"
-                type="textarea"
+                formControlName="answer"
+                type="text"
                 cdkTextareaAutosize
                 #autosize="cdkTextareaAutosize"
                 cdkAutosizeMinRows="1"
@@ -48,7 +45,7 @@
               ></textarea>
             </mat-form-field>
             <div class="reviews--item__editact-actions">
-              <button mat-button type="button" (click)="removeReview(i)">
+              <button mat-button type="button" (click)="removeAnswer(i)">
                 キャンセル
               </button>
               <button
@@ -56,27 +53,22 @@
                 mat-flat-button
                 [disabled]=""
                 color="primary"
-                (click)="createReview(book)"
+                (click)="createReview(book, i)"
               >
                 保存
               </button>
             </div>
           </div>
-        </form>
-      </li>
-    </ul>
-    <ul class="reviews">
-      <li class="free-text" *ngFor="let item of items">
-        {{ item.message }}<textarea class="free-text_textarea"></textarea>
-      </li>
-    </ul>
+        </ng-container>
+      </ng-container>
+    </form>
 
     <div class="review-btns">
       <button
         class="questions__btn"
         mat-flat-button
         color="primary"
-        [matMenuTriggerFor]="question"
+        [matMenuTriggerFor]="questionMenu"
       >
         質問を選択
       </button>
@@ -91,11 +83,13 @@
     </div>
   </div>
 
-  <mat-menu class="question-panel" #question="matMenu">
-    <div *ngFor="let item of questionsList; index as i">
-      <button mat-menu-item (click)="addReview()" (click)="addQuestion(item)">
-        {{ i + 1 + '&emsp;' + item }}
-      </button>
-    </div>
+  <mat-menu class="question-panel" #questionMenu="matMenu">
+    <button
+      mat-menu-item
+      (click)="addQuestion(question)"
+      *ngFor="let question of questionsList; index as i"
+    >
+      {{ i + 1 + '&emsp;' + question }}
+    </button>
   </mat-menu>
 </div>

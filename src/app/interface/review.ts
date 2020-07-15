@@ -1,9 +1,7 @@
-import { Book } from './book';
-
 export interface Review {
-  createdAt?: Date;
-  reviewId: string;
+  createdDate: Date;
+  createdAt: Date;
   title: string;
   question: string;
-  text: string;
+  answer: string;
 }
