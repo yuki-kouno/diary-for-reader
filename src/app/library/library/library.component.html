@@ -1,10 +1,11 @@
 <div class="container">
   <div class="grid">
     <div *ngFor="let book of books$ | async">
-      <li class="book" [routerLink]="['/review', book.id]">
+      <li class="book">
         <img
           [src]="book.volumeInfo.imageLinks.smallThumbnail"
           [alt]="book.volumeInfo.title"
+          [routerLink]="['/review', book.id]"
         />
         <button
           class="book__remove"
