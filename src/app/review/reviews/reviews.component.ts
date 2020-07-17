@@ -1,10 +1,9 @@
 import { Component, OnInit, NgZone, ViewChild, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { take, tap, map, switchMap } from 'rxjs/operators';
+import { take, tap, switchMap } from 'rxjs/operators';
 import { questionsList } from './questions-list';
 import { ActivatedRoute } from '@angular/router';
-import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Book } from 'src/app/interface/book';
 import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
