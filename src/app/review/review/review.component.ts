@@ -13,14 +13,15 @@ import { Observable } from 'rxjs';
 export class ReviewComponent implements OnInit {
   nowDate: Date;
 
-  book$: Observable<Book> = this.route.paramMap.pipe(
-    switchMap((map) => {
-      const bookId = map.get('book.id');
-      // console.log(bookId);
-      return this.databaseBooks.getToFavoriteBook(bookId);
-    })
-  );
-  // .pipe(tap((book) => console.log(book)));
+  book$: Observable<Book> = this.route.paramMap
+    .pipe(
+      switchMap((map) => {
+        const bookId = map.get('book.id');
+        console.log(bookId);
+        return this.databaseBooks.getToFavoriteBook(bookId);
+      })
+    )
+    .pipe(tap((book) => console.log(book)));
 
   constructor(
     private route: ActivatedRoute,

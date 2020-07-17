@@ -21,7 +21,12 @@ export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
   @Input() book: Book;
 
-  reviews$: Observable<Review[]> = this.databaseReviewService.getReviews(book);
+  reviews$: Observable<Review[]> = this.route.paramMap.pipe(
+    switchMap((map) => {
+      const bookId = map.get('id');
+      return this.databaseReviewService.getReviews(bookId);
+    })
+  );
 
   selectedQuestion = [];
   questionsList = questionsList;
@@ -34,13 +39,16 @@ export class ReviewsComponent implements OnInit {
   });
 
   constructor(
+    private route: ActivatedRoute,
     public dialog: MatDialog,
     private ngZone: NgZone,
     private fb: FormBuilder,
     private snackBer: MatSnackBar,
     public databaseReviewService: DatabaseReviewsService
   ) {
-    databaseReviewService.getReviews(book).pipe(tap((ref) => console.log(ref)));
+    databaseReviewService
+      .getReviews(this.book)
+      .pipe(tap((ref) => console.log(ref)));
   }
 
   triggerResize() {
@@ -83,14 +91,14 @@ export class ReviewsComponent implements OnInit {
 
   getReview() {}
 
-  getReviews(book: Book) {
-    this.databaseReviewService
-      .getReviews(book)
-      .pipe(tap((reviews) => console.log(reviews)));
-  }
+  // getReviews() {
+  //   this.databaseReviewService
+  //     .getReviews()
+  //     .pipe(tap((reviews) => console.log(reviews)));
+  // }
 
   createReview(book: Book, index) {
-    // console.log(book.id);
+    console.log(book.id);
     const review: Review = {
       createdDate: new Date(),
       createdAt: new Date(),
