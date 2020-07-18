@@ -21,6 +21,9 @@ export class DatabaseReviewsService {
   date = this.datePipe.transform(this.nowDate, 'yyyyMMdd');
 
   getReviews(bookId): Observable<Review[]> {
+    console.log(this.authService.uid);
+    console.log(bookId);
+    console.log(this.date);
     return this.db
       .collection<Review>(
         `users/${this.authService.uid}/favoriteBooks/${bookId}

@@ -22,7 +22,7 @@ export class ReviewsComponent implements OnInit {
 
   reviews$: Observable<Review[]> = this.route.paramMap.pipe(
     switchMap((map) => {
-      const bookId = map.get('id');
+      const bookId = map.get('book.id');
       return this.databaseReviewService.getReviews(bookId);
     })
   );
