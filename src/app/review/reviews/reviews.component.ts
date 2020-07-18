@@ -18,6 +18,7 @@ import { Observable } from 'rxjs';
 })
 export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
+  @Input() book: Book;
 
   reviews$: Observable<Review[]> = this.route.paramMap.pipe(
     switchMap((map) => {
