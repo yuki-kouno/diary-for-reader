@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
 })
 export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
-  @Input() book: Book;
 
   reviews$: Observable<Review[]> = this.route.paramMap.pipe(
     switchMap((map) => {
@@ -44,11 +43,7 @@ export class ReviewsComponent implements OnInit {
     private fb: FormBuilder,
     private snackBer: MatSnackBar,
     public databaseReviewService: DatabaseReviewsService
-  ) {
-    databaseReviewService
-      .getReviews(this.book)
-      .pipe(tap((ref) => console.log(ref)));
-  }
+  ) {}
 
   triggerResize() {
     // Wait for changes to be applied, then trigger textarea resize.
@@ -89,12 +84,6 @@ export class ReviewsComponent implements OnInit {
   }
 
   getReview() {}
-
-  // getReviews() {
-  //   this.databaseReviewService
-  //     .getReviews()
-  //     .pipe(tap((reviews) => console.log(reviews)));
-  // }
 
   createReview(book: Book, index) {
     console.log(book.id);
