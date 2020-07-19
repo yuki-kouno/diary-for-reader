@@ -18,36 +18,36 @@ export class DatabaseReviewsService {
   ) {}
 
   nowDate = new Date();
-  date = this.datePipe.transform(this.nowDate, 'yyyyMMdd');
+  DATE_FORMAT: string = 'yyyyMMdd';
 
   getReviews(bookId): Observable<Review[]> {
-    console.log(this.authService.uid);
-    console.log(bookId);
-    console.log(this.date);
+    const createdDate = this.datePipe.transform(new Date(), this.DATE_FORMAT);
     return this.db
       .collection<Review>(
-        `users/${this.authService.uid}/favoriteBooks/${bookId}
-    /reviews`,
+        `users/${this.authService.uid}/favoriteBooks/${bookId}/reviews`,
         (ref) => {
           return ref
-            .where('createdDate', '==', `${this.date}`)
+            .where('createdDate', '==', createdDate)
             .orderBy('createdAt', 'desc');
         }
       )
       .valueChanges();
   }
 
-  createReview(book: Book, review: Review): Promise<void> {
-    const reviewId = this.db.createId();
+  createReview(
+    book: Book,
+    review: Omit<Review, 'id' | 'createdDate' | 'createdAt'>
+  ): Promise<void> {
+    const id: string = this.db.createId();
+    const createdDate = this.datePipe.transform(new Date(), this.DATE_FORMAT);
     return this.db
-      .doc(
-        `users/${this.authService.uid}/favoriteBooks/${book.id}
-      /reviews/${reviewId}`
+      .doc<Review>(
+        `users/${this.authService.uid}/favoriteBooks/${book.id}/reviews/${id}`
       )
       .set({
-        reviewId,
         ...review,
-        createdDate: this.date,
+        id,
+        createdDate: createdDate,
         createdAt: firestore.Timestamp.now(),
       });
   }

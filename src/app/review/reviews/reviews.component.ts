@@ -10,6 +10,8 @@ import { DatabaseReviewsService } from 'src/app/services/database-reviews.servic
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { DatabaseBooksService } from 'src/app/services/database-books.service';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-reviews',
@@ -18,12 +20,11 @@ import { Observable } from 'rxjs';
 })
 export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
-  @Input() book: Book;
 
-  reviews$: Observable<Review[]> = this.route.paramMap.pipe(
+  book$: Observable<Book> = this.route.paramMap.pipe(
     switchMap((map) => {
       const bookId = map.get('book.id');
-      return this.databaseReviewService.getReviews(bookId);
+      return this.databaseBooks.getToFavoriteBook(bookId);
     })
   );
 
@@ -43,6 +44,7 @@ export class ReviewsComponent implements OnInit {
     private ngZone: NgZone,
     private fb: FormBuilder,
     private snackBer: MatSnackBar,
+    private databaseBooks: DatabaseBooksService,
     public databaseReviewService: DatabaseReviewsService
   ) {}
 
@@ -86,17 +88,13 @@ export class ReviewsComponent implements OnInit {
 
   getReview() {}
 
-  createReview(book: Book, index) {
-    console.log(book.id);
-    const review: Review = {
-      createdDate: new Date(),
-      createdAt: new Date(),
+  createReview(book: Book, index: number) {
+    const review: Omit<Review, 'id' | 'createdDate' | 'createdAt'> = {
       title: book.volumeInfo.title,
       question: this.selectedQuestion[index],
       answer: this.answers.value[index].answer,
     };
-
-    this.databaseReviewService.createReview(book, review);
+    this.databaseReviewService.createReview({ book, review });
   }
 
   updateReview() {}
