@@ -21,6 +21,12 @@ import { firestore } from 'firebase';
 export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
+  reviews$: Observable<Review[]> = this.route.paramMap.pipe(
+    switchMap((map) => {
+      const bookId = map.get('book.id');
+      return this.databaseReviewService.getReviews(bookId);
+    })
+  );
   book$: Observable<Book> = this.route.paramMap.pipe(
     switchMap((map) => {
       const bookId = map.get('book.id');
