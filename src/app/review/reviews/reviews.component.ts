@@ -1,17 +1,16 @@
 import { Component, OnInit, NgZone, ViewChild, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { take, tap, switchMap } from 'rxjs/operators';
+import { take, switchMap } from 'rxjs/operators';
 import { questionsList } from './questions-list';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interface/book';
 import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
-import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-reviews',
@@ -20,6 +19,8 @@ import { firestore } from 'firebase';
 })
 export class ReviewsComponent implements OnInit {
   @ViewChild('autosize') autosize: CdkTextareaAutosize;
+
+  public showInput = false;
 
   reviews$: Observable<Review[]> = this.route.paramMap.pipe(
     switchMap((map) => {
@@ -37,8 +38,6 @@ export class ReviewsComponent implements OnInit {
   selectedQuestion = [];
   questionsList = questionsList;
   nowDate: Date;
-
-  public showSimpleInput = false;
 
   form = this.fb.group({
     answers: this.fb.array([]),
@@ -69,14 +68,14 @@ export class ReviewsComponent implements OnInit {
     if (!this.selectedQuestion.includes(question)) {
       this.answers.push(
         this.fb.group({
-          answer: ['', Validators.required],
+          answer: [''],
         })
       );
       this.selectedQuestion.push(question);
     } else if (question === null) {
       this.answers.push(
         this.fb.group({
-          answer: ['', Validators.required],
+          answer: [''],
         })
       );
       this.selectedQuestion.push(question);
@@ -85,6 +84,7 @@ export class ReviewsComponent implements OnInit {
         duration: 2000,
       });
     }
+    this.showInput = true;
   }
 
   removeAnswer(index: number) {
@@ -100,7 +100,9 @@ export class ReviewsComponent implements OnInit {
       question: this.selectedQuestion[index],
       answer: this.answers.value[index].answer,
     };
-    this.databaseReviewService.createReview({ book, review });
+    this.databaseReviewService.createReview(book, review);
+    this.answers.removeAt(index);
+    this.selectedQuestion.splice(index, 1);
   }
 
   updateReview() {}

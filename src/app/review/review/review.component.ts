@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Book } from 'src/app/interface/book';

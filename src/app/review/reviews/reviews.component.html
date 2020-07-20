@@ -30,13 +30,15 @@
         <ng-container formArrayName="answers">
           <ng-container *ngFor="let answer of answers.controls; index as i">
             <div [formGroupName]="i">
-              <mat-form-field>
-                <mat-label class="reviews--item__question">
+              <mat-form-field clase="reviews" floatLabel="always">
+                <mat-label>
                   {{ selectedQuestion[i] }}
                 </mat-label>
                 <textarea
-                  class="reviews--item__review"
                   matInput
+                  autofocus
+                  *ngIf="showInput"
+                  class="answer"
                   formControlName="answer"
                   type="text"
                   cdkTextareaAutosize
@@ -45,13 +47,18 @@
                   cdkAutosizeMaxRows="5"
                 ></textarea>
               </mat-form-field>
-              <div class="reviews--item__editact-actions">
-                <button mat-button type="button" (click)="removeAnswer(i)">
+              <div class="reviews-btn">
+                <button
+                  mat-button
+                  class="btn__cancel"
+                  type="button"
+                  (click)="removeAnswer(i)"
+                >
                   キャンセル
                 </button>
                 <button
-                  class="font-color"
                   mat-flat-button
+                  class="btn__save"
                   [disabled]=""
                   color="primary"
                   (click)="createReview(book, i)"
