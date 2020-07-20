@@ -18,7 +18,7 @@ export class DatabaseReviewsService {
   ) {}
 
   nowDate = new Date();
-  DATE_FORMAT: string = 'yyyyMMdd';
+  DATE_FORMAT = 'yyyyMMdd';
 
   getReviews(bookId): Observable<Review[]> {
     const createdDate = this.datePipe.transform(new Date(), this.DATE_FORMAT);
@@ -28,7 +28,7 @@ export class DatabaseReviewsService {
         (ref) => {
           return ref
             .where('createdDate', '==', createdDate)
-            .orderBy('createdAt', 'desc');
+            .orderBy('createdAt');
         }
       )
       .valueChanges();
@@ -47,7 +47,7 @@ export class DatabaseReviewsService {
       .set({
         ...review,
         id,
-        createdDate: createdDate,
+        createdDate,
         createdAt: firestore.Timestamp.now(),
       });
   }
