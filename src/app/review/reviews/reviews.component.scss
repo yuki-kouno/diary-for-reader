@@ -12,11 +12,12 @@ mat-form-field {
 .revieweds {
   display: grid;
   grid-template-columns: 1fr 40px;
-
+  &__body {
+    margin-bottom: 16px;
+  }
   &__question {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
-    border-bottom: 1px solid #ffc400;
     margin-bottom: 8px;
   }
   &__text {
@@ -26,26 +27,26 @@ mat-form-field {
 }
 
 .reviews {
-  .font-color {
-    color: white;
+  &__answer {
+    font-size: 16px;
+    line-height: 1.4;
   }
-  padding: 0;
-  list-style: none;
-  &--item {
-    display: grid;
-    grid-template-columns: 1fr 40px;
-    &__question {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    &__review {
-      font-size: 16px;
-      line-height: 1.4;
-    }
-    &__editact-actions {
-      text-align: right;
-    }
+  &__editact-actions {
+    text-align: right;
   }
+}
+
+.reviews-btn {
+  text-align: right;
+  margin-bottom: 16px;
+}
+.btn__cancel {
+  color: rgb(151, 151, 151);
+  background-color: rgb(241, 241, 241);
+  margin-right: 16px;
+}
+.btn__save {
+  color: white;
 }
 
 .review-btns {
