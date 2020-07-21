@@ -1,6 +1,48 @@
 <div class="container">
-  <div class="grid">
-    <div *ngFor="let book of books$ | async">
+  <div class="header-nav">
+    <input
+      appearance="outline"
+      placeholder="ライブラリ内検索"
+      class="header-nav__search"
+      type="text"
+    />
+    <button
+      class="header-nav__sort"
+      mat-flat-button
+      [matMenuTriggerFor]="sortMenu"
+    >
+      並び替え
+    </button>
+    <button
+      class="header-nav__grid"
+      *ngIf="!isGrid"
+      mat-icon-button
+      (click)="isGrid = !isGrid"
+    >
+      <mat-icon>apps</mat-icon>グリッド
+    </button>
+    <button
+      class="header-nav__list"
+      *ngIf="isGrid"
+      mat-icon-button
+      (click)="isGrid = !isGrid"
+    >
+      <mat-icon>format_list_bulleted</mat-icon>リスト
+    </button>
+    <mat-menu class="menu" #sortMenu="matMenu">
+      <button mat-menu-item>
+        <span>追加日</span>
+      </button>
+      <button mat-menu-item>
+        <span>タイトル</span>
+      </button>
+      <button mat-menu-item>
+        <span>著者</span>
+      </button>
+    </mat-menu>
+  </div>
+  <div class="grid" *ngIf="isGrid; else isList">
+    <ng-container *ngFor="let book of books$ | async">
       <li class="book">
         <img
           [src]="book.volumeInfo.imageLinks.smallThumbnail"
@@ -21,6 +63,36 @@
           </button>
         </mat-menu>
       </li>
-    </div>
+    </ng-container>
   </div>
+  <ng-template #isList>
+    <div class="list">
+      <ng-container *ngFor="let book of books$ | async">
+        <li class="book">
+          <img
+            [src]="book.volumeInfo.imageLinks.thumbnail"
+            [alt]="book.volumeInfo.title"
+            [routerLink]="['/review', book.id]"
+          />
+          <div class="book__body">
+            <p class="book__title">{{ book.volumeInfo.title }}</p>
+            <p class="book__authors">{{ book.volumeInfo.authors }}</p>
+          </div>
+          <button
+            class="book__remove"
+            mat-icon-button
+            [matMenuTriggerFor]="removeMenu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu class="menu" #removeMenu="matMenu">
+            <button mat-menu-item (click)="openRemoveDialog(book)">
+              <mat-icon>delete</mat-icon>
+              <span>削除</span>
+            </button>
+          </mat-menu>
+        </li>
+      </ng-container>
+    </div>
+  </ng-template>
 </div>
