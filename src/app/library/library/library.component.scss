@@ -30,8 +30,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   gap: 24px;
-
-  .book {
+  &--book {
     list-style: none;
     position: relative;
     width: 100%;
@@ -46,16 +45,10 @@ img {
       background-color: rgba(145, 145, 145, 0.5);
     }
   }
-
-  .mat-menu-item {
-    .mat-icon {
-      margin-right: 8px;
-    }
-  }
 }
 
 .list {
-  .book {
+  &--book {
     list-style: none;
     padding: 8px;
     display: grid;
