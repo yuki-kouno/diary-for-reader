@@ -43,14 +43,14 @@
   </div>
   <div class="grid" *ngIf="isGrid; else isList">
     <ng-container *ngFor="let book of books$ | async">
-      <li class="grid--book">
+      <li class="grid-book">
         <img
           [src]="book.volumeInfo.imageLinks.smallThumbnail"
           [alt]="book.volumeInfo.title"
           [routerLink]="['/review', book.id]"
         />
         <button
-          class="grid--book__remove"
+          class="grid-book__remove"
           mat-icon-button
           [matMenuTriggerFor]="removeMenu"
         >
@@ -66,17 +66,17 @@
     </ng-container>
   </div>
   <ng-template #isList>
-    <div class="list">
+    <div>
       <ng-container *ngFor="let book of books$ | async">
-        <li class="list--book">
+        <li class="list-book">
           <img
             [src]="book.volumeInfo.imageLinks.thumbnail"
             [alt]="book.volumeInfo.title"
             [routerLink]="['/review', book.id]"
           />
-          <div class="list--book__body">
-            <p class="list--book__title">{{ book.volumeInfo.title }}</p>
-            <p class="list--book__authors">{{ book.volumeInfo.authors }}</p>
+          <div class="list-book__body">
+            <p class="list-book__title">{{ book.volumeInfo.title }}</p>
+            <p class="list-book__authors">{{ book.volumeInfo.authors }}</p>
           </div>
           <button
             class="list--book__remove"

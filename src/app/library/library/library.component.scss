@@ -30,31 +30,30 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   gap: 24px;
-  &--book {
-    list-style: none;
-    position: relative;
-    width: 100%;
-    min-height: 120px;
-    height: 100%;
-    object-fit: cover;
-    background: #ddd;
-    &__remove {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background-color: rgba(145, 145, 145, 0.5);
-    }
+}
+
+.grid-book {
+  list-style: none;
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  height: 100%;
+  object-fit: cover;
+  background: #ddd;
+  &__remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(145, 145, 145, 0.5);
   }
 }
 
-.list {
-  &--book {
-    list-style: none;
-    padding: 8px;
-    display: grid;
-    gap: 16;
-    grid-template-columns: 80px 1fr 40px;
-  }
+.list-book {
+  list-style: none;
+  padding: 8px;
+  display: grid;
+  gap: 16;
+  grid-template-columns: 80px 1fr 40px;
 }
 
 @media screen and (max-width: 470px) {
