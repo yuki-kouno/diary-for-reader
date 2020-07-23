@@ -13,6 +13,10 @@
         color: rgb(190, 190, 190);
       }
     }
+    input:focus {
+      border: 1px solid #ffc400;
+      outline: 0;
+    }
     button {
       color: white;
     }
