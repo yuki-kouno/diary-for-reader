@@ -14,9 +14,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import 'firebase/firestore';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
