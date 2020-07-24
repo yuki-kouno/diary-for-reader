@@ -12,6 +12,7 @@ import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component'
 })
 export class LibraryComponent implements OnInit {
   books$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks();
+  isGrid = true;
 
   constructor(
     private databaseBooks: DatabaseBooksService,
