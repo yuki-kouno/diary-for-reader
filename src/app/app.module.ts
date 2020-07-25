@@ -16,9 +16,11 @@ import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
 import { registerLocaleData, DatePipe } from '@angular/common';
 import localeJa from '@angular/common/locales/ja';
 registerLocaleData(localeJa);
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
