@@ -47,10 +47,10 @@
                   cdkAutosizeMaxRows="5"
                 ></textarea>
               </mat-form-field>
-              <div class="reviews-btn">
+              <div class="reviews-btns">
                 <button
                   mat-button
-                  class="btn__cancel"
+                  class="reviews-btns__cancel"
                   type="button"
                   (click)="removeAnswer(i)"
                 >
@@ -58,7 +58,7 @@
                 </button>
                 <button
                   mat-flat-button
-                  class="btn__save"
+                  class="reviews-btns__save"
                   [disabled]=""
                   color="primary"
                   (click)="createReview(book, i)"
@@ -73,7 +73,7 @@
 
       <div class="review-btns">
         <button
-          class="questions__btn"
+          class="review-btns__questions"
           mat-flat-button
           color="primary"
           [matMenuTriggerRestoreFocus]="false"
@@ -82,7 +82,7 @@
           質問を選択
         </button>
         <button
-          class="free-text__btn"
+          class="review-btns__free-text"
           mat-flat-button
           color="accent"
           (click)="addQuestion(null)"

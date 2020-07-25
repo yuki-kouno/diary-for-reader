@@ -36,23 +36,22 @@ mat-form-field {
   }
 }
 
-.reviews-btn {
+.reviews-btns {
   text-align: right;
   margin-bottom: 16px;
-}
-.btn__cancel {
-  color: rgb(151, 151, 151);
-  background-color: rgb(241, 241, 241);
-  margin-right: 16px;
-}
-.btn__save {
-  color: white;
+  &__cancel {
+    color: rgb(151, 151, 151);
+    background-color: rgb(241, 241, 241);
+    margin-right: 16px;
+  }
+  &__save {
+    color: white;
+  }
 }
 
 .review-btns {
   text-align: center;
-
-  .questions__btn {
+  &__questions {
     margin: 6px;
     color: white;
     line-height: 1;
@@ -60,7 +59,7 @@ mat-form-field {
     padding: 11px;
     border-radius: 18px;
   }
-  .free-text__btn {
+  &__free-text {
     margin: 6px;
     color: white;
     line-height: 1;

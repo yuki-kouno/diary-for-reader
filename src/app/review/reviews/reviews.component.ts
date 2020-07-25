@@ -92,8 +92,6 @@ export class ReviewsComponent implements OnInit {
     this.selectedQuestion.splice(index, 1);
   }
 
-  getReview() {}
-
   createReview(book: Book, index: number) {
     const review: Omit<Review, 'id' | 'createdDate' | 'createdAt'> = {
       title: book.volumeInfo.title,
@@ -104,10 +102,6 @@ export class ReviewsComponent implements OnInit {
     this.answers.removeAt(index);
     this.selectedQuestion.splice(index, 1);
   }
-
-  updateReview() {}
-
-  deleteReview() {}
 
   ngOnInit() {}
 }
