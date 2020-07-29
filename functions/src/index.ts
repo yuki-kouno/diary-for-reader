@@ -1,1 +1,1 @@
-export * from './favoriteBook.function';
+export * from './favorite-book.function';
