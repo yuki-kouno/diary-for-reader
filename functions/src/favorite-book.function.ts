@@ -1,4 +1,4 @@
-import { Algolia } from './utils/algolia';
+import { Algolia } from './algolia';
 import * as functions from 'firebase-functions';
 
 const algolia = new Algolia();
