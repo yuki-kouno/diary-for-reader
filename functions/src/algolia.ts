@@ -69,7 +69,6 @@ export class Algolia {
     const index = client.initIndex(param.indexName);
     const item = this.transformDate(param.data);
     const idKey = param.idKey || 'id';
-    console.log(index.indexName, item.id, idKey);
 
     if (param.isUpdate) {
       await this.removeRecord(param.indexName, item[idKey]);
@@ -101,7 +100,6 @@ export class Algolia {
    */
   removeRecord(indexName: string, id: string, idKey: string = 'id') {
     const index = client.initIndex(indexName);
-    console.log(indexName, id, idKey);
     return index.deleteBy({ filters: `${idKey}:${id}` });
   }
 }
