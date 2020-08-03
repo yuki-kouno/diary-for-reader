@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';

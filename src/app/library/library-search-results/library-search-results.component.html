@@ -1,0 +1,14 @@
+<ng-container *ngIf="searchText">
+  <h2>検索結果一覧 ヒット件数: {{ result?.nbHits }}</h2>
+  <ul *ngFor="let hit of result?.hits">
+    <li>
+      <img
+        [src]="hit.volumeInfo.imageLinks.thumbnail"
+        [alt]="hit.volumeInfo.title"
+        [routerLink]="['/review', hit.id]"
+      />
+      <p>{{ hit.volumeInfo.title }}</p>
+      <p>{{ hit.volumeInfo.authors }}</p>
+    </li>
+  </ul>
+</ng-container>

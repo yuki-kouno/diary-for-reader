@@ -18,7 +18,6 @@ const routes: Routes = [
       },
       {
         path: '',
-        pathMatch: 'full',
         loadChildren: () =>
           import('../library/library.module').then((mod) => mod.LibraryModule),
         canLoad: [AuthGuard],
