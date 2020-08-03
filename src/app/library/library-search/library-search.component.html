@@ -1,0 +1,14 @@
+<input
+  class="header-nav__search"
+  [(ngModel)]="searchText"
+  appearance="outline"
+  autocomplete="off"
+  placeholder="ライブラリ内検索"
+  type="text"
+  autofocus
+/>
+
+<button (click)="searchBook()">検索</button>
+<button routerLink="">キャンセル</button>
+
+<app-library-search-results></app-library-search-results>
