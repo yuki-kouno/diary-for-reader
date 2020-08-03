@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./library-search.component.scss'],
 })
 export class LibrarySearchComponent implements OnInit {
-  @Input() searchText: '';
+  @Input() searchText: string;
 
   constructor(private router: Router) {}
 
