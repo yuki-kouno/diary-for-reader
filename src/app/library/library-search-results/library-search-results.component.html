@@ -5,6 +5,7 @@
       <img
         [src]="hit.volumeInfo.imageLinks.thumbnail"
         [alt]="hit.volumeInfo.title"
+        [routerLink]="['/review', hit.id]"
       />
       <p>{{ hit.volumeInfo.title }}</p>
       <p>{{ hit.volumeInfo.authors }}</p>
