@@ -1,10 +1,10 @@
 <div class="container">
   <div class="header-nav">
     <input
+      routerLink="/library-search"
+      class="header-nav__search"
       appearance="outline"
       placeholder="ライブラリ内検索"
-      class="header-nav__search"
-      type="text"
     />
     <button
       class="header-nav__sort"
@@ -41,6 +41,7 @@
       </button>
     </mat-menu>
   </div>
+
   <div class="grid" *ngIf="isGrid; else isList">
     <ng-container *ngFor="let book of books$ | async">
       <li class="grid-book">
