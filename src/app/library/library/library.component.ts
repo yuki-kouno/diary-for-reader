@@ -14,8 +14,6 @@ export class LibraryComponent implements OnInit {
   books$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks();
   isGrid = true;
 
-  @Input() searchText: '';
-
   constructor(
     private databaseBooks: DatabaseBooksService,
     public dialog: MatDialog
