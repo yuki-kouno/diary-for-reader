@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import 'firebase/firestore';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
+import { registerLocaleData, DatePipe } from '@angular/common';
+import localeJa from '@angular/common/locales/ja';
+registerLocaleData(localeJa);
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -29,9 +32,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFirestoreModule,
     MatSnackBarModule,
     AngularFireFunctionsModule,
-    // FullCalendarModule
   ],
-  providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
+  providers: [
+    { provide: REGION, useValue: 'asia-northeast1' },
+    { provide: LOCALE_ID, useValue: 'ja-JP' },
+    DatePipe,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
