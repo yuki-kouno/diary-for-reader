@@ -39,10 +39,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   providers: [
     { provide: REGION, useValue: 'asia-northeast1' },
-    {
-      provide: ORIGIN,
-      useValue: environment.production ? undefined : 'http://localhost:5001',
-    },
     { provide: LOCALE_ID, useValue: 'ja-JP' },
     DatePipe,
   ],
