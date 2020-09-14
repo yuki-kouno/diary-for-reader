@@ -31,6 +31,7 @@
     "@fullcalendar/angular": "^4.4.5-beta",
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",
+    "@google-cloud/firestore": "^4.2.0",
     "algoliasearch": "^4.3.1",
     "firebase": "^7.8.0",
     "firebase-admin": "^9.0.0",
