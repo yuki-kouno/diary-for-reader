@@ -12,7 +12,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import 'firebase/firestore';
-import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
+import {
+  AngularFireFunctionsModule,
+  REGION,
+  ORIGIN,
+} from '@angular/fire/functions';
 import { registerLocaleData, DatePipe } from '@angular/common';
 import localeJa from '@angular/common/locales/ja';
 registerLocaleData(localeJa);
