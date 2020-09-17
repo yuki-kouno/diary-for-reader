@@ -1,0 +1,12 @@
+<ng-container *ngFor="let book of bookRanking$ | async; index as i">
+  <div class="book">
+    <figure class="book__thumb">
+      <img [src]="book.img" [alt]="book.title" />
+    </figure>
+    <p class="book__id">{{ i + 1 }}</p>
+    <div class="book__body">
+      <p class="book__title">{{ book.title }}</p>
+      <p class="author">{{ book.author }}</p>
+    </div>
+  </div>
+</ng-container>
