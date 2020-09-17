@@ -61,17 +61,14 @@ const scrape = async (url: string) => {
     return authorsDatas;
   }, authorsSelector);
 
-  const result = bookInfos.map((data: any, i: number) => {
+  const rankingBooksInfo = bookInfos.map((data: any, i: number) => {
     return {
       ...data,
       ...authorsInfos[i],
     };
   });
 
-  const results: any = {};
-  for (let i = 0; i < result.length; i++) {
-    results[i] = result[i];
-  }
+  const results: any = { rankingBooksInfo };
 
   return db.collection('bookRanking').doc(`${categoty}`).set(results);
 };
