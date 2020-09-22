@@ -1,12 +1,44 @@
-<ng-container *ngFor="let book of bookRanking$ | async; index as i">
-  <div class="book">
-    <figure class="book__thumb">
-      <img [src]="book.img" [alt]="book.title" />
-    </figure>
-    <p class="book__id">{{ i + 1 }}</p>
-    <div class="book__body">
-      <p class="book__title">{{ book.title }}</p>
-      <p class="author">{{ book.author }}</p>
-    </div>
-  </div>
-</ng-container>
+<mat-tab-group>
+  <mat-tab label="総合">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of booksRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="ビジネス">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of businessRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="人文・思想">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of humanitieRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="文芸・評論">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of literatureRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="コミック">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of comicRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="ホビー">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of hobbyRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+</mat-tab-group>

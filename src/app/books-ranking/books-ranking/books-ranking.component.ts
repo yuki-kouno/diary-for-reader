@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RankingBook } from 'src/app/interface/ranking-book';
 import { Observable } from 'rxjs';
 import { DatabaseRankingBooksService } from 'src/app/services/database-ranking-books.service';
-import { tap, map } from 'rxjs/operators';
+import { RankingBookInfo } from 'src/app/interface/ranking-book-info';
 
 @Component({
   selector: 'app-books-ranking',
@@ -10,19 +9,24 @@ import { tap, map } from 'rxjs/operators';
   styleUrls: ['./books-ranking.component.scss'],
 })
 export class BooksRankingComponent implements OnInit {
-  public bookRanking$: Observable<
-    [
-      {
-        title: string;
-        img: string;
-        author: string;
-      }
-    ]
-  > = this.rankingBookService.getRankingBooks().pipe(
-    map((data) => {
-      return data.rankingBooksInfo;
-    })
-  );
+  public booksRanking$: Observable<
+    [RankingBookInfo]
+  > = this.rankingBookService.getBooksRanking();
+  public businessRanking$: Observable<
+    [RankingBookInfo]
+  > = this.rankingBookService.getBusinessRanking();
+  public humanitieRanking$: Observable<
+    [RankingBookInfo]
+  > = this.rankingBookService.getHumanitiesRanking();
+  public literatureRanking$: Observable<
+    [RankingBookInfo]
+  > = this.rankingBookService.getliteratureRanking();
+  public comicRanking$: Observable<
+    [RankingBookInfo]
+  > = this.rankingBookService.getComicsRanking();
+  public hobbyRanking$: Observable<
+    [RankingBookInfo]
+  > = this.rankingBookService.getHobbyRanking();
 
   constructor(private rankingBookService: DatabaseRankingBooksService) {}
 
