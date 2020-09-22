@@ -37,7 +37,10 @@ const scrape = async (url: string) => {
         title: list[i].alt
           .replace(/【Amazon.co.jp限定】/g, '')
           .replace(/Amazon.co.jp/g, ''),
-        img: list[i].src,
+        img: list[i].src.replace(
+          /https:\/\/images-fe.ssl-images-amazon.com\/images\/I\/01MKUOLsA5L._AC_UL200_SR200,200_.gif/g,
+          '/assets/images/no-image.jpg'
+        ),
       };
       bookDatas.push(bookData);
     }
