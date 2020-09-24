@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RankingBookInfo } from 'src/app/interface/ranking-book-info';
+import { RankingBooksInfo } from 'src/app/interface/ranking-books-info';
 
 @Component({
   selector: 'app-ranking',
@@ -7,7 +7,7 @@ import { RankingBookInfo } from 'src/app/interface/ranking-book-info';
   styleUrls: ['./ranking.component.scss'],
 })
 export class RankingComponent implements OnInit {
-  @Input() book: RankingBookInfo;
+  @Input() book: RankingBooksInfo;
   @Input() rankingIndex: number;
 
   constructor() {}

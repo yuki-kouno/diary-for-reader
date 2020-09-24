@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatabaseRankingBooksService } from 'src/app/services/database-ranking-books.service';
-import { RankingBookInfo } from 'src/app/interface/ranking-book-info';
+import { RankingBooksInfo } from 'src/app/interface/ranking-books-info';
 
 @Component({
   selector: 'app-books-ranking',
@@ -10,22 +10,22 @@ import { RankingBookInfo } from 'src/app/interface/ranking-book-info';
 })
 export class BooksRankingComponent implements OnInit {
   booksRanking$: Observable<
-    RankingBookInfo[]
+    RankingBooksInfo[]
   > = this.rankingBookService.getBooksRanking();
   businessesRanking$: Observable<
-    RankingBookInfo[]
+    RankingBooksInfo[]
   > = this.rankingBookService.getBusinessesRanking();
   humanitiesRanking$: Observable<
-    RankingBookInfo[]
+    RankingBooksInfo[]
   > = this.rankingBookService.getHumanitiesRanking();
   literaturesRanking$: Observable<
-    RankingBookInfo[]
+    RankingBooksInfo[]
   > = this.rankingBookService.getliteraturesRanking();
   comicsRanking$: Observable<
-    RankingBookInfo[]
+    RankingBooksInfo[]
   > = this.rankingBookService.getComicsRanking();
   hobbiesRanking$: Observable<
-    RankingBookInfo[]
+    RankingBooksInfo[]
   > = this.rankingBookService.getHobbiesRanking();
 
   constructor(private rankingBookService: DatabaseRankingBooksService) {}
