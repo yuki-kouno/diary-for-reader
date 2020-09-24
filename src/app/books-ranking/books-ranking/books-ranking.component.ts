@@ -9,24 +9,24 @@ import { RankingBookInfo } from 'src/app/interface/ranking-book-info';
   styleUrls: ['./books-ranking.component.scss'],
 })
 export class BooksRankingComponent implements OnInit {
-  public booksRanking$: Observable<
-    [RankingBookInfo]
+  booksRanking$: Observable<
+    RankingBookInfo[]
   > = this.rankingBookService.getBooksRanking();
-  public businessRanking$: Observable<
-    [RankingBookInfo]
-  > = this.rankingBookService.getBusinessRanking();
-  public humanitieRanking$: Observable<
-    [RankingBookInfo]
+  businessesRanking$: Observable<
+    RankingBookInfo[]
+  > = this.rankingBookService.getBusinessesRanking();
+  humanitiesRanking$: Observable<
+    RankingBookInfo[]
   > = this.rankingBookService.getHumanitiesRanking();
-  public literatureRanking$: Observable<
-    [RankingBookInfo]
-  > = this.rankingBookService.getliteratureRanking();
-  public comicRanking$: Observable<
-    [RankingBookInfo]
+  literaturesRanking$: Observable<
+    RankingBookInfo[]
+  > = this.rankingBookService.getliteraturesRanking();
+  comicsRanking$: Observable<
+    RankingBookInfo[]
   > = this.rankingBookService.getComicsRanking();
-  public hobbyRanking$: Observable<
-    [RankingBookInfo]
-  > = this.rankingBookService.getHobbyRanking();
+  hobbiesRanking$: Observable<
+    RankingBookInfo[]
+  > = this.rankingBookService.getHobbiesRanking();
 
   constructor(private rankingBookService: DatabaseRankingBooksService) {}
 
