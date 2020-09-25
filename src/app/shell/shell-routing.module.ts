@@ -42,6 +42,15 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
+        path: 'books-ranking',
+        loadChildren: () =>
+          import('../books-ranking/books-ranking.module').then(
+            (mod) => mod.BooksRankingModule
+          ),
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'terms',
         loadChildren: () =>
           import('../terms/terms.module').then((mod) => mod.TermsModule),

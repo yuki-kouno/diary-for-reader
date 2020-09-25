@@ -1,0 +1,44 @@
+<mat-tab-group>
+  <mat-tab label="総合">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of booksRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="ビジネス">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of businessesRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="人文・思想">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of humanitiesRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="文芸・評論">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of literaturesRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="コミック">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of comicsRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+  <mat-tab label="ホビー">
+    <app-ranking
+      [book]="book"
+      [rankingIndex]="i"
+      *ngFor="let book of hobbiesRanking$ | async; index as i"
+    ></app-ranking>
+  </mat-tab>
+</mat-tab-group>

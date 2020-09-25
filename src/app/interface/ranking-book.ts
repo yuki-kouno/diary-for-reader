@@ -1,5 +1,9 @@
 export interface RankingBook {
-  title: string;
-  img: string;
-  author: string;
+  rankingBooksInfo: [
+    {
+      title: string;
+      img: string;
+      author: string;
+    }
+  ];
 }
