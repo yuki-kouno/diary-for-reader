@@ -34,6 +34,14 @@ export class DatabaseReviewsService {
       .valueChanges();
   }
 
+  getAllReviews(bookId): Observable<Review[]> {
+    return this.db
+      .collection<Review>(
+        `users/${this.authService.uid}/favoriteBooks/${bookId}/reviews`
+      )
+      .valueChanges();
+  }
+
   createReview(
     book: Book,
     review: Omit<Review, 'id' | 'createdDate' | 'createdAt'>
@@ -52,7 +60,22 @@ export class DatabaseReviewsService {
       });
   }
 
-  updateReview() {}
+  updateReview(
+    book: Book,
+    review: Omit<Review, 'createdDate' | 'createdAt' | 'title' | 'question'>
+  ) {
+    return this.db
+      .doc(
+        `users/${this.authService.uid}/favoriteBooks/${book.id}/reviews/${review.id}`
+      )
+      .update({ answer: review.answer });
+  }
 
-  deleteReview() {}
+  deleteReview(book: Book, review: Review): Promise<void> {
+    return this.db
+      .doc<Review>(
+        `users/${this.authService.uid}/favoriteBooks/${book.id}/reviews/${review.id}`
+      )
+      .delete();
+  }
 }

@@ -1,0 +1,77 @@
+<div class="container">
+  <div>
+    <form [formGroup]="form">
+      <ng-container formArrayName="answers">
+        <ng-container *ngFor="let answer of answers.controls; index as i">
+          <div [formGroupName]="i">
+            <mat-form-field clase="reviews" floatLabel="always">
+              <mat-label>
+                {{ selectedQuestion[i] }}
+              </mat-label>
+              <textarea
+                matInput
+                autofocus
+                *ngIf="showInput"
+                class="answer"
+                formControlName="answer"
+                type="text"
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"
+              ></textarea>
+            </mat-form-field>
+            <div class="reviews-btns">
+              <button
+                mat-button
+                class="reviews-btns__cancel"
+                type="button"
+                (click)="removeAnswer(i)"
+              >
+                キャンセル
+              </button>
+              <button
+                mat-flat-button
+                class="reviews-btns__save"
+                [disabled]=""
+                color="primary"
+                (click)="createReview(book, i)"
+              >
+                保存
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </form>
+
+    <div class="review-btns">
+      <button
+        class="review-btns__questions"
+        mat-flat-button
+        color="primary"
+        [matMenuTriggerRestoreFocus]="false"
+        [matMenuTriggerFor]="questionMenu"
+      >
+        質問を選択
+      </button>
+      <button
+        class="review-btns__free-text"
+        mat-flat-button
+        color="accent"
+        (click)="addQuestion(null)"
+      >
+        自由に書く
+      </button>
+    </div>
+  </div>
+  <mat-menu class="question-panel" #questionMenu="matMenu">
+    <button
+      mat-menu-item
+      (click)="addQuestion(question)"
+      *ngFor="let question of questionsList; index as i"
+    >
+      {{ i + 1 + '&emsp;' + question }}
+    </button>
+  </mat-menu>
+</div>

@@ -1,0 +1,51 @@
+* {
+  color: rgba(0, 0, 0, 0.6);
+}
+p {
+  margin: 0;
+}
+mat-form-field {
+  width: 100%;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  .revieweds {
+    &__body {
+      margin-bottom: 16px;
+    }
+    &__question {
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    &__text {
+      font-size: 16px;
+      margin-left: 8px;
+    }
+  }
+}
+
+.reviews {
+  &__answer {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  &__editact-actions {
+    text-align: right;
+  }
+}
+
+.reviews-btns {
+  display: block;
+  text-align: right;
+  margin-bottom: 16px;
+  &__cancel {
+    color: rgb(151, 151, 151);
+    background-color: rgb(241, 241, 241);
+    margin-right: 16px;
+  }
+  &__save {
+    color: white;
+  }
+}

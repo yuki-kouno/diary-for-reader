@@ -13,11 +13,25 @@
           />
         </figure>
       </aside>
-      <footer>
-        <input matInput autocomplete="off" placeholder="ページ" />
-      </footer>
     </div>
-
-    <app-reviews></app-reviews>
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="今日">
+        <app-review-list
+          *ngFor="let review of reviews$ | async"
+          [review]="review"
+          [book]="book"
+        ></app-review-list>
+      </mat-tab>
+      <mat-tab label="すべて">
+        <app-review-list
+          *ngFor="let review of allReviews$ | async"
+          [review]="review"
+          [book]="book"
+          isDate="true"
+        >
+        </app-review-list>
+      </mat-tab>
+    </mat-tab-group>
+    <app-review-form *ngIf="book" [book]="book"></app-review-form>
   </ng-container>
 </div>
