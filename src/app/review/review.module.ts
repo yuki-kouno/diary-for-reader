@@ -7,23 +7,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { DialogChoiceBookComponent } from './dialog-choice-book/dialog-choice-book.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ReviewsComponent } from './reviews/reviews.component';
-import { AllReviewsComponent } from './all-reviews/all-reviews.component';
+import { ReviewFormComponent } from './review-form/review-form.component';
 import { AutofocusFixModule } from 'ngx-autofocus-fix';
+import { ReviewListComponent } from './review-list/review-list.component';
 
 @NgModule({
-  declarations: [
-    ReviewComponent,
-    DialogChoiceBookComponent,
-    ReviewsComponent,
-    AllReviewsComponent,
-    ReviewsComponent,
-  ],
+  declarations: [ReviewComponent, ReviewFormComponent, ReviewListComponent],
   imports: [
     CommonModule,
     ReviewRoutingModule,
@@ -39,6 +32,5 @@ import { AutofocusFixModule } from 'ngx-autofocus-fix';
     AutofocusFixModule.forRoot(),
   ],
   providers: [DatePipe],
-  entryComponents: [DialogChoiceBookComponent],
 })
 export class ReviewModule {}
