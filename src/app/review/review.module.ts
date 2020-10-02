@@ -15,9 +15,15 @@ import { ReviewFormComponent } from './review-form/review-form.component';
 import { AutofocusFixModule } from 'ngx-autofocus-fix';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RemoveReviewDialogComponent } from './remove-review-dialog/remove-review-dialog.component';
 
 @NgModule({
-  declarations: [ReviewComponent, ReviewFormComponent, ReviewListComponent],
+  declarations: [
+    ReviewComponent,
+    ReviewFormComponent,
+    ReviewListComponent,
+    RemoveReviewDialogComponent,
+  ],
   imports: [
     CommonModule,
     ReviewRoutingModule,

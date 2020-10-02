@@ -4,6 +4,8 @@ import { FormControl } from '@angular/forms';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
 import { Book } from 'src/app/interface/book';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { RemoveReviewDialogComponent } from '../remove-review-dialog/remove-review-dialog.component';
 
 @Component({
   selector: 'app-review-list',
@@ -19,13 +21,15 @@ export class ReviewListComponent implements OnInit {
 
   constructor(
     private databaseReviewsService: DatabaseReviewsService,
-    private snackBer: MatSnackBar
+    private snackBer: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   isEditMode() {
     this.isEditable = true;
     this.editForm.setValue(this.review.answer);
   }
+
   updataReview() {
     this.databaseReviewsService
       .updateReview(this.book, {
@@ -36,8 +40,22 @@ export class ReviewListComponent implements OnInit {
         this.snackBer.open('編集内容を保存しました。');
       });
   }
-  deleteReview() {
-    this.databaseReviewsService.deleteReview(this.book, this.review);
+
+  openDialog(): void {
+    this.dialog
+      .open(RemoveReviewDialogComponent, {
+        width: '250px',
+      })
+      .afterClosed()
+      .subscribe((status) => {
+        if (status) {
+          this.databaseReviewsService
+            .deleteReview(this.book, this.review)
+            .then(() => {
+              this.snackBer.open('削除しました。');
+            });
+        }
+      });
   }
 
   ngOnInit(): void {}
