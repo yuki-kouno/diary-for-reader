@@ -1,15 +1,11 @@
-import { Component, OnInit, NgZone, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { take } from 'rxjs/operators';
 import { questionsList } from './questions-list';
-import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/interface/book';
 import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
 import { FormBuilder, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DatabaseBooksService } from 'src/app/services/database-books.service';
 
 @Component({
   selector: 'app-review-form',
@@ -17,7 +13,6 @@ import { DatabaseBooksService } from 'src/app/services/database-books.service';
   styleUrls: ['./review-form.component.scss'],
 })
 export class ReviewFormComponent implements OnInit {
-  @ViewChild('autosize') autosize: CdkTextareaAutosize;
   showInput = false;
   @Input() book: Book;
 
@@ -30,21 +25,11 @@ export class ReviewFormComponent implements OnInit {
   });
 
   constructor(
-    private route: ActivatedRoute,
     public dialog: MatDialog,
-    private ngZone: NgZone,
     private fb: FormBuilder,
     private snackBer: MatSnackBar,
-    private databaseBooks: DatabaseBooksService,
     public databaseReviewService: DatabaseReviewsService
   ) {}
-
-  triggerResize() {
-    // Wait for changes to be applied, then trigger textarea resize.
-    this.ngZone.onStable
-      .pipe(take(1))
-      .subscribe(() => this.autosize.resizeToFitContent(true));
-  }
 
   get answers(): FormArray {
     return this.form.get('answers') as FormArray;
@@ -66,9 +51,7 @@ export class ReviewFormComponent implements OnInit {
       );
       this.selectedQuestion.push(question);
     } else {
-      this.snackBer.open('その質問は既にあります', null, {
-        duration: 2000,
-      });
+      this.snackBer.open('その質問は既にあります');
     }
     this.showInput = true;
   }
@@ -84,7 +67,9 @@ export class ReviewFormComponent implements OnInit {
       question: this.selectedQuestion[index],
       answer: this.answers.value[index].answer,
     };
-    this.databaseReviewService.createReview(book, review);
+    this.databaseReviewService.createReview(book, review).then(() => {
+      this.snackBer.open('保存しました。');
+    });
     this.answers.removeAt(index);
     this.selectedQuestion.splice(index, 1);
   }

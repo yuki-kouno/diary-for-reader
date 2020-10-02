@@ -14,6 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { AutofocusFixModule } from 'ngx-autofocus-fix';
 import { ReviewListComponent } from './review-list/review-list.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [ReviewComponent, ReviewFormComponent, ReviewListComponent],
@@ -29,6 +30,7 @@ import { ReviewListComponent } from './review-list/review-list.component';
     MatMenuModule,
     MatIconModule,
     MatTabsModule,
+    MatSnackBarModule,
     AutofocusFixModule.forRoot(),
   ],
   providers: [DatePipe],

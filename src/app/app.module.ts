@@ -10,7 +10,10 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MatSnackBarModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+} from '@angular/material/snack-bar';
 import 'firebase/firestore';
 import {
   AngularFireFunctionsModule,
@@ -41,6 +44,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     { provide: REGION, useValue: 'asia-northeast1' },
     { provide: LOCALE_ID, useValue: 'ja-JP' },
     DatePipe,
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
   ],
   bootstrap: [AppComponent],
 })
