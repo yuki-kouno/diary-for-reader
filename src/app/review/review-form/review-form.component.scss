@@ -28,3 +28,17 @@ mat-form-field {
     border-radius: 18px;
   }
 }
+
+.reviews-btns {
+  display: block;
+  text-align: right;
+  margin-bottom: 16px;
+  &__cancel {
+    color: rgb(151, 151, 151);
+    background-color: rgb(241, 241, 241);
+    margin-right: 16px;
+  }
+  &__save {
+    color: white;
+  }
+}
