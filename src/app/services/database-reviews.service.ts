@@ -37,7 +37,10 @@ export class DatabaseReviewsService {
   getAllReviews(bookId): Observable<Review[]> {
     return this.db
       .collection<Review>(
-        `users/${this.authService.uid}/favoriteBooks/${bookId}/reviews`
+        `users/${this.authService.uid}/favoriteBooks/${bookId}/reviews`,
+        (ref) => {
+          return ref.orderBy('createdAt');
+        }
       )
       .valueChanges();
   }
