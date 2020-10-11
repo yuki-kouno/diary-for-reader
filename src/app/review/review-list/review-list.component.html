@@ -1,0 +1,68 @@
+<ng-container *ngIf="isDate">
+  <div class="date">{{ review.createdAt.toDate() | date: 'M/d' }}</div>
+</ng-container>
+<div class="grid">
+  <ng-container *ngIf="isEditable; else view">
+    <form>
+      <mat-form-field class="reviews" floatLabel="always">
+        <mat-label>
+          {{ review.question }}
+        </mat-label>
+        <textarea
+          matInput
+          [formControl]="editForm"
+          autofocus
+          class="answer"
+          type="text"
+          matTextareaAutosize
+          >{{ review.answer }}</textarea
+        >
+      </mat-form-field>
+      <div class="reviews-btns">
+        <button
+          class="reviews-btns__cancel"
+          mat-button
+          type="button"
+          (click)="isEditable = false"
+        >
+          キャンセル
+        </button>
+        <button
+          class="reviews-btns__save"
+          mat-flat-button
+          type="button"
+          color="primary"
+          (click)="updataReview()"
+        >
+          保存
+        </button>
+      </div>
+    </form>
+  </ng-container>
+  <ng-template #view>
+    <div class="revieweds__body">
+      <p class="revieweds__question">{{ review.question }}</p>
+      <p class="revieweds__text">{{ review.answer }}</p>
+    </div>
+    <div>
+      <button
+        class="revieweds__edit-mat-button"
+        mat-icon-button
+        [mat-menu-trigger-for]="reviewEditor"
+        type="button"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #reviewEditor="matMenu">
+        <button mat-menu-item type="button" (click)="isEditMode()">
+          <mat-icon>edit</mat-icon>
+          <span>編集</span>
+        </button>
+        <button mat-menu-item type="button" (click)="openDialog()">
+          <mat-icon>delete</mat-icon>
+          <span>削除</span>
+        </button>
+      </mat-menu>
+    </div>
+  </ng-template>
+</div>

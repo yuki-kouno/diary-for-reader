@@ -1,0 +1,44 @@
+* {
+  color: rgba(0, 0, 0, 0.6);
+}
+p {
+  margin: 0;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.review-btns {
+  text-align: center;
+  &__questions {
+    margin: 6px;
+    color: white;
+    line-height: 1;
+    font-size: 14px;
+    padding: 11px;
+    border-radius: 18px;
+  }
+  &__free-text {
+    margin: 6px;
+    color: white;
+    line-height: 1;
+    font-size: 14px;
+    padding: 11px;
+    border-radius: 18px;
+  }
+}
+
+.reviews-btns {
+  display: block;
+  text-align: right;
+  margin-bottom: 16px;
+  &__cancel {
+    color: rgb(151, 151, 151);
+    background-color: rgb(241, 241, 241);
+    margin-right: 16px;
+  }
+  &__save {
+    color: white;
+  }
+}
