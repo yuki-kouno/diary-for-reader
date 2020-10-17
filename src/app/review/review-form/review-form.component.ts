@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { questionsList } from './questions-list';
 import { Book } from 'src/app/interface/book';
@@ -28,7 +28,8 @@ export class ReviewFormComponent implements OnInit {
     public dialog: MatDialog,
     private fb: FormBuilder,
     private snackBer: MatSnackBar,
-    public databaseReviewService: DatabaseReviewsService
+    public databaseReviewService: DatabaseReviewsService,
+    private cd: ChangeDetectorRef
   ) {}
 
   get answers(): FormArray {
@@ -54,6 +55,7 @@ export class ReviewFormComponent implements OnInit {
       this.snackBer.open('その質問は既にあります');
     }
     this.showInput = true;
+    this.cd.detectChanges();
   }
 
   removeAnswer(index: number) {
