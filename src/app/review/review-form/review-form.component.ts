@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./review-form.component.scss'],
 })
 export class ReviewFormComponent implements OnInit {
-  showInput = false;
+  showInput: boolean;
   @Input() book: Book;
 
   selectedQuestion = [];
