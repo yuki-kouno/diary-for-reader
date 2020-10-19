@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReviewComponent } from './review/review.component';
+import { ReviewFormGuard } from '../guards/review-form.guard';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: ':book.id',
     component: ReviewComponent,
+    canDeactivate: [ReviewFormGuard],
   },
 ];
 

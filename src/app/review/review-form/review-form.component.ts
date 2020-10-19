@@ -13,12 +13,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./review-form.component.scss'],
 })
 export class ReviewFormComponent implements OnInit {
-  showInput: boolean;
   @Input() book: Book;
-
+  showInput: boolean;
   selectedQuestion = [];
   questionsList = questionsList;
   nowDate: Date;
+  isComplete: boolean;
 
   form = this.fb.group({
     answers: this.fb.array([]),
@@ -55,6 +55,7 @@ export class ReviewFormComponent implements OnInit {
       this.snackBer.open('その質問は既にあります');
     }
     this.showInput = true;
+    this.isComplete = false;
     this.cd.detectChanges();
   }
 
@@ -74,6 +75,7 @@ export class ReviewFormComponent implements OnInit {
     });
     this.answers.removeAt(index);
     this.selectedQuestion.splice(index, 1);
+    this.isComplete = true;
   }
 
   ngOnInit() {}
