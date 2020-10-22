@@ -33,6 +33,7 @@
           type="button"
           color="primary"
           (click)="updataReview()"
+          [disabled]="editForm.pristine"
         >
           保存
         </button>
