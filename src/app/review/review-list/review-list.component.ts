@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectorRef,
+  HostListener,
+} from '@angular/core';
 import { Review } from 'src/app/interface/review';
 import { FormControl } from '@angular/forms';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
@@ -22,8 +28,19 @@ export class ReviewListComponent implements OnInit {
   constructor(
     private databaseReviewsService: DatabaseReviewsService,
     private snackBer: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private cd: ChangeDetectorRef
   ) {}
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (!this.isEditable) {
+      return;
+    } else if (this.editForm.dirty) {
+      $event.preventDefault();
+      $event.returnValue = '作業中の内容が失われますがよろしいですか？';
+    }
+  }
 
   isEditMode() {
     this.isEditable = true;
