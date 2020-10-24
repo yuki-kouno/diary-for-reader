@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectorRef,
+  HostListener,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { questionsList } from './questions-list';
 import { Book } from 'src/app/interface/book';
@@ -32,6 +38,16 @@ export class ReviewFormComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {}
 
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.isComplete === true) {
+      return;
+    } else if (this.form.dirty) {
+      $event.preventDefault();
+      $event.returnValue = '作業中の内容が失われますがよろしいですか？';
+    }
+  }
+
   get answers(): FormArray {
     return this.form.get('answers') as FormArray;
   }
@@ -62,6 +78,7 @@ export class ReviewFormComponent implements OnInit {
   removeAnswer(index: number) {
     this.answers.removeAt(index);
     this.selectedQuestion.splice(index, 1);
+    this.isComplete = true;
   }
 
   createReview(book: Book, index: number) {
