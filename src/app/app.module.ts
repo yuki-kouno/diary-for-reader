@@ -24,7 +24,16 @@ import { registerLocaleData, DatePipe } from '@angular/common';
 import localeJa from '@angular/common/locales/ja';
 registerLocaleData(localeJa);
 import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
 import { NotFoundComponent } from './not-found/not-found.component';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin,
+  listPlugin,
+]);
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -39,6 +48,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFirestoreModule,
     MatSnackBarModule,
     AngularFireFunctionsModule,
+    FullCalendarModule,
   ],
   providers: [
     { provide: REGION, useValue: 'asia-northeast1' },
