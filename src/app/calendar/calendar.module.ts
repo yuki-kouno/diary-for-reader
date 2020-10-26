@@ -16,11 +16,13 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [CalendarComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
   imports: [
     CommonModule,
     CalendarRoutingModule,
     FormsModule,
+    FullCalendarModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -28,7 +30,6 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     MatDividerModule,
     MatButtonModule,
     MatNativeDateModule,
-    FullCalendarModule,
   ],
 })
 export class CalendarModule {}
