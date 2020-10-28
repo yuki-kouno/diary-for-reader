@@ -45,10 +45,20 @@ export class DatabaseReviewsService {
       .valueChanges();
   }
 
+  getReviewsOfAllBooks(): Observable<Review[]> {
+    const uid = this.authService.uid;
+    return this.db
+      .collectionGroup<Review>(`reviews`, (ref) => {
+        return ref.where('uid', '==', uid).orderBy('createdAt', 'asc');
+      })
+      .valueChanges();
+  }
+
   createReview(
     book: Book,
-    review: Omit<Review, 'id' | 'createdDate' | 'createdAt'>
+    review: Omit<Review, 'id' | 'createdDate' | 'createdAt' | 'uid'>
   ): Promise<void> {
+    const uid: string = this.authService.uid;
     const id: string = this.db.createId();
     const createdDate = this.datePipe.transform(new Date(), this.DATE_FORMAT);
     return this.db
@@ -57,6 +67,7 @@ export class DatabaseReviewsService {
       )
       .set({
         ...review,
+        uid,
         id,
         createdDate,
         createdAt: firestore.Timestamp.now(),

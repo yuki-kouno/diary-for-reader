@@ -82,7 +82,7 @@ export class ReviewFormComponent implements OnInit {
   }
 
   createReview(book: Book, index: number) {
-    const review: Omit<Review, 'id' | 'createdDate' | 'createdAt'> = {
+    const review: Omit<Review, 'id' | 'createdDate' | 'createdAt' | 'uid'> = {
       title: book.volumeInfo.title,
       question: this.selectedQuestion[index],
       answer: this.answers.value[index].answer,
