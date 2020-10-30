@@ -13,9 +13,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ReviewDetailDialogComponent } from './review-detail-dialog/review-detail-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [CalendarComponent],
+  declarations: [CalendarComponent, ReviewDetailDialogComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
   imports: [
@@ -27,6 +29,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    MatDialogModule,
     MatDividerModule,
     MatButtonModule,
     MatNativeDateModule,
