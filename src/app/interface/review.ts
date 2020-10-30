@@ -1,6 +1,8 @@
 import { firestore } from 'firebase';
 
 export interface Review {
+  bookId: string;
+  thumbnail: string;
   uid: string;
   id: string;
   createdDate: string;

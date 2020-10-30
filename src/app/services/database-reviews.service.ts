@@ -56,8 +56,13 @@ export class DatabaseReviewsService {
 
   createReview(
     book: Book,
-    review: Omit<Review, 'id' | 'createdDate' | 'createdAt' | 'uid'>
+    review: Omit<
+      Review,
+      'id' | 'createdDate' | 'createdAt' | 'uid' | 'bookId' | 'thumbnail'
+    >
   ): Promise<void> {
+    const thumbnail: string = book.volumeInfo.imageLinks.thumbnail;
+    const bookId: string = book.id;
     const uid: string = this.authService.uid;
     const id: string = this.db.createId();
     const createdDate = this.datePipe.transform(new Date(), this.DATE_FORMAT);
@@ -67,6 +72,8 @@ export class DatabaseReviewsService {
       )
       .set({
         ...review,
+        thumbnail,
+        bookId,
         uid,
         id,
         createdDate,
