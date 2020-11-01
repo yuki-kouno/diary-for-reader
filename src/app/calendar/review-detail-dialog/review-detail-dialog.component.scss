@@ -1,0 +1,11 @@
+.buttons {
+  display: flex;
+  &__ok {
+    margin: 10px;
+    color: white;
+  }
+  justify-content: center;
+  &__cancel {
+    margin: 10px;
+  }
+}
