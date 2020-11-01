@@ -83,7 +83,16 @@ export class DatabaseReviewsService {
 
   updateReview(
     book: Book,
-    review: Omit<Review, 'createdDate' | 'createdAt' | 'title' | 'question'>
+    review: Omit<
+      Review,
+      | 'createdDate'
+      | 'createdAt'
+      | 'title'
+      | 'question'
+      | 'uid'
+      | 'bookId'
+      | 'thumbnail'
+    >
   ) {
     return this.db
       .doc(
