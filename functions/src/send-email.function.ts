@@ -12,7 +12,7 @@ export const sendEmail = (data: {
 }) => {
   return sgMail.send({
     from: {
-      email: 'zgoovw@gmail.com',
+      email: 'diary.for.reader@gmail.com',
       name: '読書家のための日記帳',
     },
     ...data,
