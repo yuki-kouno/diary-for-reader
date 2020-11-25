@@ -35,7 +35,6 @@ export const sendEmailCreateUseer = functions
   .onCreate((snap, context) => {
     const user = snap.data();
     const eventId = context.eventId;
-    functions.logger.info(user, eventId);
     return shouldEventRun(eventId).then(async (should: boolean) => {
       if (should) {
         await sendEmail({
@@ -53,7 +52,6 @@ export const sendEmailCreateUseer = functions
 export const deleteAfUser = functions
   .region('asia-northeast1')
   .https.onCall((snap: User, _) => {
-    functions.logger.info(`User:${snap.uid}'s Data Are Deleting.`);
     return admin.auth().deleteUser(snap.uid);
   });
 
@@ -78,7 +76,6 @@ export const sendEmailDeleteUseer = functions
   .onDelete((snap, context) => {
     const user = snap.data();
     const eventId = context.eventId;
-    functions.logger.info(user, eventId);
     return shouldEventRun(eventId).then(async (should: boolean) => {
       if (should) {
         await sendEmail({
