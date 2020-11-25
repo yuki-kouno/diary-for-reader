@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User, auth } from 'firebase/app';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { UserService } from './user.service';
-import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,32 +16,11 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private snackBer: MatSnackBar,
-    private db: AngularFirestore,
-    private userService: UserService,
-    private afStore: AngularFirestore
+    private snackBer: MatSnackBar
   ) {
     this.afUser$.subscribe((user) => {
       this.uid = user && user.uid;
     });
-  }
-
-  createUser(params: { email: string; password: string }) {
-    this.afAuth
-      .createUserWithEmailAndPassword(params.email, params.password)
-      .then((result) => {
-        result.user.sendEmailVerification();
-      })
-      .catch((error) => {
-        switch (error.code) {
-          case 'auth/email-already-in-use':
-            alert('このアドレスは既に登録されています。');
-            break;
-          case 'auth/invalid-email':
-            alert('メールアドレスが不正です');
-            break;
-        }
-      });
   }
 
   resetPassword(email: string) {
