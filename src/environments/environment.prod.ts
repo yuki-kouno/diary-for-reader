@@ -1,5 +1,9 @@
 export const environment = {
   production: false,
+  algolia: {
+    appId: 'V0VMNDHZB9',
+    searchKey: '6abc9f168a5e193a6194204aadb3fbb0',
+  },
   firebase: {
     apiKey: 'AIzaSyDQ3iQrweqnebsp52TG9QoWYAYZy4PIU_4',
     authDomain: 'diary-for-reader.firebaseapp.com',
