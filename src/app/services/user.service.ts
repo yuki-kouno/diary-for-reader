@@ -32,24 +32,6 @@ export class UserService {
     private snackBar: MatSnackBar
   ) {}
 
-  createUser(params: { email: string; password: string }) {
-    this.afAuth
-      .createUserWithEmailAndPassword(params.email, params.password)
-      .then((result) => {
-        result.user.sendEmailVerification();
-      })
-      .catch((error) => {
-        switch (error.code) {
-          case 'auth/email-already-in-use':
-            alert('このアドレスは既に登録されています。');
-            break;
-          case 'auth/invalid-email':
-            alert('メールアドレスが不正です');
-            break;
-        }
-      });
-  }
-
   getUserByID(uid: string): Observable<User> {
     return this.db.doc<User>(`users/${uid}`).valueChanges();
   }
