@@ -23,6 +23,27 @@ export class AuthService {
     });
   }
 
+  async createUser(params: { email: string; password: string }): Promise<void> {
+    this.afAuth
+      .createUserWithEmailAndPassword(params.email, params.password)
+      .then((result) => {
+        result.user.sendEmailVerification();
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            alert('このアドレスは既に登録されています。');
+            break;
+          case 'auth/invalid-email':
+            alert('メールアドレスが不正です');
+            break;
+        }
+      })
+      .then(() => {
+        return this.emailLogin(params);
+      });
+  }
+
   resetPassword(email: string) {
     this.afAuth.sendPasswordResetEmail(email).catch((error) => {
       console.log(error.code);
@@ -40,7 +61,7 @@ export class AuthService {
     });
   }
 
-  login(params: { email: string; password: string }) {
+  emailLogin(params: { email: string; password: string }) {
     return this.afAuth
       .signInWithEmailAndPassword(params.email, params.password)
       .catch((error) => {
@@ -57,7 +78,7 @@ export class AuthService {
         }
       })
       .then(() => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/add-books']);
       });
   }
 
@@ -65,7 +86,7 @@ export class AuthService {
     this.afAuth
       .signInWithPopup(new auth.GoogleAuthProvider())
       .then(() => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/add-books');
       })
       .then(() => {
         this.snackBer.open('ようこそ', null, {
