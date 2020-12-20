@@ -1,14 +1,12 @@
 .container {
   text-align: center;
   padding: 50px 10px;
+}
 
-  .input {
-    width: 100%;
-    // margin-top: 180px;
-    margin-bottom: 30px;
-  }
+mat-form-field {
+  width: 100%;
+}
 
-  button {
-    color: white;
-  }
+.signup-btn {
+  color: white;
 }
