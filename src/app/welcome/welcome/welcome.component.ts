@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NavService } from 'src/app/services/nav.service';
-import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
-
-export interface DialogData {
-  name: string;
-}
+import { SignupFormComponent } from '../signup-form/signup-form.component';
+import { LoginFormComponent } from '../login-form/login-form.component';
 
 @Component({
   selector: 'app-welcome',
@@ -15,14 +10,18 @@ export interface DialogData {
   styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent implements OnInit {
-  constructor(
-    private nav: NavService,
-    public dialog: MatDialog,
-    private aushService: AuthService
-  ) {}
+  constructor(private authService: AuthService, private dialog: MatDialog) {}
 
-  openDialog() {
-    this.dialog.open(LoginDialogComponent, {});
+  signUpDialog() {
+    this.dialog.open(SignupFormComponent, {});
+  }
+
+  logInDialog() {
+    this.dialog.open(LoginFormComponent, {});
+  }
+
+  googleLogin() {
+    this.authService.googleLogin();
   }
 
   ngOnInit() {}
