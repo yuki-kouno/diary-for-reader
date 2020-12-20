@@ -9,19 +9,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CreateDialogComponent } from './create-dialog/create-dialog.component';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
-
+import { ResetDialogComponent } from './reset-dialog/reset-dialog.component';
 
 @NgModule({
   declarations: [
     WelcomeComponent,
-    CreateDialogComponent,
-    LoginDialogComponent,
     LoginFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    ResetDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -31,14 +28,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  entryComponents: [
-    WelcomeComponent,
-    CreateDialogComponent,
-    LoginDialogComponent,
-    LoginFormComponent,
-    SignupFormComponent
-  ]
+  entryComponents: [WelcomeComponent, LoginFormComponent, SignupFormComponent],
 })
 export class WelcomeModule {}
