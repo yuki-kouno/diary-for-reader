@@ -1,9 +1,37 @@
-<div class="container">
-<div class="wrap" id="late">
-  <img src="/assets/images/brand.png" alt="" />
-
-  <button class="wf-hannari" (click)="openDialog()" mat-stroked-button color="primary">
-    はじめる
-  </button>
-</div>
+<div class="wrapper">
+  <div class="container">
+    <div class="logo">
+      <img class="logo__image" src="/assets/images/title-logo.png" alt="/" />
+    </div>
+    <div class="login">
+      <button
+        class="login__item google-logo"
+        (click)="googleLogin()"
+        mat-button
+      >
+        Google
+      </button>
+      <button class="login__item" (click)="logInDialog()" mat-button>
+        Email & password
+      </button>
+      <p class="login__or">or</p>
+      <button class="login__item" (click)="signUpDialog()" mat-button>
+        新規登録
+      </button>
+    </div>
+    <p class="photo-provider">
+      <span
+        >Photo by
+        <a
+          href="https://unsplash.com/@heftiba?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+          >Toa Heftiba</a
+        >
+        on
+        <a
+          href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+          >Unsplash</a
+        ></span
+      >
+    </p>
+  </div>
 </div>

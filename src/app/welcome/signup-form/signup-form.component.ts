@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -21,18 +20,10 @@ export class SignupFormComponent implements OnInit {
     return this.signUpForm.get('password') as FormControl;
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private dialog: MatDialog,
-    private userService: UserService
-  ) {}
-
-  closeDialog() {
-    this.dialog.closeAll();
-  }
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   signUp() {
-    this.userService.createUser(this.signUpForm.value);
+    this.authService.createUser(this.signUpForm.value);
   }
 
   ngOnInit() {}

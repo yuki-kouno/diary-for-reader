@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { ResetDialogComponent } from '../reset-dialog/reset-dialog.component';
 
 @Component({
   selector: 'app-login-form',
@@ -25,17 +25,16 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
     private dialog: MatDialog
   ) {}
 
   ngOnInit() {}
 
-  closeDialog() {
-    this.dialog.closeAll();
+  logIn() {
+    this.authService.emailLogin(this.logInForm.value);
   }
 
-  logIn() {
-    this.authService.login(this.logInForm.value);
+  openResetDialog() {
+    this.dialog.open(ResetDialogComponent);
   }
 }

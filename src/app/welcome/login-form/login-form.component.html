@@ -1,19 +1,46 @@
 <div class="container">
   <form [formGroup]="logInForm">
-  <mat-form-field class="input" appearance="outline">
-    <mat-label>メールアドレスを記入してください</mat-label>
-    <input formControlName="email" matInput type="email" required
-      autocomplete="current-email">
-    <mat-error *ngIf="emailControl.hasError('required')">必須入力です</mat-error>
-  </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>メールアドレスを記入してください</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        type="email"
+        required
+        autocomplete="current-email"
+      />
+      <mat-error *ngIf="emailControl.hasError('required')"
+        >必須入力です</mat-error
+      >
+    </mat-form-field>
 
-  <mat-form-field class="input" appearance="outline">
-    <mat-label>パスワードを記入してください</mat-label>
-    <input formControlName="password" matInput type="password" required
-      autocomplete="current-password">
-    <mat-error *ngIf="passwordControl.hasError('required')">必須入力です</mat-error>
-  </mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>パスワードを記入してください</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        type="password"
+        required
+        autocomplete="current-password"
+      />
+      <mat-error *ngIf="passwordControl.hasError('required')"
+        >必須入力です</mat-error
+      >
+    </mat-form-field>
 
-  <button [disabled]="logInForm.invalid" (click)="closeDialog()" (click)="logIn()" mat-raised-button color="primary">O K</button>
+    <button
+      class="reset-btn"
+      [disabled]="logInForm.invalid"
+      mat-dialog-close
+      (click)="logIn()"
+      mat-raised-button
+      color="primary"
+    >
+      O K
+    </button>
   </form>
+
+  <a class="reset-dialog-link" mat-dialog-close (click)="openResetDialog()"
+    >パスワードをお忘れですか？</a
+  >
 </div>
