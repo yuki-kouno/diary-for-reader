@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { Book } from '../interface/book';
-
 import { Observable } from 'rxjs';
-
 import { firestore } from 'firebase/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
@@ -31,10 +29,7 @@ export class DatabaseBooksService {
       .then(() => {
         this.snackBar.open(
           `${book.volumeInfo.title}`,
-          'をライブラリに追加したよ',
-          {
-            duration: 2000,
-          }
+          'をライブラリに追加しました'
         );
       });
   }
