@@ -1,9 +1,8 @@
-$diary-for-reader-primary: mat-palette($mat-light-blue, 200);
-$diary-for-reader-accent: mat-palette($mat-amber, A400, A200, A100);
-$diary-for-reader-warn: mat-palette($mat-pink);
+@import '~@angular/material/theming';
+@include mat-core();
 
-$diary-for-reader-theme: mat-light-theme(
-  $diary-for-reader-primary,
-  $diary-for-reader-accent,
-  $diary-for-reader-warn
-);
+$primary: mat-palette($mat-light-blue);
+$accent: mat-palette($mat-amber, A400, A200, A100);
+$warn: mat-palette($mat-pink);
+
+$diary-for-reader-theme: mat-light-theme($primary, $accent, $warn);
