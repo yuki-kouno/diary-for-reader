@@ -1,0 +1,33 @@
+.container {
+  padding: 8px;
+  color: #505050;
+}
+.close-btn {
+  margin: 8px 0 32px;
+  font-size: 24px;
+  color: #505050;
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 16px;
+  &__item {
+    margin-bottom: 16px;
+    cursor: pointer;
+  }
+  &__icon {
+    margin-right: 8px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+  }
+}
+.open-dialog-btn {
+  margin-top: 16px;
+  font-size: 16px;
+  color: #505050;
+  &__icon {
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+}

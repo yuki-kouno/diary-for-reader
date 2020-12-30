@@ -1,0 +1,20 @@
+<div class="container">
+  <p class="description">
+    退会をご希望の場合、下記のフォームに
+    <strong>退会する</strong> と記入し、退会ボタンを押してください
+  </p>
+  <p class="attention">
+    ＊退会すると全てのデータは失われ、複製することはできません
+  </p>
+  <form class="form">
+    <input class="form__input" type="text" [formControl]="form" />
+    <button
+      class="form__btn"
+      mat-flat-button
+      color="primary"
+      [disabled]="form.value !== '退会する'"
+    >
+      退会
+    </button>
+  </form>
+</div>

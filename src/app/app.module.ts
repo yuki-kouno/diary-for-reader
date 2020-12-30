@@ -28,6 +28,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SheredModule } from './shered/shered.module';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -49,6 +50,7 @@ FullCalendarModule.registerPlugins([
     MatSnackBarModule,
     AngularFireFunctionsModule,
     FullCalendarModule,
+    SheredModule,
   ],
   providers: [
     { provide: REGION, useValue: 'asia-northeast1' },

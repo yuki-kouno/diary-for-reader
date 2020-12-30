@@ -8,5 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class TermsServiceComponent implements OnInit {
   constructor() {}
 
+  close() {
+    history.back();
+  }
   ngOnInit(): void {}
 }

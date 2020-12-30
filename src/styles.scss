@@ -19,6 +19,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+li {
+  list-style: none;
+}
 h1,
 h2,
 h3,
@@ -64,7 +67,19 @@ figure {
   box-shadow: none;
   background-color: rgba(255, 255, 255, 0.548);
 }
-
 .wrap-gradient {
   background: linear-gradient(135deg, #ffffff80, #ffffff00);
+}
+.mat-fab:not([class*='mat-elevation-z']),
+.mat-mini-fab:not([class*='mat-elevation-z']) {
+  box-shadow: 0px 3px 1px 0px rgb(68 73 134 / 20%),
+    0px 6px 10px 0px rgba(0, 132, 255, 0.315),
+    10px 12px 18px 0px rgba(50, 131, 253, 0.192);
+}
+.mat-bottom-sheet-container {
+  height: 80vh;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 32px 32px 0 0 !important;
+  background-color: rgba(244, 250, 255, 0.801);
 }

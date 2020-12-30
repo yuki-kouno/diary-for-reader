@@ -1,0 +1,12 @@
+.settings {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 37px;
+  &__icon {
+    position: relative;
+    top: -5px;
+    font-size: 32px;
+    color: rgba(100, 100, 100, 0.644);
+  }
+}

@@ -1,22 +1,22 @@
 <div class="container">
-  <div class="inner">
+  <form class="form">
     <input
+      class="form__input"
       type="text"
-      [(ngModel)]="searchText"
+      autofocus
+      [formControl]="searchForm"
       placeholder="本のタイトル、著者名"
     />
     <button
-      *ngIf="searchText"
+      class="form__btn wrap-gradient"
       (click)="searchBook()"
       mat-flat-button
-      color="accent"
+      color="primary"
     >
-      検索
+      <mat-icon>search</mat-icon>
     </button>
-    <button *ngIf="!searchText" mat-flat-button color="accent">
-      検索
-    </button>
-  </div>
-</div>
+    <app-settings class="form__settings"></app-settings>
+  </form>
 
-<app-list-books></app-list-books>
+  <app-list-books></app-list-books>
+</div>
