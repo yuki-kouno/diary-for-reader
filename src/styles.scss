@@ -45,8 +45,20 @@ button {
 input {
   outline: none;
 }
-figure {
-  margin: 0;
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+  color: #00000090;
+  @include tab {
+    font-size: 32px;
+  }
+}
+h2 {
+  font-size: 20px;
+  color: #30303080;
+  @include tab {
+    font-size: 24px;
+  }
 }
 .container {
   margin: 0 auto;
@@ -82,4 +94,13 @@ figure {
   -webkit-backdrop-filter: blur(3px);
   border-radius: 32px 32px 0 0 !important;
   background-color: rgba(244, 250, 255, 0.801);
+}
+.mat-menu-panel {
+  padding: 0;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.548);
+}
+.mat-menu-item {
+  color: #303030;
 }

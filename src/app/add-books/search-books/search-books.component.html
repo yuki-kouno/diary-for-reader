@@ -1,22 +1,24 @@
 <div class="container">
-  <form class="form">
-    <input
-      class="form__input"
-      type="text"
-      autofocus
-      [formControl]="searchForm"
-      placeholder="本のタイトル、著者名"
-    />
-    <button
-      class="form__btn wrap-gradient"
-      (click)="searchBook()"
-      mat-flat-button
-      color="primary"
-    >
-      <mat-icon>search</mat-icon>
-    </button>
-    <app-settings class="form__settings"></app-settings>
-  </form>
+  <header class="header">
+    <form class="form">
+      <input
+        class="form__input"
+        type="text"
+        autofocus
+        [formControl]="searchForm"
+        placeholder="本のタイトル、著者名"
+      />
+      <button
+        class="form__btn wrap-gradient"
+        (click)="searchBook()"
+        mat-flat-button
+        color="primary"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+      <app-settings class="form__settings"></app-settings>
+    </form>
+  </header>
 
   <app-list-books></app-list-books>
 </div>

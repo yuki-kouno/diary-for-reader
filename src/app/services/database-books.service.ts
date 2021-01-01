@@ -34,12 +34,12 @@ export class DatabaseBooksService {
       });
   }
 
-  getToFavoriteBooks(): Observable<Book[]> {
+  getToFavoriteBooks(sort, order): Observable<Book[]> {
     return this.db
       .collection<Book>(
         `users/${this.authService.uid}/favoriteBooks`,
         (ref) => {
-          return ref.orderBy('createdAt', 'desc');
+          return ref.orderBy(sort, order);
         }
       )
       .valueChanges();

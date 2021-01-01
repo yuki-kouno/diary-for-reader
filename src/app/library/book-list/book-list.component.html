@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="book" [routerLink]="['/review', book.id]">
+    <figure class="book__figure">
+      <img
+        class="book__img"
+        [src]="book.volumeInfo.imageLinks.smallThumbnail"
+        [alt]="book.volumeInfo.title"
+      />
+    </figure>
+    <div class="info">
+      <p class="info__title">
+        {{ book.volumeInfo.title }}
+      </p>
+      <p class="info__authors">
+        {{ book.volumeInfo.authors }}
+      </p>
+    </div>
+  </div>
+  <button [matMenuTriggerFor]="menu">
+    <mat-icon class="remove-icon">more_horiz</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openRemoveDialog(book)">
+      <mat-icon>delete</mat-icon>
+      <span>削除</span>
+    </button>
+  </mat-menu>
+  <button></button>
+</div>
