@@ -20,6 +20,14 @@
     flex: 2;
     align-items: baseline;
   }
+  &__brand-logo {
+    height: 48px;
+    width: 48px;
+    @include tab {
+      height: 60px;
+      width: 60px;
+    }
+  }
   &__brand-title {
     display: none;
     margin-bottom: 10px;
@@ -44,18 +52,6 @@
     transition: 0.3s;
     &:hover {
       opacity: 1;
-    }
-  }
-  &__settings {
-    position: relative;
-    width: 24px;
-    @include tab {
-      display: none;
-    }
-    app-settings {
-      position: absolute;
-      top: -30px;
-      left: 0;
     }
   }
 }

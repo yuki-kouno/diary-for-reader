@@ -2,10 +2,9 @@
   <header class="header">
     <a class="header__logo">
       <img
+        class="header__brand-logo"
         src="assets/images/brand.png"
         alt="brand-logo"
-        width="60px"
-        height="60px"
       />
       <img
         class="header__brand-title"
@@ -21,9 +20,6 @@
       </button>
       <button class="header__order" [matMenuTriggerFor]="sortMenu">
         <mat-icon class="header__icon">sort</mat-icon>
-      </button>
-      <button class="header__settings">
-        <app-settings></app-settings>
       </button>
     </div>
   </header>

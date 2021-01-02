@@ -1,51 +1,67 @@
-* {
-  color: rgba(0, 0, 0, 0.6);
-}
-p {
-  margin: 0;
-}
+@import 'mixins';
+
 mat-form-field {
   width: 100%;
+  color: #505050;
 }
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 40px;
-  .revieweds {
-    &__body {
-      margin-bottom: 16px;
-    }
-    &__question {
-      font-size: 12px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-    &__text {
-      font-size: 16px;
-      margin-left: 8px;
-    }
+
+.container {
+  padding-bottom: 16px;
+  @include tab {
+    margin: 0 5%;
+    padding-bottom: 40px;
   }
+}
+.date {
+  float: left;
+  width: 40px;
+  margin: 2px 0 8px;
+  flex: 0.5;
+  font-size: 12px;
+  color: #505050;
 }
 
 .reviews {
+  &__body {
+    color: #505050;
+  }
   &__answer {
     font-size: 16px;
     line-height: 1.4;
   }
-  &__editact-actions {
-    text-align: right;
+}
+.revieweds {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  flex: 4;
+  color: #505050;
+  &__body {
+    margin-bottom: 16px;
+  }
+  &__question {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  &__text {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+  &__edit-button {
+    flex: 1;
   }
 }
 
 .reviews-btns {
-  display: block;
   text-align: right;
-  margin-bottom: 16px;
   &__cancel {
+    font-size: 12px;
     color: rgb(151, 151, 151);
     background-color: rgb(241, 241, 241);
     margin-right: 16px;
   }
   &__save {
+    font-size: 12px;
     color: white;
   }
 }

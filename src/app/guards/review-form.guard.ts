@@ -8,7 +8,9 @@ import { ReviewComponent } from '../review/review/review.component';
 })
 export class ReviewFormGuard implements CanDeactivate<ReviewComponent> {
   canDeactivate(component: ReviewComponent): Observable<boolean> | boolean {
-    if (
+    if (!component.checkedGuard) {
+      return true;
+    } else if (
       (component.reviewListComponent.editForm.pristine &&
         component.reviewFormComponet.answers.pristine) ||
       component.reviewFormComponet.isComplete

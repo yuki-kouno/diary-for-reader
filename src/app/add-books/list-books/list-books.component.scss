@@ -41,15 +41,28 @@
     position: absolute;
     top: -8px;
     left: -4px;
-    border-radius: 3px;
-    // height: 100px;
     width: 80px;
     overflow: hidden;
     box-shadow: 5px 15px 30px -10px rgba(107, 115, 121, 0.801);
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.1) 2%,
+        rgba(255, 255, 255, 0.3) 5%,
+        rgba(0, 0, 0, 0) 50%
+      );
+    }
   }
   &__img {
-    // height: 100px;
     width: 80px;
+    margin-bottom: -4px;
     object-fit: cover;
   }
   &__info {

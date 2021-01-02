@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectorRef,
-  HostListener,
-} from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Review } from 'src/app/interface/review';
 import { FormControl } from '@angular/forms';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
@@ -23,13 +17,12 @@ export class ReviewListComponent implements OnInit {
   @Input() book: Book;
   @Input() isDate: boolean;
   editForm = new FormControl();
-  isEditable: boolean;
+  isEditable = false;
 
   constructor(
     private databaseReviewsService: DatabaseReviewsService,
     private snackBer: MatSnackBar,
-    public dialog: MatDialog,
-    private cd: ChangeDetectorRef
+    public dialog: MatDialog
   ) {}
 
   @HostListener('window:beforeunload', ['$event'])

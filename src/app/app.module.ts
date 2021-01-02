@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,11 +15,7 @@ import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material/snack-bar';
 import 'firebase/firestore';
-import {
-  AngularFireFunctionsModule,
-  REGION,
-  ORIGIN,
-} from '@angular/fire/functions';
+import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
 import { registerLocaleData, DatePipe } from '@angular/common';
 import localeJa from '@angular/common/locales/ja';
 registerLocaleData(localeJa);
@@ -54,7 +50,6 @@ FullCalendarModule.registerPlugins([
   ],
   providers: [
     { provide: REGION, useValue: 'asia-northeast1' },
-    { provide: LOCALE_ID, useValue: 'ja-JP' },
     DatePipe,
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
   ],
