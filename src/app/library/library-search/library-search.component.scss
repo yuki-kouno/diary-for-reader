@@ -1,0 +1,66 @@
+@import 'mixins';
+@import 'material-custom';
+@import 'variables';
+.container {
+  background-color: rgb(237, 245, 245);
+  padding: 16px 0 140px;
+  @include tab {
+    padding-bottom: 100px;
+  }
+}
+.header {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  &__inner {
+    padding: 8px;
+    position: relative;
+  }
+  &__back-btn {
+    position: absolute;
+  }
+  &__back-icon {
+    opacity: 0.6;
+    color: $sub-icon;
+    height: 48px;
+    width: 48px;
+    @include tab {
+      height: 60px;
+      width: 60px;
+    }
+  }
+  &__page-title {
+    text-align: center;
+  }
+  &__form {
+    text-align: center;
+    @include tab {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+.form {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  @include tab {
+    padding: 0 16px 0 0;
+  }
+  &__input {
+    padding: 10px;
+    border: 1px solid rgba(190, 190, 190, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.164);
+    &::placeholder {
+      color: rgb(190, 190, 190);
+    }
+    &:focus {
+      border: 1px solid mat-color($primary);
+    }
+  }
+  &__btn {
+    color: white;
+  }
+}

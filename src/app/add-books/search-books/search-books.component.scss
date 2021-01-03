@@ -2,7 +2,7 @@
 @import 'mixins';
 
 .container {
-  padding-bottom: 70px;
+  padding: 16px 0 70px;
 }
 .header {
   position: fixed;
@@ -13,10 +13,9 @@
 .form {
   display: flex;
   justify-content: center;
-  padding: 24px 0;
 
   &__input {
-    padding: 10px;
+    padding-left: 8px;
     border: 1px solid rgba(190, 190, 190, 0.3);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.164);
@@ -29,6 +28,5 @@
   }
   &__btn {
     color: white;
-    margin-right: 24px;
   }
 }
