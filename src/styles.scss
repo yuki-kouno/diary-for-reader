@@ -94,11 +94,24 @@ h2 {
   box-shadow: 3px 6px 10px -1px rgba(0, 132, 255, 0.5);
 }
 .mat-bottom-sheet-container {
-  height: 80vh;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(240, 240, 240, 0.8);
+}
+.custom-bottom-nav {
+  height: 80vh;
   border-radius: 32px 32px 0 0 !important;
-  background-color: rgba(244, 250, 255, 0.801);
+}
+.custom-side-nav {
+  min-width: initial !important;
+  max-width: initial !important;
+  min-height: initial !important;
+  max-height: initial !important;
+  width: 100vw;
+  height: 100vh !important;
+  border-radius: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 .mat-menu-panel {
   padding: 0;
@@ -110,5 +123,35 @@ h2 {
   color: #303030;
 }
 .mat-tab-body-wrapper {
-  margin: 32px 16px;
+  margin-bottom: 16px;
+}
+.fc-icon {
+  color: #808080;
+}
+.fc-daygrid-day-number {
+  color: #505050;
+}
+.fc .fc-col-header-cell-cushion {
+  color: #808080;
+}
+.fc .fc-button-primary {
+  color: #505050 !important;
+  border: none !important;
+  background-color: #ffffff00 !important;
+}
+.fc-theme-standard .fc-scrollgrid th {
+  background-color: rgb(237, 245, 245) !important;
+  padding-bottom: 8px;
+}
+.fc-theme-standard .fc-scrollgrid,
+.fc-theme-standard .fc-scrollgrid td,
+.fc-theme-standard .fc-scrollgrid th,
+.fc-theme-standard .fc-scrollgrid tr {
+  border: 8px #ffffff00 !important;
+}
+.fc-daygrid-day-frame {
+  padding: 4px;
+  border-radius: 16px;
+  border: solid 2px rgb(237, 245, 245);
+  background: rgba(255, 255, 255, 0.507);
 }

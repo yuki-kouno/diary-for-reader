@@ -4,7 +4,6 @@ import {
   AfterViewInit,
   ElementRef,
   OnDestroy,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { SearchLibraryService } from 'src/app/services/search-library.service';
 import { SearchIndex } from 'algoliasearch/lite';

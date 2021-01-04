@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SettingsComponent } from './settings/settings.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { SettingsBottomSheetComponent } from './settings-bottom-sheet/settings-bottom-sheet.component';
@@ -13,11 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
-    SettingsComponent,
-    SettingsBottomSheetComponent,
-    DeleteUserDialogComponent,
-  ],
+  declarations: [SettingsBottomSheetComponent, DeleteUserDialogComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -30,10 +25,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatButtonModule,
   ],
-  exports: [
-    SettingsComponent,
-    SettingsBottomSheetComponent,
-    DeleteUserDialogComponent,
-  ],
+  exports: [SettingsBottomSheetComponent, DeleteUserDialogComponent],
 })
 export class SheredModule {}

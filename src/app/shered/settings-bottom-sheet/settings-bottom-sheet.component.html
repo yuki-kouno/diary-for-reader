@@ -38,11 +38,12 @@
         ><mat-icon class="contents__icon">exit_to_app</mat-icon>ログアウト</a
       >
     </li>
+    <mat-divider></mat-divider>
+    <li class="contents__item">
+      <a (click)="openDialog()"
+        ><mat-icon class="contents__icon">system_update</mat-icon
+        >アカウント管理</a
+      >
+    </li>
   </ul>
-  <mat-divider></mat-divider>
-  <button class="open-dialog-btn" (click)="openDialog()">
-    アカウント管理<span class="open-dialog-btn__icon"
-      ><mat-icon></mat-icon
-    ></span>
-  </button>
 </div>

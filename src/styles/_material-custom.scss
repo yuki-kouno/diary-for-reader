@@ -2,7 +2,7 @@
 @include mat-core();
 
 $primary: mat-palette($mat-light-blue);
-$accent: mat-palette($mat-amber, A400, A200, A100);
+$accent: mat-palette($mat-lime);
 $warn: mat-palette($mat-pink);
 
 $diary-for-reader-theme: mat-light-theme($primary, $accent, $warn);

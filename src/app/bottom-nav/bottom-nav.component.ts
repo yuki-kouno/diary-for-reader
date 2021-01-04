@@ -11,7 +11,9 @@ export class BottomNavComponent implements OnInit {
   constructor(private bottomSheet: MatBottomSheet) {}
 
   openBottomSheet(): void {
-    this.bottomSheet.open(SettingsBottomSheetComponent);
+    this.bottomSheet.open(SettingsBottomSheetComponent, {
+      panelClass: 'custom-bottom-nav',
+    });
   }
 
   ngOnInit(): void {}

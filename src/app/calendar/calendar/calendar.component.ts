@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarOptions } from '@fullcalendar/angular';
@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
 })
-export class CalendarComponent implements OnInit {
-  reviewArrray = [];
+export class CalendarComponent implements OnInit, AfterViewInit {
+  reviewArray = [];
   reviews = this.dbReviewService
     .getReviewsOfAllBooks()
     .subscribe((reviews: Review[]) => {
@@ -25,7 +25,7 @@ export class CalendarComponent implements OnInit {
           review.createdAt.toDate(),
           DATE_FORMAT
         );
-        this.reviewArrray.push({
+        this.reviewArray.push({
           date: transformDate,
           title: review.title,
           question: review.question,
@@ -33,7 +33,7 @@ export class CalendarComponent implements OnInit {
           thumbnail: review.thumbnail,
           bookId: review.bookId,
         });
-        this.calendarOptions.events = this.reviewArrray;
+        this.calendarOptions.events = this.reviewArray;
       });
     });
 
@@ -42,17 +42,13 @@ export class CalendarComponent implements OnInit {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
     headerToolbar: {
-      start: 'today',
-      center: 'title',
+      start: 'title',
       end: 'prev next',
     },
-    buttonText: {
-      month: '月',
-    },
-    eventBackgroundColor: '#ffc400',
-    eventBorderColor: '#ffc400',
+    buttonText: {},
+    eventBackgroundColor: 'rgba(111, 214, 255, 1)',
+    eventBorderColor: 'rgba(0, 0, 0, 0)',
     events: [],
-    locale: 'ja',
     displayEventTime: false,
     dayCellContent(event) {
       event.dayNumberText = event.dayNumberText.replace('日', '');
@@ -66,7 +62,8 @@ export class CalendarComponent implements OnInit {
     private dbReviewService: DatabaseReviewsService,
     private datePipe: DatePipe,
     private matDialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private elementRef: ElementRef
   ) {}
   ngOnInit() {}
 
@@ -89,5 +86,9 @@ export class CalendarComponent implements OnInit {
           this.router.navigate(['review', id]);
         }
       });
+  }
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.background =
+      'rgb(237, 245, 245)';
   }
 }

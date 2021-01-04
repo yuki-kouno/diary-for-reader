@@ -10,6 +10,9 @@ li {
 }
 .container {
   padding: 16px 30px 70px;
+  @include tab {
+    padding: 32px 120px;
+  }
 }
 .close-btn {
   margin-bottom: 16px;
