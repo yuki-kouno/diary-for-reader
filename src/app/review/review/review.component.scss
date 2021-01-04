@@ -17,10 +17,12 @@ mat-tab-group {
   background: radial-gradient(rgba(172, 186, 189, 0.1), #ffffff00);
   &__back-btn {
     opacity: 0.4;
-    position: absolute;
+    position: fixed;
+    top: 22px;
     left: 16px;
+    z-index: 1000;
     @include tab {
-      left: 5%;
+      left: 40px;
     }
   }
   &__back-icon {

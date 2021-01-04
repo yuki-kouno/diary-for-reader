@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'material-custom';
+@import 'mixins';
 .nav {
   height: 50px;
   width: 100%;
@@ -14,6 +15,9 @@
   left: 0;
   right: 0;
   z-index: 100;
+  @include tab {
+    display: none;
+  }
 }
 .icon {
   color: $sub-icon;

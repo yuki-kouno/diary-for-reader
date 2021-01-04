@@ -85,7 +85,11 @@ h2 {
 .wrap-gradient {
   background: linear-gradient(135deg, #ffffff80, #ffffff00);
 }
-.mat-fab:not([class*='mat-elevation-z']),
+.mat-fab:not([class*='mat-elevation-z']) {
+  box-shadow: 3px 6px 10px -1px rgba(126, 126, 126, 0.5),
+    inset 3px 3px 10px rgba(255, 255, 255, 0.521),
+    inset -3px -3px 10px rgba(126, 126, 126, 0.2);
+}
 .mat-mini-fab:not([class*='mat-elevation-z']) {
   box-shadow: 3px 6px 10px -1px rgba(0, 132, 255, 0.5);
 }

@@ -6,10 +6,18 @@ import { ShellComponent } from './shell/shell.component';
 import { BottomNavComponent } from '../bottom-nav/bottom-nav.component';
 import { MatIconModule } from '@angular/material/icon';
 import { SheredModule } from '../shered/shered.module';
+import { SideNavComponent } from '../side-nav/side-nav.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [ShellComponent, BottomNavComponent],
-  imports: [CommonModule, ShellRoutingModule, MatIconModule, SheredModule],
+  declarations: [ShellComponent, BottomNavComponent, SideNavComponent],
+  imports: [
+    CommonModule,
+    ShellRoutingModule,
+    MatIconModule,
+    SheredModule,
+    MatButtonModule,
+  ],
   entryComponents: [BottomNavComponent],
   bootstrap: [ShellComponent],
 })
