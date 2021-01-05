@@ -13,6 +13,7 @@ import { Book } from 'src/app/interface/book';
 import { MatDialog } from '@angular/material/dialog';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-library-search-results',
@@ -34,8 +35,11 @@ export class LibrarySearchResultsComponent
     private elementRef: ElementRef,
     private dialog: MatDialog,
     private booksService: DatabaseBooksService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private seoService: SeoService
+  ) {
+    this.seoService.setTitleAndMeta('ライブラリ内検索');
+  }
 
   openRemoveDialog(book) {
     this.dialog

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-library',
@@ -23,7 +24,12 @@ export class LibraryComponent implements OnInit {
     'desc'
   );
 
-  constructor(private databaseBooks: DatabaseBooksService) {}
+  constructor(
+    private databaseBooks: DatabaseBooksService,
+    private seoService: SeoService
+  ) {
+    this.seoService.setTitleAndMeta('ライブラリー');
+  }
 
   ngOnInit() {}
 }

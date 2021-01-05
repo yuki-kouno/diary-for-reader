@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-terms-service',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./terms-service.component.scss'],
 })
 export class TermsServiceComponent implements OnInit {
-  constructor() {}
+  constructor(private seoService: SeoService) {
+    this.seoService.setTitleAndMeta('利用規約');
+  }
 
   close() {
     history.back();

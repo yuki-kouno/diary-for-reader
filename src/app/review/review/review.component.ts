@@ -13,6 +13,8 @@ import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
 import { ReviewListComponent } from '../review-list/review-list.component';
 import { ReviewFormComponent } from '../review-form/review-form.component';
+import { SeoService } from 'src/app/services/seo.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-review',
@@ -37,8 +39,18 @@ export class ReviewComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private databaseBooks: DatabaseBooksService,
     private databaseReviews: DatabaseReviewsService,
-    private elementRef: ElementRef
-  ) {}
+    private elementRef: ElementRef,
+    private seoService: SeoService
+  ) {
+    this.book$.pipe(
+      tap((book) => {
+        this.seoService.setTitleAndMeta(
+          `${book.volumeInfo.title}`,
+          'レヴューページ'
+        );
+      })
+    );
+  }
 
   back() {
     history.back();

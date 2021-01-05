@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { SignupFormComponent } from '../signup-form/signup-form.component';
 import { LoginFormComponent } from '../login-form/login-form.component';
+import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-welcome',
@@ -10,7 +13,13 @@ import { LoginFormComponent } from '../login-form/login-form.component';
   styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent implements OnInit {
-  constructor(private authService: AuthService, private dialog: MatDialog) {}
+  constructor(
+    private authService: AuthService,
+    private dialog: MatDialog,
+    private seoService: SeoService
+  ) {
+    this.seoService.setTitleAndMeta();
+  }
 
   signUpDialog() {
     this.dialog.open(SignupFormComponent, {});
