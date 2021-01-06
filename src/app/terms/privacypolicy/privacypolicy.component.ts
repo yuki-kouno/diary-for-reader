@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-privacypolicy',
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./privacypolicy.component.scss'],
 })
 export class PrivacypolicyComponent implements OnInit {
-  constructor() {}
+  constructor(private seoService: SeoService) {
+    this.seoService.setTitleAndMeta('プライバシーポリシー');
+  }
+
+  close() {
+    history.back();
+  }
 
   ngOnInit(): void {}
 }

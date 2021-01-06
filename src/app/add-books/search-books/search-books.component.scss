@@ -1,24 +1,32 @@
-.container {
-  .inner {
-    display: flex;
-    justify-content: center;
-    padding: 24px 0;
+@import 'material-custom';
+@import 'mixins';
 
-    input {
-      margin-right: 16px;
-      padding: 10px;
-      border: 1px solid rgba(190, 190, 190, 0.3);
-      border-radius: 5px;
-      &::placeholder {
-        color: rgb(190, 190, 190);
-      }
+.container {
+  padding: 16px 0 70px;
+}
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+
+  &__input {
+    padding-left: 8px;
+    border: 1px solid rgba(190, 190, 190, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.164);
+    &::placeholder {
+      color: rgb(190, 190, 190);
     }
-    input:focus {
-      border: 1px solid #ffc400;
-      outline: 0;
+    &:focus {
+      border: 1px solid mat-color($primary);
     }
-    button {
-      color: white;
-    }
+  }
+  &__btn {
+    color: white;
   }
 }

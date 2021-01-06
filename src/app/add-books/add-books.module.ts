@@ -10,6 +10,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { SheredModule } from '../shered/shered.module';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [SearchBooksComponent, ListBooksComponent],
@@ -23,6 +26,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatIconModule,
+    SheredModule,
+    MatDividerModule,
   ],
   entryComponents: [SearchBooksComponent, ListBooksComponent],
 })

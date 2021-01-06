@@ -4,7 +4,7 @@
       <ng-container formArrayName="answers">
         <ng-container *ngFor="let answer of answers.controls; index as i">
           <div [formGroupName]="i">
-            <mat-form-field clase="reviews" floatLabel="always">
+            <mat-form-field floatLabel="always">
               <mat-label>
                 {{ selectedQuestion[i] }}
               </mat-label>
@@ -45,19 +45,20 @@
 
     <div class="review-btns">
       <button
-        class="review-btns__questions"
+        class="review-btns__questions wrap-gradient"
         mat-flat-button
         color="primary"
         [matMenuTriggerRestoreFocus]="false"
         [matMenuTriggerFor]="questionMenu"
+        (click)="onGuard()"
       >
         質問を選択
       </button>
       <button
-        class="review-btns__free-text"
+        class="review-btns__free-text wrap-gradient"
         mat-flat-button
         color="accent"
-        (click)="addQuestion(null)"
+        (click)="addQuestion(null); onGuard()"
       >
         自由に書く
       </button>

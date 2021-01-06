@@ -1,0 +1,7 @@
+@import 'mixins';
+.container {
+  padding: 8px 8px 60px;
+  @include tab {
+    padding: 8px 120px;
+  }
+}

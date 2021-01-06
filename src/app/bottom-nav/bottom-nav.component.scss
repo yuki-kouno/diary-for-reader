@@ -1,0 +1,28 @@
+@import 'variables';
+@import 'material-custom';
+@import 'mixins';
+.nav {
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  @include tab {
+    display: none;
+  }
+}
+.icon {
+  color: $sub-icon;
+  opacity: 0.5;
+  &:hover {
+    color: mat-color($primary);
+  }
+}

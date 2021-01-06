@@ -2,8 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
-import { MatDialog } from '@angular/material/dialog';
-import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-library',
@@ -11,23 +10,25 @@ import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component'
   styleUrls: ['./library.component.scss'],
 })
 export class LibraryComponent implements OnInit {
-  books$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks();
-  isGrid = true;
+  orderBy = 'newest first.';
+  booksToNew$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks(
+    'createdAt',
+    'desc'
+  );
+  booksToOld$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks(
+    'createdAt',
+    'asc'
+  );
+  booksByAuthors$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks(
+    'volumeInfo.authors',
+    'desc'
+  );
 
   constructor(
     private databaseBooks: DatabaseBooksService,
-    public dialog: MatDialog
-  ) {}
-
-  openRemoveDialog(book) {
-    this.dialog
-      .open(RemoveDialogComponent)
-      .afterClosed()
-      .subscribe((status) => {
-        if (status) {
-          this.databaseBooks.removeToFavoriteBook(book.id);
-        }
-      });
+    private seoService: SeoService
+  ) {
+    this.seoService.setTitleAndMeta('ライブラリー');
   }
 
   ngOnInit() {}

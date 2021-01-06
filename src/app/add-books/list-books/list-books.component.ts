@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { switchMap, map, take } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from 'src/app/services/auth.service';
+import { switchMap, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
@@ -26,8 +24,6 @@ export class ListBooksComponent implements OnInit, OnDestroy {
     public googleBooksApi: GoogleBooksApiService,
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
-    private db: AngularFirestore,
-    private authService: AuthService,
     private snackBar: MatSnackBar
   ) {
     this.subscriptions = this.databaseBooks
@@ -57,9 +53,7 @@ export class ListBooksComponent implements OnInit, OnDestroy {
       .subscribe((bookIds) => (this.myfavoriteBookIds = bookIds));
     this.isMyfavorite = this.myfavoriteBookIds.includes(book.id);
     if (this.isMyfavorite) {
-      this.snackBar.open(`この本ライブラリにあるよー`, null, {
-        duration: 2000,
-      });
+      this.snackBar.open(`すでに保存されています`);
     } else {
       this.databaseBooks.createToFavoriteBook(book);
     }

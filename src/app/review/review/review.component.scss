@@ -1,52 +1,81 @@
-* {
-  color: rgb(61, 61, 61);
-}
-p {
-  margin: 0;
-}
+@import 'variables';
+@import 'mixins';
 
 .container {
-  padding: 35px 17px 70px;
+  padding: 0 0 70px;
 }
 
-.date {
-  text-align: center;
-  margin-bottom: 16px;
+mat-tab-group {
+  @include tab {
+    padding: 0 16%;
+  }
 }
 
 .top {
-  display: grid;
-  grid-template-columns: 33% 66%;
-  grid-template-rows: 80px 40px;
+  position: relative;
+  padding: 24px 0 40px;
+  background: radial-gradient(rgba(172, 186, 189, 0.1), #ffffff00);
+  &__back-btn {
+    opacity: 0.4;
+    position: fixed;
+    top: 22px;
+    left: 16px;
+    z-index: 1000;
+    @include tab {
+      left: 40px;
+    }
+  }
+  &__back-icon {
+    color: $sub-icon;
+    font-size: 24px;
+  }
+}
+.date {
+  text-align: center;
   margin-bottom: 24px;
+  color: #808080;
+}
 
-  input {
-    margin: 10px 0;
+.grid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  &__body {
     text-align: center;
-    border: none;
-  }
-
-  header {
-    padding: 0 16px;
-    grid-column: 2/3;
-    grid-row: 1/2;
-    max-height: 41px;
-  }
-  footer {
-    grid-column: 2/3;
-    grid-row: 2/3;
     margin: 0 auto;
   }
-  aside {
-    grid-column: 1/2;
-    grid-row: 1/2;
-    text-align: center;
-    .book-choice {
-      padding: 12px 20px;
-      opacity: 0.6;
+  &__figure {
+    position: relative;
+    width: 160px;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 4px;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.1) 2%,
+        rgba(255, 255, 255, 0.3) 5%,
+        rgba(0, 0, 0, 0) 50%
+      );
     }
-    img {
-      max-height: 123px;
-    }
+  }
+  &__img {
+    width: 160px;
+    object-fit: cover;
+    box-shadow: 10px 20px 50px rgba(128, 128, 128, 0.719);
+  }
+  &__title {
+    font-size: 13px;
+    color: #808080;
+    margin: 16px 8px 8px;
+  }
+  &__authors {
+    font-size: 14px;
+    color: #808080;
+    margin: 0 8px;
   }
 }

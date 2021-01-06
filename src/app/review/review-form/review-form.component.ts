@@ -4,6 +4,8 @@ import {
   Input,
   ChangeDetectorRef,
   HostListener,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { questionsList } from './questions-list';
@@ -20,6 +22,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ReviewFormComponent implements OnInit {
   @Input() book: Book;
+  @Input() checkedGuard: boolean;
+  @Output() event = new EventEmitter();
   showInput: boolean;
   selectedQuestion = [];
   questionsList = questionsList;
@@ -50,6 +54,11 @@ export class ReviewFormComponent implements OnInit {
 
   get answers(): FormArray {
     return this.form.get('answers') as FormArray;
+  }
+
+  onGuard() {
+    this.checkedGuard = true;
+    this.event.emit(this.checkedGuard);
   }
 
   addQuestion(question: string) {

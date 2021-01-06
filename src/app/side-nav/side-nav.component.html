@@ -1,0 +1,29 @@
+<ul class="nav">
+  <li class="item">
+    <button mat-fab class="item__btn wrap-gradient" routerLink="/">
+      <mat-icon class="item__icon material-icons-outlined"
+        >import_contacts</mat-icon
+      >
+    </button>
+  </li>
+  <li class="item">
+    <button mat-fab class="item__btn wrap-gradient" routerLink="/calendar">
+      <mat-icon class="item__icon material-icons-outlined">date_range</mat-icon>
+    </button>
+  </li>
+  <li class="item">
+    <button mat-fab class="item__btn wrap-gradient" routerLink="/add-books">
+      <mat-icon class="item__icon material-icons-rounded">add</mat-icon>
+    </button>
+  </li>
+  <li class="item">
+    <button mat-fab class="item__btn wrap-gradient" routerLink="/books-ranking">
+      <mat-icon class="item__icon">format_list_numbered</mat-icon>
+    </button>
+  </li>
+  <li class="item">
+    <button mat-fab class="item__btn wrap-gradient" (click)="openSheet()">
+      <mat-icon class="item__icon">more_horiz</mat-icon>
+    </button>
+  </li>
+</ul>

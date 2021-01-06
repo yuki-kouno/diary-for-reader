@@ -1,0 +1,41 @@
+@import 'mixins';
+.container {
+  padding: 8px;
+  color: #505050;
+  @include tab {
+    width: 40%;
+    margin: 120px auto;
+  }
+}
+.close-btn {
+  margin: 8px 0 32px;
+  font-size: 24px;
+  color: #505050;
+}
+li {
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 16px;
+  &__item {
+    margin-bottom: 16px;
+    cursor: pointer;
+  }
+  &__icon {
+    margin-right: 8px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+    @include tab {
+      margin-right: 16px;
+    }
+  }
+}
+mat-divider {
+  margin-bottom: 16px;
+}

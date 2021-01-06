@@ -1,63 +1,79 @@
-:host {
-  display: block;
-  padding: 16px;
+@import 'mixins';
+@import 'material-custom';
+@import 'variables';
+.container {
+  background-color: rgb(237, 245, 245);
+  padding: 0 0 60px;
 }
-
-.header-nav {
+.header {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  height: 70px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-  padding-right: 24px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  &__logo {
+    display: flex;
+    flex: 2;
+    align-items: baseline;
+  }
+  &__brand-logo {
+    height: 48px;
+    width: 48px;
+    @include tab {
+      height: 60px;
+      width: 60px;
+    }
+  }
+  &__brand-title {
+    display: none;
+    margin-bottom: 10px;
+    @include pc {
+      display: inherit;
+      padding-bottom: 8px;
+    }
+  }
+  &__page-title {
+    text-align: center;
+    flex: 2;
+  }
   &__sort {
-    line-height: 1;
+    flex: 2;
+    text-align: right;
+  }
+  &__icon {
+    opacity: 0.5;
+    font-size: 28px;
+    color: $sub-icon;
+    margin-right: 8px;
+    transition: 0.3s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+.order-title {
+  padding: 100px 0 60px;
+  text-align: center;
+  &__border {
+    border-bottom: 1px solid mat-color($primary);
+  }
+}
+.books {
+  padding: 0 32px;
+  @include tab {
+    padding: 0 160px;
   }
   &__grid {
-    line-height: 1;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
-  &__list {
-    line-height: 1;
-  }
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  outline: none;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 24px;
-}
-
-.grid-book {
-  list-style: none;
-  position: relative;
-  width: 100%;
-  min-height: 120px;
-  height: 100%;
-  object-fit: cover;
-  background: #ddd;
-  &__remove {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: rgba(145, 145, 145, 0.5);
-  }
-}
-
-.list-book {
-  list-style: none;
-  padding: 8px;
-  display: grid;
-  gap: 16;
-  grid-template-columns: 80px 1fr 40px;
-}
-
-@media screen and (max-width: 470px) {
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  &__item {
+    display: flex;
+    justify-content: center;
   }
 }

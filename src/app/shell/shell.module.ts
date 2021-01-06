@@ -3,12 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { ShellRoutingModule } from './shell-routing.module';
 import { ShellComponent } from './shell/shell.component';
-import { NavComponent } from '../services/nav/nav.component';
+import { BottomNavComponent } from '../bottom-nav/bottom-nav.component';
+import { MatIconModule } from '@angular/material/icon';
+import { SheredModule } from '../shered/shered.module';
+import { SideNavComponent } from '../side-nav/side-nav.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [ShellComponent, NavComponent],
-  imports: [CommonModule, ShellRoutingModule],
-  entryComponents: [NavComponent],
+  declarations: [ShellComponent, BottomNavComponent, SideNavComponent],
+  imports: [
+    CommonModule,
+    ShellRoutingModule,
+    MatIconModule,
+    SheredModule,
+    MatButtonModule,
+  ],
+  entryComponents: [BottomNavComponent],
   bootstrap: [ShellComponent],
 })
 export class ShellModule {}

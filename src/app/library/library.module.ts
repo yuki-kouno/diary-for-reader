@@ -11,6 +11,8 @@ import { RemoveDialogComponent } from './remove-dialog/remove-dialog.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LibrarySearchResultsComponent } from './library-search-results/library-search-results.component';
 import { LibrarySearchComponent } from './library-search/library-search.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { SheredModule } from '../shered/shered.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { LibrarySearchComponent } from './library-search/library-search.componen
     RemoveDialogComponent,
     LibrarySearchResultsComponent,
     LibrarySearchComponent,
+    BookListComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +31,7 @@ import { LibrarySearchComponent } from './library-search/library-search.componen
     MatDialogModule,
     ReactiveFormsModule,
     FormsModule,
+    SheredModule,
   ],
 })
 export class LibraryModule {}

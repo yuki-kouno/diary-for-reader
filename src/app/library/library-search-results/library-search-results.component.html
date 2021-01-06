@@ -1,14 +1,30 @@
-<ng-container *ngIf="searchText">
-  <h2>検索結果一覧 ヒット件数: {{ result?.nbHits }}</h2>
-  <ul *ngFor="let hit of result?.hits">
-    <li>
-      <img
-        [src]="hit.volumeInfo.imageLinks.thumbnail"
-        [alt]="hit.volumeInfo.title"
-        [routerLink]="['/review', hit.id]"
-      />
-      <p>{{ hit.volumeInfo.title }}</p>
-      <p>{{ hit.volumeInfo.authors }}</p>
-    </li>
-  </ul>
-</ng-container>
+<div class="container" *ngIf="searchText">
+  <div class="grid">
+    <div class="book" *ngFor="let book of results">
+      <figure class="book__figure" [routerLink]="['/review', book.id]">
+        <img
+          class="book__img"
+          [src]="book.volumeInfo.imageLinks.thumbnail"
+          [alt]="book.volumeInfo.title"
+        />
+      </figure>
+      <div class="info">
+        <p class="info__title">
+          {{ book.volumeInfo.title }}
+        </p>
+        <p class="info__authors">
+          {{ book.volumeInfo.authors }}
+        </p>
+      </div>
+      <button [matMenuTriggerFor]="menu">
+        <mat-icon class="remove-icon">more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openRemoveDialog(book)">
+          <mat-icon>delete</mat-icon>
+          <span>削除</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-library-search',
@@ -7,12 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./library-search.component.scss'],
 })
 export class LibrarySearchComponent implements OnInit {
-  @Input() searchText: string;
+  searchForm = new FormControl();
 
   constructor(private router: Router) {}
 
-  searchBook() {
-    this.router.navigate(['library-search', this.searchText]);
+  back() {
+    history.back();
+  }
+
+  async searchBook() {
+    await this.router.navigate(['library-search', this.searchForm.value]);
+    await location.reload();
   }
 
   ngOnInit(): void {}

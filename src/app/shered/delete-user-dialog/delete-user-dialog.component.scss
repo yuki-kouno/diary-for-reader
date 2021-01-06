@@ -1,0 +1,33 @@
+@import 'material-custom';
+.container {
+  padding: 16px;
+  text-align: center;
+}
+.description {
+  font-size: 16px;
+  color: #303030;
+  margin-bottom: 16px;
+}
+.attention {
+  font-size: 14px;
+  color: rgb(253, 176, 76);
+  margin-bottom: 16px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+
+  &__input {
+    padding: 10px;
+    border: 1px solid rgba(190, 190, 190, 0.3);
+    border-radius: 5px;
+    &:focus {
+      border: 1px solid mat-color($primary);
+    }
+  }
+  &__btn {
+    color: white;
+    margin-right: 24px;
+  }
+}
