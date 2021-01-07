@@ -1,0 +1,48 @@
+@import 'mixins';
+@import 'material-custom';
+
+header {
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  text-align: center;
+}
+.logo {
+  position: absolute;
+  top: 6px;
+  left: 16px;
+  &__sp {
+    height: 48px;
+    @include tab {
+      display: none;
+    }
+  }
+  &__tab {
+    height: 60px;
+    @include sp {
+      display: none;
+    }
+  }
+}
+.title {
+  line-height: 70px;
+}
+.container {
+  padding: 70px 16px;
+  @include tab {
+    padding: 70px 160px;
+  }
+}
+.grid {
+  padding-top: 24px;
+  display: grid;
+  gap: 64px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  @include tab {
+    padding-top: 64px;
+  }
+  &__contents {
+    text-align: center;
+  }
+}

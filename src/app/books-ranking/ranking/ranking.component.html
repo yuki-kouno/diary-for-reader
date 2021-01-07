@@ -1,10 +1,8 @@
 <div class="book">
-  <figure class="book__thumb">
-    <img [src]="book.img" [alt]="book.title" />
-  </figure>
   <p class="book__id">{{ rankingIndex + 1 }}</p>
-  <div class="book__body">
-    <p class="book__title">{{ book.title }}</p>
-    <p class="author">{{ book.author }}</p>
-  </div>
+  <figure class="book__thumb">
+    <img class="book__img" [src]="book.img" [alt]="book.title" />
+  </figure>
+  <p class="book__title">{{ book.title }}</p>
+  <p class="book__author">{{ book.author }}</p>
 </div>
