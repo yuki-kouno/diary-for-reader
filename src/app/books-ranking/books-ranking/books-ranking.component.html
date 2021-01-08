@@ -1,44 +1,75 @@
-<mat-tab-group>
-  <mat-tab label="総合">
-    <app-ranking
-      [book]="book"
-      [rankingIndex]="i"
-      *ngFor="let book of booksRanking$ | async; index as i"
-    ></app-ranking>
-  </mat-tab>
-  <mat-tab label="ビジネス">
-    <app-ranking
-      [book]="book"
-      [rankingIndex]="i"
-      *ngFor="let book of businessesRanking$ | async; index as i"
-    ></app-ranking>
-  </mat-tab>
-  <mat-tab label="人文・思想">
-    <app-ranking
-      [book]="book"
-      [rankingIndex]="i"
-      *ngFor="let book of humanitiesRanking$ | async; index as i"
-    ></app-ranking>
-  </mat-tab>
-  <mat-tab label="文芸・評論">
-    <app-ranking
-      [book]="book"
-      [rankingIndex]="i"
-      *ngFor="let book of literaturesRanking$ | async; index as i"
-    ></app-ranking>
-  </mat-tab>
-  <mat-tab label="コミック">
-    <app-ranking
-      [book]="book"
-      [rankingIndex]="i"
-      *ngFor="let book of comicsRanking$ | async; index as i"
-    ></app-ranking>
-  </mat-tab>
-  <mat-tab label="ホビー">
-    <app-ranking
-      [book]="book"
-      [rankingIndex]="i"
-      *ngFor="let book of hobbiesRanking$ | async; index as i"
-    ></app-ranking>
-  </mat-tab>
-</mat-tab-group>
+<header>
+  <div class="logo">
+    <img src="assets/images/brand.png" alt="brand.logo" class="logo__sp" />
+    <img
+      src="assets/images/brand-title.png"
+      alt="brand.logo"
+      class="logo__tab"
+    />
+  </div>
+  <h2 class="title">Book Ranking</h2>
+</header>
+<div class="container">
+  <mat-tab-group>
+    <mat-tab label="総合">
+      <div class="grid">
+        <app-ranking
+          class="grid__contents"
+          [book]="book"
+          [rankingIndex]="i"
+          *ngFor="let book of booksRanking$ | async; index as i"
+        ></app-ranking>
+      </div>
+    </mat-tab>
+    <mat-tab label="ビジネス">
+      <div class="grid">
+        <app-ranking
+          class="grid__contents"
+          [book]="book"
+          [rankingIndex]="i"
+          *ngFor="let book of businessesRanking$ | async; index as i"
+        ></app-ranking>
+      </div>
+    </mat-tab>
+    <mat-tab label="人文・思想">
+      <div class="grid">
+        <app-ranking
+          class="grid__contents"
+          [book]="book"
+          [rankingIndex]="i"
+          *ngFor="let book of humanitiesRanking$ | async; index as i"
+        ></app-ranking>
+      </div>
+    </mat-tab>
+    <mat-tab label="文芸・評論">
+      <div class="grid">
+        <app-ranking
+          class="grid__contents"
+          [book]="book"
+          [rankingIndex]="i"
+          *ngFor="let book of literaturesRanking$ | async; index as i"
+        ></app-ranking>
+      </div>
+    </mat-tab>
+    <mat-tab label="コミック">
+      <div class="grid">
+        <app-ranking
+          class="grid__contents"
+          [book]="book"
+          [rankingIndex]="i"
+          *ngFor="let book of comicsRanking$ | async; index as i"
+        ></app-ranking>
+      </div>
+    </mat-tab>
+    <mat-tab label="ホビー">
+      <div class="grid">
+        <app-ranking
+          class="grid__contents"
+          [book]="book"
+          [rankingIndex]="i"
+          *ngFor="let book of hobbiesRanking$ | async; index as i"
+        ></app-ranking>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

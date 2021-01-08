@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NavService } from './services/nav.service';
 import { AuthService } from './services/auth.service';
 
@@ -6,6 +6,7 @@ import { AuthService } from './services/auth.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   user$ = this.authService.afUser$;
