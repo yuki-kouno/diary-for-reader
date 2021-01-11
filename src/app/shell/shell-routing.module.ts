@@ -7,20 +7,18 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
     children: [
-      {
-        path: 'review',
-        loadChildren: () =>
-          import('../review/review.module').then((mod) => mod.ReviewModule),
-        canLoad: [AuthGuard],
-        canActivate: [AuthGuard],
-      },
       {
         path: '',
         loadChildren: () =>
           import('../library/library.module').then((mod) => mod.LibraryModule),
-        canLoad: [AuthGuard],
-        canActivate: [AuthGuard],
+      },
+      {
+        path: 'review',
+        loadChildren: () =>
+          import('../review/review.module').then((mod) => mod.ReviewModule),
       },
       {
         path: 'add-books',
@@ -28,8 +26,6 @@ const routes: Routes = [
           import('../add-books/add-books.module').then(
             (mod) => mod.AddBooksModule
           ),
-        canLoad: [AuthGuard],
-        canActivate: [AuthGuard],
       },
       {
         path: 'calendar',
@@ -37,8 +33,6 @@ const routes: Routes = [
           import('../calendar/calendar.module').then(
             (mod) => mod.CalendarModule
           ),
-        canLoad: [AuthGuard],
-        canActivate: [AuthGuard],
       },
       {
         path: 'books-ranking',
@@ -46,15 +40,11 @@ const routes: Routes = [
           import('../books-ranking/books-ranking.module').then(
             (mod) => mod.BooksRankingModule
           ),
-        canLoad: [AuthGuard],
-        canActivate: [AuthGuard],
       },
       {
         path: 'terms',
         loadChildren: () =>
           import('../terms/terms.module').then((mod) => mod.TermsModule),
-        canLoad: [AuthGuard],
-        canActivate: [AuthGuard],
       },
     ],
   },
