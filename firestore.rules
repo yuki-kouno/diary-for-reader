@@ -1,8 +1,27 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if request.auth.uid != null;
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if request.auth.uid == request.resource.data.uid;
+      allow update: if request.auth.uid == resource.data.uid && request.resource.data.uid == resource.data.uid;
+      allow delete: if request.auth.uid == resource.data.uid;
+    	match /favoriteBooks/{favoriteBookId} {
+      	allow read: if request.auth.uid == userId;
+        allow create: if request.auth.uid == request.resource.data.uid;
+      	allow update: if request.auth.uid == resource.data.uid && request.resource.data.uid == resource.data.uid;
+    		allow delete: if request.auth.uid == resource.data.uid;
+      }
+    }
+    match /{path=**}/reviews/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth.uid == request.resource.data.uid;
+      allow update: if request.auth.uid == resource.data.uid && request.resource.data.uid == resource.data.uid;
+      allow delete: if request.auth.uid == resource.data.uid;
+    }
+    match /bookRanking/{document=**} {
+    	allow read: if true;
     }
   }
 }
+
