@@ -72,15 +72,14 @@ h2 {
 .login__item {
   border-radius: 50px !important;
 }
-.cdk-overlay-dark-backdrop {
-  background: inherit;
-}
 .mat-dialog-container {
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
   border-radius: 10px !important;
-  box-shadow: none;
-  background-color: rgba(255, 255, 255, 0.548);
+  box-shadow: 10px 10px 10px rgba(48, 48, 56, 0.02);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: solid 2px transparent;
+  background-clip: padding-box;
 }
 .wrap-gradient {
   background: linear-gradient(135deg, #ffffff80, #ffffff00);

@@ -9,6 +9,8 @@
   <form class="form">
     <input class="form__input" type="text" [formControl]="form" />
     <button
+      (click)="deleteUser()"
+      mat-dialog-close
       class="form__btn"
       mat-flat-button
       color="primary"

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-delete-user-dialog',
@@ -8,7 +9,11 @@ import { FormControl } from '@angular/forms';
 })
 export class DeleteUserDialogComponent implements OnInit {
   form = new FormControl('');
-  constructor() {}
+  constructor(private userService: UserService) {}
+
+  deleteUser() {
+    this.userService.deleteUser();
+  }
 
   ngOnInit(): void {}
 }
