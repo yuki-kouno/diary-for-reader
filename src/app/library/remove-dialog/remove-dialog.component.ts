@@ -19,7 +19,7 @@ export class RemoveDialogComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  removeToFavoriteBook(book) {
+  removeToFavoriteBook(book: Book) {
     this.databaseBooks.removeToFavoriteBook(book.bookId);
   }
 

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { SearchLibraryService } from 'src/app/services/search-library.service';
 import { SearchIndex } from 'algoliasearch/lite';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Book } from 'src/app/interface/book';
 import { MatDialog } from '@angular/material/dialog';
@@ -26,6 +26,7 @@ export class LibrarySearchResultsComponent
   searchText: string;
   uid = this.authService.uid;
   results: Book[];
+  isResults: boolean;
   subscriptions;
 
   constructor(
@@ -35,31 +36,35 @@ export class LibrarySearchResultsComponent
     private elementRef: ElementRef,
     private dialog: MatDialog,
     private booksService: DatabaseBooksService,
-    private router: Router,
     private seoService: SeoService
   ) {
     this.seoService.setTitleAndMeta('ライブラリ内検索');
   }
 
-  openRemoveDialog(book) {
-    this.dialog
+  openRemoveDialog(book, i) {
+    const dialogRef = this.dialog
       .open(RemoveDialogComponent)
       .afterClosed()
       .subscribe((status) => {
         if (status) {
           this.booksService.removeToFavoriteBook(book.id);
+          this.results.splice(i, 1);
         }
-        this.router.navigate(['/']);
       });
   }
 
   ngOnInit() {
-    console.log('init');
     this.subscriptions = this.route.paramMap.subscribe((param) => {
       this.searchText = param.get('searchText');
       this.index.search(this.searchText).then((datas) => {
         const hits: any = datas.hits;
-        this.results = hits.filter((hit) => hit.uid === this.uid);
+        const list = hits.filter((hit) => hit.uid === this.uid);
+        if (list.length > 0) {
+          this.isResults = true;
+          this.results = list;
+        } else {
+          this.isResults = false;
+        }
       });
     });
   }

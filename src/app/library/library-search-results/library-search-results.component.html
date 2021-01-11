@@ -1,30 +1,39 @@
-<div class="container" *ngIf="searchText">
-  <div class="grid">
-    <div class="book" *ngFor="let book of results">
-      <figure class="book__figure" [routerLink]="['/review', book.id]">
-        <img
-          class="book__img"
-          [src]="book.volumeInfo.imageLinks.thumbnail"
-          [alt]="book.volumeInfo.title"
-        />
-      </figure>
-      <div class="info">
-        <p class="info__title">
-          {{ book.volumeInfo.title }}
-        </p>
-        <p class="info__authors">
-          {{ book.volumeInfo.authors }}
-        </p>
-      </div>
-      <button [matMenuTriggerFor]="menu">
-        <mat-icon class="remove-icon">more_horiz</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="openRemoveDialog(book)">
-          <mat-icon>delete</mat-icon>
-          <span>削除</span>
+<div class="container" *ngIf="searchText; else blank">
+  <ng-container *ngIf="isResults; else rest">
+    <div class="grid">
+      <div class="book" *ngFor="let book of results; index as i">
+        <figure class="book__figure" [routerLink]="['/review', book.id]">
+          <img
+            class="book__img"
+            [src]="book.volumeInfo.imageLinks.thumbnail"
+            [alt]="book.volumeInfo.title"
+          />
+        </figure>
+        <div class="info">
+          <p class="info__title">
+            {{ book.volumeInfo.title }}
+          </p>
+          <p class="info__authors">
+            {{ book.volumeInfo.authors }}
+          </p>
+        </div>
+        <button [matMenuTriggerFor]="menu">
+          <mat-icon class="remove-icon">more_horiz</mat-icon>
         </button>
-      </mat-menu>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openRemoveDialog(book, i)">
+            <mat-icon>delete</mat-icon>
+            <span>削除</span>
+          </button>
+        </mat-menu>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #rest>
+    <p class="blank-heading">一致する検索結果はありませんでした</p>
+    <p class="blank-sub">別のキーワードを試してみてください</p>
+  </ng-template>
 </div>
+<ng-template #blank>
+  <p class="blank-heading">タイトル、著者名、キーワードで検索してください</p>
+</ng-template>

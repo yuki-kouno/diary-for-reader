@@ -67,3 +67,22 @@
 .remove-icon {
   color: #606060;
 }
+.blank-heading {
+  font-size: 16px;
+  color: #505050;
+  text-align: center;
+  padding: 16px;
+  margin-top: 60px;
+  @include tab {
+    font-size: 20px;
+    margin-top: 120px;
+  }
+}
+.blank-sub {
+  font-size: 14px;
+  color: #505050;
+  text-align: center;
+  @include tab {
+    font-size: 16px;
+  }
+}
