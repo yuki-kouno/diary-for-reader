@@ -1,29 +1,34 @@
 <ul class="nav">
   <li class="item">
-    <button mat-fab class="item__btn wrap-gradient" routerLink="/">
+    <a mat-fab class="item__btn wrap-gradient" routerLink="/">
       <mat-icon class="item__icon material-icons-outlined"
         >import_contacts</mat-icon
       >
-    </button>
+      <p>ライブラリ</p>
+    </a>
   </li>
   <li class="item">
-    <button mat-fab class="item__btn wrap-gradient" routerLink="/calendar">
+    <a mat-fab class="item__btn wrap-gradient" routerLink="/calendar">
       <mat-icon class="item__icon material-icons-outlined">date_range</mat-icon>
-    </button>
+      <p>カレンダー</p>
+    </a>
   </li>
   <li class="item">
-    <button mat-fab class="item__btn wrap-gradient" routerLink="/add-books">
+    <a mat-fab class="item__btn wrap-gradient" routerLink="/add-books">
       <mat-icon class="item__icon material-icons-rounded">add</mat-icon>
-    </button>
+      <p>本を追加</p>
+    </a>
   </li>
   <li class="item">
-    <button mat-fab class="item__btn wrap-gradient" routerLink="/books-ranking">
+    <a mat-fab class="item__btn wrap-gradient" routerLink="/books-ranking">
       <mat-icon class="item__icon">format_list_numbered</mat-icon>
-    </button>
+      <p>カレンダー</p>
+    </a>
   </li>
   <li class="item">
-    <button mat-fab class="item__btn wrap-gradient" (click)="openSheet()">
+    <a mat-fab class="item__btn wrap-gradient" (click)="openSheet()">
       <mat-icon class="item__icon">more_horiz</mat-icon>
-    </button>
+      <p>設定</p>
+    </a>
   </li>
 </ul>

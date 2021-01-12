@@ -93,9 +93,11 @@ h2 {
   box-shadow: 3px 6px 10px -1px rgba(0, 132, 255, 0.5);
 }
 .mat-bottom-sheet-container {
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  background-color: rgba(240, 240, 240, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: solid 2px transparent;
+  background-clip: padding-box;
 }
 .custom-bottom-nav {
   height: 80vh;
