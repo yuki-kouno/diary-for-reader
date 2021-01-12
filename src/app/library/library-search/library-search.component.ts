@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
@@ -16,9 +16,8 @@ export class LibrarySearchComponent implements OnInit {
     history.back();
   }
 
-  async searchBook() {
-    await this.router.navigate(['library-search', this.searchForm.value]);
-    await location.reload();
+  searchBook() {
+    this.router.navigate(['library-search', this.searchForm.value]);
   }
 
   ngOnInit(): void {}

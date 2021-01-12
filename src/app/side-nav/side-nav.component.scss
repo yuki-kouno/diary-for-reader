@@ -2,14 +2,14 @@
 @import 'material-custom';
 @import 'mixins';
 .nav {
-  height: 100vh;
+  height: calc(100vh - 70px);
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   vertical-align: middle;
   justify-content: flex-end;
-  top: 0;
+  top: 70px;
   bottom: 0;
   left: 0;
   z-index: 100;
