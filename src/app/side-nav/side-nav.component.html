@@ -1,34 +1,64 @@
 <ul class="nav">
   <li class="item">
-    <a mat-fab class="item__btn wrap-gradient" routerLink="/">
+    <a
+      mat-fab
+      matTooltip="ライブラリ"
+      matTooltipPosition="right"
+      matTooltipClass="tooltip"
+      class="item__btn wrap-gradient"
+      routerLink="/"
+    >
       <mat-icon class="item__icon material-icons-outlined"
         >import_contacts</mat-icon
       >
-      <p>ライブラリ</p>
     </a>
   </li>
   <li class="item">
-    <a mat-fab class="item__btn wrap-gradient" routerLink="/calendar">
+    <a
+      mat-fab
+      matTooltip="カレンダー"
+      matTooltipPosition="right"
+      matTooltipClass="tooltip"
+      class="item__btn wrap-gradient"
+      routerLink="/calendar"
+    >
       <mat-icon class="item__icon material-icons-outlined">date_range</mat-icon>
-      <p>カレンダー</p>
     </a>
   </li>
   <li class="item">
-    <a mat-fab class="item__btn wrap-gradient" routerLink="/add-books">
+    <a
+      mat-fab
+      matTooltip="本を追加"
+      matTooltipPosition="right"
+      matTooltipClass="tooltip"
+      class="item__btn wrap-gradient"
+      routerLink="/add-books"
+    >
       <mat-icon class="item__icon material-icons-rounded">add</mat-icon>
-      <p>本を追加</p>
     </a>
   </li>
   <li class="item">
-    <a mat-fab class="item__btn wrap-gradient" routerLink="/books-ranking">
+    <a
+      mat-fab
+      matTooltip="ランキング"
+      matTooltipPosition="right"
+      matTooltipClass="tooltip"
+      class="item__btn wrap-gradient"
+      routerLink="/books-ranking"
+    >
       <mat-icon class="item__icon">format_list_numbered</mat-icon>
-      <p>カレンダー</p>
     </a>
   </li>
   <li class="item">
-    <a mat-fab class="item__btn wrap-gradient" (click)="openSheet()">
+    <a
+      mat-fab
+      matTooltip="設定"
+      matTooltipPosition="right"
+      matTooltipClass="tooltip"
+      class="item__btn wrap-gradient"
+      (click)="openSheet()"
+    >
       <mat-icon class="item__icon">more_horiz</mat-icon>
-      <p>設定</p>
     </a>
   </li>
 </ul>

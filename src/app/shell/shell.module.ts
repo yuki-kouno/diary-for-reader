@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SheredModule } from '../shered/shered.module';
 import { SideNavComponent } from '../side-nav/side-nav.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [ShellComponent, BottomNavComponent, SideNavComponent],
@@ -17,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     SheredModule,
     MatButtonModule,
+    MatTooltipModule,
   ],
   entryComponents: [BottomNavComponent],
   bootstrap: [ShellComponent],

@@ -169,3 +169,8 @@ h2 {
 .mat-tab-header-pagination-chevron {
   border-color: #808080;
 }
+.tooltip {
+  background-color: rgb(240, 240, 240);
+  color: mat-color($primary) !important;
+  font-weight: bold;
+}

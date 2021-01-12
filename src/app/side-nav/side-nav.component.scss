@@ -20,25 +20,15 @@
 .item {
   margin: 0 0 16px 16px;
   &__btn {
-    width: 70px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bold;
-    color: #909090;
     background-color: rgba(214, 214, 214, 0.411);
     &:hover {
       transition: 0.3s;
-      color: mat-color($primary);
       box-shadow: 4px 10px 10px #5e5e5e6e,
         inset 6px 6px 10px rgba(255, 255, 255, 0.671),
         inset -3px -1px 10px rgba(126, 126, 126, 0.2);
       .item__icon {
-        color: mat-color($primary);
         transition: 0.3s;
+        color: mat-color($primary);
       }
     }
   }
