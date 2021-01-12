@@ -27,7 +27,16 @@ export class AuthGuard implements CanActivate, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.authService.afUser$.pipe(map((user) => !!user));
+    return this.authService.afUser$.pipe(
+      map((user) => !!user),
+      map((isLoggedin) => {
+        if (!isLoggedin) {
+          this.router.navigateByUrl('/welcome');
+          return false;
+        }
+        return true;
+      })
+    );
   }
   canLoad(
     route: Route,
