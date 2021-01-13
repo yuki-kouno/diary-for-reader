@@ -8,9 +8,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.4);
+  border: solid 2px transparent;
+  background-clip: padding-box;
   bottom: 0;
   left: 0;
   right: 0;
@@ -19,10 +21,23 @@
     display: none;
   }
 }
-.icon {
-  color: $sub-icon;
-  opacity: 0.5;
+.item {
+  width: 20%;
+  text-align: center;
+  &__title {
+    font-size: 10px;
+    font-weight: bold;
+    color: #909090;
+  }
+  &__icon {
+    color: #909090;
+  }
   &:hover {
-    color: mat-color($primary);
+    .item__title {
+      color: mat-color($primary);
+    }
+    .item__icon {
+      color: mat-color($primary);
+    }
   }
 }

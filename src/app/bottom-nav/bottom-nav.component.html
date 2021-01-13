@@ -1,27 +1,36 @@
 <ul class="nav">
-  <li>
-    <a routerLink="/"
-      ><mat-icon class="icon material-icons-outlined"
+  <li class="item">
+    <a class="item__btn" routerLink="/"
+      ><mat-icon class="item__icon material-icons-outlined"
         >import_contacts</mat-icon
-      ></a
+      >
+      <p class="item__title">ライブラリ</p></a
     >
   </li>
-  <li>
-    <a routerLink="/add-books"><mat-icon class="icon">search</mat-icon></a>
-  </li>
-  <li>
-    <a routerLink="/books-ranking"
-      ><mat-icon class="icon">format_list_numbered</mat-icon></a
+  <li class="item">
+    <a class="item__btn" routerLink="/calendar"
+      ><mat-icon class="item__icon material-icons-outlined"
+        >date_range</mat-icon
+      >
+      <p class="item__title">カレンダー</p></a
     >
   </li>
-  <li>
-    <a routerLink="/calendar"
-      ><mat-icon class="icon material-icons-outlined">date_range</mat-icon></a
+  <li class="item">
+    <a class="item__btn" routerLink="/add-books"
+      ><mat-icon class="item__icon material-icons-rounded">add</mat-icon>
+      <p class="item__title">本を追加</p></a
     >
   </li>
-  <li>
-    <a (click)="openBottomSheet()"
-      ><mat-icon class="icon">more_horiz</mat-icon></a
+  <li class="item">
+    <a class="item__btn" routerLink="/books-ranking"
+      ><mat-icon class="item__icon">format_list_numbered</mat-icon>
+      <p class="item__title">ランキング</p></a
+    >
+  </li>
+  <li class="item">
+    <a class="item__btn" (click)="openBottomSheet()"
+      ><mat-icon class="item__icon">more_horiz</mat-icon>
+      <p class="item__title">その他</p></a
     >
   </li>
 </ul>
