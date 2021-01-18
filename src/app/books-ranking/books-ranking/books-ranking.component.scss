@@ -2,36 +2,54 @@
 @import 'material-custom';
 
 header {
-  height: 60px;
+  height: 48px;
   width: 100%;
   position: fixed;
   z-index: 1000;
   text-align: center;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: solid 2px transparent;
+  background-clip: padding-box;
+  @include tab-header {
+    height: 60px;
+  }
 }
 .logo {
   position: absolute;
-  top: 6px;
+  top: 0;
   left: 16px;
   &__sp {
     height: 48px;
-    @include tab {
+    @include tab-header {
       display: none;
     }
   }
   &__tab {
     height: 60px;
-    @include sp {
+    @include sp-header {
       display: none;
     }
   }
 }
 .title {
-  line-height: 70px;
+  line-height: 48px;
+  @include tab {
+    height: 60px;
+  }
 }
 .container {
-  padding: 70px 16px;
+  padding: 50px 16px;
   @include tab {
     padding: 70px 160px;
+  }
+}
+.description {
+  font-size: 12px;
+  color: #909090;
+  @include tab-header {
+    text-align: right;
   }
 }
 .grid {

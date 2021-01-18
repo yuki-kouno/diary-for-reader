@@ -1,15 +1,22 @@
 <header>
-  <div class="logo">
-    <img src="assets/images/brand.png" alt="brand.logo" class="logo__sp" />
+  <a class="logo" routerLink="/">
     <img
-      src="assets/images/brand-title.png"
-      alt="brand.logo"
+      src="/assets/images/brand.png"
+      alt="読書家のための日記帳"
+      class="logo__sp"
+    />
+    <img
+      src="/assets/images/brand-title.logo.png"
+      alt="読書家のための日記帳"
       class="logo__tab"
     />
-  </div>
+  </a>
   <h2 class="title">Book Ranking</h2>
 </header>
 <div class="container">
+  <p class="description">
+    Amazon.co.jpの売れ筋ランキング。ランキングは1時間ごとに更新されます。
+  </p>
   <mat-tab-group>
     <mat-tab label="総合">
       <div class="grid">

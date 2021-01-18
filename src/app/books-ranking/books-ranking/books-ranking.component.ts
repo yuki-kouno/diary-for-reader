@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatabaseRankingBooksService } from 'src/app/services/database-ranking-books.service';
 import { RankingBooksInfo } from 'src/app/interface/ranking-books-info';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-books-ranking',
@@ -28,7 +29,12 @@ export class BooksRankingComponent implements OnInit {
     RankingBooksInfo[]
   > = this.rankingBookService.getHobbiesRanking();
 
-  constructor(private rankingBookService: DatabaseRankingBooksService) {}
+  constructor(
+    private rankingBookService: DatabaseRankingBooksService,
+    private seoService: SeoService
+  ) {
+    this.seoService.setTitleAndMeta('ブックランキング');
+  }
 
   ngOnInit(): void {}
 }

@@ -15,3 +15,15 @@
     @content;
   }
 }
+
+@mixin sp-header {
+  @media (max-width: 820px) {
+    @content;
+  }
+}
+
+@mixin tab-header {
+  @media (min-width: 821px) {
+    @content;
+  }
+}
