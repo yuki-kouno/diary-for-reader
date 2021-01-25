@@ -2,7 +2,7 @@
 @import 'mixins';
 
 .container {
-  padding: 0 0 70px;
+  padding: 0 8px 70px;
 }
 
 mat-tab-group {
@@ -32,7 +32,7 @@ mat-tab-group {
 }
 .date {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
   color: #808080;
 }
 
@@ -78,4 +78,10 @@ mat-tab-group {
     color: #808080;
     margin: 0 8px;
   }
+}
+
+.blank {
+  padding: 16px;
+  text-align: center;
+  color: #808080;
 }

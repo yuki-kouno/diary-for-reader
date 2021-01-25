@@ -24,28 +24,32 @@
   </div>
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="今日">
-      <app-review-list
-        *ngFor="let review of reviews$ | async"
-        [review]="review"
-        [book]="book"
-      ></app-review-list>
+      <ng-container *ngIf="(reviews$ | async)?.length > 0; else blank">
+        <app-review-list
+          *ngFor="let review of reviews$ | async; last as last"
+          [review]="review"
+          [book]="book"
+          (event)="onReviewListCount($event)"
+          [last]="last"
+        ></app-review-list>
+      </ng-container>
     </mat-tab>
     <mat-tab label="すべて">
-      <app-review-list
-        class="flex"
-        *ngFor="let review of allReviews$ | async"
-        [review]="review"
-        [book]="book"
-        isDate="true"
-      >
-      </app-review-list>
+      <ng-container *ngIf="(allReviews$ | async)?.length > 0; else blank">
+        <app-all-review-list
+          *ngFor="let review of allReviews$ | async"
+          [review]="review"
+          [book]="book"
+          (event)="onAllReviewCount($event)"
+        >
+        </app-all-review-list>
+      </ng-container>
     </mat-tab>
   </mat-tab-group>
-  <app-review-form
-    *ngIf="book"
-    [book]="book"
-    valu=""
-    (event)="guardState($event)"
-    [checkedGuard]="checkedGuard"
-  ></app-review-form>
+  <app-review-form *ngIf="book" [book]="book" valu=""></app-review-form>
 </div>
+<ng-template #blank>
+  <div class="blank">
+    レビューはまだありません。<br />質問を選択か自由に書くを選んでレビューしましょう。
+  </div>
+</ng-template>

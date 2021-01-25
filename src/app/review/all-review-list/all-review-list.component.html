@@ -10,7 +10,7 @@
             matInput
             [formControl]="editForm"
             autofocus
-            class="answer"
+            class="reviews__answer"
             type="text"
             matTextareaAutosize
             >{{ review.answer }}</textarea
@@ -42,6 +42,9 @@
   <ng-template #view>
     <div class="revieweds">
       <div class="revieweds__header">
+        <p class="revieweds__date">
+          {{ review.createdAt.toDate() | date: 'yyyy/M/d' }}
+        </p>
         <p class="revieweds__question">{{ review.question }}</p>
         <button
           class="revieweds__edit-button"
@@ -56,7 +59,6 @@
         <p class="revieweds__answer">{{ review.answer }}</p>
       </div>
     </div>
-    <mat-divider *ngIf="!last"></mat-divider>
   </ng-template>
 </div>
 <mat-menu #reviewEditor="matMenu">

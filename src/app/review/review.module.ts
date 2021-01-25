@@ -16,6 +16,8 @@ import { AutofocusFixModule } from 'ngx-autofocus-fix';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RemoveReviewDialogComponent } from './remove-review-dialog/remove-review-dialog.component';
+import { AllReviewListComponent } from './all-review-list/all-review-list.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { RemoveReviewDialogComponent } from './remove-review-dialog/remove-revie
     ReviewFormComponent,
     ReviewListComponent,
     RemoveReviewDialogComponent,
+    AllReviewListComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,7 @@ import { RemoveReviewDialogComponent } from './remove-review-dialog/remove-revie
     MatTabsModule,
     MatSnackBarModule,
     AutofocusFixModule.forRoot(),
+    MatDividerModule,
   ],
   providers: [DatePipe],
 })

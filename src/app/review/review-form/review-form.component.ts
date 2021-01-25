@@ -4,8 +4,6 @@ import {
   Input,
   ChangeDetectorRef,
   HostListener,
-  Output,
-  EventEmitter,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { questionsList } from './questions-list';
@@ -22,13 +20,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ReviewFormComponent implements OnInit {
   @Input() book: Book;
-  @Input() checkedGuard: boolean;
-  @Output() event = new EventEmitter();
   showInput: boolean;
   selectedQuestion = [];
   questionsList = questionsList;
   nowDate: Date;
-  isComplete: boolean;
+  editableCount = 0;
 
   form = this.fb.group({
     answers: this.fb.array([]),
@@ -44,7 +40,7 @@ export class ReviewFormComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
-    if (this.isComplete === true) {
+    if (!this.editableCount) {
       return;
     } else if (this.form.dirty) {
       $event.preventDefault();
@@ -54,11 +50,6 @@ export class ReviewFormComponent implements OnInit {
 
   get answers(): FormArray {
     return this.form.get('answers') as FormArray;
-  }
-
-  onGuard() {
-    this.checkedGuard = true;
-    this.event.emit(this.checkedGuard);
   }
 
   addQuestion(question: string) {
@@ -77,17 +68,17 @@ export class ReviewFormComponent implements OnInit {
       );
       this.selectedQuestion.push(question);
     } else {
-      this.snackBer.open('その質問は既にあります');
+      return this.snackBer.open('その質問は既にあります');
     }
     this.showInput = true;
-    this.isComplete = false;
+    this.editableCount += 1;
     this.cd.detectChanges();
   }
 
   removeAnswer(index: number) {
     this.answers.removeAt(index);
     this.selectedQuestion.splice(index, 1);
-    this.isComplete = true;
+    this.editableCount -= 1;
   }
 
   createReview(book: Book, index: number) {
@@ -104,7 +95,7 @@ export class ReviewFormComponent implements OnInit {
     });
     this.answers.removeAt(index);
     this.selectedQuestion.splice(index, 1);
-    this.isComplete = true;
+    this.editableCount -= 1;
   }
 
   ngOnInit() {}

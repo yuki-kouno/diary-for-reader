@@ -8,19 +8,16 @@ import { ReviewComponent } from '../review/review/review.component';
 })
 export class ReviewFormGuard implements CanDeactivate<ReviewComponent> {
   canDeactivate(component: ReviewComponent): Observable<boolean> | boolean {
-    if (!component.checkedGuard) {
-      return true;
-    } else if (
-      (component.reviewListComponent.editForm.pristine &&
-        component.reviewFormComponet.answers.pristine) ||
-      component.reviewFormComponet.isComplete
+    if (
+      !component.reviewListCount &&
+      !component.allReviewCount &&
+      !component.reviewFormComponet.editableCount
     ) {
       return true;
-    } else {
-      const confirmation = window.confirm(
-        '作業中の内容が失われますがよろしいですか？'
-      );
-      return of(confirmation);
     }
+    const confirmation = window.confirm(
+      '作業中の内容が失われますがよろしいですか？'
+    );
+    return of(confirmation);
   }
 }
