@@ -1,7 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormBuilder } from '@angular/forms';
+import {
+  Validators,
+  FormControl,
+  FormBuilder,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
+const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{10,}$/;
+
+export class CustomValidators {
+  static password(control: AbstractControl): ValidationErrors | null {
+    if (isEmptyInputValue(control.value)) {
+      return null;
+    }
+    return regex.test(control.value) ? null : { password: true };
+  }
+}
+
+function isEmptyInputValue(val: any) {
+  return val == null || val.length === 0;
+}
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
@@ -10,7 +30,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupFormComponent implements OnInit {
   signUpForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    password: ['', [Validators.required, CustomValidators.password]],
   });
 
   get emailControl() {
