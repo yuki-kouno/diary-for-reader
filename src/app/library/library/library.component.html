@@ -1,66 +1,81 @@
-<div class="container">
-  <header class="header">
-    <a class="header__logo">
-      <img
-        class="header__brand-logo"
-        src="assets/images/brand.png"
-        alt="brand-logo"
-      />
-      <img
-        class="header__brand-title"
-        src="assets/images/title-logo.png"
-        alt="読書家のための日記帳"
-        height="24px"
-      />
-    </a>
-    <h2 class="header__page-title">Library</h2>
-    <div class="header__sort">
-      <button class="header__search" routerLink="/library-search">
-        <mat-icon class="header__icon">search</mat-icon>
-      </button>
-      <button class="header__order" [matMenuTriggerFor]="sortMenu">
-        <mat-icon class="header__icon">sort</mat-icon>
-      </button>
-    </div>
-  </header>
-  <div class="order-title">
-    <h1 class="order-title__content">
-      Sorted by <span class="order-title__border">{{ orderBy }}</span>
-    </h1>
+<header class="header">
+  <a class="logo" routerLink="/">
+    <img
+      class="logo__sp"
+      src="assets/images/brand.png"
+      alt="読書家のための日記帳"
+    />
+    <img
+      class="logo__tab"
+      src="assets/images/brand-title.logo.png"
+      alt="読書家のための日記帳"
+    />
+  </a>
+  <h2 class="page-title">Library</h2>
+  <div class="header-options">
+    <button
+      class="header-options__search-btn"
+      routerLink="/library-search"
+      matTooltip="ライブラリ内検索"
+    >
+      <mat-icon class="header-options__icon">search</mat-icon>
+    </button>
+    <button
+      class="header-options__sort-btn"
+      [matMenuTriggerFor]="sortMenu"
+      matTooltip="ソート"
+    >
+      <mat-icon class="header-options__icon">sort</mat-icon>
+    </button>
   </div>
-  <div class="books" [ngSwitch]="orderBy">
-    <div class="books__grid" *ngSwitchCase="'newest first.'">
+</header>
+<div class="order-title">
+  <h2 class="order-title__content">
+    {{ orderBy }}
+  </h2>
+</div>
+<div class="books" [ngSwitch]="orderBy">
+  <div class="books__grid" *ngSwitchCase="'新しく追加された順'">
+    <ng-container *ngIf="(booksToNew$ | async)?.length > 0; else blank">
       <app-book-list
         class="books__item"
         [book]="book"
         *ngFor="let book of booksToNew$ | async"
       ></app-book-list>
-    </div>
-    <div class="books__grid" *ngSwitchCase="'oldest first.'">
+    </ng-container>
+  </div>
+  <div class="books__grid" *ngSwitchCase="'追加日の古い順'">
+    <ng-container *ngIf="(booksToOld$ | async)?.length > 0; else blank">
       <app-book-list
         class="books__item"
         [book]="book"
         *ngFor="let book of booksToOld$ | async"
       ></app-book-list>
-    </div>
-    <div class="books__grid" *ngSwitchCase="'author'">
+    </ng-container>
+  </div>
+  <div class="books__grid" *ngSwitchCase="'著者の名前順'">
+    <ng-container *ngIf="(booksByAuthors$ | async)?.length > 0; else blank">
       <app-book-list
         class="books__item"
         [book]="book"
         *ngFor="let book of booksByAuthors$ | async"
       ></app-book-list>
-    </div>
+    </ng-container>
   </div>
 </div>
-
+<ng-template #blank>
+  <div class="blank">
+    まだ本はありません。本を追加ページから本を追加してください。
+  </div>
+</ng-template>
 <mat-menu class="menu" #sortMenu="matMenu">
-  <button mat-menu-item (click)="orderBy = 'newest first.'">
+  <button mat-menu-item (click)="orderBy = '新しく追加された順'">
     <span>追加日（新しい）</span>
   </button>
-  <button mat-menu-item (click)="orderBy = 'oldest first.'">
+  <button mat-menu-item (click)="orderBy = '追加日の古い順'">
     <span>追加日（古い）</span>
   </button>
-  <button mat-menu-item (click)="orderBy = 'author'">
+  <button mat-menu-item (click)="orderBy = '著者の名前順'">
     <span>著者</span>
   </button>
 </mat-menu>

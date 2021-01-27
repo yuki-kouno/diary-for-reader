@@ -13,6 +13,7 @@ import { LibrarySearchResultsComponent } from './library-search-results/library-
 import { LibrarySearchComponent } from './library-search/library-search.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { SheredModule } from '../shered/shered.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SheredModule } from '../shered/shered.module';
     ReactiveFormsModule,
     FormsModule,
     SheredModule,
+    MatTooltipModule,
   ],
 })
 export class LibraryModule {}

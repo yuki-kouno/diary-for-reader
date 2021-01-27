@@ -1,6 +1,7 @@
 @import 'mixins';
 .container {
   text-align: center;
+  position: relative;
 }
 .book {
   outline: none;
@@ -55,6 +56,21 @@
     -webkit-line-clamp: 2;
   }
 }
-.remove-icon {
-  color: #606060;
+.remove-btn {
+  position: absolute;
+  z-index: 2;
+  top: 4px;
+  right: 4px;
+  width: 40px;
+  height: 40px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(218, 218, 218, 0.3);
+  border-bottom: solid 2px transparent;
+  background-clip: padding-box;
+  border-radius: 50%;
+  &__icon {
+    margin-top: 2px;
+    color: #606060;
+  }
 }
