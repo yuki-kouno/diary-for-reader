@@ -50,7 +50,6 @@
         color="primary"
         [matMenuTriggerRestoreFocus]="false"
         [matMenuTriggerFor]="questionMenu"
-        (click)="onGuard()"
       >
         質問を選択
       </button>
@@ -58,7 +57,7 @@
         class="review-btns__free-text wrap-gradient"
         mat-flat-button
         color="accent"
-        (click)="addQuestion(null); onGuard()"
+        (click)="addQuestion(null)"
       >
         自由に書く
       </button>

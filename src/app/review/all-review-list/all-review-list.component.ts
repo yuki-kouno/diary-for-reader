@@ -7,22 +7,21 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { Review } from 'src/app/interface/review';
+import { Book } from 'src/app/interface/book';
 import { FormControl } from '@angular/forms';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
-import { Book } from 'src/app/interface/book';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveReviewDialogComponent } from '../remove-review-dialog/remove-review-dialog.component';
 
 @Component({
-  selector: 'app-review-list',
-  templateUrl: './review-list.component.html',
-  styleUrls: ['./review-list.component.scss'],
+  selector: 'app-all-review-list',
+  templateUrl: './all-review-list.component.html',
+  styleUrls: ['./all-review-list.component.scss'],
 })
-export class ReviewListComponent implements OnInit {
-  @Input() book: Book;
+export class AllReviewListComponent implements OnInit {
   @Input() review: Review;
-  @Input() last;
+  @Input() book: Book;
   @Output() event = new EventEmitter();
 
   editForm = new FormControl();
@@ -52,8 +51,8 @@ export class ReviewListComponent implements OnInit {
 
   cancelEdit() {
     this.isEditable = false;
-    this.editForm.reset();
     this.event.emit(-1);
+    this.editForm.reset();
   }
 
   updataReview() {
@@ -84,6 +83,5 @@ export class ReviewListComponent implements OnInit {
         }
       });
   }
-
   ngOnInit(): void {}
 }

@@ -15,6 +15,8 @@ import { ReviewListComponent } from '../review-list/review-list.component';
 import { ReviewFormComponent } from '../review-form/review-form.component';
 import { SeoService } from 'src/app/services/seo.service';
 import { tap } from 'rxjs/operators';
+import { AllReviewListComponent } from '../all-review-list/all-review-list.component';
+import { resolveNaptr } from 'dns';
 
 @Component({
   selector: 'app-review',
@@ -24,6 +26,8 @@ import { tap } from 'rxjs/operators';
 export class ReviewComponent implements OnInit, AfterViewInit {
   @ViewChild(ReviewListComponent)
   public reviewListComponent: ReviewListComponent;
+  @ViewChild(AllReviewListComponent)
+  public allReviewListComponent: AllReviewListComponent;
   @ViewChild(ReviewFormComponent)
   public reviewFormComponet: ReviewFormComponent;
   nowDate: Date;
@@ -33,7 +37,8 @@ export class ReviewComponent implements OnInit, AfterViewInit {
   allReviews$: Observable<Review[]> = this.databaseReviews.getAllReviews(
     this.bookId
   );
-  checkedGuard = false;
+  reviewListCount = 0;
+  allReviewCount = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,17 +57,22 @@ export class ReviewComponent implements OnInit, AfterViewInit {
     );
   }
 
-  back() {
-    history.back();
+  onReviewListCount(event) {
+    this.reviewListCount = this.reviewListCount + event;
   }
 
-  guardState(eventDate: boolean) {
-    this.checkedGuard = eventDate;
+  onAllReviewCount(event) {
+    this.allReviewCount = this.allReviewCount + event;
+  }
+
+  back() {
+    history.back();
   }
 
   ngOnInit(): void {
     this.nowDate = new Date();
   }
+
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.background =
       'rgb(224, 239, 243, 0.6)';

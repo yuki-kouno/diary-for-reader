@@ -1,6 +1,14 @@
+@import 'mixins';
+
 mat-form-field {
   width: 100%;
   color: #505050;
+}
+.container {
+  @include tab {
+    margin: 0 16px;
+    padding: 0 16%;
+  }
 }
 .review-btns {
   text-align: center;

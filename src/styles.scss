@@ -68,6 +68,10 @@ h2 {
 }
 .question-panel {
   height: 160px;
+
+  @include tab {
+    max-width: none !important;
+  }
 }
 .login__item {
   border-radius: 50px !important;
@@ -116,12 +120,17 @@ h2 {
 }
 .mat-menu-panel {
   padding: 0;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  background-color: rgba(255, 255, 255, 0.548);
+  margin: 8px;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.4);
+  border: solid 2px transparent;
+  background-clip: padding-box;
 }
 .mat-menu-item {
   color: #303030;
+  overflow-x: scroll !important;
+  text-overflow: initial !important;
 }
 .mat-tab-body-wrapper {
   margin-bottom: 16px;
