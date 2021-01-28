@@ -23,13 +23,17 @@ export class AuthService {
     });
   }
 
+  isProcessing: boolean;
+
   async createUser(params: { email: string; password: string }): Promise<void> {
+    this.isProcessing = true;
     this.afAuth
       .createUserWithEmailAndPassword(params.email, params.password)
       .then((result) => {
         result.user.sendEmailVerification();
       })
       .catch((error) => {
+        this.isProcessing = false;
         switch (error.code) {
           case 'auth/email-already-in-use':
             alert('このアドレスは既に登録されています。');
@@ -39,7 +43,8 @@ export class AuthService {
             break;
         }
       })
-      .then(() => {
+      .finally(() => {
+        this.isProcessing = false;
         return this.emailLogin(params);
       });
   }
@@ -61,7 +66,7 @@ export class AuthService {
     });
   }
 
-  emailLogin(params: { email: string; password: string }) {
+  async emailLogin(params: { email: string; password: string }) {
     return this.afAuth
       .signInWithEmailAndPassword(params.email, params.password)
       .catch((error) => {
@@ -79,28 +84,37 @@ export class AuthService {
       })
       .then(() => {
         this.router.navigate(['/add-books']);
+      })
+      .then(() => {
+        this.snackBer.open('ようこそ');
       });
   }
 
-  googleLogin() {
+  async googleLogin() {
+    this.isProcessing = true;
+    const provider = new auth.GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
     this.afAuth
-      .signInWithPopup(new auth.GoogleAuthProvider())
-      .then(() => {
+      .signInWithPopup(provider)
+      .finally(() => {
+        this.isProcessing = false;
         this.router.navigateByUrl('/add-books');
       })
       .then(() => {
-        this.snackBer.open('ようこそ', null, {
-          duration: 2000,
-        });
+        this.snackBer.open('ようこそ');
       });
   }
 
   logout() {
-    this.afAuth.signOut();
-    this.router.navigateByUrl('/welcome').then(() => {
-      this.snackBer.open('ログアウトしました', null, {
-        duration: 2000,
+    this.isProcessing = true;
+    this.afAuth
+      .signOut()
+      .finally(() => {
+        this.isProcessing = false;
+        this.router.navigateByUrl('/welcome');
+      })
+      .then(() => {
+        this.snackBer.open('ログアウトしました');
       });
-    });
   }
 }

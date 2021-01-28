@@ -23,9 +23,17 @@
         required
         autocomplete="current-password"
       />
+      <mat-hint
+        >*{{
+          passowrdLength
+        }}文字以上<br />*英数字、大文字と小文字のアルファベットを含ませる<br />*かな、記号は使用できません</mat-hint
+      >
       <mat-error *ngIf="passwordControl.hasError('required')"
         >必須入力です</mat-error
       >
+      <mat-error *ngIf="passwordControl.hasError('password')">
+        パスワードは大文字と小文字のアルファベットと英数字の10文字以上で登録してください
+      </mat-error>
     </mat-form-field>
 
     <button
