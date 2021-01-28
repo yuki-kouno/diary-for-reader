@@ -10,7 +10,7 @@ import { SeoService } from 'src/app/services/seo.service';
   styleUrls: ['./library.component.scss'],
 })
 export class LibraryComponent implements OnInit {
-  orderBy = 'newest first.';
+  orderBy = 'latest';
   booksToNew$: Observable<Book[]> = this.databaseBooks.getToFavoriteBooks(
     'createdAt',
     'desc'

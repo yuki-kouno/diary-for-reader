@@ -16,7 +16,6 @@ import { ReviewFormComponent } from '../review-form/review-form.component';
 import { SeoService } from 'src/app/services/seo.service';
 import { tap } from 'rxjs/operators';
 import { AllReviewListComponent } from '../all-review-list/all-review-list.component';
-import { resolveNaptr } from 'dns';
 
 @Component({
   selector: 'app-review',
