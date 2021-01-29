@@ -135,6 +135,16 @@ h2 {
 .mat-tab-body-wrapper {
   margin-bottom: 16px;
 }
+.fc-h-event .fc-event-title {
+  font-size: 12px;
+  @include tab {
+    text-overflow: ellipsis;
+  }
+}
+.fc-direction-ltr .fc-daygrid-event.fc-event-start,
+.fc-direction-rtl .fc-daygrid-event.fc-event-end {
+  margin: 1px 0 0 !important;
+}
 .fc-icon {
   color: #808080;
 }

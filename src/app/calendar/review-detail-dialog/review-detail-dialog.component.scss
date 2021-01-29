@@ -1,11 +1,82 @@
+@import 'mixins';
+@import 'material-custom';
+
+.book {
+  outline: none;
+  @include tab {
+    display: flex;
+    align-items: flex-start;
+  }
+  &__figure {
+    position: relative;
+    width: 128px;
+    margin-bottom: 8px;
+    margin: 0 auto;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 4px;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.1) 2%,
+        rgba(255, 255, 255, 0.3) 5%,
+        rgba(0, 0, 0, 0) 50%
+      );
+    }
+  }
+  &__img {
+    width: 128px;
+    object-fit: cover;
+    box-shadow: -2px 5px 10px rgba(128, 128, 128, 0.514);
+  }
+}
+.info {
+  margin: 0 auto;
+  padding: 8px;
+  @include tab {
+    padding: 8px 0 8px 24px;
+  }
+  &__title {
+    color: #30303080;
+    font-size: 12px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  &__question {
+    color: #303030bd;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  &__answer {
+    color: #303030bd;
+    font-size: 13px;
+    overflow: scroll;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+  }
+}
 .buttons {
   display: flex;
   &__ok {
+    @include sp {
+      padding: 0 8px;
+    }
     margin: 10px;
     color: white;
   }
   justify-content: center;
   &__cancel {
+    @include sp {
+      padding: 0 8px;
+    }
     margin: 10px;
   }
 }
