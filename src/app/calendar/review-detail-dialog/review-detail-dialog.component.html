@@ -1,20 +1,31 @@
-<img [src]="data.thumbnail" alt="" />
-<p>{{ data.title }}</p>
-<p>{{ data.question }}</p>
-<p>{{ data.answer }}</p>
-
+<div class="book">
+  <figure class="book__figure">
+    <img class="book__img" [src]="data.thumbnail" [alt]="data.title" />
+  </figure>
+  <div class="info">
+    <p class="info__title">
+      {{ data.title }}
+    </p>
+    <p class="info__question">
+      {{ data.question }}
+    </p>
+    <p class="info__answer">
+      {{ data.answer }}
+    </p>
+  </div>
+</div>
 <div class="buttons">
   <button
-    class="buttons__ok"
-    mat-raised-button
+    class="buttons__ok wrap-gradiant"
+    mat-flat-button
     color="primary"
     [matDialogClose]="true"
   >
     レヴュー
   </button>
   <button
-    class="buttons__cancel"
-    mat-raised-button
+    class="buttons__cancel wrap-gradiant"
+    mat-flat-button
     color="basic"
     mat-dialog-close
   >
