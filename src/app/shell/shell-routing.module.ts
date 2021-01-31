@@ -41,11 +41,6 @@ const routes: Routes = [
             (mod) => mod.BooksRankingModule
           ),
       },
-      {
-        path: 'terms',
-        loadChildren: () =>
-          import('../terms/terms.module').then((mod) => mod.TermsModule),
-      },
     ],
   },
 ];

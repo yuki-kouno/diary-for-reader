@@ -12,6 +12,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ResetDialogComponent } from './reset-dialog/reset-dialog.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { ResetDialogComponent } from './reset-dialog/reset-dialog.component';
     LoginFormComponent,
     SignupFormComponent,
     ResetDialogComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +33,8 @@ import { ResetDialogComponent } from './reset-dialog/reset-dialog.component';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatIconModule,
+    MatDividerModule,
   ],
   entryComponents: [WelcomeComponent, LoginFormComponent, SignupFormComponent],
 })
