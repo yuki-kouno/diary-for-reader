@@ -121,5 +121,50 @@
   font-size: 12px;
   color: rgb(189, 189, 189);
 }
-.footer {
+.overview {
+  text-align: center;
+  padding: 32px 16px;
+  margin: 0 auto;
+  max-width: 550px;
+  @include tab {
+    padding: 64px 16px;
+  }
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__text {
+    color: #808080;
+    font-size: 16px;
+  }
+}
+.step {
+  text-align: center;
+  &__box {
+    margin: 24px 0;
+    padding: 32px 0;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, 200px);
+    justify-content: center;
+  }
+  &__item {
+    color: #808080;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+  }
+  &__circle {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 16px auto 0;
+    color: rgb(183, 241, 241);
+  }
+  &__text {
+    font-weight: bold;
+    max-width: 180px;
+    margin: 0 auto 40px;
+  }
 }
