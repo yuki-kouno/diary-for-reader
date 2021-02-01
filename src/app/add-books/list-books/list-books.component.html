@@ -1,9 +1,12 @@
-<div class="container" *ngIf="searchText">
+<ng-container *ngIf="!searchText; else view">
+  <p class="blank">タイトル、著者名、キーワードでで検索してください</p>
+</ng-container>
+<div #view class="container" *ngIf="searchText">
   <div class="results-title">
     {{ searchText }} <span class="results-title__label">の検索結果</span>
   </div>
 
-  <ul class="results">
+  <ul class="results" *ngIf="bookData">
     <li class="results__item" *ngFor="let book of bookData">
       <div class="results__spacer"></div>
       <figure class="results__thumb">
