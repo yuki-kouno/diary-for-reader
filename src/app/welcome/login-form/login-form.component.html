@@ -1,7 +1,7 @@
 <div class="container">
-  <form [formGroup]="logInForm">
-    <mat-form-field class="input" appearance="outline">
-      <mat-label>メールアドレスを記入してください</mat-label>
+  <form class="form" [formGroup]="logInForm">
+    <mat-form-field>
+      <mat-label>メールアドレス</mat-label>
       <input
         formControlName="email"
         matInput
@@ -13,9 +13,8 @@
         >必須入力です</mat-error
       >
     </mat-form-field>
-
-    <mat-form-field class="input" appearance="outline">
-      <mat-label>パスワードを記入してください</mat-label>
+    <mat-form-field>
+      <mat-label>パスワード</mat-label>
       <input
         formControlName="password"
         matInput
@@ -26,21 +25,22 @@
       <mat-error *ngIf="passwordControl.hasError('required')"
         >必須入力です</mat-error
       >
+      <mat-hint
+        class="form__reset"
+        align="end"
+        type="button"
+        (click)="openResetDialog()"
+        >パスワードをお忘れですか？</mat-hint
+      >
     </mat-form-field>
-
-    <button
-      class="reset-btn wrap-gradient"
-      [disabled]="logInForm.invalid"
-      mat-dialog-close
-      (click)="logIn()"
-      mat-raised-button
-      color="primary"
-    >
-      O K
-    </button>
   </form>
-
-  <a class="reset-dialog-link" mat-dialog-close (click)="openResetDialog()"
-    >パスワードをお忘れですか？</a
+  <button
+    class="login-btn login__item"
+    [disabled]="logInForm.invalid"
+    mat-flat-button
+    color="basic"
+    (click)="logIn()"
   >
+    ログイン
+  </button>
 </div>
