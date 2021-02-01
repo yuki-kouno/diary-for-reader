@@ -1,16 +1,11 @@
 @import 'mixins';
 
 .footer {
-  padding: 16px;
+  padding: 16px 0 8px;
   width: 100%;
-  box-sizing: border-box;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  background-color: rgba(255, 255, 255, 0.3);
-  border-bottom: solid 2px transparent;
-  background-clip: padding-box;
+  background-color: white;
   @include tab {
-    padding: 60px 60px 0;
+    padding-top: 32px;
   }
   &__contents {
     display: flex;
@@ -28,7 +23,7 @@
     margin-bottom: 48px;
   }
   &__brand-logo {
-    width: 200px;
+    max-width: 200px;
     margin: 0 auto 8px auto;
   }
   &__developer {
@@ -73,7 +68,7 @@
   }
 }
 .copyright {
-  margin: 8px;
+  margin-top: 8px;
   text-align: center;
   color: #808080;
   font-size: 12px;
