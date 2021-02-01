@@ -4,6 +4,10 @@
       <img class="logo__image" src="/assets/images/title-logo.png" alt="/" />
     </div>
     <div class="login">
+      <p class="login__title">メールアドレスでログイン</p>
+      <app-login-form></app-login-form>
+      <p class="login__or">or</p>
+      <p class="login__title">Googleアカウントでログイン</p>
       <button
         class="login__item google-logo"
         (click)="googleLogin()"
@@ -11,13 +15,10 @@
       >
         Google
       </button>
-      <button class="login__item" (click)="logInDialog()" mat-button>
-        Email & password
-      </button>
-      <p class="login__or">or</p>
-      <button class="login__item" (click)="signUpDialog()" mat-button>
-        新規登録
-      </button>
+      <mat-divider></mat-divider>
+      <a class="login__new" (click)="signUpDialog()">
+        新規アカウントの作成は<span class="login__border"> こちら</span>
+      </a>
     </div>
     <p class="photo-provider">
       <span
@@ -35,4 +36,6 @@
     </p>
   </div>
 </div>
-<app-footer></app-footer>
+<footer class="footer">
+  <app-footer></app-footer>
+</footer>

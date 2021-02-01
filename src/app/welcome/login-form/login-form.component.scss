@@ -1,27 +1,40 @@
+@import 'mixins';
 .container {
-  position: relative;
   text-align: center;
-  padding: 50px 10px;
-
-  mat-form-field {
-    width: 100%;
+}
+mat-form-field {
+  width: 200px;
+  @include pc {
+    width: 260px;
   }
+}
+mat-label {
+  font-size: 12px;
+  color: #909090;
+}
 
-  .reset-btn {
-    color: white;
-  }
-
-  .reset-dialog-link {
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 24px;
+  &__reset {
+    text-align: right;
     cursor: pointer;
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    text-align: left;
-    font-size: 12px;
-    color: #303030;
+    font-size: 10px;
+    color: #505050;
     opacity: 0.6;
+    margin-top: 8px;
     &:hover {
       opacity: 1;
     }
+  }
+}
+.login-btn {
+  width: 200px;
+  color: #505050;
+  background-color: rgba(132, 136, 146, 0.5);
+  @include pc {
+    width: 260px;
   }
 }
