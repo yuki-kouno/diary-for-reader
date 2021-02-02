@@ -1,33 +1,40 @@
-<ng-container *ngIf="!searchText; else view">
+<ng-container *ngIf="!searchText">
   <p class="blank">タイトル、著者名、キーワードでで検索してください</p>
 </ng-container>
-<div #view class="container" *ngIf="searchText">
-  <div class="results-title">
-    {{ searchText }} <span class="results-title__label">の検索結果</span>
-  </div>
+<div class="container" *ngIf="searchText">
+  <ng-container *ngIf="bookData; else blank">
+    <div class="results-title">
+      {{ searchText }} <span class="results-title__label">の検索結果</span>
+    </div>
 
-  <ul class="results" *ngIf="bookData">
-    <li class="results__item" *ngFor="let book of bookData">
-      <div class="results__spacer"></div>
-      <figure class="results__thumb">
-        <img
-          class="results__img"
-          [src]="book.volumeInfo.imageLinks.thumbnail"
-          [alt]="book.volumeInfo.title"
-        />
-      </figure>
-      <div class="results__info">
-        <p class="results__title">{{ book.volumeInfo.title }}</p>
-        <p class="results__authors">{{ book.volumeInfo.authors }}</p>
-      </div>
-      <button
-        class="results__add-btn wrap-gradient"
-        mat-mini-fab
-        color="primary"
-        (click)="createBook(book)"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
-    </li>
-  </ul>
+    <ul class="results">
+      <li class="results__item" *ngFor="let book of bookData">
+        <div class="results__spacer"></div>
+        <figure class="results__thumb">
+          <img
+            class="results__img"
+            [src]="book.volumeInfo.imageLinks.thumbnail"
+            [alt]="book.volumeInfo.title"
+          />
+        </figure>
+        <div class="results__info">
+          <p class="results__title">{{ book.volumeInfo.title }}</p>
+          <p class="results__authors">{{ book.volumeInfo.authors }}</p>
+        </div>
+        <button
+          class="results__add-btn wrap-gradient"
+          mat-mini-fab
+          color="primary"
+          (click)="createBook(book)"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #blank>
+    <p class="blank">
+      一致する検索結果はありませんでした。別のキーワードを試してみてください。
+    </p>
+  </ng-template>
 </div>

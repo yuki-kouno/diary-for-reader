@@ -46,13 +46,15 @@ export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
           return this.googleBooksApi.getListOfBooks(this.searchText);
         }),
         map((datas) => {
-          return datas.filter((data) => data.volumeInfo.imageLinks);
+          if (datas) {
+            return datas.filter((data) => data.volumeInfo.imageLinks);
+          }
+          return;
         })
       )
       .subscribe((datas: Book[]) => {
         this.bookData = datas;
       });
-    console.log(this.searchText);
   }
 
   createBook(book: Book) {
