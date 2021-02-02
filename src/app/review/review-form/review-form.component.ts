@@ -10,7 +10,7 @@ import { questionsList } from './questions-list';
 import { Book } from 'src/app/interface/book';
 import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
-import { FormBuilder, FormArray } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -21,12 +21,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ReviewFormComponent implements OnInit {
   @Input() book: Book;
   showInput: boolean;
-  selectedQuestion = [];
-  questionsList = questionsList;
+  selectedQuestion: string[] = [];
+  questionsList: string[] = questionsList;
   nowDate: Date;
   editableCount = 0;
 
-  form = this.fb.group({
+  form: FormGroup = this.fb.group({
     answers: this.fb.array([]),
   });
 

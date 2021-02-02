@@ -21,7 +21,6 @@ import { Subscription } from 'rxjs';
 export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
   bookData: Book[];
   searchText: string;
-  routePramMap = this.route.paramMap;
   subscriptions: Subscription;
   myfavoriteBookIds: string[];
   isMyfavorite: boolean;
@@ -39,7 +38,7 @@ export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscriptions = this.routePramMap
+    this.subscriptions = this.route.paramMap
       .pipe(
         switchMap((param) => {
           this.searchText = param.get('searchText');

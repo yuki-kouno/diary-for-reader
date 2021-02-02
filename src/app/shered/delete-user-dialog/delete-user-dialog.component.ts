@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./delete-user-dialog.component.scss'],
 })
 export class DeleteUserDialogComponent implements OnInit {
-  form = new FormControl('');
+  form: FormControl = new FormControl('');
   constructor(private userService: UserService) {}
 
   deleteUser() {

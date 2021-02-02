@@ -24,7 +24,7 @@ export class AllReviewListComponent implements OnInit {
   @Input() book: Book;
   @Output() event = new EventEmitter();
 
-  editForm = new FormControl();
+  editForm: FormControl = new FormControl();
   isEditable = false;
 
   constructor(

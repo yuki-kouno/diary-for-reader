@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./library-search.component.scss'],
 })
 export class LibrarySearchComponent implements OnInit {
-  searchForm = new FormControl();
+  searchForm: FormControl = new FormControl();
 
   constructor(private router: Router) {}
 

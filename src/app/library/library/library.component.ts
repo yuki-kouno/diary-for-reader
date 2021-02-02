@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';

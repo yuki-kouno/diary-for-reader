@@ -1,31 +1,29 @@
 <div class="container">
   <header class="header">
-    <div class="header__inner">
-      <button class="header__back-btn" (click)="back()">
-        <mat-icon class="header__back-icon material-icons-round"
-          >arrow_back_ios</mat-icon
+    <button class="header__back-btn" (click)="back()">
+      <mat-icon class="header__back-icon material-icons-round"
+        >arrow_back_ios</mat-icon
+      >
+    </button>
+    <h2 class="header__page-title">ライブラリ内検索</h2>
+    <div class="header__form">
+      <form class="form">
+        <input
+          class="form__input"
+          type="text"
+          autofocus
+          [formControl]="searchForm"
+          placeholder="キーワードを入力"
+        />
+        <button
+          class="form__btn wrap-gradient"
+          (click)="searchBook()"
+          mat-flat-button
+          color="primary"
         >
-      </button>
-      <h2 class="header__page-title">ライブラリ内検索</h2>
-      <div class="header__form">
-        <form class="form">
-          <input
-            class="form__input"
-            type="text"
-            autofocus
-            [formControl]="searchForm"
-            placeholder="キーワードを入力"
-          />
-          <button
-            class="form__btn wrap-gradient"
-            (click)="searchBook()"
-            mat-flat-button
-            color="primary"
-          >
-            <mat-icon>search</mat-icon>
-          </button>
-        </form>
-      </div>
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
     </div>
   </header>
 </div>

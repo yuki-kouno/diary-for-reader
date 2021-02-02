@@ -9,6 +9,7 @@ export class SeoService {
   defaultDescription = '他とは違う!アウトプットが身につくサービス';
 
   constructor(private titleService: Title, private meta: Meta) {}
+
   setTitleAndMeta(title?: string, description?: string) {
     const pageTitle = title ? title + ' | ' + this.siteName : this.siteName;
     const pageDescription = description ? description : this.defaultDescription;

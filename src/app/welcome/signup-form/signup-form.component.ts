@@ -5,10 +5,11 @@ import {
   FormBuilder,
   AbstractControl,
   ValidationErrors,
+  FormGroup,
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
-const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/;
+const regex: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/;
 
 export class CustomValidators {
   static password(control: AbstractControl): ValidationErrors | null {
@@ -19,7 +20,7 @@ export class CustomValidators {
   }
 }
 
-function isEmptyInputValue(val: any) {
+function isEmptyInputValue(val: any): boolean {
   return val == null || val.length === 0;
 }
 @Component({
@@ -28,8 +29,9 @@ function isEmptyInputValue(val: any) {
   styleUrls: ['./signup-form.component.scss'],
 })
 export class SignupFormComponent implements OnInit {
+  hide = true;
   passowrdLength = 10;
-  signUpForm = this.fb.group({
+  signUpForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: [
       '',
@@ -41,10 +43,10 @@ export class SignupFormComponent implements OnInit {
     ],
   });
 
-  get emailControl() {
+  get emailControl(): FormControl {
     return this.signUpForm.get('email') as FormControl;
   }
-  get passwordControl() {
+  get passwordControl(): FormControl {
     return this.signUpForm.get('password') as FormControl;
   }
 

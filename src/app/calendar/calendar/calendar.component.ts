@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ElementRef,
+  OnDestroy,
+} from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarOptions } from '@fullcalendar/angular';
@@ -8,15 +14,16 @@ import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ReviewDetailDialogComponent } from '../review-detail-dialog/review-detail-dialog.component';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
 })
-export class CalendarComponent implements OnInit, AfterViewInit {
-  reviewArray = [];
-  reviews = this.dbReviewService
+export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
+  reviewArray: any = [];
+  reviews: Subscription = this.dbReviewService
     .getReviewsOfAllBooks()
     .subscribe((reviews: Review[]) => {
       reviews.forEach((review: Review) => {
@@ -90,5 +97,8 @@ export class CalendarComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.elementRef.nativeElement.ownerDocument.body.style.background =
       'rgb(237, 245, 245)';
+  }
+  ngOnDestroy() {
+    this.reviews.unsubscribe();
   }
 }

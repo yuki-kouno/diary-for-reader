@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
 import { SeoService } from 'src/app/services/seo.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-library-search-results',
@@ -24,10 +25,10 @@ export class LibrarySearchResultsComponent
   implements OnInit, AfterViewInit, OnDestroy {
   index: SearchIndex = this.searchLibraryService.index.item;
   searchText: string;
-  uid = this.authService.uid;
+  uid: string = this.authService.uid;
   results: Book[];
   isResults: boolean;
-  subscriptions;
+  subscriptions: Subscription;
 
   constructor(
     private searchLibraryService: SearchLibraryService,

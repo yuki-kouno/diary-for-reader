@@ -2,8 +2,7 @@
 @import 'material-custom';
 @import 'variables';
 .container {
-  background-color: rgb(237, 245, 245);
-  padding: 16px 0 140px;
+  padding-bottom: 140px;
   @include tab {
     padding-bottom: 100px;
   }
@@ -12,14 +11,22 @@
   position: fixed;
   z-index: 3;
   width: 100%;
-  &__inner {
-    padding: 8px;
-    position: relative;
+  height: 48px;
+  box-sizing: border-box;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: solid 2px transparent;
+  background-clip: padding-box;
+  @include tab {
+    height: 60px;
   }
   &__back-btn {
     position: absolute;
   }
   &__back-icon {
+    display: grid;
+    align-items: center;
     opacity: 0.6;
     color: $sub-icon;
     height: 48px;
@@ -30,13 +37,17 @@
     }
   }
   &__page-title {
+    line-height: 48px;
     text-align: center;
+    @include tab {
+      line-height: 60px;
+    }
   }
   &__form {
     text-align: center;
     @include tab {
       position: absolute;
-      top: 0;
+      top: 10px;
       right: 0;
     }
   }
@@ -50,9 +61,13 @@
   }
   &__input {
     padding: 10px;
-    border: 1px solid rgba(190, 190, 190, 0.3);
+    margin-right: 2px;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.164);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(190, 190, 190, 0.3);
+    @include tab {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
     &::placeholder {
       color: rgb(190, 190, 190);
     }

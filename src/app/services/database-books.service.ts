@@ -17,7 +17,7 @@ export class DatabaseBooksService {
     private snackBar: MatSnackBar
   ) {}
 
-  createToFavoriteBook(book: Book): Promise<void> {
+  async createToFavoriteBook(book: Book): Promise<void> {
     const uid = this.authService.uid;
     return this.db
       .doc(`users/${this.authService.uid}/favoriteBooks/${book.id}`)
@@ -34,7 +34,7 @@ export class DatabaseBooksService {
       });
   }
 
-  getToFavoriteBooks(sort, order): Observable<Book[]> {
+  getToFavoriteBooks(sort: string, order: any): Observable<Book[]> {
     return this.db
       .collection<Book>(
         `users/${this.authService.uid}/favoriteBooks`,
@@ -45,7 +45,7 @@ export class DatabaseBooksService {
       .valueChanges();
   }
 
-  getToFavoriteBook(id): Observable<Book> {
+  getToFavoriteBook(id: string): Observable<Book> {
     return this.db
       .doc<Book>(`users/${this.authService.uid}/favoriteBooks/${id}`)
       .valueChanges();
@@ -58,7 +58,7 @@ export class DatabaseBooksService {
       .pipe(map((books) => books.map((book) => book.id)));
   }
 
-  removeToFavoriteBook(id): Promise<void> {
+  removeToFavoriteBook(id: string): Promise<void> {
     return this.db
       .doc(`users/${this.authService.uid}/favoriteBooks/${id}`)
       .delete();

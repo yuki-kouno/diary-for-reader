@@ -3,8 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { SignupFormComponent } from '../signup-form/signup-form.component';
 import { LoginFormComponent } from '../login-form/login-form.component';
-import { Title } from '@angular/platform-browser';
-import { Meta } from '@angular/platform-browser';
 import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
