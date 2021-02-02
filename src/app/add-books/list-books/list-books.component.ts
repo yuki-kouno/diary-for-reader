@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterViewInit,
+  ElementRef,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
@@ -12,7 +18,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './list-books.component.html',
   styleUrls: ['./list-books.component.scss'],
 })
-export class ListBooksComponent implements OnInit, OnDestroy {
+export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
   bookData: Book[];
   searchText: string;
   routePramMap = this.route.paramMap;
@@ -24,7 +30,8 @@ export class ListBooksComponent implements OnInit, OnDestroy {
     public googleBooksApi: GoogleBooksApiService,
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private elementRef: ElementRef
   ) {
     this.subscriptions = this.databaseBooks
       .getToFavoriteBookIds()
@@ -39,7 +46,10 @@ export class ListBooksComponent implements OnInit, OnDestroy {
           return this.googleBooksApi.getListOfBooks(this.searchText);
         }),
         map((datas) => {
-          return datas.filter((data) => data.volumeInfo.imageLinks);
+          if (datas) {
+            return datas.filter((data) => data.volumeInfo.imageLinks);
+          }
+          return;
         })
       )
       .subscribe((datas: Book[]) => {
@@ -58,7 +68,10 @@ export class ListBooksComponent implements OnInit, OnDestroy {
       this.databaseBooks.createToFavoriteBook(book);
     }
   }
-
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.background =
+      'rgb(237, 245, 245)';
+  }
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }

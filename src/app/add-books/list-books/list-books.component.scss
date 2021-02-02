@@ -1,10 +1,20 @@
 @import 'mixins';
 
+.blank {
+  font-size: 16px;
+  color: #505050;
+  text-align: center;
+  padding-top: 60px 16px;
+  @include tab {
+    font-size: 20px;
+    padding-top: 120px;
+  }
+}
 .container {
   color: rgb(75, 75, 75);
   padding: 70px 24px 24px;
   @include tab {
-    padding: 100px 32px 32px;
+    padding: 100px 160px 32px;
   }
 }
 .results-title {
@@ -92,4 +102,7 @@
   &__add-btn {
     margin-top: 32px;
   }
+}
+.blank {
+  margin-top: 100px;
 }
