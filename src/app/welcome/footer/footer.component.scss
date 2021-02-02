@@ -1,0 +1,75 @@
+@import 'mixins';
+
+.footer {
+  padding: 16px 0 8px;
+  width: 100%;
+  background-color: white;
+  @include tab {
+    padding-top: 32px;
+  }
+  &__contents {
+    display: flex;
+    flex-direction: column;
+    color: #808080;
+    @include tab {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+  }
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  &__brand-logo {
+    max-width: 200px;
+    margin: 0 auto 8px auto;
+  }
+  &__developer {
+    color: #909090;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+  &__twitter-logo {
+    vertical-align: middle;
+    height: 24px;
+    font-size: 18px;
+  }
+  &__nav {
+    font-size: 14px;
+    margin-bottom: 16px;
+    text-align: center;
+    .item {
+      margin-bottom: 4px;
+    }
+  }
+  &__contact {
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+  }
+  &__contact-icon {
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+  &__end {
+    color: #808080;
+    height: 24px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+.sp-none {
+  @include sp {
+    display: none;
+  }
+}
+.copyright {
+  margin-top: 8px;
+  text-align: center;
+  color: #808080;
+  font-size: 12px;
+}

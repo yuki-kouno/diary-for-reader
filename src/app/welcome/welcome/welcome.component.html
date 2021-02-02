@@ -4,6 +4,10 @@
       <img class="logo__image" src="/assets/images/title-logo.png" alt="/" />
     </div>
     <div class="login">
+      <p class="login__title">メールアドレスでログイン</p>
+      <app-login-form class="login__form"></app-login-form>
+      <p class="login__or">or</p>
+      <p class="login__title">Googleアカウントでログイン</p>
       <button
         class="login__item google-logo"
         (click)="googleLogin()"
@@ -11,13 +15,10 @@
       >
         Google
       </button>
-      <button class="login__item" (click)="logInDialog()" mat-button>
-        Email & password
-      </button>
-      <p class="login__or">or</p>
-      <button class="login__item" (click)="signUpDialog()" mat-button>
-        新規登録
-      </button>
+      <mat-divider></mat-divider>
+      <a class="login__new" (click)="signUpDialog()">
+        新規アカウントの作成は<span class="login__border"> こちら</span>
+      </a>
     </div>
     <p class="photo-provider">
       <span
@@ -35,3 +36,29 @@
     </p>
   </div>
 </div>
+<div class="overview">
+  <h1 class="overview__title">読書が好き。<br />でもアウトプットは嫌い！</h1>
+  <p class="overview__text">
+    このサービスは、アウトプットが苦手な人でも読書後のアウトプットを定着させるように考えたサービスです。
+  </p>
+</div>
+<div class="step">
+  <h1>サービスの始め方</h1>
+  <ul class="step__box">
+    <li class="step__item">
+      <span class="step__circle">1</span>
+      <p class="step__text">ログイン後、まず読んだ本をライブラリに登録</p>
+    </li>
+    <li class="step__item">
+      <span class="step__circle">2</span>
+      <p class="step__text">ライブラリから本を選択</p>
+    </li>
+    <li class="step__item">
+      <span class="step__circle">3</span>
+      <p class="step__text">用意された質問に答える</p>
+    </li>
+  </ul>
+</div>
+<footer class="footer">
+  <app-footer></app-footer>
+</footer>

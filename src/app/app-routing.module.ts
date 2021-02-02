@@ -14,13 +14,23 @@ const routes: Routes = [
       import('./welcome/welcome.module').then((mod) => mod.WelcomeModule),
   },
   {
+    path: 'terms',
+    loadChildren: () =>
+      import('./terms/terms.module').then((mod) => mod.TermsModule),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

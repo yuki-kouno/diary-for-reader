@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'material-custom';
 
 .wrapper {
   position: relative;
@@ -21,36 +22,84 @@
 }
 
 .container {
-  padding-top: 80px;
+  padding-top: 40px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  @include tab {
+    padding-top: 100px;
+  }
 }
 
 .logo {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
   &__image {
-    width: 80%;
-    @include tab {
-      width: 60%;
-    }
+    width: 70%;
+  }
+  @include tab {
+    margin-bottom: 80px;
   }
 }
 
 .login {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   align-items: center;
-  flex-direction: column;
+  width: 232px;
+  padding: 16px;
+  border-radius: 16px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: solid 2px transparent;
+  background-clip: padding-box;
+  @include tab {
+    padding: 16px 5%;
+    margin-left: 30%;
+    width: 30%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  &__title {
+    margin: 0 auto;
+    color: #808080;
+    font-size: 13px;
+  }
+  &__form {
+    margin-bottom: 24px;
+  }
+  &__or {
+    text-align: center;
+    color: #808080;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
   &__item {
     color: #505050;
     text-align: center;
-    width: 220px;
-    margin-bottom: 16px;
-    background-color: rgba(0, 0, 0, 0.05);
+    width: 200px;
+    margin: 16px auto 24px;
+    background-color: rgba(132, 136, 146, 0.5);
+    @include pc {
+      width: 260px;
+    }
   }
-  &__or {
-    margin-bottom: 18px;
+  &__new {
+    cursor: pointer;
+    color: #808080;
+    font-size: 13px;
+    margin: 24px auto 0;
+    &:hover {
+      .login__border {
+        color: mat-color($primary);
+        border-color: mat-color($primary);
+      }
+    }
+  }
+  &__border {
+    border-bottom: 1px solid #808080;
   }
 }
 
@@ -71,4 +120,51 @@
   right: 8px;
   font-size: 12px;
   color: rgb(189, 189, 189);
+}
+.overview {
+  text-align: center;
+  padding: 32px 16px;
+  margin: 0 auto;
+  max-width: 550px;
+  @include tab {
+    padding: 64px 16px;
+  }
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__text {
+    color: #808080;
+    font-size: 16px;
+  }
+}
+.step {
+  text-align: center;
+  &__box {
+    margin: 24px 0;
+    padding: 32px 0;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, 200px);
+    justify-content: center;
+  }
+  &__item {
+    color: #808080;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+  }
+  &__circle {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 16px auto 0;
+    color: rgb(183, 241, 241);
+  }
+  &__text {
+    font-weight: bold;
+    max-width: 180px;
+    margin: 0 auto 40px;
+  }
 }
