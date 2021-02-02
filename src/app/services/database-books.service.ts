@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { firestore } from 'firebase/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,8 @@ export class DatabaseBooksService {
   constructor(
     private db: AngularFirestore,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private fns: AngularFireFunctions
   ) {}
 
   async createToFavoriteBook(book: Book): Promise<void> {
@@ -58,9 +60,13 @@ export class DatabaseBooksService {
       .pipe(map((books) => books.map((book) => book.id)));
   }
 
-  removeToFavoriteBook(id: string): Promise<void> {
-    return this.db
-      .doc(`users/${this.authService.uid}/favoriteBooks/${id}`)
-      .delete();
+  async removeToFavoriteBook(id: string): Promise<void> {
+    this.db.doc(`users/${this.authService.uid}/favoriteBooks/${id}`).delete();
+    return this.deleteReviews(id);
+  }
+
+  async deleteReviews(id: string): Promise<void> {
+    const callable = this.fns.httpsCallable('deleteReviews');
+    return callable(id).toPromise();
   }
 }

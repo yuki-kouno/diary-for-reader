@@ -17,8 +17,8 @@
             {{ book.volumeInfo.authors }}
           </p>
         </div>
-        <button [matMenuTriggerFor]="menu">
-          <mat-icon class="remove-icon">more_horiz</mat-icon>
+        <button class="remove-btn" [matMenuTriggerFor]="menu">
+          <mat-icon class="remove-btn__icon">more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="openRemoveDialog(book, i)">
