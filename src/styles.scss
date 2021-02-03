@@ -196,3 +196,6 @@ h2 {
   color: mat-color($primary) !important;
   font-weight: bold;
 }
+.mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+  display: none;
+}

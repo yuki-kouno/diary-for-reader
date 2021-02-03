@@ -18,10 +18,13 @@
       <input
         formControlName="password"
         matInput
-        type="password"
+        [type]="hide ? 'password' : 'text'"
         required
         autocomplete="current-password"
       />
+      <mat-icon class="password-icon" matSuffix (click)="hide = !hide">{{
+        hide ? 'visibility_off' : 'visibility'
+      }}</mat-icon>
       <mat-error *ngIf="passwordControl.hasError('required')"
         >必須入力です</mat-error
       >

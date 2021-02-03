@@ -12,6 +12,7 @@ import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { switchMap, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-list-books',
@@ -21,7 +22,6 @@ import { Subscription } from 'rxjs';
 export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
   bookData: Book[];
   searchText: string;
-  routePramMap = this.route.paramMap;
   subscriptions: Subscription;
   myfavoriteBookIds: string[];
   isMyfavorite: boolean;
@@ -31,21 +31,24 @@ export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
     private snackBar: MatSnackBar,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    public loadingService: LoadingService
   ) {
+    this.loadingService.loading = true;
     this.subscriptions = this.databaseBooks
       .getToFavoriteBookIds()
       .subscribe((bookIds) => (this.myfavoriteBookIds = bookIds));
   }
 
   ngOnInit() {
-    this.subscriptions = this.routePramMap
+    this.subscriptions = this.route.paramMap
       .pipe(
         switchMap((param) => {
           this.searchText = param.get('searchText');
           return this.googleBooksApi.getListOfBooks(this.searchText);
         }),
         map((datas) => {
+          this.loadingService.loading = false;
           if (datas) {
             return datas.filter((data) => data.volumeInfo.imageLinks);
           }

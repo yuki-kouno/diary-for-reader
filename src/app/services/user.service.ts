@@ -40,9 +40,9 @@ export class UserService {
     return this.user$.pipe(first()).toPromise();
   }
 
-  async deleteUser() {
+  async deleteUser(): Promise<void> {
     const callable = this.fns.httpsCallable('deleteAfUser');
-    const user = await this.getUserWithSnapShot();
+    const user: User = await this.getUserWithSnapShot();
 
     return callable(user)
       .toPromise()

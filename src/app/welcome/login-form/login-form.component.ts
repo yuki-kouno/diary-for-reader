@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormControl } from '@angular/forms';
+import {
+  Validators,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ResetDialogComponent } from '../reset-dialog/reset-dialog.component';
@@ -10,15 +15,16 @@ import { ResetDialogComponent } from '../reset-dialog/reset-dialog.component';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  logInForm = this.fb.group({
+  hide = true;
+  logInForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
 
-  get emailControl() {
+  get emailControl(): FormControl {
     return this.logInForm.get('email') as FormControl;
   }
-  get passwordControl() {
+  get passwordControl(): FormControl {
     return this.logInForm.get('password') as FormControl;
   }
 

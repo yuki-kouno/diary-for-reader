@@ -17,10 +17,10 @@ export class DatabaseReviewsService {
     public datePipe: DatePipe
   ) {}
 
-  nowDate = new Date();
+  nowDate: Date = new Date();
   DATE_FORMAT = 'yyyyMMdd';
 
-  getReviews(bookId): Observable<Review[]> {
+  getReviews(bookId: string): Observable<Review[]> {
     const createdDate = this.datePipe.transform(new Date(), this.DATE_FORMAT);
     return this.db
       .collection<Review>(
@@ -34,7 +34,7 @@ export class DatabaseReviewsService {
       .valueChanges();
   }
 
-  getAllReviews(bookId): Observable<Review[]> {
+  getAllReviews(bookId: string): Observable<Review[]> {
     return this.db
       .collection<Review>(
         `users/${this.authService.uid}/favoriteBooks/${bookId}/reviews`,

@@ -16,7 +16,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private snackBer: MatSnackBar
+    private snackBar: MatSnackBar
   ) {
     this.afUser$.subscribe((user) => {
       this.uid = user && user.uid;
@@ -49,7 +49,7 @@ export class AuthService {
       });
   }
 
-  resetPassword(email: string) {
+  async resetPassword(email: string): Promise<void> {
     this.afAuth.sendPasswordResetEmail(email).catch((error) => {
       console.log(error.code);
       switch (error.code) {
@@ -66,7 +66,7 @@ export class AuthService {
     });
   }
 
-  async emailLogin(params: { email: string; password: string }) {
+  async emailLogin(params: { email: string; password: string }): Promise<void> {
     return this.afAuth
       .signInWithEmailAndPassword(params.email, params.password)
       .catch((error) => {
@@ -86,26 +86,29 @@ export class AuthService {
         this.router.navigate(['/add-books']);
       })
       .then(() => {
-        this.snackBer.open('ようこそ');
+        this.snackBar.open('ようこそ');
       });
   }
 
-  async googleLogin() {
+  async googleLogin(): Promise<void> {
     this.isProcessing = true;
     const provider = new auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     this.afAuth
       .signInWithPopup(provider)
+      .catch(() => {
+        this.snackBar.open('ログイン中にエラーが発生しました。');
+      })
       .finally(() => {
         this.isProcessing = false;
         this.router.navigateByUrl('/add-books');
       })
       .then(() => {
-        this.snackBer.open('ようこそ');
+        this.snackBar.open('ようこそ');
       });
   }
 
-  logout() {
+  async logout(): Promise<void> {
     this.isProcessing = true;
     this.afAuth
       .signOut()
@@ -114,7 +117,7 @@ export class AuthService {
         this.router.navigateByUrl('/welcome');
       })
       .then(() => {
-        this.snackBer.open('ログアウトしました');
+        this.snackBar.open('ログアウトしました');
       });
   }
 }

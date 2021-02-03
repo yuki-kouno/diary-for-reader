@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { NavService } from './services/nav.service';
-import { AuthService } from './services/auth.service';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +8,5 @@ import { AuthService } from './services/auth.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  user$ = this.authService.afUser$;
-
-  constructor(private nav: NavService, private authService: AuthService) {}
-
-  logout() {
-    this.authService.logout();
-  }
+  constructor(public loadingService: LoadingService) {}
 }

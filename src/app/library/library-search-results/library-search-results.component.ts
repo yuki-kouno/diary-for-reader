@@ -14,6 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { RemoveDialogComponent } from '../remove-dialog/remove-dialog.component';
 import { SeoService } from 'src/app/services/seo.service';
+import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-library-search-results',
@@ -24,10 +26,10 @@ export class LibrarySearchResultsComponent
   implements OnInit, AfterViewInit, OnDestroy {
   index: SearchIndex = this.searchLibraryService.index.item;
   searchText: string;
-  uid = this.authService.uid;
+  uid: string = this.authService.uid;
   results: Book[];
   isResults: boolean;
-  subscriptions;
+  subscriptions: Subscription;
 
   constructor(
     private searchLibraryService: SearchLibraryService,
@@ -36,8 +38,10 @@ export class LibrarySearchResultsComponent
     private elementRef: ElementRef,
     private dialog: MatDialog,
     private booksService: DatabaseBooksService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    public loadingService: LoadingService
   ) {
+    this.loadingService.loading = true;
     this.seoService.setTitleAndMeta('ライブラリ内検索');
   }
 
@@ -59,6 +63,7 @@ export class LibrarySearchResultsComponent
       this.index.search(this.searchText).then((datas) => {
         const hits: any = datas.hits;
         const list = hits.filter((hit) => hit.uid === this.uid);
+        this.loadingService.loading = false;
         if (list.length > 0) {
           this.isResults = true;
           this.results = list;

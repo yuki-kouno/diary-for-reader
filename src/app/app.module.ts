@@ -25,6 +25,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SheredModule } from './shered/shered.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -47,6 +48,7 @@ FullCalendarModule.registerPlugins([
     AngularFireFunctionsModule,
     FullCalendarModule,
     SheredModule,
+    MatProgressBarModule,
   ],
   providers: [
     { provide: REGION, useValue: 'asia-northeast1' },

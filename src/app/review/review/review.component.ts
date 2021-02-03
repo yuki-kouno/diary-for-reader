@@ -30,7 +30,7 @@ export class ReviewComponent implements OnInit, AfterViewInit {
   @ViewChild(ReviewFormComponent)
   public reviewFormComponet: ReviewFormComponent;
   nowDate: Date;
-  bookId = this.route.snapshot.paramMap.get('book.id');
+  bookId: string = this.route.snapshot.paramMap.get('book.id');
   book$: Observable<Book> = this.databaseBooks.getToFavoriteBook(this.bookId);
   reviews$: Observable<Review[]> = this.databaseReviews.getReviews(this.bookId);
   allReviews$: Observable<Review[]> = this.databaseReviews.getAllReviews(
