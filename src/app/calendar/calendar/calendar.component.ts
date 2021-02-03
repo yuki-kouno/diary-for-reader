@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ReviewDetailDialogComponent } from '../review-detail-dialog/review-detail-dialog.component';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-calendar',
@@ -41,6 +42,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
           bookId: review.bookId,
         });
         this.calendarOptions.events = this.reviewArray;
+        this.loadingService.loading = false;
       });
     });
 
@@ -70,8 +72,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     private datePipe: DatePipe,
     private matDialog: MatDialog,
     private router: Router,
-    private elementRef: ElementRef
-  ) {}
+    private elementRef: ElementRef,
+    public loadingService: LoadingService
+  ) {
+    this.loadingService.loading = true;
+  }
   ngOnInit() {}
 
   openDialog(obj) {

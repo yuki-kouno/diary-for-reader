@@ -35,5 +35,7 @@
   </ng-template>
 </div>
 <ng-template #blank>
-  <p class="blank-heading">タイトル、著者名、キーワードで検索してください</p>
+  <p *ngIf="!loadingService.loading" class="blank-heading">
+    タイトル、著者名、キーワードで検索してください
+  </p>
 </ng-template>

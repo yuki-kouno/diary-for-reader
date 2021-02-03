@@ -33,7 +33,7 @@
     </ul>
   </ng-container>
   <ng-template #blank>
-    <p class="blank">
+    <p class="blank" *ngIf="!loadingService.loading">
       一致する検索結果はありませんでした。別のキーワードを試してみてください。
     </p>
   </ng-template>

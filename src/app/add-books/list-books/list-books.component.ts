@@ -12,6 +12,7 @@ import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { switchMap, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-list-books',
@@ -30,8 +31,10 @@ export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
     private snackBar: MatSnackBar,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    public loadingService: LoadingService
   ) {
+    this.loadingService.loading = true;
     this.subscriptions = this.databaseBooks
       .getToFavoriteBookIds()
       .subscribe((bookIds) => (this.myfavoriteBookIds = bookIds));
@@ -45,6 +48,7 @@ export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
           return this.googleBooksApi.getListOfBooks(this.searchText);
         }),
         map((datas) => {
+          this.loadingService.loading = false;
           if (datas) {
             return datas.filter((data) => data.volumeInfo.imageLinks);
           }
