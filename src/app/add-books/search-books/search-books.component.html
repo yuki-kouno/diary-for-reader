@@ -12,6 +12,7 @@
       (click)="searchBook()"
       mat-flat-button
       color="primary"
+      [disabled]="!searchForm.value"
     >
       <mat-icon>search</mat-icon>
     </button>
