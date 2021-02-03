@@ -42,8 +42,8 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
           bookId: review.bookId,
         });
         this.calendarOptions.events = this.reviewArray;
-        this.loadingService.loading = false;
       });
+      this.loadingService.loading = false;
     });
 
   calendarOptions: CalendarOptions = {
