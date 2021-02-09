@@ -7,29 +7,20 @@ import {
   deleteCollectionByPath,
 } from './util';
 import { sendEmail } from './send-email.function';
-import { User } from './interfaces/user';
 
 const db = admin.firestore();
 
 export const createUser = functions
   .region('asia-northeast1')
   .auth.user()
-  .onCreate(async (user, context) => {
-    const eventId = context.eventId;
-    return shouldEventRun(eventId).then(async (should: boolean) => {
-      if (should) {
-        await db.doc(`users/${user.uid}`).set({
-          uid: user.uid,
-          email: user.email,
-        });
-        return markEventTried(eventId);
-      } else {
-        return true;
-      }
+  .onCreate(async (user) => {
+    return db.doc(`users/${user.uid}`).set({
+      uid: user.uid,
+      email: user.email,
     });
   });
 
-export const sendEmailCreateUseer = functions
+export const sendEmailCreateUser = functions
   .region('asia-northeast1')
   .firestore.document('users/{uid}')
   .onCreate((snap, context) => {
@@ -49,40 +40,30 @@ export const sendEmailCreateUseer = functions
     });
   });
 
-export const deleteAfUser = functions
-  .region('asia-northeast1')
-  .https.onCall((snap: User, _) => {
-    return admin.auth().deleteUser(snap.uid);
-  });
-
 export const deleteUserAccount = functions
   .region('asia-northeast1')
   .auth.user()
-  .onDelete(async (user, _) => {
+  .onDelete(async (user, context) => {
     const uid = user.uid;
+    const eventId = context.eventId;
+    const email: any = user.email;
     const reviewsRef = db.collectionGroup(`reviews`).where('uid', '==', uid);
     const deleteFireStoreUser = db.doc(`users/${uid}`).delete();
 
-    return Promise.all([
+    Promise.all([
       deleteCollectionByReference(reviewsRef),
       deleteCollectionByPath(`users/${uid}/favoriteBooks`),
       deleteFireStoreUser,
-    ]);
-  });
+    ]).catch((err) => console.log(err));
 
-export const sendEmailDeleteUseer = functions
-  .region('asia-northeast1')
-  .firestore.document('users/{uid}')
-  .onDelete((snap, context) => {
-    const user = snap.data();
-    const eventId = context.eventId;
     return shouldEventRun(eventId).then(async (should: boolean) => {
       if (should) {
         await sendEmail({
-          to: user.email,
+          to: email,
           templateId: 'd-627f7a2f8dd741039e8d3690717c835c',
           dynamicTemplateData: {},
         });
+
         return markEventTried(eventId);
       } else {
         return true;
