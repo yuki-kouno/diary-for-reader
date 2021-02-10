@@ -4,7 +4,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
 import { switchMap, first } from 'rxjs/operators';
-import { AngularFireFunctions } from '@angular/fire/functions';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -27,7 +26,6 @@ export class UserService {
   constructor(
     private db: AngularFirestore,
     private afAuth: AngularFireAuth,
-    private fns: AngularFireFunctions,
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
@@ -41,14 +39,17 @@ export class UserService {
   }
 
   async deleteUser(): Promise<void> {
-    const callable = this.fns.httpsCallable('deleteAfUser');
-    const user: User = await this.getUserWithSnapShot();
-
-    return callable(user)
-      .toPromise()
+    return (await this.afAuth.currentUser)
+      .delete()
       .then(() => {
         this.router.navigateByUrl('/welcome');
         this.snackBar.open('ご利用ありがとうございました');
+      })
+      .catch(() => {
+        console.log(this.afAuth.currentUser);
+        this.snackBar.open(
+          '削除に失敗しました。もう一度退会を実行してください'
+        );
       });
   }
 }
