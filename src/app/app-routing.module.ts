@@ -19,6 +19,11 @@ const routes: Routes = [
       import('./terms/terms.module').then((mod) => mod.TermsModule),
   },
   {
+    path: 'privacy',
+    loadChildren: () =>
+      import('./privacy/privacy.module').then((mod) => mod.PrivacyModule),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },

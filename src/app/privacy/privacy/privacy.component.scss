@@ -2,20 +2,26 @@
 * {
   color: rgb(75, 75, 75);
 }
+.privacy {
+  padding: 16px;
+  @include tab {
+    padding: 32px 120px;
+  }
+}
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.inner {
+  padding: 0 16px;
+}
 li {
   list-style: inherit !important;
   @include sp {
     margin: 10px;
   }
 }
-.container {
-  padding: 16px 30px 70px;
-  @include tab {
-    padding: 32px 120px;
-  }
-}
 .close-btn {
-  margin-bottom: 16px;
   &__icon {
     font-size: 32px;
   }
