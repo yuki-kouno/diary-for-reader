@@ -1,16 +1,20 @@
 @import 'mixins';
 
 .footer {
-  padding: 16px 0 8px;
+  padding: 32px 0;
   width: 100%;
-  background-color: white;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.6);
+  border: solid 2px transparent;
+  background-clip: padding-box;
   @include tab {
-    padding-top: 32px;
+    padding: 32px 0 8px;
   }
   &__contents {
     display: flex;
     flex-direction: column;
-    color: #808080;
+    color: #606060;
     @include tab {
       flex-direction: row;
       justify-content: space-around;
@@ -19,12 +23,14 @@
   &__brand {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    margin-bottom: 48px;
+    margin-bottom: 16px;
   }
-  &__brand-logo {
-    max-width: 200px;
-    margin: 0 auto 8px auto;
+  &__brand-title-logo {
+    margin: 0 auto;
+  }
+  &__middle {
+    text-align: center;
+    margin-bottom: 16px;
   }
   &__developer {
     color: #909090;
@@ -33,13 +39,16 @@
   }
   &__twitter-logo {
     vertical-align: middle;
+    color: #606060;
     height: 24px;
     font-size: 18px;
   }
   &__nav {
     font-size: 14px;
-    margin-bottom: 16px;
     text-align: center;
+    @include tab {
+      text-align-last: left;
+    }
     .item {
       margin-bottom: 4px;
     }
@@ -56,7 +65,7 @@
     margin-bottom: 2px;
   }
   &__end {
-    color: #808080;
+    color: #606060;
     height: 24px;
     font-size: 12px;
     text-align: center;
@@ -68,8 +77,11 @@
   }
 }
 .copyright {
-  margin-top: 8px;
   text-align: center;
-  color: #808080;
+  color: #606060;
   font-size: 12px;
+  margin-top: 16px;
+  @include tab {
+    margin-top: 32px;
+  }
 }
