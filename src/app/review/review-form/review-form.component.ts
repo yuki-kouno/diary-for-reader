@@ -12,6 +12,7 @@ import { Review } from 'src/app/interface/review';
 import { DatabaseReviewsService } from 'src/app/services/database-reviews.service';
 import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { QuestionDialogComponent } from '../question-dialog/question-dialog.component';
 
 @Component({
   selector: 'app-review-form',
@@ -22,9 +23,14 @@ export class ReviewFormComponent implements OnInit {
   @Input() book: Book;
   showInput: boolean;
   selectedQuestion: string[] = [];
-  questionsList: string[] = questionsList;
+  questionsList: {
+    start: string[];
+    halfway: string[];
+    end: string[];
+  } = questionsList;
   nowDate: Date;
   editableCount = 0;
+  data: string;
 
   form: FormGroup = this.fb.group({
     answers: this.fb.array([]),
@@ -52,15 +58,18 @@ export class ReviewFormComponent implements OnInit {
     return this.form.get('answers') as FormArray;
   }
 
+  openQustionDialog() {
+    const dialogRef = this.dialog.open(QuestionDialogComponent, {
+      width: '300px',
+      data: this.data,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.addQuestion(result);
+    });
+  }
+
   addQuestion(question: string) {
     if (!this.selectedQuestion.includes(question)) {
-      this.answers.push(
-        this.fb.group({
-          answer: [''],
-        })
-      );
-      this.selectedQuestion.push(question);
-    } else if (question === null) {
       this.answers.push(
         this.fb.group({
           answer: [''],

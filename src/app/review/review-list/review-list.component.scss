@@ -1,16 +1,18 @@
 @import 'mixins';
+@import 'material-custom';
 
 mat-form-field {
   width: 100%;
   color: #505050;
 }
 
-.container {
+.contents {
   @include tab {
     margin: 0 5%;
   }
 }
 .reviews {
+  padding: 40px 4px 0;
   &__body {
     color: #505050;
   }
@@ -21,12 +23,24 @@ mat-form-field {
 }
 .revieweds {
   color: #505050;
-  margin-bottom: 40px;
-  padding: 40px 8px 0;
+  margin-bottom: 24px;
+  padding: 16px 4px 0;
   &__header {
     display: grid;
-    grid-template-columns: 1fr 24px;
+    align-items: center;
+    grid-template-columns: 38px 1fr 24px;
     margin-bottom: 8px;
+  }
+  &__icon {
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    padding-right: 3px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background-color: mat-color($primary);
+    border-radius: 50%;
   }
   &__question {
     display: grid;
@@ -34,12 +48,25 @@ mat-form-field {
     font-size: 12px;
     font-weight: 600;
   }
+  &__edit-btn {
+    display: grid;
+    align-items: center;
+    height: 30px;
+    &:hover {
+      transition: 0.3s;
+      color: mat-color($primary);
+    }
+  }
   &__answer {
     padding: 0 8px;
     font-size: 16px;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    @include tab {
+      margin: 0 32px;
+    }
   }
 }
-
 .reviews-btns {
   text-align: right;
   &__cancel {
@@ -51,5 +78,15 @@ mat-form-field {
   &__save {
     font-size: 12px;
     color: white;
+  }
+}
+@include tab {
+  .revieweds__edit-btn {
+    display: none;
+  }
+  .contents:hover {
+    .revieweds__edit-btn {
+      display: block;
+    }
   }
 }

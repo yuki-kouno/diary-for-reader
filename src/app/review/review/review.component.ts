@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Book } from 'src/app/interface/book';
@@ -16,13 +10,14 @@ import { ReviewFormComponent } from '../review-form/review-form.component';
 import { SeoService } from 'src/app/services/seo.service';
 import { tap } from 'rxjs/operators';
 import { AllReviewListComponent } from '../all-review-list/all-review-list.component';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.scss'],
 })
-export class ReviewComponent implements OnInit, AfterViewInit {
+export class ReviewComponent implements OnInit {
   @ViewChild(ReviewListComponent)
   public reviewListComponent: ReviewListComponent;
   @ViewChild(AllReviewListComponent)
@@ -31,8 +26,10 @@ export class ReviewComponent implements OnInit, AfterViewInit {
   public reviewFormComponet: ReviewFormComponent;
   nowDate: Date;
   bookId: string = this.route.snapshot.paramMap.get('book.id');
-  book$: Observable<Book> = this.databaseBooks.getToFavoriteBook(this.bookId);
-  reviews$: Observable<Review[]> = this.databaseReviews.getReviews(this.bookId);
+  book$: Observable<Book> = this.databaseBooks.getFavoriteBook(this.bookId);
+  reviews$: Observable<Review[]> = this.databaseReviews
+    .getReviews(this.bookId)
+    .pipe(tap(() => (this.loaingService.loading = false)));
   allReviews$: Observable<Review[]> = this.databaseReviews.getAllReviews(
     this.bookId
   );
@@ -43,9 +40,10 @@ export class ReviewComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private databaseBooks: DatabaseBooksService,
     private databaseReviews: DatabaseReviewsService,
-    private elementRef: ElementRef,
-    private seoService: SeoService
+    private seoService: SeoService,
+    public loaingService: LoadingService
   ) {
+    this.loaingService.loading = true;
     this.book$.pipe(
       tap((book) => {
         this.seoService.setTitleAndMeta(
@@ -70,10 +68,5 @@ export class ReviewComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.nowDate = new Date();
-  }
-
-  ngAfterViewInit() {
-    this.elementRef.nativeElement.ownerDocument.body.style.background =
-      'rgb(224, 239, 243, 0.6)';
   }
 }

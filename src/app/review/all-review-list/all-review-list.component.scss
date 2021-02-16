@@ -6,8 +6,8 @@ mat-form-field {
   color: #505050;
 }
 
-.container {
-  padding: 32px 16px 0;
+.contents {
+  padding-top: 16px;
   overflow: hidden;
   @include tab {
     margin: 0 5%;
@@ -24,37 +24,58 @@ mat-form-field {
   }
 }
 .revieweds {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  padding: 4px 16px 16px;
+  border-radius: 8px;
+  padding: 4px 0 16px;
   color: #505050;
   &__header {
     display: grid;
-    grid-template-columns: 70px 1fr 40px;
+    grid-template-columns: 40px 1fr 40px;
+    // align-items: center;
     margin-bottom: 8px;
   }
+  &__icon {
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    padding-right: 3px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background-color: mat-color($primary);
+    border-radius: 50%;
+  }
   &__date {
-    display: grid;
     font-size: 12px;
-    color: #505050;
+    color: #808080;
     align-items: center;
+    @include tab {
+      font-size: 14px;
+    }
   }
   &__question {
-    display: grid;
-    align-items: center;
     font-size: 12px;
     font-weight: 600;
+    @include tab {
+      font-size: 14px;
+    }
   }
-  &__edit-button {
+  &__edit-btn {
     display: grid;
     align-items: center;
+    height: 30px;
     &:hover {
       transition: 0.3s;
       color: mat-color($primary);
     }
   }
   &__answer {
+    padding: 8px;
     font-size: 16px;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    @include tab {
+      margin: 0 32px;
+    }
   }
 }
 
@@ -69,5 +90,15 @@ mat-form-field {
   &__save {
     font-size: 12px;
     color: white;
+  }
+}
+@include tab {
+  .revieweds__edit-btn {
+    display: none;
+  }
+  .contents:hover {
+    .revieweds__edit-btn {
+      display: block;
+    }
   }
 }

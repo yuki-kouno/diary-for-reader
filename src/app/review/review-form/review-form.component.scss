@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'material-custom';
 
 mat-form-field {
   width: 100%;
@@ -42,4 +43,10 @@ mat-form-field {
   &__save {
     color: white;
   }
+}
+
+.question-item {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
 }

@@ -1,27 +1,29 @@
 @import 'variables';
 @import 'mixins';
 
-.container {
-  padding: 0 8px 70px;
-}
-
 mat-tab-group {
   @include tab {
     padding: 0 16%;
   }
 }
-
+.contents {
+  padding: 0 16px 70px;
+}
 .top {
   position: relative;
-  padding: 24px 0 40px;
+  padding: 16px 0 4px;
   background: radial-gradient(rgba(172, 186, 189, 0.1), #ffffff00);
+  @include tab {
+    padding: 40px 0 16px;
+  }
   &__back-btn {
     opacity: 0.4;
     position: fixed;
-    top: 22px;
+    top: 16px;
     left: 16px;
     z-index: 1000;
     @include tab {
+      top: 40px;
       left: 40px;
     }
   }
@@ -31,9 +33,12 @@ mat-tab-group {
   }
 }
 .date {
+  margin-bottom: 16px;
   text-align: center;
-  margin-bottom: 40px;
   color: #808080;
+  @include tab {
+    margin-bottom: 40px;
+  }
 }
 
 .grid {

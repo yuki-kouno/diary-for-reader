@@ -1,8 +1,12 @@
-<div class="container">
+<div class="contents">
   <ng-container *ngIf="isEditable; else view">
     <div class="reviews">
       <form>
-        <mat-form-field class="reviews__body" floatLabel="always">
+        <mat-form-field
+          class="reviews__body"
+          floatLabel="always"
+          appearance="outline"
+        >
           <mat-label>
             {{ review.question }}
           </mat-label>
@@ -42,12 +46,15 @@
   <ng-template #view>
     <div class="revieweds">
       <div class="revieweds__header">
-        <p class="revieweds__date">
-          {{ review.createdAt.toDate() | date: 'yyyy/M/d' }}
-        </p>
-        <p class="revieweds__question">{{ review.question }}</p>
+        <i class="revieweds__icon wrap-gradient">Q</i>
+        <div>
+          <p class="revieweds__question">{{ review.question }}</p>
+          <p class="revieweds__date">
+            {{ review.createdAt.toDate() | date: 'yyyy/M/d' }}
+          </p>
+        </div>
         <button
-          class="revieweds__edit-button"
+          class="revieweds__edit-btn"
           mat-icon-button
           [mat-menu-trigger-for]="reviewEditor"
           type="button"
@@ -59,6 +66,7 @@
         <p class="revieweds__answer">{{ review.answer }}</p>
       </div>
     </div>
+    <mat-divider *ngIf="!last"></mat-divider>
   </ng-template>
 </div>
 <mat-menu #reviewEditor="matMenu">
