@@ -1,5 +1,6 @@
 @import 'mixins';
-.container {
+
+.contents {
   text-align: center;
   position: relative;
 }
@@ -69,8 +70,19 @@
   border-bottom: solid 2px transparent;
   background-clip: padding-box;
   border-radius: 50%;
+  @include tab {
+    display: none;
+  }
   &__icon {
     margin-top: 2px;
     color: #606060;
+  }
+}
+@include tab {
+  .book:hover　 + .remove-btn {
+    display: block;
+  }
+  .remove-btn:hover {
+    display: block;
   }
 }

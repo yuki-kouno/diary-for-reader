@@ -4,6 +4,7 @@ import { User, auth } from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,12 @@ export class AuthService {
       .then((result) => {
         result.user.sendEmailVerification();
       })
+      .finally(() => {
+        this.router.navigate(['/welcome']);
+        alert(
+          'メールを送信しました。ログインするにはメールアドレスの確認を完了してください。'
+        );
+      })
       .catch((error) => {
         this.isProcessing = false;
         switch (error.code) {
@@ -42,11 +49,8 @@ export class AuthService {
             alert('メールアドレスが不正です');
             break;
         }
-      })
-      .finally(() => {
-        this.isProcessing = false;
-        return this.emailLogin(params);
       });
+    this.isProcessing = false;
   }
 
   async resetPassword(email: string): Promise<void> {
@@ -66,9 +70,21 @@ export class AuthService {
     });
   }
 
-  async emailLogin(params: { email: string; password: string }): Promise<void> {
+  async loginWithtEmail(params: {
+    email: string;
+    password: string;
+  }): Promise<void> {
     return this.afAuth
       .signInWithEmailAndPassword(params.email, params.password)
+      .finally(() => {
+        if (
+          this.afUser$.pipe(take(1)).subscribe((user) => user.emailVerified)
+        ) {
+          this.router.navigate(['/add-books']);
+        } else {
+          return;
+        }
+      })
       .catch((error) => {
         switch (error.code) {
           case 'auth/user-not-found':
@@ -78,30 +94,29 @@ export class AuthService {
             alert('パスワードが間違っています');
             break;
           case 'auth/invalid-email':
-            alert('メールアドレスが不正です');
+            alert(
+              '有効なアカウントではありません。、送られたメールから認証を完了してください。'
+            );
             break;
         }
       })
       .then(() => {
-        this.router.navigate(['/add-books']);
-      })
-      .then(() => {
-        this.snackBar.open('ようこそ');
+        return;
       });
   }
 
-  async googleLogin(): Promise<void> {
+  async loginWithGoogle(): Promise<void> {
     this.isProcessing = true;
     const provider = new auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     this.afAuth
       .signInWithPopup(provider)
-      .catch(() => {
-        this.snackBar.open('ログイン中にエラーが発生しました。');
-      })
       .finally(() => {
         this.isProcessing = false;
         this.router.navigateByUrl('/add-books');
+      })
+      .catch(() => {
+        this.snackBar.open('ログイン中にエラーが発生しました。');
       })
       .then(() => {
         this.snackBar.open('ようこそ');

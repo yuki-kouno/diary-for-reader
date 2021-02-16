@@ -4,7 +4,7 @@
       <ng-container formArrayName="answers">
         <ng-container *ngFor="let answer of answers.controls; index as i">
           <div [formGroupName]="i">
-            <mat-form-field floatLabel="always">
+            <mat-form-field floatLabel="always" appearance="outline">
               <mat-label>
                 {{ selectedQuestion[i] }}
               </mat-label>
@@ -57,19 +57,42 @@
         class="review-btns__free-text wrap-gradient"
         mat-flat-button
         color="accent"
-        (click)="addQuestion(null)"
+        (click)="openQustionDialog()"
       >
         自由に書く
       </button>
     </div>
   </div>
   <mat-menu class="question-panel" #questionMenu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="start">読み始め</button>
+    <button mat-menu-item [matMenuTriggerFor]="halfway">途中</button>
+    <button mat-menu-item [matMenuTriggerFor]="end">読み終わり</button>
+  </mat-menu>
+  <mat-menu #start="matMenu" yPosition="above">
     <button
       mat-menu-item
       (click)="addQuestion(question)"
-      *ngFor="let question of questionsList; index as i"
+      *ngFor="let question of questionsList.start; index as i"
     >
-      {{ i + 1 + '&emsp;' + question }}
+      <div class="question-item">{{ question }}</div>
+    </button>
+  </mat-menu>
+  <mat-menu #halfway="matMenu">
+    <button
+      mat-menu-item
+      (click)="addQuestion(question)"
+      *ngFor="let question of questionsList.halfway; index as i"
+    >
+      <div class="question-item">{{ question }}</div>
+    </button>
+  </mat-menu>
+  <mat-menu #end="matMenu">
+    <button
+      mat-menu-item
+      (click)="addQuestion(question)"
+      *ngFor="let question of questionsList.end; index as i"
+    >
+      <div class="question-item">{{ question }}</div>
     </button>
   </mat-menu>
 </div>

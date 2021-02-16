@@ -8,6 +8,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { PasswordService } from 'src/app/services/password.service';
 
 const regex: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/;
 
@@ -30,7 +31,7 @@ function isEmptyInputValue(val: any): boolean {
 })
 export class SignupFormComponent implements OnInit {
   hide = true;
-  passowrdLength = 10;
+  passowrdLength = 6;
   signUpForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: [
@@ -50,10 +51,19 @@ export class SignupFormComponent implements OnInit {
     return this.signUpForm.get('password') as FormControl;
   }
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private passwordGenerate: PasswordService
+  ) {}
 
   signUp() {
     this.authService.createUser(this.signUpForm.value);
+  }
+
+  generatetPassword() {
+    this.passwordControl.setValue(this.passwordGenerate.generatePassword());
+    this.hide = false;
   }
 
   ngOnInit() {}

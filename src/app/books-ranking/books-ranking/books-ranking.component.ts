@@ -12,6 +12,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./books-ranking.component.scss'],
 })
 export class BooksRankingComponent implements OnInit {
+  title = '売れ筋ランキング';
   booksRanking$: Observable<
     RankingBooksInfo[]
   > = this.rankingBookService
@@ -19,29 +20,19 @@ export class BooksRankingComponent implements OnInit {
     .pipe(tap(() => (this.loadingService.loading = false)));
   businessesRanking$: Observable<
     RankingBooksInfo[]
-  > = this.rankingBookService
-    .getBusinessesRanking()
-    .pipe(tap(() => (this.loadingService.loading = false)));
+  > = this.rankingBookService.getBusinessesRanking();
   humanitiesRanking$: Observable<
     RankingBooksInfo[]
-  > = this.rankingBookService
-    .getHumanitiesRanking()
-    .pipe(tap(() => (this.loadingService.loading = false)));
+  > = this.rankingBookService.getHumanitiesRanking();
   literaturesRanking$: Observable<
     RankingBooksInfo[]
-  > = this.rankingBookService
-    .getliteraturesRanking()
-    .pipe(tap(() => (this.loadingService.loading = false)));
+  > = this.rankingBookService.getliteraturesRanking();
   comicsRanking$: Observable<
     RankingBooksInfo[]
-  > = this.rankingBookService
-    .getComicsRanking()
-    .pipe(tap(() => (this.loadingService.loading = false)));
+  > = this.rankingBookService.getComicsRanking();
   hobbiesRanking$: Observable<
     RankingBooksInfo[]
-  > = this.rankingBookService
-    .getHobbiesRanking()
-    .pipe(tap(() => (this.loadingService.loading = false)));
+  > = this.rankingBookService.getHobbiesRanking();
 
   constructor(
     private rankingBookService: DatabaseRankingBooksService,
@@ -49,7 +40,7 @@ export class BooksRankingComponent implements OnInit {
     public loadingService: LoadingService
   ) {
     this.loadingService.loading = true;
-    this.seoService.setTitleAndMeta('ブックランキング');
+    this.seoService.setTitleAndMeta(this.title);
   }
 
   ngOnInit(): void {}

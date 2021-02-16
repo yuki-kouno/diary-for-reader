@@ -1,11 +1,15 @@
 <footer class="footer">
   <div class="footer__contents">
-    <div class="footer__brand">
+    <a class="footer__brand">
       <img
-        class="footer__brand-logo"
-        src="assets/images/brand-title.logo.png"
+        class="footer__brand-title-logo"
+        src="assets/images/brand-title-logo.png"
         alt="読書家のための日記帳"
+        width="200px"
+        routerLink="/welcome"
       />
+    </a>
+    <div class="footer__middle">
       <p class="footer__developer">created by Yuki Kouno</p>
       <a
         href="https://twitter.com/yuki_kouno_jp"
@@ -13,7 +17,7 @@
         rel="noopener noreferrer"
         ><img
           class="footer__twitter-logo"
-          src="assets/images/twitter-logo.png"
+          src="assets/images/twitter-logo.svg"
           alt="ツイッターリンク"
       /></a>
     </div>
@@ -33,10 +37,11 @@
           ></a
         >
       </li>
+      <li>
+        <p class="copyright">
+          &copy; 2021 読書家のための日記帳
+        </p>
+      </li>
     </ul>
   </div>
-  <mat-divider class="sp-none"></mat-divider>
-  <p class="copyright">
-    &copy; 2021 読書家のための日記帳
-  </p>
 </footer>

@@ -1,18 +1,18 @@
 <div class="wrapper">
-  <div class="container">
+  <div class="inner">
     <div class="logo">
-      <img class="logo__image" src="/assets/images/title-logo.png" alt="/" />
+      <img
+        class="logo__image"
+        src="assets/images/title-logo.png"
+        alt="読書家のための日記帳"
+      />
     </div>
     <div class="login">
       <p class="login__title">メールアドレスでログイン</p>
       <app-login-form class="login__form"></app-login-form>
       <p class="login__or">or</p>
       <p class="login__title">Googleアカウントでログイン</p>
-      <button
-        class="login__item google-logo"
-        (click)="googleLogin()"
-        mat-button
-      >
+      <button class="login__item" (click)="login()" mat-button>
         Google
       </button>
       <mat-divider></mat-divider>
@@ -20,45 +20,81 @@
         新規アカウントの作成は<span class="login__border"> こちら</span>
       </a>
     </div>
-    <p class="photo-provider">
-      <span
-        >Photo by
-        <a
-          href="https://unsplash.com/@heftiba?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-          >Toa Heftiba</a
-        >
-        on
-        <a
-          href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
-          >Unsplash</a
-        ></span
-      >
-    </p>
   </div>
 </div>
-<div class="overview">
-  <h1 class="overview__title">読書が好き。<br />でもアウトプットは嫌い！</h1>
-  <p class="overview__text">
+<div class="heading">
+  <h1 class="heading__title">
+    読書が好き。<span class="heading__break">でもアウトプットは嫌い！</span>
+  </h1>
+  <p class="heading__text">
     このサービスは、アウトプットが苦手な人でも読書後のアウトプットを定着させるように考えたサービスです。
   </p>
 </div>
-<div class="step">
-  <h1>サービスの始め方</h1>
-  <ul class="step__box">
-    <li class="step__item">
-      <span class="step__circle">1</span>
-      <p class="step__text">ログイン後、まず読んだ本をライブラリに登録</p>
-    </li>
-    <li class="step__item">
-      <span class="step__circle">2</span>
-      <p class="step__text">ライブラリから本を選択</p>
-    </li>
-    <li class="step__item">
-      <span class="step__circle">3</span>
-      <p class="step__text">用意された質問に答える</p>
-    </li>
-  </ul>
-</div>
-<footer class="footer">
+<div class="background">
+  <div class="overlay">
+    <div class="step">
+      <h1 class="step__heading">使い方</h1>
+      <ul class="step__box">
+        <li class="step__item">
+          <div class="step__description">
+            <h2 class="step__title">本を登録</h2>
+            <p class="step__text">
+              ログイン後、まず本を検索してライブラリに登録
+            </p>
+          </div>
+          <img class="step__img" src="assets/images/step-1.png" alt="" />
+        </li>
+        <li class="step__item">
+          <div class="step__description">
+            <h2 class="step__title">本を選ぶ</h2>
+            <p class="step__text">
+              ライブラリに登録された本の中からアウトプットしたい本をを選ぶ
+            </p>
+          </div>
+          <img class="step__img" src="assets/images/step-2.png" alt="" />
+        </li>
+        <li class="step__item">
+          <div class="step__description">
+            <h2 class="step__title">質問に答える</h2>
+            <p class="step__text">
+              レビューページの『質問を選択』ボタンから質問を選んで答える
+            </p>
+          </div>
+          <img class="step__img" src="assets/images/step-3.png" alt="" />
+        </li>
+      </ul>
+    </div>
+    <div class="points">
+      <h1 class="points__heading">ポイント</h1>
+      <ul class="points__box">
+        <li class="points__item">
+          <i class="points__icon">
+            <img src="assets/images/memo.png" alt="" width="40px" />
+          </i>
+          <p class="points__text points--shadow">
+            レビューページの質問には、読み始める前、読んでいる途中、読み終えた後、の三つの段階に分けて質問項目があります。
+            それぞれの段階の質問に答えることで、モチベーション維持、理解力向上、記憶の定着に役立ちます。
+          </p>
+        </li>
+        <li class="points__item">
+          <i class="points__icon">
+            <img src="assets/images/calendar.png" alt="" width="40px" />
+          </i>
+          <p class="points__text points--shadow">
+            過去に行ったアウトプットはカレンダーページから確認することができます。
+            定期的に確認することで記憶の定着を促します。
+          </p>
+        </li>
+        <li class="points__item">
+          <i class="points__icon">
+            <img src="assets/images/crown.png" alt="" width="40px" />
+          </i>
+          <p class="points__text points--shadow">
+            読みたい本が見つからないときはランキングページで売れ筋の本をチェックできます。
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
   <app-footer></app-footer>
-</footer>
+</div>

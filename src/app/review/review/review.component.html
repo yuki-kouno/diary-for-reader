@@ -1,11 +1,11 @@
-<div class="container" *ngIf="book$ | async as book">
+<div class="contents" *ngIf="book$ | async as book">
   <div class="top">
     <button class="top__back-btn" (click)="back()">
       <mat-icon class="top__back-icon material-icons-round"
         >arrow_back_ios</mat-icon
       >
     </button>
-    <div class="date">{{ nowDate | date: 'M. d E' }}</div>
+    <div class="date">{{ nowDate | date: 'M月 d日 (E)' }}</div>
     <div class="grid">
       <div class="grid__body">
         <figure class="grid__figure">
@@ -37,10 +37,11 @@
     <mat-tab label="すべて">
       <ng-container *ngIf="(allReviews$ | async)?.length > 0; else blank">
         <app-all-review-list
-          *ngFor="let review of allReviews$ | async"
+          *ngFor="let review of allReviews$ | async; last as last"
           [review]="review"
           [book]="book"
           (event)="onAllReviewCount($event)"
+          [last]="last"
         >
         </app-all-review-list>
       </ng-container>
@@ -49,7 +50,7 @@
   <app-review-form *ngIf="book" [book]="book" valu=""></app-review-form>
 </div>
 <ng-template #blank>
-  <div class="blank">
+  <div class="blank" *ngIf="!this.loaingService.loading">
     レビューはまだありません。<br />質問を選択か自由に書くを選んでレビューしましょう。
   </div>
 </ng-template>

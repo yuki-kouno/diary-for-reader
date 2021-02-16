@@ -4,40 +4,41 @@
   font-size: 16px;
   color: #505050;
   text-align: center;
-  padding-top: 60px 16px;
+  padding: 0 16px;
+  margin-top: 180px;
   @include tab {
     font-size: 20px;
-    padding-top: 120px;
   }
 }
-.container {
-  color: rgb(75, 75, 75);
-  padding: 70px 24px 24px;
-  @include tab {
-    padding: 100px 160px 32px;
-  }
-}
+
 .results-title {
   text-align: center;
-  font-size: 20px;
-  margin-bottom: 32px;
+  margin: 68px 0 32px;
+  @include tab {
+    margin-top: 32px;
+  }
   &__label {
     font-size: 16px;
   }
 }
 
 .results {
+  color: rgb(75, 75, 75);
   display: grid;
-  column-gap: 32px;
-  row-gap: 32px;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   &__item {
+    margin: 0 auto;
+    width: 320px;
     padding: 8px;
     position: relative;
     background: radial-gradient(#e0f5ff38, #ffffff00);
     background: -webkit-radial-gradient(#e0f5ff38, #ffffff00);
     display: grid;
     grid-template-columns: 90px 1fr 40px;
+    @include sp {
+      width: 280px;
+    }
     @include tab {
       background-color: rgba(135, 153, 168, 0.11);
       border-radius: 8px;
@@ -102,7 +103,4 @@
   &__add-btn {
     margin-top: 32px;
   }
-}
-.blank {
-  margin-top: 100px;
 }

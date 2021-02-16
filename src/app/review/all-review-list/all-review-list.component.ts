@@ -22,6 +22,7 @@ import { RemoveReviewDialogComponent } from '../remove-review-dialog/remove-revi
 export class AllReviewListComponent implements OnInit {
   @Input() review: Review;
   @Input() book: Book;
+  @Input() last: any;
   @Output() event = new EventEmitter();
 
   editForm: FormControl = new FormControl();

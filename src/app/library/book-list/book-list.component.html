@@ -1,4 +1,4 @@
-<div class="container">
+<div class="contents">
   <div class="book" [routerLink]="['/review', book.id]">
     <figure class="book__figure">
       <img
@@ -17,7 +17,7 @@
     </div>
   </div>
   <button class="remove-btn" [matMenuTriggerFor]="menu">
-    <mat-icon class="remove-btn__icon">more_horiz</mat-icon>
+    <mat-icon class="remove-btn__icon">more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="openRemoveDialog(book)">

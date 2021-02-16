@@ -1,12 +1,7 @@
 @import 'mixins';
 @import 'material-custom';
 @import 'variables';
-.container {
-  padding-bottom: 140px;
-  @include tab {
-    padding-bottom: 100px;
-  }
-}
+
 .header {
   position: fixed;
   z-index: 1000;
@@ -56,7 +51,7 @@
 .form {
   display: flex;
   justify-content: center;
-  padding: 24px 0;
+  padding-top: 8px;
   @include tab {
     padding: 0 16px 0 0;
   }

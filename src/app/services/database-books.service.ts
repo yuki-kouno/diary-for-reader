@@ -19,7 +19,7 @@ export class DatabaseBooksService {
     private fns: AngularFireFunctions
   ) {}
 
-  async createToFavoriteBook(book: Book): Promise<void> {
+  async createFavoriteBook(book: Book): Promise<void> {
     const uid = this.authService.uid;
     return this.db
       .doc(`users/${this.authService.uid}/favoriteBooks/${book.id}`)
@@ -30,13 +30,13 @@ export class DatabaseBooksService {
       })
       .then(() => {
         this.snackBar.open(
-          `${book.volumeInfo.title}`,
-          'をライブラリに追加しました'
+          `${book.volumeInfo.title}
+          をライブラリに追加しました`
         );
       });
   }
 
-  getToFavoriteBooks(sort: string, order: any): Observable<Book[]> {
+  getFavoriteBooks(sort: string, order: any): Observable<Book[]> {
     return this.db
       .collection<Book>(
         `users/${this.authService.uid}/favoriteBooks`,
@@ -47,20 +47,20 @@ export class DatabaseBooksService {
       .valueChanges();
   }
 
-  getToFavoriteBook(id: string): Observable<Book> {
+  getFavoriteBook(id: string): Observable<Book> {
     return this.db
       .doc<Book>(`users/${this.authService.uid}/favoriteBooks/${id}`)
       .valueChanges();
   }
 
-  getToFavoriteBookIds(): Observable<string[]> {
+  getFavoriteBookIds(): Observable<string[]> {
     return this.db
       .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
       .valueChanges()
       .pipe(map((books) => books.map((book) => book.id)));
   }
 
-  async removeToFavoriteBook(id: string): Promise<void> {
+  async removeFavoriteBook(id: string): Promise<void> {
     this.db.doc(`users/${this.authService.uid}/favoriteBooks/${id}`).delete();
     return this.deleteReviews(id);
   }

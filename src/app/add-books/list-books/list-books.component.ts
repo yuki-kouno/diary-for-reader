@@ -1,16 +1,9 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  AfterViewInit,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { switchMap, map } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { switchMap, map, take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -19,24 +12,23 @@ import { LoadingService } from 'src/app/services/loading.service';
   templateUrl: './list-books.component.html',
   styleUrls: ['./list-books.component.scss'],
 })
-export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ListBooksComponent implements OnInit, OnDestroy {
+  private subscriptions: Subscription;
   bookData: Book[];
   searchText: string;
-  subscriptions: Subscription;
   myfavoriteBookIds: string[];
-  isMyfavorite: boolean;
+  isAddedBook = [];
 
   constructor(
     public googleBooksApi: GoogleBooksApiService,
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
-    private snackBar: MatSnackBar,
-    private elementRef: ElementRef,
     public loadingService: LoadingService
   ) {
     this.loadingService.loading = true;
-    this.subscriptions = this.databaseBooks
-      .getToFavoriteBookIds()
+    this.databaseBooks
+      .getFavoriteBookIds()
+      .pipe(take(1))
       .subscribe((bookIds) => (this.myfavoriteBookIds = bookIds));
   }
 
@@ -53,6 +45,16 @@ export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
             return datas.filter((data) => data.volumeInfo.imageLinks);
           }
           return;
+        }),
+        map((datas) => {
+          return datas.map((data) => {
+            if (data.id) {
+              return {
+                ...data,
+                isFavorite: this.myfavoriteBookIds.includes(data.id),
+              };
+            }
+          });
         })
       )
       .subscribe((datas: Book[]) => {
@@ -61,20 +63,10 @@ export class ListBooksComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   createBook(book: Book) {
-    this.subscriptions = this.databaseBooks
-      .getToFavoriteBookIds()
-      .subscribe((bookIds) => (this.myfavoriteBookIds = bookIds));
-    this.isMyfavorite = this.myfavoriteBookIds.includes(book.id);
-    if (this.isMyfavorite) {
-      this.snackBar.open(`すでに保存されています`);
-    } else {
-      this.databaseBooks.createToFavoriteBook(book);
-    }
+    this.databaseBooks.createFavoriteBook(book);
+    this.isAddedBook.push(book.id);
   }
-  ngAfterViewInit() {
-    this.elementRef.nativeElement.ownerDocument.body.style.background =
-      'rgb(237, 245, 245)';
-  }
+
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }

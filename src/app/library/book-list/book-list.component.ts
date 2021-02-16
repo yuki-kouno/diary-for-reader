@@ -23,7 +23,7 @@ export class BookListComponent implements OnInit {
       .afterClosed()
       .subscribe((status) => {
         if (status) {
-          this.booksService.removeToFavoriteBook(book.id);
+          this.booksService.removeFavoriteBook(book.id);
         }
       });
   }

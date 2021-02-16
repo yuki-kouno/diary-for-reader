@@ -18,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RemoveReviewDialogComponent } from './remove-review-dialog/remove-review-dialog.component';
 import { AllReviewListComponent } from './all-review-list/all-review-list.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ReviewListComponent,
     RemoveReviewDialogComponent,
     AllReviewListComponent,
+    QuestionDialogComponent,
   ],
   imports: [
     CommonModule,

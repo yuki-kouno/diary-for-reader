@@ -1,14 +1,14 @@
 @import 'mixins';
-.container {
-  padding: 0 24px;
-  @include tab {
-    padding: 0 120px;
-  }
-}
+
 .grid {
+  padding: 16px;
+  margin-top: 72px;
   display: grid;
   gap: 32px;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  @include tab {
+    margin-top: 32px;
+  }
 }
 .book {
   position: relative;
@@ -88,10 +88,9 @@
   color: #505050;
   text-align: center;
   padding: 16px;
-  margin-top: 60px;
+  margin-top: 40vh;
   @include tab {
     font-size: 20px;
-    margin-top: 120px;
   }
 }
 .blank-sub {

@@ -1,11 +1,11 @@
 <ng-container *ngIf="!searchText">
-  <p class="blank">タイトル、著者名、キーワードでで検索してください</p>
+  <p class="blank">タイトル、著者名、キーワードで検索してください</p>
 </ng-container>
 <div class="container" *ngIf="searchText">
   <ng-container *ngIf="bookData; else blank">
-    <div class="results-title">
+    <h1 class="results-title">
       {{ searchText }} <span class="results-title__label">の検索結果</span>
-    </div>
+    </h1>
 
     <ul class="results">
       <li class="results__item" *ngFor="let book of bookData">
@@ -26,6 +26,7 @@
           mat-mini-fab
           color="primary"
           (click)="createBook(book)"
+          [disabled]="book.isFavorite || isAddedBook.includes(book.id)"
         >
           <mat-icon>add</mat-icon>
         </button>

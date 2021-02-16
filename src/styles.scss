@@ -14,6 +14,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: rgb(237, 245, 245);
 }
 a {
   color: inherit;
@@ -21,6 +22,16 @@ a {
 }
 li {
   list-style: none;
+}
+h1 {
+  font-size: 20px;
+  color: #808080;
+  @include tab {
+    font-size: 24px;
+  }
+}
+h2 {
+  color: #808080;
 }
 h1,
 h2,
@@ -48,33 +59,12 @@ button {
 input {
   outline: none;
 }
-h1 {
-  font-size: 24px;
-  font-weight: normal;
-  color: #00000090;
-  @include tab {
-    font-size: 32px;
-  }
-}
-h2 {
-  font-size: 20px;
-  color: #30303080;
-  @include tab {
-    font-size: 24px;
-  }
-}
 .container {
   margin: 0 auto;
-}
-.question-panel {
-  height: 160px;
-
+  padding: 48px 8px 24px;
   @include tab {
-    max-width: none !important;
+    padding: 60px 160px 32px;
   }
-}
-.login__item {
-  border-radius: 50px !important;
 }
 .mat-dialog-container {
   backdrop-filter: blur(40px);
@@ -123,23 +113,53 @@ h2 {
   margin: 8px;
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(245, 245, 245, 0.8);
   border: solid 2px transparent;
   background-clip: padding-box;
+  max-height: 50vh !important;
 }
 .mat-menu-item {
   color: #303030;
-  overflow-x: scroll !important;
-  text-overflow: initial !important;
+  height: auto !important;
+  min-height: inherit;
+  white-space: inherit !important;
+  line-height: 2 !important;
+  margin: 20px 0 !important;
 }
 .mat-tab-body-wrapper {
   margin-bottom: 16px;
 }
 .fc-h-event .fc-event-title {
-  font-size: 12px;
+  @include sp {
+    font-size: 10px;
+  }
   @include tab {
     text-overflow: ellipsis;
   }
+}
+.fc-event-title-container {
+  @include sp {
+    line-height: 1;
+    height: 12px;
+    padding: 1px;
+  }
+}
+.fc-toolbar-title {
+  @include sp {
+    font-size: 20px !important;
+  }
+  @include tab {
+    font-size: inherit;
+    font-weight: normal;
+  }
+}
+.fc-header-toolbar {
+  @include sp {
+    margin-bottom: 8px !important;
+  }
+}
+.fc-daygrid-day-events {
+  margin-bottom: 0 !important;
 }
 .fc-direction-ltr .fc-daygrid-event.fc-event-start,
 .fc-direction-rtl .fc-daygrid-event.fc-event-end {
@@ -149,7 +169,10 @@ h2 {
   color: #808080;
 }
 .fc-daygrid-day-number {
-  color: #505050;
+  color: #808080;
+  @include sp {
+    padding-bottom: 0 !important;
+  }
 }
 .fc .fc-col-header-cell-cushion {
   color: #808080;
@@ -170,23 +193,28 @@ h2 {
   border: 8px #ffffff00 !important;
 }
 .fc-daygrid-day-frame {
-  padding: 4px;
-  border-radius: 16px;
+  padding: 2px;
+  border-radius: 8px !important;
   border: solid 2px rgb(237, 245, 245);
-  background: rgba(255, 255, 255, 0.507);
+  background: rgba(146, 146, 146, 0.13);
+  height: 90px;
+  @include tab {
+    padding: 4px;
+  }
 }
 .fc-day-today {
-  border-radius: 16px !important;
+  border-radius: 8px !important;
+}
+.fc-daygrid-more-link {
+  @include sp {
+    font-size: 12px;
+  }
 }
 .mat-elevation-z4 {
   box-shadow: none;
 }
 .mat-tab-header-pagination {
   min-width: 44px !important;
-}
-.mat-tab-header-pagination,
-.mat-tab-label {
-  border-radius: 24px;
 }
 .mat-tab-header-pagination-chevron {
   border-color: #808080;
@@ -198,4 +226,17 @@ h2 {
 }
 .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   display: none;
+}
+app-header {
+  width: 100%;
+  height: 48px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  @include tab-header {
+    height: 60px;
+  }
+}
+.mat-select-library {
+  margin: 30px 30px 0 0 !important;
 }

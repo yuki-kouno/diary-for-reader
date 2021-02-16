@@ -37,7 +37,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {}
 
   logIn() {
-    this.authService.emailLogin(this.logInForm.value);
+    this.authService.loginWithtEmail(this.logInForm.value);
   }
 
   openResetDialog() {

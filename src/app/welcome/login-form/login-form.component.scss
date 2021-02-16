@@ -1,5 +1,5 @@
 @import 'mixins';
-.container {
+.contents {
   text-align: center;
 }
 mat-form-field {
@@ -33,6 +33,7 @@ mat-label {
 .login-btn {
   width: 200px;
   color: #505050;
+  border-radius: 50px;
   background-color: rgba(132, 136, 146, 0.5);
   @include pc {
     width: 260px;
@@ -40,4 +41,5 @@ mat-label {
 }
 .password-icon {
   color: #808080;
+  cursor: pointer;
 }

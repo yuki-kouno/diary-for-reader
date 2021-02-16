@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ReviewDetailDialogComponent } from './review-detail-dialog/review-detail-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SheredModule } from '../shered/shered.module';
 
 @NgModule({
   declarations: [CalendarComponent, ReviewDetailDialogComponent],
@@ -33,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDividerModule,
     MatButtonModule,
     MatNativeDateModule,
+    SheredModule,
   ],
 })
 export class CalendarModule {}
