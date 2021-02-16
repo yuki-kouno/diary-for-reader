@@ -1,0 +1,25 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>質問を記入してください</mat-label>
+    <input matInput [(ngModel)]="data" required autofocus />
+  </mat-form-field>
+</div>
+<div class="btns" mat-dialog-actions>
+  <button
+    class="btns__cancel wrap-gradient"
+    mat-flat-button
+    color="basic"
+    (click)="onNoClick()"
+  >
+    キャンセル
+  </button>
+  <button
+    class="wrap-gradient"
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="data"
+    [disabled]="!data"
+  >
+    Ok
+  </button>
+</div>

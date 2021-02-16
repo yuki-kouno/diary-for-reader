@@ -1,0 +1,10 @@
+mat-form-field {
+  width: 100%;
+}
+.btns {
+  display: flex;
+  justify-content: flex-end;
+  &__cancel {
+    color: #606060;
+  }
+}
