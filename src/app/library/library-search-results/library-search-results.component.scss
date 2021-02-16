@@ -1,10 +1,5 @@
 @import 'mixins';
-.container {
-  padding: 0 24px;
-  @include tab {
-    padding: 0 120px;
-  }
-}
+
 .grid {
   display: grid;
   gap: 32px;
@@ -88,10 +83,9 @@
   color: #505050;
   text-align: center;
   padding: 16px;
-  margin-top: 60px;
+  margin-top: 40vh;
   @include tab {
     font-size: 20px;
-    margin-top: 120px;
   }
 }
 .blank-sub {
