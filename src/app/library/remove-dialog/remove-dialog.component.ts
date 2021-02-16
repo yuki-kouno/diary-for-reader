@@ -19,8 +19,8 @@ export class RemoveDialogComponent implements OnInit {
     this.dialog.closeAll();
   }
 
-  removeToFavoriteBook(book: Book) {
-    this.databaseBooks.removeToFavoriteBook(book.bookId);
+  removeFavoriteBook(book: Book) {
+    this.databaseBooks.removeFavoriteBook(book.bookId);
   }
 
   ngOnInit(): void {}
