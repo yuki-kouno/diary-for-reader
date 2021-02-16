@@ -14,6 +14,7 @@ import { LibrarySearchComponent } from './library-search/library-search.componen
 import { BookListComponent } from './book-list/book-list.component';
 import { SheredModule } from '../shered/shered.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     SheredModule,
     MatTooltipModule,
+    MatSelectModule,
   ],
 })
 export class LibraryModule {}

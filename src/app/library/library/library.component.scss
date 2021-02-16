@@ -2,48 +2,9 @@
 @import 'material-custom';
 @import 'variables';
 
-header {
-  height: 48px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  text-align: center;
-  box-sizing: border-box;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  background-color: rgba(255, 255, 255, 0.3);
-  border-bottom: solid 2px transparent;
-  background-clip: padding-box;
-  @include tab-header {
-    height: 60px;
-  }
-}
-.logo {
-  position: absolute;
-  top: 0;
-  left: 16px;
-  &__sp {
-    height: 48px;
-    @include tab-header {
-      display: none;
-    }
-  }
-  &__tab {
-    height: 60px;
-    @include sp-header {
-      display: none;
-    }
-  }
-}
-.page-title {
-  line-height: 48px;
-  @include tab {
-    height: 60px;
-  }
-}
 .header-options {
-  position: absolute;
+  position: fixed;
+  z-index: 1001;
   top: 0;
   right: 16px;
   height: 48px;
@@ -54,10 +15,6 @@ header {
   }
   &__search-btn {
     color: #808080;
-    &:hover {
-      transition: 0.3s;
-      color: mat-color($primary);
-    }
   }
   &__sort-btn {
     color: #808080;
@@ -65,28 +22,31 @@ header {
     @include tab {
       margin-left: 24px;
     }
-    &:hover {
-      transition: 0.3s;
-      color: mat-color($primary);
-    }
+  }
+  &__select {
+    position: absolute;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    right: -30px;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    display: flex;
   }
   &__icon {
     font-size: 28px;
   }
 }
-
-.order-title {
-  padding: 120px 0;
-  text-align: center;
-}
 .books {
-  padding: 0 32px;
+  margin-top: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
   @include tab {
-    padding: 0 160px;
-  }
-  &__grid {
-    display: grid;
-    gap: 32px;
+    margin-top: 32px;
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
   &__item {
