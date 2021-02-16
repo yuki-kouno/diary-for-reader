@@ -10,9 +10,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { HeaderComponent } from './header/header.component';
+import { AutofocusDirective } from './autofocus.directive';
 
 @NgModule({
-  declarations: [SettingsBottomSheetComponent, DeleteUserDialogComponent],
+  declarations: [
+    SettingsBottomSheetComponent,
+    DeleteUserDialogComponent,
+    HeaderComponent,
+    AutofocusDirective,
+  ],
   imports: [
     CommonModule,
     MatIconModule,
@@ -25,6 +32,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatButtonModule,
   ],
-  exports: [SettingsBottomSheetComponent, DeleteUserDialogComponent],
+  exports: [
+    SettingsBottomSheetComponent,
+    DeleteUserDialogComponent,
+    HeaderComponent,
+    AutofocusDirective,
+  ],
 })
 export class SheredModule {}

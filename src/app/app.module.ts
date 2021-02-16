@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +24,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SheredModule } from './shered/shered.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 FullCalendarModule.registerPlugins([
@@ -47,10 +46,13 @@ FullCalendarModule.registerPlugins([
     MatSnackBarModule,
     AngularFireFunctionsModule,
     FullCalendarModule,
-    SheredModule,
     MatProgressBarModule,
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'ja-JP',
+    },
     { provide: REGION, useValue: 'asia-northeast1' },
     DatePipe,
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
