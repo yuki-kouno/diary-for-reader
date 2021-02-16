@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
 import { ShellComponent } from './shell/shell.component';
+import { EmailVerifiedGuard } from '../guards/email-verified.guard';
+import { EmailValidator } from '@angular/forms';
 
 const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
-    canActivate: [AuthGuard],
-    canLoad: [AuthGuard],
+    canActivate: [AuthGuard, EmailVerifiedGuard],
+    canLoad: [AuthGuard, EmailValidator],
     children: [
       {
         path: '',
