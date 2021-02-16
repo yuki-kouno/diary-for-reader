@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ElementRef,
-  OnDestroy,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarOptions } from '@fullcalendar/angular';
@@ -14,37 +8,17 @@ import { DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ReviewDetailDialogComponent } from '../review-detail-dialog/review-detail-dialog.component';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
+import { take } from 'rxjs/operators';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
 })
-export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
-  reviewArray: any = [];
-  reviews: Subscription = this.dbReviewService
-    .getReviewsOfAllBooks()
-    .subscribe((reviews: Review[]) => {
-      reviews.forEach((review: Review) => {
-        const DATE_FORMAT = 'yyyyMMdd';
-        const transformDate = this.datePipe.transform(
-          review.createdAt.toDate(),
-          DATE_FORMAT
-        );
-        this.reviewArray.push({
-          date: transformDate,
-          title: review.title,
-          question: review.question,
-          answer: review.answer,
-          thumbnail: review.thumbnail,
-          bookId: review.bookId,
-        });
-        this.calendarOptions.events = this.reviewArray;
-      });
-      this.loadingService.loading = false;
-    });
+export class CalendarComponent implements OnInit {
+  title = 'カレンダー';
 
   calendarOptions: CalendarOptions = {
     height: 'auto',
@@ -54,7 +28,14 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
       start: 'title',
       end: 'prev next',
     },
+    locale: 'ja',
     buttonText: {},
+    dayMaxEventRows: 2,
+    views: {
+      dayGrid: {
+        moreLinkText: '件',
+      },
+    },
     eventBackgroundColor: 'rgba(111, 214, 255, 1)',
     eventBorderColor: 'rgba(0, 0, 0, 0)',
     events: [],
@@ -72,12 +53,41 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     private datePipe: DatePipe,
     private matDialog: MatDialog,
     private router: Router,
-    private elementRef: ElementRef,
+    private seoService: SeoService,
     public loadingService: LoadingService
   ) {
     this.loadingService.loading = true;
+    this.seoService.setTitleAndMeta(this.title);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCalendarData();
+  }
+
+  getCalendarData() {
+    this.dbReviewService
+      .getReviewsOfAllBooks()
+      .pipe(take(1))
+      .subscribe((reviews: Review[]) => {
+        const reviewArray = [];
+        reviews.forEach((review: Review) => {
+          const DATE_FORMAT = 'yyyyMMdd';
+          const transformDate = this.datePipe.transform(
+            review.createdAt.toDate(),
+            DATE_FORMAT
+          );
+          reviewArray.push({
+            date: transformDate,
+            title: review.answer,
+            question: review.question,
+            answer: review.answer,
+            thumbnail: review.thumbnail,
+            bookId: review.bookId,
+          });
+          this.calendarOptions.events = reviewArray;
+        });
+        this.loadingService.loading = false;
+      });
+  }
 
   openDialog(obj) {
     const id = obj.event._def.extendedProps.bookId;
@@ -98,12 +108,5 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
           this.router.navigate(['review', id]);
         }
       });
-  }
-  ngAfterViewInit() {
-    this.elementRef.nativeElement.ownerDocument.body.style.background =
-      'rgb(237, 245, 245)';
-  }
-  ngOnDestroy() {
-    this.reviews.unsubscribe();
   }
 }
