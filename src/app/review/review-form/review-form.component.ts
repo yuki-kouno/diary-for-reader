@@ -64,7 +64,11 @@ export class ReviewFormComponent implements OnInit {
       data: this.data,
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.addQuestion(result);
+      if (result) {
+        this.addQuestion(result);
+      } else {
+        return;
+      }
     });
   }
 
