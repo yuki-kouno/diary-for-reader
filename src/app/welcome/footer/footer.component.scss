@@ -8,9 +8,6 @@
   background-color: rgba(255, 255, 255, 0.6);
   border: solid 2px transparent;
   background-clip: padding-box;
-  @include tab {
-    padding: 32px 0 8px;
-  }
   &__contents {
     display: flex;
     flex-direction: column;
