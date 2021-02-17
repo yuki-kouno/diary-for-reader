@@ -6,6 +6,7 @@ admin.initializeApp();
 export const db = admin.firestore();
 
 const urls: string[] = [
+  'https://www.amazon.co.jp/gp/bestsellers/books/4915091051', // 来週リリース
   'https://www.amazon.co.jp/gp/bestsellers/books/?ref=snv_ranking_allbook', // 総合
   'https://www.amazon.co.jp/gp/bestsellers/books/4852983051?ref=snv_ranking_hobby', // 趣味・実用
   'https://www.amazon.co.jp/gp/bestsellers/books/5326865051?ref=snv_ranking_comic', // コミック・ラノベ
@@ -23,7 +24,8 @@ const scrape = async (url: string) => {
   const bookInfosSelector = '#zg-ordered-list li .a-section img';
   const authorsSelector =
     'li.zg-item-immersion span.zg-item > div:nth-child(2)';
-
+  const detailelinkSelector =
+    '#zg-ordered-list li .a-section span.aok-inline-block > .a-link-normal';
   const categoty = await page.$eval(caregorySelector, (item) => {
     return item.textContent?.replace(/\(Kindle本を除く\)/g, '');
   });
@@ -64,10 +66,26 @@ const scrape = async (url: string) => {
     return authorsDatas;
   }, authorsSelector);
 
+  const getdetailLink = await page.evaluate((selector) => {
+    const linklist = [...document.querySelectorAll(selector)].map((a) =>
+      a.getAttribute('href')
+    );
+    const linkDatas = [];
+    const numberOfRankings = 30;
+    for (let i = 0; i < numberOfRankings; i++) {
+      const listData = {
+        link: 'https://www.amazon.co.jp/' + linklist[i],
+      };
+      linkDatas.push(listData);
+    }
+    return linkDatas;
+  }, detailelinkSelector);
+
   const rankingBooksInfo = bookInfos.map((data: any, i: number) => {
     return {
       ...data,
       ...authorsInfos[i],
+      ...getdetailLink[i],
     };
   });
 
@@ -90,7 +108,7 @@ const scrapeAll = async () => {
 export const getBookInfo = functions
   .region('asia-northeast1')
   .runWith({
-    timeoutSeconds: 300,
+    timeoutSeconds: 540,
     memory: '2GB',
   })
   .https.onRequest(async (req: any, res: any) => {
