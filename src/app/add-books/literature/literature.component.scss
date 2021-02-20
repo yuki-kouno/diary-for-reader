@@ -1,0 +1,104 @@
+@import 'material-custom';
+@import 'mixins';
+
+.wrapper {
+  position: relative;
+}
+.heading {
+  font-size: 18px;
+  color: #808080;
+  @include tab {
+    font-size: 20px;
+  }
+}
+.swiper-slide {
+  text-align: center;
+}
+.navigation {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 50%;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: solid 2px transparent;
+  background-clip: padding-box;
+  color: #808080;
+  &__next {
+    right: -40px;
+    &:hover {
+      transition: 0.3s;
+      border-color: rgba(68, 200, 252, 0.4);
+      box-shadow: 0 0 10px rgba(68, 200, 252, 0.6);
+    }
+  }
+  &__prev {
+    left: -40px;
+    &:hover {
+      transition: 0.3s;
+      border-color: rgba(68, 200, 252, 0.4);
+      box-shadow: 0 0 10px rgba(68, 200, 252, 0.6);
+    }
+  }
+  &__literature {
+    outline: 0;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border: solid #808080;
+    border-width: 3px 0 0 3px;
+    &--next {
+      position: absolute;
+      top: 13px;
+      left: 11px;
+      transform: rotate(135deg);
+    }
+    &--prev {
+      position: absolute;
+      top: 13px;
+      right: 11px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+.book {
+  padding: 8px;
+  width: 140px;
+  text-align: center;
+  box-sizing: border-box;
+  &__thumb {
+    height: 140px;
+    width: 140px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  &__img {
+    max-height: 140px;
+    max-width: 140px;
+    object-fit: cover;
+  }
+  &__body {
+    width: 140px;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  &__title {
+    font-size: 13px;
+    color: #505050;
+    margin-bottom: 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+  }
+  &__author {
+    font-size: 14px;
+    color: #707070;
+  }
+}

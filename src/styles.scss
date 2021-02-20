@@ -1,5 +1,6 @@
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
+@import '~swiper/swiper-bundle';
 
 @import '~@angular/material/theming';
 
@@ -239,4 +240,7 @@ app-header {
 }
 .mat-select-library {
   margin: 30px 30px 0 0 !important;
+}
+.swiper-wrapper {
+  height: 300px;
 }

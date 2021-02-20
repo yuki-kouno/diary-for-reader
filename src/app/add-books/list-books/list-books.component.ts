@@ -1,11 +1,20 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  QueryList,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { switchMap, map, take } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
+import { DatabaseNewReleaseService } from 'src/app/services/database-new-release.service';
+import { DatabaseRankingBooksService } from 'src/app/services/database-ranking-books.service';
+import { NewReleaseInfo } from 'src/app/interface/new-release-info';
 
 @Component({
   selector: 'app-list-books',
@@ -18,12 +27,22 @@ export class ListBooksComponent implements OnInit, OnDestroy {
   searchText: string;
   myfavoriteBookIds: string[];
   isAddedBook = [];
+  releaseDatas: Observable<NewReleaseInfo[]>[] = [
+    this.dbNewReleaseService.getBusinessDatas(),
+    this.dbNewReleaseService.getComicDatas(),
+    this.dbNewReleaseService.getItDatas(),
+    this.dbNewReleaseService.getLifeDatas(),
+    this.dbNewReleaseService.getLiteratureDatas(),
+  ];
+  rank$ = this.dbranking.getNweReleaseRanking();
 
   constructor(
     public googleBooksApi: GoogleBooksApiService,
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
-    public loadingService: LoadingService
+    public loadingService: LoadingService,
+    private dbNewReleaseService: DatabaseNewReleaseService,
+    private dbranking: DatabaseRankingBooksService
   ) {
     this.loadingService.loading = true;
     this.databaseBooks
