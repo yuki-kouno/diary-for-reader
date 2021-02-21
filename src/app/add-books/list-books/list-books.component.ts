@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  ViewChild,
-  QueryList,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
@@ -66,14 +60,16 @@ export class ListBooksComponent implements OnInit, OnDestroy {
           return;
         }),
         map((datas) => {
-          return datas.map((data) => {
-            if (data.id) {
-              return {
-                ...data,
-                isFavorite: this.myfavoriteBookIds.includes(data.id),
-              };
-            }
-          });
+          if (datas) {
+            return datas.map((data) => {
+              if (data.id) {
+                return {
+                  ...data,
+                  isFavorite: this.myfavoriteBookIds.includes(data.id),
+                };
+              }
+            });
+          }
         })
       )
       .subscribe((datas: Book[]) => {

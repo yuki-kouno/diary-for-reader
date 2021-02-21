@@ -1,6 +1,6 @@
 @import 'mixins';
 
-.blank {
+.heading {
   text-align: center;
   font-size: 18px;
   color: #505050;
@@ -123,4 +123,11 @@
     font-size: 14px;
     color: #707070;
   }
+}
+
+.blank {
+  text-align: center;
+  font-size: 18px;
+  color: #505050;
+  margin-top: 30%;
 }
