@@ -13,9 +13,23 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { SheredModule } from '../shered/shered.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { BusinessComponent } from './business/business.component';
+import { SwiperModule } from 'swiper/angular';
+import { ComicComponent } from './comic/comic.component';
+import { ItComponent } from './it/it.component';
+import { LifeComponent } from './life/life.component';
+import { LiteratureComponent } from './literature/literature.component';
 
 @NgModule({
-  declarations: [SearchBooksComponent, ListBooksComponent],
+  declarations: [
+    SearchBooksComponent,
+    ListBooksComponent,
+    BusinessComponent,
+    ComicComponent,
+    ItComponent,
+    LifeComponent,
+    LiteratureComponent,
+  ],
   imports: [
     CommonModule,
     AddBooksRoutingModule,
@@ -29,7 +43,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     SheredModule,
     MatDividerModule,
+    SwiperModule,
   ],
-  entryComponents: [SearchBooksComponent, ListBooksComponent],
+  entryComponents: [
+    SearchBooksComponent,
+    ListBooksComponent,
+    BusinessComponent,
+  ],
 })
 export class AddBooksModule {}

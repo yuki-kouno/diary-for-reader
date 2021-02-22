@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <h1 class="heading">ビジネス・経済</h1>
+  <swiper [config]="config">
+    <ng-template *ngFor="let book of releaseDatas | async" swiperSlide let-data>
+      <div class="book">
+        <a [href]="book.link" target="brank">
+          <figure class="book__thumb">
+            <img class="book__img" [src]="book.src" alt="" />
+          </figure>
+          <div class="book__body">
+            <p class="book__title">{{ book.title }}</p>
+            <p class="book__author">{{ book.author }}</p>
+          </div>
+        </a>
+      </div>
+    </ng-template>
+  </swiper>
+  <div class="navigation navigation__prev">
+    <div class="navigation__icon navigation__icon--prev"></div>
+  </div>
+  <div class="navigation navigation__next">
+    <div class="navigation__icon navigation__icon--next"></div>
+  </div>
+</div>

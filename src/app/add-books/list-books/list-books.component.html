@@ -1,6 +1,12 @@
-<ng-container *ngIf="!searchText">
-  <p class="blank">タイトル、著者名、キーワードで検索してください</p>
-</ng-container>
+<div class="container" *ngIf="!searchText">
+  <h1 class="heading">タイトル、著者名、キーワードで検索してください</h1>
+  <h2 class="release-info">新刊情報 (30日以内に発売)</h2>
+  <app-comic></app-comic>
+  <app-it></app-it>
+  <app-literature></app-literature>
+  <app-business></app-business>
+  <app-life></app-life>
+</div>
 <div class="container" *ngIf="searchText">
   <ng-container *ngIf="bookData; else blank">
     <h1 class="results-title">
@@ -8,7 +14,7 @@
     </h1>
 
     <ul class="results">
-      <li class="results__item" *ngFor="let book of bookData">
+      <li class="results__item" *ngFor="let book of bookData$ | async">
         <div class="results__spacer"></div>
         <figure class="results__thumb">
           <img

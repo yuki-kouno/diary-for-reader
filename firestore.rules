@@ -22,6 +22,9 @@ service cloud.firestore {
     match /bookRanking/{document=**} {
     	allow read: if true;
     }
+    match /newRelease/{document=**} {
+    	allow read: if true;
+    }
   }
 }
 

@@ -25,19 +25,19 @@
 </div>
 
 <div class="container">
-  <div class="books">
-    <ng-container *ngIf="(books$ | async)?.length > 0; else blank">
+  <ng-container *ngIf="(books$ | async)?.length > 0; else blank">
+    <div class="books">
       <app-book-list
         class="books__item"
         [book]="book"
         *ngFor="let book of books$ | async"
       ></app-book-list>
-    </ng-container>
-  </div>
+    </div>
+  </ng-container>
 
   <ng-template #blank>
     <div class="blank" *ngIf="!loadingService.loading">
-      まだ本はありません。本を追加ページから本を追加してください。
+      まだ本はありません。本を追加ページから本を登録してください。
     </div>
   </ng-template>
 </div>

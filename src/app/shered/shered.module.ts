@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './header/header.component';
 import { AutofocusDirective } from './autofocus.directive';
+import { RankingComponent } from './ranking/ranking.component';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { AutofocusDirective } from './autofocus.directive';
     DeleteUserDialogComponent,
     HeaderComponent,
     AutofocusDirective,
+    RankingComponent,
   ],
   imports: [
     CommonModule,
@@ -31,12 +34,14 @@ import { AutofocusDirective } from './autofocus.directive';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    SwiperModule,
   ],
   exports: [
     SettingsBottomSheetComponent,
     DeleteUserDialogComponent,
     HeaderComponent,
     AutofocusDirective,
+    RankingComponent,
   ],
 })
 export class SheredModule {}

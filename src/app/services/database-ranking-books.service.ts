@@ -13,7 +13,7 @@ export class DatabaseRankingBooksService {
 
   getBooksRanking(): Observable<RankingBooksInfo[]> {
     return this.db
-      .doc<RankingBook>(`bookRanking/本 の 売れ筋ランキング`)
+      .doc<RankingBook>(`bookRanking/overall`)
       .valueChanges()
       .pipe(
         map((data) => {
@@ -23,7 +23,7 @@ export class DatabaseRankingBooksService {
   }
   getBusinessesRanking(): Observable<RankingBooksInfo[]> {
     return this.db
-      .doc<RankingBook>(`bookRanking/ビジネス・経済 の 売れ筋ランキング`)
+      .doc<RankingBook>(`bookRanking/business`)
       .valueChanges()
       .pipe(
         map((data) => {
@@ -33,7 +33,7 @@ export class DatabaseRankingBooksService {
   }
   getHumanitiesRanking(): Observable<RankingBooksInfo[]> {
     return this.db
-      .doc<RankingBook>(`bookRanking/人文・思想 の 売れ筋ランキング`)
+      .doc<RankingBook>(`bookRanking/humanity`)
       .valueChanges()
       .pipe(
         map((data) => {
@@ -43,7 +43,7 @@ export class DatabaseRankingBooksService {
   }
   getliteraturesRanking(): Observable<RankingBooksInfo[]> {
     return this.db
-      .doc<RankingBook>(`bookRanking/文学・評論 の 売れ筋ランキング`)
+      .doc<RankingBook>(`bookRanking/literature`)
       .valueChanges()
       .pipe(
         map((data) => {
@@ -53,7 +53,7 @@ export class DatabaseRankingBooksService {
   }
   getComicsRanking(): Observable<RankingBooksInfo[]> {
     return this.db
-      .doc<RankingBook>(`bookRanking/コミック の 売れ筋ランキング`)
+      .doc<RankingBook>(`bookRanking/comic`)
       .valueChanges()
       .pipe(
         map((data) => {
@@ -63,7 +63,17 @@ export class DatabaseRankingBooksService {
   }
   getHobbiesRanking(): Observable<RankingBooksInfo[]> {
     return this.db
-      .doc<RankingBook>(`bookRanking/趣味・実用 の 売れ筋ランキング`)
+      .doc<RankingBook>(`bookRanking/hobby`)
+      .valueChanges()
+      .pipe(
+        map((data) => {
+          return data.rankingBooksInfo;
+        })
+      );
+  }
+  getNweReleaseRanking(): Observable<RankingBooksInfo[]> {
+    return this.db
+      .doc<RankingBook>(`bookRanking/new`)
       .valueChanges()
       .pipe(
         map((data) => {

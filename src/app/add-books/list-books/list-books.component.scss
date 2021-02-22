@@ -1,13 +1,13 @@
 @import 'mixins';
 
-.blank {
-  font-size: 16px;
-  color: #505050;
+.heading {
   text-align: center;
-  padding: 0 16px;
-  margin-top: 180px;
+  font-size: 18px;
+  color: #505050;
+  margin-top: 68px;
+  margin-bottom: 32px;
   @include tab {
-    font-size: 20px;
+    margin-top: 32px;
   }
 }
 
@@ -103,4 +103,31 @@
   &__add-btn {
     margin-top: 32px;
   }
+}
+.book {
+  text-align: center;
+  &__thumb {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  &__img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+  }
+  &__title {
+    color: #505050;
+    margin-bottom: 4px;
+  }
+  &__author {
+    font-size: 14px;
+    color: #707070;
+  }
+}
+
+.blank {
+  text-align: center;
+  font-size: 18px;
+  color: #505050;
+  margin-top: 30%;
 }
