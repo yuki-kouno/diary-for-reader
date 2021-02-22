@@ -3,11 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { switchMap, map, take } from 'rxjs/operators';
+import { switchMap, map, take, tap } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import { DatabaseNewReleaseService } from 'src/app/services/database-new-release.service';
-import { DatabaseRankingBooksService } from 'src/app/services/database-ranking-books.service';
 import { NewReleaseInfo } from 'src/app/interface/new-release-info';
 
 @Component({
@@ -17,8 +16,14 @@ import { NewReleaseInfo } from 'src/app/interface/new-release-info';
 })
 export class ListBooksComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription;
-  bookData: Book[];
   searchText: string;
+  bookData$: Observable<Book[]> = this.route.paramMap.pipe(
+    switchMap((param) => {
+      this.searchText = param.get('searchText');
+      return this.googleBooksApi.getListOfBooks(this.searchText);
+    })
+  );
+  bookData: Book[];
   myfavoriteBookIds: string[];
   isAddedBook = [];
   releaseDatas: Observable<NewReleaseInfo[]>[] = [
@@ -28,15 +33,13 @@ export class ListBooksComponent implements OnInit, OnDestroy {
     this.dbNewReleaseService.getLifeDatas(),
     this.dbNewReleaseService.getLiteratureDatas(),
   ];
-  rank$ = this.dbranking.getNweReleaseRanking();
 
   constructor(
     public googleBooksApi: GoogleBooksApiService,
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
     public loadingService: LoadingService,
-    private dbNewReleaseService: DatabaseNewReleaseService,
-    private dbranking: DatabaseRankingBooksService
+    private dbNewReleaseService: DatabaseNewReleaseService
   ) {
     this.loadingService.loading = true;
     this.databaseBooks
@@ -46,26 +49,15 @@ export class ListBooksComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscriptions = this.route.paramMap
+    this.subscriptions = this.bookData$
       .pipe(
-        switchMap((param) => {
-          this.searchText = param.get('searchText');
-          return this.googleBooksApi.getListOfBooks(this.searchText);
-        }),
         map((datas) => {
-          this.loadingService.loading = false;
-          if (datas) {
-            return datas.filter((data) => data.volumeInfo.imageLinks);
-          }
-          return;
-        }),
-        map((datas) => {
-          if (datas) {
+          if (datas?.length) {
             return datas.map((data) => {
               if (data.id) {
                 return {
                   ...data,
-                  isFavorite: this.myfavoriteBookIds.includes(data.id),
+                  isFavorite: this.myfavoriteBookIds?.includes(data.id),
                 };
               }
             });
@@ -73,6 +65,7 @@ export class ListBooksComponent implements OnInit, OnDestroy {
         })
       )
       .subscribe((datas: Book[]) => {
+        this.loadingService.loading = false;
         this.bookData = datas;
       });
   }

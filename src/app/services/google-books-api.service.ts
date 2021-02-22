@@ -29,6 +29,14 @@ export class GoogleBooksApiService {
         retry(1),
         map((result) => result.items),
         catchError(this.handleError)
+      )
+      .pipe(
+        map((datas: Book[]) => {
+          if (datas) {
+            return datas.filter((data) => data.volumeInfo.imageLinks);
+          }
+          return datas;
+        })
       );
   }
 
