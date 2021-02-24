@@ -130,6 +130,9 @@ input {
 .mat-tab-body-wrapper {
   margin-bottom: 16px;
 }
+.fc-media-screen {
+  margin-bottom: 40px;
+}
 .fc-h-event .fc-event-title {
   @include sp {
     font-size: 10px;
@@ -198,8 +201,9 @@ input {
   border-radius: 8px !important;
   border: solid 2px rgb(237, 245, 245);
   background: rgba(146, 146, 146, 0.13);
-  height: 90px;
+  height: 70px;
   @include tab {
+    height: 90px;
     padding: 4px;
   }
 }
@@ -207,6 +211,7 @@ input {
   border-radius: 8px !important;
 }
 .fc-daygrid-more-link {
+  color: #707070;
   @include sp {
     font-size: 12px;
   }
@@ -243,4 +248,50 @@ app-header {
 }
 .swiper-wrapper {
   height: 300px;
+}
+.swiper {
+  position: relative;
+  &__headeing heading {
+    font-size: 18px;
+    color: #808080;
+    @include tab {
+      font-size: 20px;
+    }
+  }
+}
+
+.swiper-slide {
+  text-align: center;
+}
+.navigation {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 50%;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: solid 2px transparent;
+  background-clip: padding-box;
+  color: #808080;
+  &__next {
+    right: -40px;
+    &:hover {
+      transition: 0.3s;
+      border-color: rgba(68, 200, 252, 0.4);
+      box-shadow: 0 0 10px rgba(68, 200, 252, 0.6);
+    }
+  }
+  &__prev {
+    left: -40px;
+    &:hover {
+      transition: 0.3s;
+      border-color: rgba(68, 200, 252, 0.4);
+      box-shadow: 0 0 10px rgba(68, 200, 252, 0.6);
+    }
+  }
 }

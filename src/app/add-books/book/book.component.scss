@@ -1,0 +1,36 @@
+.book {
+  padding: 8px;
+  width: 140px;
+  text-align: center;
+  box-sizing: border-box;
+  &__thumb {
+    height: 140px;
+    width: 140px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  &__img {
+    max-height: 140px;
+    max-width: 140px;
+    object-fit: cover;
+  }
+  &__body {
+    width: 140px;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  &__title {
+    font-size: 13px;
+    color: #505050;
+    margin-bottom: 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+  }
+  &__author {
+    font-size: 14px;
+    color: #707070;
+  }
+}

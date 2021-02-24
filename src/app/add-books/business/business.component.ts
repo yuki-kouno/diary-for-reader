@@ -18,8 +18,8 @@ export class BusinessComponent implements OnInit {
     centeredSlides: true,
     speed: 300,
     navigation: {
-      nextEl: '.navigation__icon--next',
-      prevEl: '.navigation__icon--prev',
+      nextEl: '.navigation__business--next',
+      prevEl: '.navigation__business--prev',
     },
     breakpoints: {
       446: {
