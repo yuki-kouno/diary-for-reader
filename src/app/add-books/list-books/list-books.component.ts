@@ -59,6 +59,8 @@ export class ListBooksComponent implements OnInit, OnDestroy {
                   ...data,
                   isFavorite: this.myfavoriteBookIds?.includes(data.id),
                 };
+              } else {
+                return;
               }
             });
           }
