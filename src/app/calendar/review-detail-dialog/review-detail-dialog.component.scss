@@ -41,13 +41,12 @@
     padding: 8px 0 8px 24px;
   }
   &__title {
-    color: #30303080;
-    font-size: 12px;
-    margin-bottom: 8px;
-    overflow: hidden;
+    color: #303030bd;
+    font-size: 13px;
+    overflow: scroll;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 7;
   }
   &__question {
     color: #303030bd;
@@ -55,12 +54,13 @@
     margin-bottom: 4px;
   }
   &__answer {
-    color: #303030bd;
-    font-size: 13px;
-    overflow: scroll;
+    color: #30303080;
+    font-size: 12px;
+    margin-bottom: 8px;
+    overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: 2;
   }
 }
 .buttons {
