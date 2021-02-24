@@ -79,7 +79,7 @@ export class CalendarComponent implements OnInit {
             date: transformDate,
             title: review.answer,
             question: review.question,
-            answer: review.answer,
+            answer: review.title,
             thumbnail: review.thumbnail,
             bookId: review.bookId,
           });
