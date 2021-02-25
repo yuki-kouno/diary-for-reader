@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
@@ -7,8 +8,12 @@ import { SeoService } from 'src/app/services/seo.service';
   styleUrls: ['./privacy.component.scss'],
 })
 export class PrivacyComponent implements OnInit {
-  constructor(private seoService: SeoService) {
+  constructor(private seoService: SeoService, private meta: Meta) {
     this.seoService.setTitleAndMeta('プライバシーポリシー');
+    this.meta.addTags([
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+    ]);
   }
 
   close() {

@@ -5,6 +5,7 @@ import { RankingBooksInfo } from 'src/app/interface/ranking-books-info';
 import { SeoService } from 'src/app/services/seo.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { tap } from 'rxjs/operators';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-books-ranking',
@@ -37,10 +38,15 @@ export class BooksRankingComponent implements OnInit {
   constructor(
     private rankingBookService: DatabaseRankingBooksService,
     private seoService: SeoService,
-    public loadingService: LoadingService
+    public loadingService: LoadingService,
+    private meta: Meta
   ) {
     this.loadingService.loading = true;
     this.seoService.setTitleAndMeta(this.title);
+    this.meta.addTags([
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+    ]);
   }
 
   ngOnInit(): void {}

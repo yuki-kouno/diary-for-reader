@@ -58,7 +58,11 @@ button {
   appearance: none;
 }
 input {
+  font-size: 16px;
   outline: none;
+}
+textarea {
+  font-size: 16px;
 }
 .container {
   margin: 0 auto;

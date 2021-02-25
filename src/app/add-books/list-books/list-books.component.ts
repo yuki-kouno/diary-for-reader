@@ -8,6 +8,7 @@ import { Subscription, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import { DatabaseNewReleaseService } from 'src/app/services/database-new-release.service';
 import { NewReleaseInfo } from 'src/app/interface/new-release-info';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-books',
@@ -39,8 +40,13 @@ export class ListBooksComponent implements OnInit, OnDestroy {
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
     public loadingService: LoadingService,
-    private dbNewReleaseService: DatabaseNewReleaseService
+    private dbNewReleaseService: DatabaseNewReleaseService,
+    private meta: Meta
   ) {
+    this.meta.addTags([
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+    ]);
     this.loadingService.loading = true;
     this.databaseBooks
       .getFavoriteBookIds()

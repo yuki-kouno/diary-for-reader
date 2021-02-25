@@ -5,6 +5,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-library',
@@ -37,10 +38,15 @@ export class LibraryComponent implements OnInit {
   constructor(
     private databaseBooks: DatabaseBooksService,
     private seoService: SeoService,
-    public loadingService: LoadingService
+    public loadingService: LoadingService,
+    private meta: Meta
   ) {
     this.loadingService.loading = true;
     this.seoService.setTitleAndMeta(this.title);
+    this.meta.addTags([
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+    ]);
   }
 
   ngOnInit() {

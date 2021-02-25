@@ -11,6 +11,7 @@ import { SeoService } from 'src/app/services/seo.service';
 import { tap } from 'rxjs/operators';
 import { AllReviewListComponent } from '../all-review-list/all-review-list.component';
 import { LoadingService } from 'src/app/services/loading.service';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-review',
@@ -41,8 +42,13 @@ export class ReviewComponent implements OnInit {
     private databaseBooks: DatabaseBooksService,
     private databaseReviews: DatabaseReviewsService,
     private seoService: SeoService,
-    public loaingService: LoadingService
+    public loaingService: LoadingService,
+    private meta: Meta
   ) {
+    this.meta.addTags([
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+    ]);
     this.loaingService.loading = true;
     this.book$.pipe(
       tap((book) => {
