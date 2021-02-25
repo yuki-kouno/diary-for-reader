@@ -42,7 +42,7 @@
   }
   &__title {
     white-space: pre-line;
-    overflow-wrap: break-word;
+    word-break: break-all;
     color: #303030bd;
     font-size: 13px;
     overflow: scroll;
@@ -51,6 +51,8 @@
     -webkit-line-clamp: 7;
   }
   &__question {
+    white-space: pre-line;
+    word-break: break-all;
     color: #303030bd;
     font-size: 12px;
     margin-bottom: 4px;

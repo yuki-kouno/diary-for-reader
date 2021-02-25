@@ -53,6 +53,8 @@ mat-form-field {
     }
   }
   &__question {
+    white-space: pre-line;
+    word-break: break-all;
     font-size: 12px;
     font-weight: 600;
     @include tab {
