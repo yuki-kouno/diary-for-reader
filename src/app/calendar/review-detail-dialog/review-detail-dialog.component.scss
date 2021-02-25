@@ -41,6 +41,8 @@
     padding: 8px 0 8px 24px;
   }
   &__title {
+    white-space: pre-line;
+    overflow-wrap: break-word;
     color: #303030bd;
     font-size: 13px;
     overflow: scroll;
