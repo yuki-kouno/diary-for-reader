@@ -43,6 +43,8 @@ mat-form-field {
     border-radius: 50%;
   }
   &__question {
+    white-space: pre-line;
+    word-break: break-all;
     display: grid;
     align-items: center;
     font-size: 12px;
