@@ -1,100 +1,134 @@
-<div class="wrapper">
-  <div class="inner">
-    <div class="logo">
-      <img
-        class="logo__image"
-        src="assets/images/title-logo.png"
-        alt="読書家のための日記帳"
-      />
-    </div>
-    <div class="login">
-      <p class="login__title">メールアドレスでログイン</p>
-      <app-login-form class="login__form"></app-login-form>
-      <p class="login__or">or</p>
-      <p class="login__title">Googleアカウントでログイン</p>
-      <button class="login__item" (click)="login()" mat-button>
-        Google
-      </button>
-      <mat-divider></mat-divider>
-      <a class="login__new" (click)="signUpDialog()">
-        新規アカウントの作成は<span class="login__border"> こちら</span>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="heading">
-  <h1 class="heading__title">
-    読書が好き。<span class="heading__break">でもアウトプットは嫌い！</span>
-  </h1>
-  <p class="heading__text">
-    このサービスは、アウトプットが苦手な人でも読書後のアウトプットを定着させるように考えたサービスです。
-  </p>
-</div>
-<div class="background">
-  <div class="overlay">
-    <div class="step">
-      <h1 class="step__heading">使い方</h1>
-      <ul class="step__box">
-        <li class="step__item">
-          <div class="step__description">
-            <h2 class="step__title">本を登録</h2>
-            <p class="step__text">
-              ログイン後、まず本を検索してライブラリに登録
-            </p>
+<div class="body">
+  <section class="top-hero">
+    <div class="top-hero__inner">
+      <div>
+        <img
+          class="top-hero__brand-image"
+          src="assets/images/title-logo.png"
+          alt="読書家のための日記帳"
+        />
+        <h1 class="top-hero__subtitle">
+          アウトプットをデザインする<br />
+          新しいかたちの日記帳
+        </h1>
+      </div>
+      <div class="login-grid">
+        <a routerLink="/welcome/create">
+          <button class="top-hero__sp-login-button">ログイン</button>
+        </a>
+        <div class="login">
+          <div class="login__contents">
+            <p class="login__title">メールアドレスでログイン</p>
+            <app-login-form class="login__form"></app-login-form>
+            <p class="login__or">or</p>
+            <p class="login__title">Googleアカウントでログイン</p>
+            <button class="login__item" (click)="login()" mat-button>
+              Google
+            </button>
+            <mat-divider class="login__divider"></mat-divider>
+            <a class="login__new" (click)="signUpDialog()">
+              新規アカウントの作成は<span class="login__border"> こちら</span>
+            </a>
           </div>
-          <img class="step__img" src="assets/images/step-1.png" alt="" />
-        </li>
-        <li class="step__item">
-          <div class="step__description">
-            <h2 class="step__title">本を選ぶ</h2>
-            <p class="step__text">
-              ライブラリに登録された本の中からアウトプットしたい本をを選ぶ
-            </p>
-          </div>
-          <img class="step__img" src="assets/images/step-2.png" alt="" />
-        </li>
-        <li class="step__item">
-          <div class="step__description">
-            <h2 class="step__title">質問に答える</h2>
-            <p class="step__text">
-              レビューページの『質問を選択』ボタンから質問を選んで答える
-            </p>
-          </div>
-          <img class="step__img" src="assets/images/step-3.png" alt="" />
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
-    <div class="points">
-      <h1 class="points__heading">ポイント</h1>
-      <ul class="points__box">
-        <li class="points__item">
-          <i class="points__icon">
-            <img src="assets/images/memo.png" alt="" width="40px" />
-          </i>
-          <p class="points__text points--shadow">
-            レビューページの質問には、読み始める前、読んでいる途中、読み終えた後、の三つの段階に分けて質問項目があります。
-            それぞれの段階の質問に答えることで、モチベーション維持、理解力向上、記憶の定着に役立ちます。
-          </p>
-        </li>
-        <li class="points__item">
-          <i class="points__icon">
-            <img src="assets/images/calendar.png" alt="" width="40px" />
-          </i>
-          <p class="points__text points--shadow">
-            過去に行ったアウトプットはカレンダーページから確認することができます。
-            定期的に確認することで記憶の定着を促します。
-          </p>
-        </li>
-        <li class="points__item">
-          <i class="points__icon">
-            <img src="assets/images/crown.png" alt="" width="40px" />
-          </i>
-          <p class="points__text points--shadow">
-            読みたい本が見つからないときはランキングページで売れ筋の本をチェックできます。
-          </p>
-        </li>
-      </ul>
+  </section>
+
+  <section class="intro">
+    <h1 class="intro__heading">アウトプットを簡単に</h1>
+    <p class="intro__description">
+      このサービスは、読書後や読書の合間の<br />アウトプットが苦手な人でも簡単に、<br />普段からアウトプットをしている人には<br />さらに効果的なアウトプットが<br />できるように考えたサービスです。
+    </p>
+  </section>
+
+  <section class="top-illustration">
+    <img
+      class="top-illustration__image"
+      src="assets/images/sp-mockup.jpg"
+      alt=""
+    />
+  </section>
+
+  <section class="how">
+    <div class="how__text-box">
+      <h1 class="how__heading">
+        使い方
+      </h1>
+      <h2 class="how__sub-title">1.本を登録</h2>
+      <p class="how__description">
+        ログイン後、<br />
+        アウトプットしたい本を検索・登録<br />
+      </p>
+      <h2 class="how__sub-title">2.ライブラリから選択</h2>
+      <p class="how__description">
+        ライブラリから<br />
+        アウトプットしたい本を選択
+      </p>
+      <h2 class="how__sub-title">3.質問に答える</h2>
+      <p class="how__description">
+        読み始め、途中、読み終わり、<br />
+        ３つのシーンに合わせて質問に答えます。
+      </p>
     </div>
-  </div>
+    <div class="how__image-box">
+      <img class="how__image" src="assets/images/pc-mockup.jpg" alt="" />
+    </div>
+  </section>
+
+  <section class="service">
+    <h1 class="service__heading">研究に基づいだアウトプット</h1>
+    <p class="service__description">
+      本の理解度を高める読み方について、数多くの研究がされています。<br />
+      読書家のための日記帳では、その中でも特に効果が高いと確認されている、questioningというアウトプット方法と、研究チームが提示している、17個の効果的な質問例を元にアウトプットしていきます。
+    </p>
+  </section>
+
+  <section class="scene">
+    <h1 class="scene__heading">良質な読書に必要な<br />3ステップ</h1>
+    <p class="scene__sub-title">
+      読書前の準備・読み方を知る・アウトプット
+    </p>
+    <ul class="scene__contents">
+      <li class="scene__content-box">
+        <img src="assets/images/scene-1.jpg" alt="" class="scene__image" />
+        <div class="scene__text-box">
+          <h2 class="scene__content-title">読書前の準備</h2>
+          <p class="scene__text">
+            ３つのステップのうち、特に大切なのが読む前の準備です。<br />
+            読書においてその本を読む目的を持っているかどうかは、読書スピードや記憶の定着に大きく影響します。
+            そのため、読書前の質問に答えることで目的を整理します。
+          </p>
+        </div>
+      </li>
+      <li class="scene__content-box">
+        <img src="assets/images/scene-2.jpg" alt="" class="scene__image" />
+        <div class="scene__text-box">
+          <h2 class="scene__content-title">読み方を知る</h2>
+          <p class="scene__text">
+            本を読む目的が明確に決まっている場合、その目的を達成する一文に出会えれば、読書はあっという間に終わるかもしれません。<br />
+            目的が知識を得たいということなら、その本を端から端まで熟読する必要はありません。目次を見て気になるところから読み始めるのも一つです。
+            また、サービス内で準備している質問に一通り目を通してから読み始めるのもおすすめします。
+          </p>
+        </div>
+      </li>
+      <li class="scene__content-box">
+        <img src="assets/images/scene-3.jpg" alt="" class="scene__image" />
+        <div class="scene__text-box">
+          <h2 class="scene__content-title">アウトプット</h2>
+          <p class="scene__text">
+            段落の合間や、気になる文章を見つけた時、読み終わりに、シーンに応じて質問を選んで答えてください。
+            自分なりの質問を作って答えるのもとても良い方法です。<br />
+            カレンダー機能も活用して復習に役立ててください。
+          </p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <a class="bottom-login" routerLink="/welcome/create">
+    <button mat-button class="bottom-login__login-button">登録する</button>
+  </a>
+
   <app-footer></app-footer>
 </div>

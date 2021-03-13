@@ -1,0 +1,92 @@
+@import 'mixins';
+@import 'material-custom';
+
+* {
+  color: #6c6c6c;
+}
+
+p {
+  font-size: 3.2vw;
+  line-height: 2.5;
+}
+.body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(245, 252, 255);
+  display: grid;
+  margin: auto;
+  align-items: center;
+}
+.login {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  &__title {
+    margin: 0 auto;
+    color: #808080;
+    font-size: 13px;
+  }
+  &__form {
+    margin-bottom: 24px;
+  }
+  &__or {
+    text-align: center;
+    color: #808080;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  &__item {
+    text-align: center;
+    height: 36px;
+    padding: 2px 0;
+    width: 60%;
+    margin: 16px auto 24px;
+    font-size: 16px;
+    line-height: 1.42857;
+    letter-spacing: 0.1em;
+    border: 1px solid #909090;
+    transition-duration: 0.4s;
+    &:hover {
+      background-color: #6c6c6c;
+      border-color: #6c6c6c;
+      color: #fff;
+    }
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin: -3px 5px 0 0;
+      background: url('/assets/images/google-icon.svg') no-repeat;
+      background-size: contain;
+      vertical-align: middle;
+    }
+  }
+  &__new {
+    cursor: pointer;
+    color: #808080;
+    font-size: 13px;
+    margin: 24px auto 0;
+    &:hover {
+      .login__border {
+        color: mat-color($primary);
+        border-color: mat-color($primary);
+      }
+    }
+  }
+  &__border {
+    border-bottom: 1px solid #808080;
+  }
+  &__divider {
+    width: 200px;
+    margin: 0 auto 16px;
+  }
+  &__back {
+    color: #808080;
+    margin: 16px 0 0 20%;
+    font-size: 14px;
+  }
+}

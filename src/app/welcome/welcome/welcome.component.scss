@@ -1,15 +1,31 @@
 @import 'mixins';
 @import 'material-custom';
-
-.wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: center / cover no-repeat url('/assets/images/welcome-2.jpg');
-  animation: fadeIn 1s ease 0s 1 normal;
+* {
+  color: #6c6c6c;
+}
+.body {
+  background-color: rgb(255, 255, 255);
+}
+h1 {
+  font-size: 4.66vw;
+  font-weight: 500;
+  line-height: 1.6;
   @include tab {
-    background: center / cover no-repeat url('/assets/images/welcome-1.jpg');
-    animation: fadeIn 1s ease 0s 1 normal;
+    font-size: 1.95vw;
+    line-height: 1.8;
+  }
+}
+h2 {
+  font-size: 4vw;
+  @include tab {
+    font-size: 1.5vw;
+  }
+}
+p {
+  font-size: 3.2vw;
+  line-height: 2.5;
+  @include tab {
+    font-size: 1.09vw;
   }
 }
 @keyframes fadeIn {
@@ -20,45 +36,81 @@
     opacity: 1;
   }
 }
-
-.inner {
-  padding-top: 40px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  @include tab {
-    padding-top: 100px;
-  }
-}
-
-.logo {
+.top-hero {
+  display: grid;
   text-align: center;
-  &__image {
+  width: 100%;
+  height: 100vh;
+  background: center / cover no-repeat url('/assets/images/welcome-5.jpg');
+  animation: fadeIn 1s ease 0s 1 normal;
+  @include tab {
+    background: center / cover no-repeat url('/assets/images/welcome-1.jpg');
+    animation: fadeIn 1s ease 0s 1 normal;
+  }
+  &__inner {
+    position: relative;
+    @include tab {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+  &__brand-image {
+    margin: 10vh auto 0;
+    text-align: center;
+    align-self: end;
     width: 70%;
+    @include tab {
+      margin-top: 15vh;
+    }
+  }
+  &__subtitle {
+    margin: 4vh auto 0;
+    line-height: 2;
+    color: rgb(124, 124, 124);
+  }
+  &__sp-login-button {
+    position: absolute;
+    margin: 0 auto;
+    bottom: 12vh;
+    left: 0;
+    right: 0;
+    color: #909090;
+    text-align: center;
+    width: 50vw;
+    height: 10.66667vw;
+    font-size: 3.66667vw;
+    line-height: 1;
+    border: 1px solid #909090;
+    transition-duration: 0.4s;
+    @include tab {
+      display: none;
+    }
   }
 }
-
+.login-grid {
+  display: grid;
+}
 .login {
+  @include sp {
+    display: none;
+  }
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  width: 232px;
-  margin-top: calc(calc(100vh - 455px - 60px) / 2);
-  padding: 16px;
-  border-radius: 16px;
+  width: 80%;
+  height: 70%;
+  border-radius: 8px;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   background-color: rgba(255, 255, 255, 0.5);
   border: solid 2px transparent;
   background-clip: padding-box;
-  @include tab {
-    padding: 16px 5%;
-    margin-top: calc(calc(100vh - 455px - 180px) / 2);
-    margin-left: 30%;
-    width: 30%;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: auto;
+  &__contetns {
+    margin: auto;
   }
   &__title {
     margin: 0 auto;
@@ -75,12 +127,21 @@
     margin-bottom: 24px;
   }
   &__item {
-    color: #505050;
     text-align: center;
-    border-radius: 50px;
-    width: 200px;
-    margin: 16px auto 24px;
-    background-color: rgba(132, 136, 146, 0.5);
+    height: 36px;
+    padding: 2px 0;
+    width: 60%;
+    margin: 16px 0 24px;
+    font-size: 16px;
+    line-height: 1.42857;
+    letter-spacing: 0.1em;
+    border: 1px solid #909090;
+    transition-duration: 0.4s;
+    &:hover {
+      background-color: #6c6c6c;
+      border-color: #6c6c6c;
+      color: #fff;
+    }
     &::before {
       content: '';
       display: inline-block;
@@ -91,9 +152,10 @@
       background-size: contain;
       vertical-align: middle;
     }
-    @include pc {
-      width: 260px;
-    }
+  }
+  &__divider {
+    width: 60%;
+    margin: 0 auto 16px;
   }
   &__new {
     cursor: pointer;
@@ -111,166 +173,192 @@
     border-bottom: 1px solid #808080;
   }
 }
-.heading {
+
+.intro {
+  margin: 26.625vw auto;
   text-align: center;
-  padding: 40px 16px 104px;
-  margin: 0 auto;
-  max-width: 550px;
+  color: #6c6c6c;
   @include tab {
-    padding: 60px 16px 120px;
+    margin: 15.625vw auto;
   }
-  &__title {
-    margin-bottom: 16px;
+  &__heading {
+    margin-bottom: 8.5vw;
     @include tab {
-      font-size: 32px;
-    }
-  }
-  &__break {
-    display: block;
-  }
-  &__text {
-    color: #808080;
-    font-size: 16px;
-    @include tab {
-      font-size: 18px;
+      font-size: 2.34vw;
+      margin-bottom: 5vw;
     }
   }
 }
-.step {
-  text-align: center;
-  padding: 0 8px;
-  margin-bottom: 40px;
+
+.top-illustration {
   @include tab {
-    margin-bottom: 60px;
+    margin: 0 auto;
+    width: 62.5vw;
+  }
+  &__image {
+    width: 100%;
+  }
+}
+
+.how {
+  margin: 26.625vw 0;
+  @include tab {
+    margin: 15.625vw 0;
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
   &__heading {
+    margin-bottom: 20.33vw;
     @include tab {
-      margin-bottom: 36px;
+      margin-bottom: 5.12vw;
     }
   }
-  &__title {
-    margin-bottom: 24px;
-  }
-  &__box {
-    display: grid;
-    gap: 32px;
-    grid-template-columns: 1fr;
-  }
-  &__item {
-    padding: 24px 0;
+  &__text-box {
     text-align: center;
-    color: #808080;
+    padding: 0 14vw;
+    margin-bottom: 26.625vw;
     @include tab {
-      display: flex;
-      justify-content: space-evenly;
-      margin: 0 auto;
+      text-align: left;
+      padding: 0 12.5vw 0 6.25vw;
+      margin-bottom: 0;
+      order: 2;
     }
-    &:nth-child(even) {
-      @include tab {
-        flex-direction: row-reverse;
-        .step__description {
-          margin-left: 8px;
-        }
-      }
+  }
+  &__sub-title {
+    margin-bottom: 5.33vw;
+    @include tab {
+      margin-bottom: 2vw;
     }
   }
   &__description {
-    text-align: center;
-    max-width: 300px;
-    margin: 0 auto 16px;
+    margin-bottom: 10.33vw;
     @include tab {
-      margin: auto 0;
-      text-align: left;
+      margin-bottom: 5.12vw;
+      line-height: 2;
     }
   }
-  &__title {
-    margin-bottom: 16px;
-  }
-  &__text {
-    color: #606060;
-    font-size: 16px;
-    margin-bottom: 16x;
+  &__image-box {
+    padding: 0 14vw;
     @include tab {
-      text-shadow: 0 0 40px rgb(255, 255, 255), 0 0 60px rgb(255, 255, 255);
-      font-size: 20px;
+      padding: 0 6.25vw;
+      order: 1;
     }
   }
-  &__img {
-    width: 90%;
-    border-radius: 8px;
-    box-sizing: border-box;
-    box-shadow: 28px 38px 48px rgba(126, 126, 126, 0.6);
-    @include tab {
-      width: 50%;
-    }
+  &__image {
+    width: 100%;
   }
 }
-.points {
-  padding: 0 16px 60px;
+
+.service {
+  padding: 0 14vw 24.53vw;
   text-align: center;
-  border-radius: 0 0 16px 16px;
+  margin-bottom: 26.66vw;
+  @include tab {
+    padding-bottom: 14.37vw;
+    margin: 14.37vw auto;
+  }
   &__heading {
-    margin-bottom: 24px;
+    margin-bottom: 8.33vw;
     @include tab {
-      margin-bottom: 60px;
+      margin-bottom: 5vw;
     }
   }
-  &__box {
+  &__description {
+    text-align-last: left;
+    @include tab {
+      text-align: center;
+      margin: 0 auto;
+      width: 31.25vw;
+    }
+  }
+}
+
+.scene {
+  padding: 0 14vw;
+  &__heading {
     text-align: center;
-    display: grid;
-    padding: 0 40px;
-    gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 300px));
-    justify-content: center;
-  }
-  &__item {
-    margin-bottom: 24px;
-  }
-  &__text {
-    color: #606060;
-    margin-top: 24px;
-  }
-  &--shadow {
+    margin-bottom: 3.2vw;
     @include tab {
-      text-shadow: 0 0 40px rgb(255, 255, 255), 0 0 60px rgb(255, 255, 255);
+      margin-bottom: 2vw;
+    }
+  }
+  &__sub-title {
+    text-align: center;
+  }
+  &__contents {
+    display: grid;
+    @include tab {
+      display: block;
+    }
+  }
+  &__content-box {
+    display: grid;
+    justify-content: center;
+    margin-top: 26.66vw;
+    @include tab {
+      padding-bottom: 5vw;
+      display: flex;
+      margin: 5vw auto 0;
+      width: 56.25vw;
+    }
+  }
+  &__image {
+    text-align: center;
+    width: 32vw;
+    height: 32vw;
+    object-fit: cover;
+    margin: 0 auto 8.53vw;
+    @include tab {
+      width: 18.75vw;
+      height: 18.75vw;
+      margin: auto 5vw auto 0;
+    }
+  }
+  &__text-box {
+  }
+  &__content-title {
+    margin-bottom: 3.2vw;
+    text-align: center;
+    line-height: 1.33;
+    font-family: futura-pt, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    @include tab {
+      line-height: 2;
+      margin-bottom: 1.25vw;
+      letter-spacing: 0.1em;
     }
   }
 }
-.background {
-  position: relative;
-  @include sp {
-    background: no-repeat
-      url('/assets/images/nick-fewings-f2Bi-VBs71M-unsplash2.jpg');
-    background-size: cover;
-    background-position: center;
+
+.bottom-login {
+  text-align: center;
+  margin: 0 auto;
+  display: grid;
+  &__login-button {
+    padding-top: 3px;
+    margin: 25.33vw auto;
+    color: #909090;
+    text-align: center;
+    width: 50vw;
+    height: 10.66667vw;
+    font-size: 3.66667vw;
+    line-height: 1;
+    border: 1px solid #909090;
+    transition-duration: 0.4s;
+    @include tab {
+      margin: 5vw 0 10vw;
+      width: 30vw;
+      height: 4.375vw;
+      font-size: 1.09375vw;
+      line-height: 1.42857;
+      letter-spacing: 0.1em;
+      &:hover {
+        background-color: #6c6c6c;
+        border-color: #6c6c6c;
+        color: #fff;
+      }
+    }
   }
-  @include tab {
-    background: no-repeat url('/assets/images/welcome-3.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-}
-.overlay {
-  position: absolute;
-  top: -60px;
-  right: 0;
-  left: 0;
-  padding-top: 24px;
-  margin: 0 16px;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border-radius: 16px;
-  box-shadow: 10px 10px 10px rgba(65, 65, 65, 0.1);
-  background-color: rgba(255, 255, 255, 0.6);
-  border: solid 2px transparent;
-  background-clip: padding-box;
-  @include tab {
-    padding-top: 60px;
-    margin: 0 10%;
-  }
-}
-app-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }

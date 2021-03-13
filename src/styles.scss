@@ -14,7 +14,10 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: proxima-nova, noto-sans-cjk-jp, sans-serif, '游ゴシック',
+    'Yu Gothic', YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro',
+    'メイリオ', Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', Helvetica, Arial,
+    sans-serif;
   background-color: rgb(237, 245, 245);
 }
 a {

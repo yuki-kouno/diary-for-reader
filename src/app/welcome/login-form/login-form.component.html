@@ -37,13 +37,23 @@
       >
     </mat-form-field>
   </form>
-  <button
-    class="login-btn login__item"
-    [disabled]="logInForm.invalid"
-    mat-flat-button
-    color="basic"
-    (click)="logIn()"
-  >
-    ログイン
-  </button>
+  <ng-container *ngIf="logInForm.invalid; else login">
+    <button
+      [disabled]="logInForm.invalid"
+      class="login-btn login__item"
+      mat-button
+      (click)="logIn()"
+    >
+      ログイン
+    </button>
+  </ng-container>
+  <ng-template #login>
+    <button
+      class="login-btn login-btn--active login__item"
+      mat-button
+      (click)="logIn()"
+    >
+      ログイン
+    </button>
+  </ng-template>
 </div>

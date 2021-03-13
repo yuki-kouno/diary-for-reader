@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { SignupFormComponent } from '../signup-form/signup-form.component';
@@ -11,7 +11,7 @@ import { Meta } from '@angular/platform-browser';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
 })
-export class WelcomeComponent implements OnInit, OnDestroy {
+export class WelcomeComponent implements OnInit {
   private counter: any;
   constructor(
     private authService: AuthService,
@@ -24,12 +24,6 @@ export class WelcomeComponent implements OnInit, OnDestroy {
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
     ]);
-    this.counter = setInterval(() => {
-      (document.querySelector('.background') as HTMLElement).style.height =
-        (document.querySelector('.overlay') as HTMLElement).clientHeight +
-        (document.querySelector('app-footer') as HTMLElement).clientHeight +
-        'px';
-    }, 500);
   }
 
   signUpDialog() {
@@ -45,8 +39,4 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {}
-
-  ngOnDestroy() {
-    clearInterval(this.counter);
-  }
 }

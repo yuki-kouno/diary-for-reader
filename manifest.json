@@ -1,0 +1,7 @@
+{
+  "name": "読書家のための日記帳",
+  "short_name": "読書家のための日記帳",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/"
+}
