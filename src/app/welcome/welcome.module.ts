@@ -15,6 +15,7 @@ import { ResetDialogComponent } from './reset-dialog/reset-dialog.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatDividerModule } from '@angular/material/divider';
     SignupFormComponent,
     ResetDialogComponent,
     FooterComponent,
+    CreateComponent,
   ],
   imports: [
     CommonModule,

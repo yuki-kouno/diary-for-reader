@@ -3,10 +3,7 @@
   text-align: center;
 }
 mat-form-field {
-  width: 200px;
-  @include pc {
-    width: 260px;
-  }
+  width: 60%;
 }
 mat-label {
   font-size: 12px;
@@ -31,12 +28,26 @@ mat-label {
   }
 }
 .login-btn {
-  width: 200px;
-  color: #505050;
-  border-radius: 50px;
-  background-color: rgba(132, 136, 146, 0.5);
-  @include pc {
-    width: 260px;
+  text-align: center;
+  height: 36px;
+  padding: 2px 0;
+  width: 60%;
+  margin: 16px 0 24px;
+  font-size: 16px;
+  line-height: 1.42857;
+  letter-spacing: 0.1em;
+  transition-duration: 0.4s;
+  border: 1px solid #dadada;
+  &--active {
+    border: 1px solid #909090;
+    &:hover {
+      background-color: #6c6c6c;
+      border-color: #6c6c6c;
+      color: #fff;
+    }
+  }
+  @include sp {
+    margin-bottom: 0;
   }
 }
 .password-icon {

@@ -1,0 +1,16 @@
+<div class="body">
+  <div class="login">
+    <p class="login__title">メールアドレスでログイン</p>
+    <app-login-form class="login__form"></app-login-form>
+    <p class="login__or">or</p>
+    <p class="login__title">Googleアカウントでログイン</p>
+    <button class="login__item" (click)="login()" mat-button>
+      Google
+    </button>
+    <mat-divider class="login__divider"></mat-divider>
+    <a class="login__new" (click)="signUpDialog()">
+      新規アカウントの作成は<span class="login__border"> こちら</span>
+    </a>
+    <a class="login__back" (click)="back()">戻る</a>
+  </div>
+</div>

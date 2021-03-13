@@ -1,17 +1,26 @@
 @import 'mixins';
 
+a,
+p {
+  font-size: 3.2vw;
+  line-height: 2.25;
+  color: white;
+  @include tab {
+    font-size: 0.7vw;
+    line-height: 2.5;
+  }
+}
+
 .footer {
-  padding: 32px 0;
+  padding: 25.33vw 0;
   width: 100%;
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  background-color: rgba(255, 255, 255, 0.6);
-  border: solid 2px transparent;
-  background-clip: padding-box;
+  background-color: #6c6c6c;
+  @include tab {
+    padding: 10vw 0;
+  }
   &__contents {
     display: flex;
     flex-direction: column;
-    color: #606060;
     @include tab {
       flex-direction: row;
       justify-content: space-around;
@@ -30,20 +39,18 @@
     margin-bottom: 16px;
   }
   &__developer {
-    color: #909090;
     font-weight: 300;
     margin-bottom: 16px;
   }
   &__twitter-logo {
     vertical-align: middle;
-    color: #606060;
     height: 24px;
     font-size: 18px;
   }
   &__nav {
-    font-size: 14px;
     text-align: center;
     @include tab {
+      font-size: 0.7vw;
       text-align-last: left;
     }
     .item {
@@ -53,19 +60,12 @@
   &__contact {
     align-items: center;
     text-align: center;
-    font-size: 14px;
   }
   &__contact-icon {
     display: inline-flex;
     vertical-align: middle;
     font-size: 20px;
     margin-bottom: 2px;
-  }
-  &__end {
-    color: #606060;
-    height: 24px;
-    font-size: 12px;
-    text-align: center;
   }
 }
 .sp-none {
@@ -75,8 +75,6 @@
 }
 .copyright {
   text-align: center;
-  color: #606060;
-  font-size: 12px;
   margin-top: 16px;
   @include tab {
     margin-top: 32px;
