@@ -69,6 +69,8 @@ p {
     color: rgb(124, 124, 124);
   }
   &__sp-login-button {
+    display: grid;
+    align-items: center;
     position: absolute;
     margin: 0 auto;
     bottom: 12vh;
