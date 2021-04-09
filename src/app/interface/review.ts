@@ -10,4 +10,5 @@ export interface Review {
   title: string;
   question: string;
   answer: string;
+  dialogTitle?: string;
 }
