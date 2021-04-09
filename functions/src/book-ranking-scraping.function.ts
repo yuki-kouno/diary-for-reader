@@ -74,6 +74,11 @@ const newReleaseUrls: {
     url:
       'https://www.amazon.co.jp/s?bbn=465610&rh=n%3A465392%2Cn%3A%21465610%2Cn%3A466282%2Cp_n_publication_date%3A2285541051&pf_rd_i=2405051051&pf_rd_m=AN1VRQENFRJN5&pf_rd_p=5e8937b0-abff-482c-993d-3f11aaf16627&pf_rd_p=5e8937b0-abff-482c-993d-3f11aaf16627&pf_rd_r=7KW2BSPRVX036BTHZ3HB&pf_rd_r=7KW2BSPRVX036BTHZ3HB&pf_rd_s=merchandised-search-left-2&pf_rd_t=101&ref=amb_link_10',
   }, // ビジネス・経済
+  {
+    name: 'lightnovel',
+    url:
+      'https://www.amazon.co.jp/s?bbn=467278&rh=n%3A467278%2Cp_n_publication_date%3A2285541051&dc&qid=1617936013&rnid=82836051&ref=lp_467278_nr_p_n_publication_date_2',
+  }, // ラノベ
 ];
 
 const scrapeRelease = async (url: string, name: string) => {

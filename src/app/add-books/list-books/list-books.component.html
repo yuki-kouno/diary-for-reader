@@ -1,20 +1,21 @@
-<div class="container" *ngIf="!searchText">
-  <h1 class="heading">タイトル、著者名、キーワードで検索してください</h1>
-  <h2 class="release-info">新刊情報 (30日以内に発売)</h2>
-  <app-comic></app-comic>
-  <app-it></app-it>
-  <app-literature></app-literature>
-  <app-business></app-business>
-  <app-life></app-life>
+<div class="relese-info" *ngIf="!searchText">
+  <h2 class="release-info__heading">新刊情報 (30日以内に発売)</h2>
+  <ul id="randomList" class="release-info__contents">
+    <li><app-comic></app-comic></li>
+    <li><app-it></app-it></li>
+    <li><app-literature></app-literature></li>
+    <li><app-business></app-business></li>
+    <li><app-life></app-life></li>
+  </ul>
 </div>
-<div class="container" *ngIf="searchText">
+<div *ngIf="searchText">
   <ng-container *ngIf="bookData; else blank">
     <h1 class="results-title">
       {{ searchText }} <span class="results-title__label">の検索結果</span>
     </h1>
 
     <ul class="results">
-      <li class="results__item" *ngFor="let book of bookData$ | async">
+      <li class="results__item" *ngFor="let book of bookData">
         <div class="results__spacer"></div>
         <figure class="results__thumb">
           <img

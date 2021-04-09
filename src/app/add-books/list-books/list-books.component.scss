@@ -1,22 +1,19 @@
 @import 'mixins';
 
-.heading {
-  text-align: center;
-  font-size: 18px;
-  color: #505050;
-  margin-top: 68px;
-  margin-bottom: 32px;
-  @include tab {
-    margin-top: 32px;
+.relese-info {
+  padding-top: 64px;
+  &__heading {
+    margin-bottom: 16px;
+  }
+  &__contents {
+    display: flex;
+    flex-direction: column;
   }
 }
 
 .results-title {
   text-align: center;
-  margin: 68px 0 32px;
-  @include tab {
-    margin-top: 32px;
-  }
+  margin: 32px 0;
   &__label {
     font-size: 16px;
   }
