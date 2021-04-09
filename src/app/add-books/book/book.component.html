@@ -1,5 +1,5 @@
 <div class="book">
-  <a [href]="book.link" target="brank">
+  <a [href]="book.link + '&tag=' + amazonService.trackingId" target="brank">
     <figure class="book__thumb">
       <img class="book__img" [src]="book.src" alt="" />
     </figure>
