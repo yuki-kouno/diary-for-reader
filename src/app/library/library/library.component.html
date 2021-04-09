@@ -8,20 +8,9 @@
   >
     <mat-icon class="header-options__icon">search</mat-icon>
   </button>
-  <button class="header-options__sort-btn">
+  <button class="header-options__sort-btn" [matMenuTriggerFor]="sortMenu">
     <mat-icon class="header-options__icon">sort</mat-icon>
   </button>
-  <mat-form-field matTooltip="ソート" class="header-options__select">
-    <mat-select
-      panelClass="mat-select-library"
-      [(ngModel)]="books$"
-      name="selected"
-    >
-      <mat-option *ngFor="let option of bookDatas" [value]="option.data"
-        >{{ option.title }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
 </div>
 
 <div class="container">
@@ -41,3 +30,10 @@
     </div>
   </ng-template>
 </div>
+<mat-menu class="menu" #sortMenu="matMenu">
+  <ng-container *ngFor="let option of bookDatas">
+    <button mat-menu-item (click)="books$ = option.data">
+      <span>{{ option.title }}</span>
+    </button>
+  </ng-container>
+</mat-menu>

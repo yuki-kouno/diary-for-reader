@@ -49,7 +49,5 @@ export class LibraryComponent implements OnInit {
     ]);
   }
 
-  ngOnInit() {
-    console.log();
-  }
+  ngOnInit() {}
 }
