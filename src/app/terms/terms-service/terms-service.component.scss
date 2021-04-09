@@ -2,6 +2,9 @@
 * {
   color: rgb(75, 75, 75);
 }
+h3 {
+  margin-top: 16px;
+}
 li {
   list-style: inherit !important;
   @include sp {
