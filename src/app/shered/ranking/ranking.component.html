@@ -1,6 +1,6 @@
 <div class="book">
   <p class="book__id">{{ rankingIndex + 1 }}</p>
-  <a [href]="book.link" target="brank">
+  <a [href]="book.link + '&tag=' + amazonService.trackingId" target="brank">
     <figure class="book__thumb">
       <img class="book__img" [src]="book.img" alt="" />
     </figure>
