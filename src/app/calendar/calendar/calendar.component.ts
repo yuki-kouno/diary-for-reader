@@ -77,14 +77,15 @@ export class CalendarComponent implements OnInit {
           );
           reviewArray.push({
             date: transformDate,
-            title: review.answer,
+            title: [`${review.title} ${review.answer}`],
+            dialogTitle: review.title,
             question: review.question,
-            answer: review.title,
+            answer: review.answer,
             thumbnail: review.thumbnail,
             bookId: review.bookId,
           });
-          this.calendarOptions.events = reviewArray;
         });
+        this.calendarOptions.events = reviewArray;
         this.loadingService.loading = false;
       });
   }
@@ -95,6 +96,7 @@ export class CalendarComponent implements OnInit {
       .open(ReviewDetailDialogComponent, {
         data: {
           title: obj.event._def.title,
+          dialogTitle: obj.event._def.extendedProps.dialogTitle,
           question: obj.event._def.extendedProps.question,
           answer: obj.event._def.extendedProps.answer,
           thumbnail: obj.event._def.extendedProps.thumbnail,

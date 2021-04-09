@@ -223,6 +223,31 @@ textarea {
     font-size: 12px;
   }
 }
+.fc-daygrid-block-event .fc-event-title {
+  cursor: pointer;
+}
+.fc .fc-more-popover {
+  width: 90vw;
+  @include tab {
+    width: 60vw;
+  }
+  .fc-popover-body {
+    .fc-daygrid-event-harness {
+      margin: 4px;
+      .fc-event-title {
+        @include sp {
+          font-size: 12px;
+        }
+      }
+      .fc-event-end {
+        padding: 4px;
+        @include sp {
+          padding: 4px 4px 8px;
+        }
+      }
+    }
+  }
+}
 .mat-elevation-z4 {
   box-shadow: none;
 }

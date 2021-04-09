@@ -3,15 +3,19 @@
     <img class="book__img" [src]="data.thumbnail" alt="" />
   </figure>
   <div class="info">
-    <p class="info__answer">
-      {{ data.answer }}
-    </p>
-    <p class="info__question">
-      {{ data.question }}
-    </p>
     <p class="info__title">
-      {{ data.title }}
+      {{ data.dialogTitle }}
     </p>
+    <div class="info__question">
+      <p class="info__question--text">
+        {{ data.question }}
+      </p>
+    </div>
+    <div class="info__answer">
+      <p class="info__answer--text">
+        {{ data.answer }}
+      </p>
+    </div>
   </div>
 </div>
 <div class="buttons">

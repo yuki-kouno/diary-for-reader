@@ -44,27 +44,35 @@
     white-space: pre-line;
     word-break: break-all;
     color: #303030bd;
-    font-size: 13px;
-    overflow: scroll;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 7;
+    font-size: 14px;
+    margin-bottom: 8px;
   }
   &__question {
     white-space: pre-line;
     word-break: break-all;
     color: #303030bd;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 4px;
+    max-height: 100px;
+    overflow: hidden;
+    &--text {
+      max-height: 92px;
+      overflow-y: scroll;
+      padding-bottom: 4px;
+    }
   }
   &__answer {
     color: #30303080;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 8px;
+    word-break: break-all;
+    white-space: pre-line;
+    max-height: 308px;
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    &--text {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
   }
 }
 .buttons {
