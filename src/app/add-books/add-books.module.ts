@@ -20,6 +20,7 @@ import { ItComponent } from './it/it.component';
 import { LifeComponent } from './life/life.component';
 import { LiteratureComponent } from './literature/literature.component';
 import { BookComponent } from './book/book.component';
+import { LightNovelComponent } from './light-novel/light-novel.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { BookComponent } from './book/book.component';
     LifeComponent,
     LiteratureComponent,
     BookComponent,
+    LightNovelComponent,
   ],
   imports: [
     CommonModule,

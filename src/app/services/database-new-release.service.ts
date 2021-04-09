@@ -61,4 +61,14 @@ export class DatabaseNewReleaseService {
         })
       );
   }
+  getLightNovelDatas(): Observable<NewReleaseInfo[]> {
+    return this.db
+      .doc<NewRelease>(`newRelease/lightnovel`)
+      .valueChanges()
+      .pipe(
+        map((data) => {
+          return data.releaseData;
+        })
+      );
+  }
 }
