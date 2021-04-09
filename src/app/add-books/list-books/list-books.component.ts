@@ -1,13 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoogleBooksApiService } from 'src/app/services/google-books-api.service';
 import { Book } from 'src/app/interface/book';
 import { DatabaseBooksService } from 'src/app/services/database-books.service';
-import { switchMap, map, take, tap } from 'rxjs/operators';
+import { switchMap, map, take } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
-import { DatabaseNewReleaseService } from 'src/app/services/database-new-release.service';
-import { NewReleaseInfo } from 'src/app/interface/new-release-info';
 import { Meta } from '@angular/platform-browser';
 
 @Component({
@@ -15,7 +13,7 @@ import { Meta } from '@angular/platform-browser';
   templateUrl: './list-books.component.html',
   styleUrls: ['./list-books.component.scss'],
 })
-export class ListBooksComponent implements OnInit, OnDestroy {
+export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
   private subscriptions: Subscription;
   searchText: string;
   bookData$: Observable<Book[]> = this.route.paramMap.pipe(
@@ -27,20 +25,12 @@ export class ListBooksComponent implements OnInit, OnDestroy {
   bookData: Book[];
   myfavoriteBookIds: string[];
   isAddedBook = [];
-  releaseDatas: Observable<NewReleaseInfo[]>[] = [
-    this.dbNewReleaseService.getBusinessDatas(),
-    this.dbNewReleaseService.getComicDatas(),
-    this.dbNewReleaseService.getItDatas(),
-    this.dbNewReleaseService.getLifeDatas(),
-    this.dbNewReleaseService.getLiteratureDatas(),
-  ];
 
   constructor(
     public googleBooksApi: GoogleBooksApiService,
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
     public loadingService: LoadingService,
-    private dbNewReleaseService: DatabaseNewReleaseService,
     private meta: Meta
   ) {
     this.meta.addTags([
@@ -78,9 +68,24 @@ export class ListBooksComponent implements OnInit, OnDestroy {
       });
   }
 
+  ngAfterViewInit() {
+    this.shuffleList();
+  }
+
   createBook(book: Book) {
     this.databaseBooks.createFavoriteBook(book);
     this.isAddedBook.push(book.id);
+  }
+
+  shuffleList() {
+    const list = document.querySelectorAll('#randomList li');
+    const box = [];
+    list.forEach((el) => box.push(el));
+    for (let i = box.length; 1 < i; i--) {
+      const shuffleNumber = Math.floor(Math.random() * i);
+      [box[shuffleNumber], box[i - 1]] = [box[i - 1], box[shuffleNumber]];
+    }
+    box.forEach((item) => document.querySelector('#randomList').append(item));
   }
 
   ngOnDestroy() {

@@ -1,43 +1,47 @@
 @import 'material-custom';
 @import 'mixins';
 
-.form {
-  position: fixed;
-  z-index: 1001;
-  top: 56px;
-  left: 0;
-  right: 0;
+.heading {
   text-align: center;
-  @include tab-header {
-    top: 10px;
-    left: inherit;
-    right: 16px;
-    display: flex;
+  font-size: 18px;
+  color: #505050;
+  margin: 32px 0;
+  @include sp {
+    &__sp-block {
+      display: block;
+    }
   }
+}
+
+.form {
+  text-align: center;
   &__input {
     font-size: 16px;
-    height: 36px;
-    padding-left: 8px;
+    height: 38px;
+    padding-left: 16px;
     margin-right: 2px;
     box-sizing: border-box;
     border: 1px solid rgba(190, 190, 190, 0.3);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.9);
+    @include tab {
+      margin-right: 8px;
+      height: 48px;
+      width: 50%;
+      max-width: 400px;
+    }
     &::placeholder {
       color: rgb(190, 190, 190);
     }
     &:focus {
       border: 1px solid mat-color($primary);
     }
-    @include tab {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
   }
   &__btn {
     color: white;
-  }
-  @include tab {
-    display: inherit;
-    padding: 0;
+    @include tab {
+      padding: 0 24px;
+      height: 46px;
+    }
   }
 }

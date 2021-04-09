@@ -270,11 +270,12 @@ app-header {
 .swiper-slide {
   text-align: center;
 }
+
 .navigation {
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 45%;
+  top: 35%;
   transform: translateY(-50%);
   z-index: 10;
   cursor: pointer;
@@ -285,6 +286,15 @@ app-header {
   border: solid 2px transparent;
   background-clip: padding-box;
   color: #808080;
+  @include sp {
+    display: none;
+  }
+  * {
+    outline: none;
+  }
+  mat-icon {
+    font-size: 40px;
+  }
   &__next {
     right: -40px;
     &:hover {

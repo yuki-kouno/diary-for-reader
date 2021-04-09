@@ -1,8 +1,8 @@
 export interface Book {
   id: string;
   createdAt: Date;
-  bookId?;
-  string;
+  bookId?: string;
+  isFavorite?: boolean;
   volumeInfo: {
     title: string;
     subtitle: string;

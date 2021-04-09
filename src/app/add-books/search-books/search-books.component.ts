@@ -19,6 +19,8 @@ export class SearchBooksComponent implements OnInit {
   ngOnInit() {}
 
   searchBook() {
-    this.router.navigate(['add-books', this.searchForm.value]);
+    if (this.searchForm.value) {
+      this.router.navigate(['add-books', this.searchForm.value]);
+    }
   }
 }
