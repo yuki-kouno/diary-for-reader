@@ -40,7 +40,7 @@
     "firebase-functions": "^3.8.0",
     "ngx-autofocus-fix": "^1.0.4",
     "node-vibrant": "^3.1.6",
-    "puppeteer": "^5.2.1",
+    "puppeteer-core": "^9.0.0",
     "rxjs": "~6.5.5",
     "swiper": "^6.4.15",
     "tslib": "^1.10.0",
