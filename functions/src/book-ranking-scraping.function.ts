@@ -2,7 +2,6 @@ import * as functions from 'firebase-functions';
 import * as puppeteer from 'puppeteer-core';
 import * as admin from 'firebase-admin';
 
-admin.initializeApp();
 export const db = admin.firestore();
 
 const rankingUrls: {
