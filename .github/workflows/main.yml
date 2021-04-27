@@ -34,9 +34,10 @@ jobs:
           path: dist
       - name: Install Dependencies
         run: cd functions && npm install
-      - name: Deploy to Firebase use prod
+      - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: dev
