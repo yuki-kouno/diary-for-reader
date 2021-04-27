@@ -10,20 +10,17 @@
     ],
     "source": "functions"
   },
-  "hosting": [
-    {
-      "target": "diary-for-reader",
-      "public": "dist/diary-for-reader",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html",
-          "function": "render"
-        }
-      ]
-    }
-  ],
+  "hosting": {
+    "public": "dist/diary-for-reader",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html",
+        "function": "render"
+      }
+    ]
+  },
   "storage": {
     "rules": "storage.rules"
   },
