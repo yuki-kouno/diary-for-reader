@@ -1,17 +1,16 @@
 export const environment = {
   production: false,
   algolia: {
-    appId: 'V0VMNDHZB9',
-    searchKey: '6abc9f168a5e193a6194204aadb3fbb0',
+    appId: 'DEVLVH1TY0',
+    searchKey: '60de32dfc8db593e0bc7ec815e9c69cf',
   },
   firebase: {
-    apiKey: 'AIzaSyDQ3iQrweqnebsp52TG9QoWYAYZy4PIU_4',
-    authDomain: 'diary-for-reader.firebaseapp.com',
-    databaseURL: 'https://diary-for-reader.firebaseio.com',
-    projectId: 'diary-for-reader',
-    storageBucket: 'diary-for-reader.appspot.com',
-    messagingSenderId: '938570394016',
-    appId: '1:938570394016:web:81c28bb6d44a9b84f99cc5',
-    measurementId: 'G-5D14ZGN72Y',
+    apiKey: 'AIzaSyA5KykB3xBIHw9LSGKEIybs0XpuLWOYl9I',
+    authDomain: 'diary-for-reader-prod.firebaseapp.com',
+    projectId: 'diary-for-reader-prod',
+    storageBucket: 'diary-for-reader-prod.appspot.com',
+    messagingSenderId: '355177359935',
+    appId: '1:355177359935:web:4e947713ec094bfc89a68a',
+    measurementId: 'G-8FFTBLEE2Q',
   },
 };

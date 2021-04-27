@@ -1,14 +1,6 @@
 {
   "projects": {
-    "default": "diary-for-reader"
-  },
-  "targets": {
-    "diary-for-reader": {
-      "hosting": {
-        "diary-for-reader": [
-          "diary-for-reader"
-        ]
-      }
-    }
+    "dev": "diary-for-reader",
+    "prod": "diary-for-reader-prod"
   }
 }
