@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import * as puppeteer from 'puppeteer-core';
+import * as puppeteer from 'puppeteer';
 import * as admin from 'firebase-admin';
 
 export const db = admin.firestore();

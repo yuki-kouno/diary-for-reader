@@ -24,7 +24,7 @@
     "firebase-functions": "^3.6.1",
     "firebase-tools": "^8.7.0",
     "node-fetch": "^2.6.1",
-    "puppeteer-core": "^9.0.0"
+    "puppeteer": "^9.0.0"
   },
   "devDependencies": {
     "@types/puppeteer": "^3.0.1",
