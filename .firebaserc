@@ -1,6 +1,7 @@
 {
   "projects": {
     "dev": "diary-for-reader",
-    "prod": "diary-for-reader-prod"
+    "prod": "diary-for-reader-prod",
+    "default": "diary-for-reader"
   }
 }
