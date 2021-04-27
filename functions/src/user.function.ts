@@ -40,6 +40,12 @@ export const sendEmailCreateUser = functions
     });
   });
 
+export const deleteAfUser = functions
+  .region('asia-northeast1')
+  .https.onCall((data, _) => {
+    return admin.auth().deleteUser(data);
+  });
+
 export const deleteUserAccount = functions
   .region('asia-northeast1')
   .auth.user()
