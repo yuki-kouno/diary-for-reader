@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import * as puppeteer from 'puppeteer';
+import * as puppeteer from 'puppeteer-core';
 import * as admin from 'firebase-admin';
 
 admin.initializeApp();
