@@ -10,7 +10,7 @@
   &__figure {
     position: relative;
     width: 128px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     &::before {
       content: '';
       position: absolute;
@@ -33,6 +33,7 @@
   }
   &__img {
     width: 128px;
+    margin-bottom: -6px;
     object-fit: cover;
     box-shadow: -2px 5px 10px rgba(128, 128, 128, 0.514);
   }

@@ -48,10 +48,13 @@
   &__tour {
     width: 200px;
     margin: 16px auto;
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
     border: 3px solid $tour-border;
     padding: 16px;
     border-radius: 20px;
+    background-color: rgb(237, 245, 245);
     &::before {
       content: '^';
       color: $tour-border;
@@ -61,20 +64,20 @@
       display: block;
       position: absolute;
       top: -28px;
-      left: 45%;
+      left: 39px;
       z-index: 50;
     }
     &::after {
       content: '^';
       color: rgb(237, 245, 245);
-      font-size: 60px;
+      font-size: 59px;
       font-weight: bolder;
       width: 0;
       height: 0;
       display: block;
       position: absolute;
       top: -29px;
-      left: 96px;
+      left: 31px;
       z-index: 50;
     }
   }

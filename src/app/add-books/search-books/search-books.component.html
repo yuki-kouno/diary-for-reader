@@ -21,10 +21,18 @@
     >
       <mat-icon>search</mat-icon>
     </button>
-    <div class="form__tour">
-      はじめにアウトプットしたい本を<br />検索してください
+    <div
+      *ngIf="
+        !(isBook$ | async)?.length &&
+        !(searchText | async) &&
+        !loadingService.loading
+      "
+      [@rubberBand]="animState"
+      (@rubberBand.done)="animDone()"
+      class="form__tour"
+    >
+      はじめに<br />アウトプットしたい<br />本を検索してください
     </div>
   </form>
-
   <app-list-books></app-list-books>
 </div>

@@ -47,6 +47,17 @@ export class DatabaseBooksService {
       .valueChanges();
   }
 
+  checkFavoriteBookExists(): Observable<Book[]> {
+    return this.db
+      .collection<Book>(
+        `users/${this.authService.uid}/favoriteBooks`,
+        (ref) => {
+          return ref.limit(1);
+        }
+      )
+      .valueChanges();
+  }
+
   getFavoriteBook(id: string): Observable<Book> {
     return this.db
       .doc<Book>(`users/${this.authService.uid}/favoriteBooks/${id}`)
