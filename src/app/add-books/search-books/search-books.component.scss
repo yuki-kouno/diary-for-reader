@@ -1,5 +1,6 @@
 @import 'material-custom';
 @import 'mixins';
+@import 'variables';
 
 .heading {
   text-align: center;
@@ -42,6 +43,39 @@
     @include tab {
       padding: 0 24px;
       height: 46px;
+    }
+  }
+  &__tour {
+    width: 200px;
+    margin: 16px auto;
+    position: relative;
+    border: 3px solid $tour-border;
+    padding: 16px;
+    border-radius: 20px;
+    &::before {
+      content: '^';
+      color: $tour-border;
+      font-size: 35px;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      top: -28px;
+      left: 45%;
+      z-index: 50;
+    }
+    &::after {
+      content: '^';
+      color: rgb(237, 245, 245);
+      font-size: 60px;
+      font-weight: bolder;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      top: -29px;
+      left: 96px;
+      z-index: 50;
     }
   }
 }
