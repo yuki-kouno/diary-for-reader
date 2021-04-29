@@ -3,9 +3,11 @@ import { User } from '../interface/user';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
-import { switchMap, first } from 'rxjs/operators';
+import { switchMap, first, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFireFunctions } from '@angular/fire/functions';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +25,15 @@ export class UserService {
     })
   );
 
+  isProcessing: boolean;
+
   constructor(
     private db: AngularFirestore,
     private afAuth: AngularFireAuth,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private fns: AngularFireFunctions,
+    private authService: AuthService
   ) {}
 
   getUserByID(uid: string): Observable<User> {
@@ -39,17 +45,22 @@ export class UserService {
   }
 
   async deleteUser(): Promise<void> {
-    return (await this.afAuth.currentUser)
-      .delete()
+    this.isProcessing = true;
+    const callable = this.fns.httpsCallable('deleteAfUser');
+    return callable(this.authService.uid)
+      .toPromise()
       .then(() => {
         this.router.navigateByUrl('/welcome');
         this.snackBar.open('ご利用ありがとうございました');
       })
-      .catch(() => {
-        console.log(this.afAuth.currentUser);
+      .catch((err) => {
+        console.log(err);
         this.snackBar.open(
           '削除に失敗しました。もう一度退会を実行してください'
         );
+      })
+      .finally(() => {
+        this.isProcessing = false;
       });
   }
 }
