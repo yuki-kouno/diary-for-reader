@@ -37,16 +37,21 @@
           [disabled]="book.isFavorite || isAddedBook.includes(book.id)"
         >
           <mat-icon>add</mat-icon>
-          <div
-            *ngIf="
-              isFirst && !(isBook$ | async)?.length && !loadingService.loading
-            "
-            [@headShake]="animState"
-            (@headShake.done)="animDone()"
-            class="results__tour"
-          >
-            ボタンを押して<br />ライブラリーに<br />登録してください
-          </div>
+          <ng-container *ngIf="userService.user$ | async as user">
+            <div
+              *ngIf="
+                isFirst &&
+                !(isBook$ | async)?.length &&
+                !loadingService.loading &&
+                user.firstTour
+              "
+              [@headShake]="animState"
+              (@headShake.done)="animDone()"
+              class="results__tour"
+            >
+              ボタンを押して<br />ライブラリーに<br />登録してください
+            </div>
+          </ng-container>
         </button>
       </li>
     </ul>

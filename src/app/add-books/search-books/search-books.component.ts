@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
 import { LoadingService } from 'src/app/services/loading.service';
 import { map } from 'rxjs/operators';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-search-books',
@@ -17,7 +18,7 @@ import { map } from 'rxjs/operators';
 export class SearchBooksComponent implements OnInit {
   title = '本を追加';
   searchForm: FormControl = new FormControl('');
-  animState = false;
+  animState: boolean;
 
   isBook$: Observable<Book[]> = this.databaseBooks.checkFavoriteBookExists();
   searchText: Observable<string> = this.route.paramMap.pipe(
@@ -28,16 +29,21 @@ export class SearchBooksComponent implements OnInit {
     private router: Router,
     private databaseBooks: DatabaseBooksService,
     private route: ActivatedRoute,
-    public loadingService: LoadingService
+    public loadingService: LoadingService,
+    public userService: UserService
   ) {}
 
   ngOnInit() {}
 
-  searchBook() {
+  searchBook(tour: boolean) {
     if (this.searchForm.value) {
-      this.router.navigate(['add-books', this.searchForm.value], {
-        queryParams: { tour: true },
-      });
+      if (tour) {
+        this.router.navigate(['add-books', this.searchForm.value], {
+          queryParams: { tour: true },
+        });
+      } else {
+        this.router.navigate(['add-books', this.searchForm.value]);
+      }
     }
   }
 

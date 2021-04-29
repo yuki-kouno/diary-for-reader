@@ -1,76 +1,90 @@
 <ul class="nav">
-  <li class="item">
-    <a
-      mat-fab
-      matTooltip="ライブラリ"
-      matTooltipPosition="right"
-      matTooltipClass="tooltip"
-      class="item__btn wrap-gradient"
-      routerLink="/"
-    >
-      <mat-icon class="item__icon material-icons-outlined"
-        >import_contacts</mat-icon
+  <ng-container *ngIf="user$ | async as user">
+    <li class="item">
+      <a
+        mat-fab
+        matTooltip="ライブラリ"
+        matTooltipPosition="right"
+        matTooltipClass="tooltip"
+        class="item__btn wrap-gradient"
+        routerLink="/"
       >
-      <div
-        *ngIf="
-          (isBook$ | async)?.length &&
-          !loadingService.loading &&
-          (isTour$ | async)
-        "
-        [@rubberBand]="animState"
-        (@rubberBand.done)="animDone()"
-        class="item__tour"
+        <mat-icon class="item__icon material-icons-outlined"
+          >import_contacts</mat-icon
+        >
+        <div
+          *ngIf="
+            (isBook$ | async)?.length &&
+            !loadingService.loading &&
+            (isTour$ | async) &&
+            user.firstTour
+          "
+          [@rubberBand]="animState"
+          (@rubberBand.done)="animDone()"
+          class="item__tour"
+        >
+          ライブラリーに登録されました
+        </div>
+      </a>
+    </li>
+    <li *ngIf="isReview$ | async as review" class="item">
+      <a
+        mat-fab
+        matTooltip="カレンダー"
+        matTooltipPosition="right"
+        matTooltipClass="tooltip"
+        class="item__btn wrap-gradient"
+        (click)="linkCalender(user.thirdTour, review.length)"
       >
-        ライブラリーに登録されました
-      </div>
-    </a>
-  </li>
-  <li class="item">
-    <a
-      mat-fab
-      matTooltip="カレンダー"
-      matTooltipPosition="right"
-      matTooltipClass="tooltip"
-      class="item__btn wrap-gradient"
-      routerLink="/calendar"
-    >
-      <mat-icon class="item__icon material-icons-outlined">date_range</mat-icon>
-    </a>
-  </li>
-  <li class="item">
-    <a
-      mat-fab
-      matTooltip="本を追加"
-      matTooltipPosition="right"
-      matTooltipClass="tooltip"
-      class="item__btn wrap-gradient"
-      routerLink="/add-books"
-    >
-      <mat-icon class="item__icon material-icons-rounded">add</mat-icon>
-    </a>
-  </li>
-  <li class="item">
-    <a
-      mat-fab
-      matTooltip="ランキング"
-      matTooltipPosition="right"
-      matTooltipClass="tooltip"
-      class="item__btn wrap-gradient"
-      routerLink="/books-ranking"
-    >
-      <mat-icon class="item__icon">format_list_numbered</mat-icon>
-    </a>
-  </li>
-  <li class="item">
-    <a
-      mat-fab
-      matTooltip="その他"
-      matTooltipPosition="right"
-      matTooltipClass="tooltip"
-      class="item__btn wrap-gradient"
-      (click)="openSheet()"
-    >
-      <mat-icon class="item__icon">more_horiz</mat-icon>
-    </a>
-  </li>
+        <mat-icon class="item__icon material-icons-outlined"
+          >date_range</mat-icon
+        >
+
+        <div
+          *ngIf="user.thirdTour && review?.length"
+          [@rubberBand]="animState"
+          (@rubberBand.done)="animDone()"
+          class="item__tour"
+        >
+          カレンダーページで<br />過去のレビューが確認できます
+        </div>
+      </a>
+    </li>
+    <li class="item">
+      <a
+        mat-fab
+        matTooltip="本を追加"
+        matTooltipPosition="right"
+        matTooltipClass="tooltip"
+        class="item__btn wrap-gradient"
+        routerLink="/add-books"
+      >
+        <mat-icon class="item__icon material-icons-rounded">add</mat-icon>
+      </a>
+    </li>
+    <li class="item">
+      <a
+        mat-fab
+        matTooltip="ランキング"
+        matTooltipPosition="right"
+        matTooltipClass="tooltip"
+        class="item__btn wrap-gradient"
+        routerLink="/books-ranking"
+      >
+        <mat-icon class="item__icon">format_list_numbered</mat-icon>
+      </a>
+    </li>
+    <li class="item">
+      <a
+        mat-fab
+        matTooltip="その他"
+        matTooltipPosition="right"
+        matTooltipClass="tooltip"
+        class="item__btn wrap-gradient"
+        (click)="openSheet()"
+      >
+        <mat-icon class="item__icon">more_horiz</mat-icon>
+      </a>
+    </li>
+  </ng-container>
 </ul>

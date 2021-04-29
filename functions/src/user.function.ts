@@ -19,6 +19,7 @@ export const createUser = functions
       email: user.email,
       firstTour: true,
       secondTour: true,
+      thirdTour: true,
     });
   });
 

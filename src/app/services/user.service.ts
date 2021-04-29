@@ -63,4 +63,10 @@ export class UserService {
         this.isProcessing = false;
       });
   }
+
+  updateUserTour(value: any): void {
+    this.db.doc<User>(`users/${this.uid}`).update({
+      ...value,
+    });
+  }
 }

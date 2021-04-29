@@ -6,8 +6,12 @@ import { DatabaseBooksService } from '../services/database-books.service';
 import { Observable } from 'rxjs';
 import { Book } from '../interface/book';
 import { LoadingService } from '../services/loading.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { User } from '../interface/user';
+import { UserService } from '../services/user.service';
+import { DatabaseReviewsService } from '../services/database-reviews.service';
+import { Review } from '../interface/review';
 
 @Component({
   selector: 'app-side-nav',
@@ -16,7 +20,9 @@ import { map } from 'rxjs/operators';
   animations: [rubberBandAnimation()],
 })
 export class SideNavComponent implements OnInit {
+  user$: Observable<User> = this.userService.user$;
   isBook$: Observable<Book[]> = this.databaseBooks.checkFavoriteBookExists();
+  isReview$: Observable<Review[]> = this.reviewService.checkReviewExists();
   isTour$: Observable<boolean> = this.route.queryParamMap.pipe(
     map((param) => {
       const value = param.get('tour');
@@ -29,6 +35,9 @@ export class SideNavComponent implements OnInit {
     private bottomSheet: MatBottomSheet,
     private databaseBooks: DatabaseBooksService,
     private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService,
+    private reviewService: DatabaseReviewsService,
     public loadingService: LoadingService
   ) {}
 
@@ -38,11 +47,19 @@ export class SideNavComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  linkCalender(tour?: boolean, reviewLength?: number) {
+    if (tour && reviewLength) {
+      const value = { thirdTour: false };
+      this.userService.updateUserTour(value);
+    }
+    this.router.navigate(['/calendar']);
+  }
 
   animDone() {
     setTimeout(() => {
       this.animState = !this.animState;
     }, 500);
   }
+
+  ngOnInit(): void {}
 }

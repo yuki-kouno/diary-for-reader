@@ -1,4 +1,4 @@
-<div class="inner">
+<div *ngIf="userService.user$ | async as user" class="inner">
   <div>
     <form [formGroup]="form">
       <ng-container formArrayName="answers">
@@ -52,6 +52,14 @@
         [matMenuTriggerFor]="questionMenu"
       >
         質問を選択
+        <div
+          *ngIf="user.secondTour"
+          [@rubberBand]="animState"
+          (@rubberBand.done)="animDone()"
+          class="review-btns__tour"
+        >
+          質問を選択か自由に書くを<br />選んでレビューしましょう
+        </div>
       </button>
       <button
         class="review-btns__free-text wrap-gradient"
@@ -71,7 +79,7 @@
   <mat-menu #start="matMenu" yPosition="above">
     <button
       mat-menu-item
-      (click)="addQuestion(question)"
+      (click)="addQuestion(question, user.secondTour)"
       *ngFor="let question of questionsList.start; index as i"
     >
       <div class="question-item">{{ question }}</div>
@@ -80,7 +88,7 @@
   <mat-menu #halfway="matMenu">
     <button
       mat-menu-item
-      (click)="addQuestion(question)"
+      (click)="addQuestion(question, user.secondTour)"
       *ngFor="let question of questionsList.halfway; index as i"
     >
       <div class="question-item">{{ question }}</div>
@@ -89,7 +97,7 @@
   <mat-menu #end="matMenu">
     <button
       mat-menu-item
-      (click)="addQuestion(question)"
+      (click)="addQuestion(question, user.secondTour)"
       *ngFor="let question of questionsList.end; index as i"
     >
       <div class="question-item">{{ question }}</div>

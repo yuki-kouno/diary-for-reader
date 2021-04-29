@@ -7,6 +7,7 @@ import { rubberBandAnimation } from 'angular-animations';
 import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/interface/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -24,7 +25,8 @@ export class BookListComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private booksService: DatabaseBooksService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   openRemoveDialog(book) {
@@ -42,6 +44,14 @@ export class BookListComponent implements OnInit {
     setTimeout(() => {
       this.animState = !this.animState;
     }, 500);
+  }
+
+  linkReview(user: User) {
+    if (user.firstTour) {
+      const value = { firstTour: false };
+      this.userService.updateUserTour(value);
+    }
+    this.router.navigate(['/review', this.book.id]);
   }
 
   ngOnInit(): void {}

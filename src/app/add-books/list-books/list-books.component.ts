@@ -8,6 +8,7 @@ import { Subscription, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import { Meta } from '@angular/platform-browser';
 import { headShakeAnimation } from 'angular-animations';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-books',
@@ -35,6 +36,7 @@ export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
     public route: ActivatedRoute,
     public databaseBooks: DatabaseBooksService,
     public loadingService: LoadingService,
+    public userService: UserService,
     private meta: Meta
   ) {
     this.meta.addTags([

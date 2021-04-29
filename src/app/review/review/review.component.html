@@ -24,7 +24,7 @@
   </div>
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="今日">
-      <ng-container *ngIf="(reviews$ | async)?.length > 0; else blank">
+      <ng-container *ngIf="(reviews$ | async)?.length > 0">
         <app-review-list
           *ngFor="let review of reviews$ | async; last as last"
           [review]="review"
@@ -35,7 +35,7 @@
       </ng-container>
     </mat-tab>
     <mat-tab label="すべて">
-      <ng-container *ngIf="(allReviews$ | async)?.length > 0; else blank">
+      <ng-container *ngIf="(allReviews$ | async)?.length > 0">
         <app-all-review-list
           *ngFor="let review of allReviews$ | async; last as last"
           [review]="review"
@@ -49,8 +49,3 @@
   </mat-tab-group>
   <app-review-form *ngIf="book" [book]="book" valu=""></app-review-form>
 </div>
-<ng-template #blank>
-  <div class="blank" *ngIf="!this.loaingService.loading">
-    レビューはまだありません。<br />質問を選択か自由に書くを選んでレビューしましょう。
-  </div>
-</ng-template>

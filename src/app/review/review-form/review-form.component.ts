@@ -13,16 +13,21 @@ import { DatabaseReviewsService } from 'src/app/services/database-reviews.servic
 import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuestionDialogComponent } from '../question-dialog/question-dialog.component';
+import { rubberBandAnimation } from 'angular-animations';
+import { UserService } from 'src/app/services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-review-form',
   templateUrl: './review-form.component.html',
   styleUrls: ['./review-form.component.scss'],
+  animations: [rubberBandAnimation()],
 })
 export class ReviewFormComponent implements OnInit {
   @Input() book: Book;
   showInput: boolean;
   selectedQuestion: string[] = [];
+  animState: boolean;
   questionsList: {
     start: string[];
     halfway: string[];
@@ -37,11 +42,12 @@ export class ReviewFormComponent implements OnInit {
   });
 
   constructor(
-    public dialog: MatDialog,
     private fb: FormBuilder,
     private snackBer: MatSnackBar,
+    private cd: ChangeDetectorRef,
+    public userService: UserService,
     public databaseReviewService: DatabaseReviewsService,
-    private cd: ChangeDetectorRef
+    public dialog: MatDialog
   ) {}
 
   @HostListener('window:beforeunload', ['$event'])
@@ -72,7 +78,11 @@ export class ReviewFormComponent implements OnInit {
     });
   }
 
-  addQuestion(question: string) {
+  addQuestion(question: string, tour?: boolean) {
+    if (tour) {
+      const value = { secondTour: false };
+      this.userService.updateUserTour(value);
+    }
     if (!this.selectedQuestion.includes(question)) {
       this.answers.push(
         this.fb.group({
@@ -109,6 +119,12 @@ export class ReviewFormComponent implements OnInit {
     this.answers.removeAt(index);
     this.selectedQuestion.splice(index, 1);
     this.editableCount -= 1;
+  }
+
+  animDone() {
+    setTimeout(() => {
+      this.animState = !this.animState;
+    }, 500);
   }
 
   ngOnInit() {}
