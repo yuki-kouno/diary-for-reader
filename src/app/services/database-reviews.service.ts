@@ -54,6 +54,15 @@ export class DatabaseReviewsService {
       .valueChanges();
   }
 
+  checkReviewExists(): Observable<Review[]> {
+    const uid = this.authService.uid;
+    return this.db
+      .collectionGroup<Review>(`reviews`, (ref) => {
+        return ref.where('uid', '==', uid).limit(1);
+      })
+      .valueChanges();
+  }
+
   createReview(
     book: Book,
     review: Omit<

@@ -13,15 +13,29 @@
       placeholder="本のタイトル、著者名"
       appAutofocus
     />
-    <button
-      class="form__btn wrap-gradient"
-      (click)="searchBook()"
-      mat-flat-button
-      color="primary"
-    >
-      <mat-icon>search</mat-icon>
-    </button>
+    <ng-container *ngIf="userService.user$ | async as user">
+      <button
+        class="form__btn wrap-gradient"
+        (click)="searchBook(user.firstTour)"
+        mat-flat-button
+        color="primary"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+      <div
+        *ngIf="
+          !(isBook$ | async)?.length &&
+          !(searchText | async) &&
+          !loadingService.loading &&
+          user.firstTour
+        "
+        [@rubberBand]="animState"
+        (@rubberBand.done)="animDone()"
+        class="form__tour"
+      >
+        はじめに<br />アウトプットする<br />本を検索してください
+      </div>
+    </ng-container>
   </form>
-
   <app-list-books></app-list-books>
 </div>

@@ -1,5 +1,5 @@
-<div class="contents">
-  <div class="book" [routerLink]="['/review', book.id]">
+<div *ngIf="user$ | async as user" class="contents">
+  <div class="book" (click)="linkReview(user)">
     <figure class="book__figure">
       <img
         class="book__img"
@@ -7,6 +7,14 @@
         [alt]="book.volumeInfo.title"
       />
     </figure>
+    <div
+      *ngIf="isFirst && user.firstTour"
+      [@rubberBand]="animState"
+      (@rubberBand.done)="animDone()"
+      class="book__tour"
+    >
+      本をタッチすると<br />レビューページに移動します
+    </div>
     <div class="info">
       <p class="info__title">
         {{ book.volumeInfo.title }}
