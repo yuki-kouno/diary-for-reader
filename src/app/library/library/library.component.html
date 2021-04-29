@@ -19,7 +19,8 @@
       <app-book-list
         class="books__item"
         [book]="book"
-        *ngFor="let book of books$ | async"
+        [isFirst]="isFirst"
+        *ngFor="let book of books$ | async; first as isFirst"
       ></app-book-list>
     </div>
   </ng-container>

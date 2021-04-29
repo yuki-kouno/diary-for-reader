@@ -9,7 +9,7 @@
   align-items: center;
   vertical-align: middle;
   justify-content: flex-end;
-  top: 70px;
+  top: 40px;
   bottom: 0;
   left: 0;
   z-index: 100;
@@ -34,5 +34,40 @@
   }
   &__icon {
     color: #909090;
+  }
+  &__tour {
+    position: absolute;
+    color: #505050;
+    border-radius: 30px;
+    border: 3px solid $tour-border;
+    padding: 16px;
+    top: 0;
+    left: 75px;
+    background-color: rgba(237, 245, 245, 0.98);
+    &::before {
+      content: '<';
+      color: $tour-border;
+      font-size: 35px;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      top: 16px;
+      left: -17px;
+      z-index: 50;
+    }
+    &::after {
+      content: '<';
+      color: rgb(237, 245, 245);
+      font-size: 47px;
+      font-weight: bolder;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      top: 15px;
+      left: -5px;
+      z-index: 50;
+    }
   }
 }

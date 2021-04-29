@@ -16,7 +16,7 @@
     </h1>
 
     <ul class="results">
-      <li class="results__item" *ngFor="let book of bookData">
+      <li class="results__item" *ngFor="let book of bookData; first as isFirst">
         <div class="results__spacer"></div>
         <figure class="results__thumb">
           <img
@@ -37,6 +37,16 @@
           [disabled]="book.isFavorite || isAddedBook.includes(book.id)"
         >
           <mat-icon>add</mat-icon>
+          <div
+            *ngIf="
+              isFirst && !(isBook$ | async)?.length && !loadingService.loading
+            "
+            [@headShake]="animState"
+            (@headShake.done)="animDone()"
+            class="results__tour"
+          >
+            ボタンを押して<br />ライブラリーに<br />登録してください
+          </div>
         </button>
       </li>
     </ul>

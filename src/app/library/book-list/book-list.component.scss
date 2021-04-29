@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'variables';
 
 .contents {
   text-align: center;
@@ -37,7 +38,44 @@
     object-fit: cover;
     box-shadow: -2px 5px 10px rgba(128, 128, 128, 0.514);
   }
+  &__tour {
+    width: 208px;
+    margin: 16px auto;
+    position: absolute;
+    left: -59px;
+    z-index: 10;
+    border: 3px solid $tour-border;
+    padding: 16px;
+    border-radius: 20px;
+    background-color: rgb(237, 245, 245, 0.98);
+    &::before {
+      content: '^';
+      color: $tour-border;
+      font-size: 35px;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      top: -28px;
+      left: 110px;
+      z-index: 50;
+    }
+    &::after {
+      content: '^';
+      color: rgb(237, 245, 245);
+      font-size: 59px;
+      font-weight: bolder;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      top: -29px;
+      left: 102px;
+      z-index: 50;
+    }
+  }
 }
+
 .info {
   width: 128px;
   text-align: center;

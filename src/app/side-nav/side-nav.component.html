@@ -11,6 +11,18 @@
       <mat-icon class="item__icon material-icons-outlined"
         >import_contacts</mat-icon
       >
+      <div
+        *ngIf="
+          (isBook$ | async)?.length &&
+          !loadingService.loading &&
+          (isTour$ | async)
+        "
+        [@rubberBand]="animState"
+        (@rubberBand.done)="animDone()"
+        class="item__tour"
+      >
+        ライブラリーに登録されました
+      </div>
     </a>
   </li>
   <li class="item">

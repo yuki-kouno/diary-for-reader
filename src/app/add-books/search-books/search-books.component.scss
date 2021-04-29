@@ -54,7 +54,7 @@
     border: 3px solid $tour-border;
     padding: 16px;
     border-radius: 20px;
-    background-color: rgb(237, 245, 245);
+    background-color: rgb(237, 245, 245, 0.9);
     &::before {
       content: '^';
       color: $tour-border;

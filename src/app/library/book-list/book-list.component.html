@@ -7,6 +7,14 @@
         [alt]="book.volumeInfo.title"
       />
     </figure>
+    <div
+      *ngIf="isFirst"
+      [@rubberBand]="animState"
+      (@rubberBand.done)="animDone()"
+      class="book__tour"
+    >
+      本をタッチすると<br />レビューページに移動します
+    </div>
     <div class="info">
       <p class="info__title">
         {{ book.volumeInfo.title }}

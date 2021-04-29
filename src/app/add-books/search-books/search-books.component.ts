@@ -19,14 +19,14 @@ export class SearchBooksComponent implements OnInit {
   searchForm: FormControl = new FormControl('');
   animState = false;
 
-  isBook$: Observable<Book[]> = this.dbBooksService.checkFavoriteBookExists();
+  isBook$: Observable<Book[]> = this.databaseBooks.checkFavoriteBookExists();
   searchText: Observable<string> = this.route.paramMap.pipe(
     map((param) => param.get('searchText'))
   );
 
   constructor(
     private router: Router,
-    private dbBooksService: DatabaseBooksService,
+    private databaseBooks: DatabaseBooksService,
     private route: ActivatedRoute,
     public loadingService: LoadingService
   ) {}
@@ -35,7 +35,9 @@ export class SearchBooksComponent implements OnInit {
 
   searchBook() {
     if (this.searchForm.value) {
-      this.router.navigate(['add-books', this.searchForm.value]);
+      this.router.navigate(['add-books', this.searchForm.value], {
+        queryParams: { tour: true },
+      });
     }
   }
 

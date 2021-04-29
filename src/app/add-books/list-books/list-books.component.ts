@@ -7,11 +7,13 @@ import { switchMap, map, take } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import { Meta } from '@angular/platform-browser';
+import { headShakeAnimation } from 'angular-animations';
 
 @Component({
   selector: 'app-list-books',
   templateUrl: './list-books.component.html',
   styleUrls: ['./list-books.component.scss'],
+  animations: [headShakeAnimation()],
 })
 export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
   private subscriptions: Subscription;
@@ -22,9 +24,11 @@ export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
       return this.googleBooksApi.getListOfBooks(this.searchText);
     })
   );
+  isBook$: Observable<Book[]> = this.databaseBooks.checkFavoriteBookExists();
   bookData: Book[];
   myfavoriteBookIds: string[];
   isAddedBook = [];
+  animState: boolean;
 
   constructor(
     public googleBooksApi: GoogleBooksApiService,
@@ -38,6 +42,7 @@ export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
       { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
     ]);
     this.loadingService.loading = true;
+
     this.databaseBooks
       .getFavoriteBookIds()
       .pipe(take(1))
@@ -86,6 +91,12 @@ export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
       [box[shuffleNumber], box[i - 1]] = [box[i - 1], box[shuffleNumber]];
     }
     box.forEach((item) => document.querySelector('#randomList').append(item));
+  }
+
+  animDone() {
+    setTimeout(() => {
+      this.animState = !this.animState;
+    }, 500);
   }
 
   ngOnDestroy() {

@@ -40,4 +40,40 @@
       color: mat-color($primary);
     }
   }
+  &__tour {
+    position: absolute;
+    color: #505050;
+    border-radius: 30px;
+    border: 3px solid $tour-border;
+    padding: 16px;
+    top: -80px;
+    left: 0;
+    background-color: rgba(237, 245, 245, 0.98);
+    &::before {
+      content: 'v';
+      color: $tour-border;
+      font-size: 25px;
+      font-weight: bold;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      bottom: 13px;
+      left: 28px;
+      z-index: 50;
+    }
+    &::after {
+      content: 'v';
+      color: rgb(237, 245, 245);
+      font-size: 41px;
+      font-weight: bolder;
+      width: 0;
+      height: 0;
+      display: block;
+      position: absolute;
+      bottom: 43px;
+      left: 23px;
+      z-index: 50;
+    }
+  }
 }
