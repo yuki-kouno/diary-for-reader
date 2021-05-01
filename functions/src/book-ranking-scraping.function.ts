@@ -80,6 +80,7 @@ const newReleaseUrls: {
   }, // ラノベ
 ];
 
+// 新刊
 const scrapeRelease = async (url: string, name: string) => {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
@@ -114,6 +115,14 @@ const scrapeRelease = async (url: string, name: string) => {
         src: list
           .map((el) => el.getAttribute('src'))
           [i].replace(
+            /https:\/\/m.media-amazon.com\/images\/I\/01MKUOLsA5L._AC_UY218_.gif/g,
+            '/assets/images/no-image.jpg'
+          )
+          .replace(
+            /https:\/\/m.media-amazon.com\/images\/I\/01MKUOLsA5L._AC_UY218_SP_SAME_DOMAIN_ASSETS_257061_.gif/g,
+            '/assets/images/no-image.jpg'
+          )
+          .replace(
             /https:\/\/images-fe.ssl-images-amazon.com\/images\/I\/01MKUOLsA5L._AC_UL200_SR200,200_.gif/g,
             '/assets/images/no-image.jpg'
           ),
@@ -141,7 +150,7 @@ const scrapeRelease = async (url: string, name: string) => {
   const getLink = await page.evaluate((selector) => {
     const list = [...document.querySelectorAll(selector)];
     const Datas = [];
-    const numberOfRankings = 30;
+    const numberOfRankings = 16;
     for (let i = 0; i < numberOfRankings; i++) {
       const Data = {
         link: list.map(
@@ -167,6 +176,7 @@ const scrapeRelease = async (url: string, name: string) => {
   return db.collection('newRelease').doc(`${name}`).set(results);
 };
 
+// ランキング
 const scrapeRanking = async (url: string, name: string) => {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
@@ -248,10 +258,14 @@ const scrapeAll = async () => {
   });
 
   for (const urlData of newReleaseUrls) {
-    await scrapeRelease(urlData.url, urlData.name);
+    await scrapeRelease(urlData.url, urlData.name).catch((err) =>
+      console.log(err)
+    );
   }
   for (const urlData of rankingUrls) {
-    await scrapeRanking(urlData.url, urlData.name);
+    await scrapeRanking(urlData.url, urlData.name).catch((err) =>
+      console.log(err)
+    );
   }
   await browser.close();
 };
