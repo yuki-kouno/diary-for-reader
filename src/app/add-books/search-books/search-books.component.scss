@@ -56,29 +56,31 @@
     border-radius: 20px;
     background-color: rgb(237, 245, 245, 0.9);
     &::before {
-      content: '^';
+      content: '>';
       color: $tour-border;
       font-size: 35px;
       width: 0;
       height: 0;
       display: block;
       position: absolute;
-      top: -28px;
+      top: 0;
       left: 39px;
       z-index: 50;
+      transform: rotate(-90deg);
     }
     &::after {
-      content: '^';
+      content: '>';
       color: rgb(237, 245, 245);
-      font-size: 59px;
+      font-size: 61px;
       font-weight: bolder;
       width: 0;
       height: 0;
       display: block;
       position: absolute;
-      top: -29px;
-      left: 31px;
+      top: 21px;
+      left: 19px;
       z-index: 50;
+      transform: rotate(-90deg);
     }
   }
 }
