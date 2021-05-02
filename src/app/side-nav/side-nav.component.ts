@@ -17,7 +17,7 @@ import { Review } from '../interface/review';
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss'],
-  animations: [rubberBandAnimation()],
+  animations: [rubberBandAnimation({ delay: 500 })],
 })
 export class SideNavComponent implements OnInit {
   user$: Observable<User> = this.userService.user$;
@@ -56,9 +56,7 @@ export class SideNavComponent implements OnInit {
   }
 
   animDone() {
-    setTimeout(() => {
-      this.animState = !this.animState;
-    }, 500);
+    this.animState = !this.animState;
   }
 
   ngOnInit(): void {}

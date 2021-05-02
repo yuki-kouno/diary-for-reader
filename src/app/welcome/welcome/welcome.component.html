@@ -1,5 +1,5 @@
 <div class="body">
-  <section class="top-hero">
+  <section [@fadeInOnEnter] class="top-hero">
     <div class="top-hero__inner">
       <div>
         <img
@@ -44,6 +44,8 @@
 
   <section class="top-illustration">
     <img
+      *ngIf="topIllustration < clientY"
+      [@fadeInOnEnter]
       class="top-illustration__image"
       src="assets/images/sp-mockup.jpg"
       alt=""
@@ -72,7 +74,13 @@
       </p>
     </div>
     <div class="how__image-box">
-      <img class="how__image" src="assets/images/pc-mockup.jpg" alt="" />
+      <img
+        *ngIf="how < clientY"
+        [@fadeInOnEnter]
+        class="how__image"
+        src="assets/images/pc-mockup.jpg"
+        alt=""
+      />
     </div>
   </section>
 
@@ -91,10 +99,16 @@
     </p>
     <ul class="scene__contents">
       <li class="scene__content-box">
-        <img src="assets/images/scene-1.jpg" alt="" class="scene__image" />
+        <img
+          *ngIf="sceneFirst < clientY"
+          [@fadeInOnEnter]
+          src="assets/images/scene-1.jpg"
+          alt=""
+          class="scene__image"
+        />
         <div class="scene__text-box">
           <h2 class="scene__content-title">読書前の準備</h2>
-          <p class="scene__text">
+          <p class="scene__text scene_first">
             ３つのステップのうち、特に大切なのが読む前の準備です。<br />
             読書においてその本を読む目的を持っているかどうかは、読書スピードや記憶の定着に大きく影響します。
             そのため、読書前の質問に答えることで目的を整理します。
@@ -102,10 +116,16 @@
         </div>
       </li>
       <li class="scene__content-box">
-        <img src="assets/images/scene-2.jpg" alt="" class="scene__image" />
+        <img
+          *ngIf="sceneSecond < clientY"
+          [@fadeInOnEnter]
+          src="assets/images/scene-2.jpg"
+          alt=""
+          class="scene__image"
+        />
         <div class="scene__text-box">
           <h2 class="scene__content-title">読み方を知る</h2>
-          <p class="scene__text">
+          <p class="scene__text scene_second">
             本を読む目的が明確に決まっている場合、その目的を達成する一文に出会えれば、読書はあっという間に終わるかもしれません。<br />
             目的が知識を得たいということなら、その本を端から端まで熟読する必要はありません。目次を見て気になるところから読み始めるのも一つです。
             また、サービス内で準備している質問に一通り目を通してから読み始めるのもおすすめします。
@@ -113,10 +133,16 @@
         </div>
       </li>
       <li class="scene__content-box">
-        <img src="assets/images/scene-3.jpg" alt="" class="scene__image" />
+        <img
+          *ngIf="sceneThird < clientY"
+          [@fadeInOnEnter]
+          src="assets/images/scene-3.jpg"
+          alt=""
+          class="scene__image"
+        />
         <div class="scene__text-box">
           <h2 class="scene__content-title">アウトプット</h2>
-          <p class="scene__text">
+          <p class="scene__text scene_third">
             段落の合間や、気になる文章を見つけた時、読み終わりに、シーンに応じて質問を選んで答えてください。
             自分なりの質問を作って答えるのもとても良い方法です。<br />
             カレンダー機能も活用して復習に役立ててください。

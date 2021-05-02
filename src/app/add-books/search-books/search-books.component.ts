@@ -6,14 +6,14 @@ import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
 import { LoadingService } from 'src/app/services/loading.service';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-search-books',
   templateUrl: './search-books.component.html',
   styleUrls: ['./search-books.component.scss'],
-  animations: [rubberBandAnimation()],
+  animations: [rubberBandAnimation({ delay: 500 })],
 })
 export class SearchBooksComponent implements OnInit {
   title = '本を追加';
@@ -48,8 +48,6 @@ export class SearchBooksComponent implements OnInit {
   }
 
   animDone() {
-    setTimeout(() => {
-      this.animState = !this.animState;
-    }, 500);
+    this.animState = !this.animState;
   }
 }

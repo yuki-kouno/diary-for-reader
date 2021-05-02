@@ -21,7 +21,7 @@ import { Observable } from 'rxjs';
   selector: 'app-review-form',
   templateUrl: './review-form.component.html',
   styleUrls: ['./review-form.component.scss'],
-  animations: [rubberBandAnimation()],
+  animations: [rubberBandAnimation({ delay: 500 })],
 })
 export class ReviewFormComponent implements OnInit {
   @Input() book: Book;
@@ -122,9 +122,7 @@ export class ReviewFormComponent implements OnInit {
   }
 
   animDone() {
-    setTimeout(() => {
-      this.animState = !this.animState;
-    }, 500);
+    this.animState = !this.animState;
   }
 
   ngOnInit() {}

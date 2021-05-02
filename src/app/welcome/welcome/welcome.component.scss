@@ -28,14 +28,14 @@ p {
     font-size: 1.09vw;
   }
 }
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
 .top-hero {
   display: grid;
   text-align: center;
@@ -193,7 +193,9 @@ p {
 }
 
 .top-illustration {
+  min-height: 80vw;
   @include tab {
+    min-height: 40vw;
     margin: 0 auto;
     width: 62.5vw;
   }
@@ -254,10 +256,10 @@ p {
 .service {
   padding: 0 14vw 24.53vw;
   text-align: center;
-  margin-bottom: 26.66vw;
+  // margin-bottom: 26.66vw;
   @include tab {
     padding-bottom: 14.37vw;
-    margin: 14.37vw auto;
+    margin: 0 auto;
   }
   &__heading {
     margin-bottom: 8.33vw;
@@ -315,8 +317,6 @@ p {
       height: 18.75vw;
       margin: auto 5vw auto 0;
     }
-  }
-  &__text-box {
   }
   &__content-title {
     margin-bottom: 3.2vw;
