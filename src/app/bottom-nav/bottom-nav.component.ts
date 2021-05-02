@@ -13,7 +13,7 @@ import { Book } from '../interface/book';
   selector: 'app-bottom-nav',
   templateUrl: './bottom-nav.component.html',
   styleUrls: ['./bottom-nav.component.scss'],
-  animations: [rubberBandAnimation()],
+  animations: [rubberBandAnimation({ delay: 500 })],
 })
 export class BottomNavComponent implements OnInit {
   isBook$: Observable<Book[]> = this.databaseBooks.checkFavoriteBookExists();
@@ -40,8 +40,6 @@ export class BottomNavComponent implements OnInit {
   ngOnInit(): void {}
 
   animDone() {
-    setTimeout(() => {
-      this.animState = !this.animState;
-    }, 500);
+    this.animState = !this.animState;
   }
 }

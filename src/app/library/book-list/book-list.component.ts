@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
-  animations: [rubberBandAnimation()],
+  animations: [rubberBandAnimation({ delay: 500 })],
 })
 export class BookListComponent implements OnInit {
   @Input() book: Book;
@@ -41,9 +41,7 @@ export class BookListComponent implements OnInit {
   }
 
   animDone() {
-    setTimeout(() => {
-      this.animState = !this.animState;
-    }, 500);
+    this.animState = !this.animState;
   }
 
   linkReview(user: User) {
