@@ -19,6 +19,7 @@ p {
   align-items: center;
 }
 .login {
+  max-width: 700px;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -88,5 +89,6 @@ p {
     color: #808080;
     margin: 16px 0 0 20%;
     font-size: 14px;
+    cursor: pointer;
   }
 }
