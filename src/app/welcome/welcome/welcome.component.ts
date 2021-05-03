@@ -65,7 +65,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
       document.querySelector('.top-illustration').getBoundingClientRect().y
     );
     this.how = Math.floor(
-      document.querySelector('.how__description').getBoundingClientRect().y
+      document.querySelector('.how').getBoundingClientRect().y
     );
     this.sceneFirst = Math.floor(
       document.querySelector('.scene_first').getBoundingClientRect().y
