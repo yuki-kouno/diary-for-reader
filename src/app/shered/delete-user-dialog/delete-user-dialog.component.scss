@@ -16,9 +16,10 @@
 .form {
   display: flex;
   justify-content: center;
-  padding: 24px 0;
+  padding: 24px 16px;
 
   &__input {
+    min-width: 100px;
     padding: 10px;
     border: 1px solid rgba(190, 190, 190, 0.3);
     border-radius: 5px;

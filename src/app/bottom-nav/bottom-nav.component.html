@@ -1,11 +1,7 @@
-<ul class="nav">
+<ul *ngIf="user$ | async as user" class="nav">
   <li class="item">
     <a class="item__btn" routerLink="/"
-      ><mat-icon class="item__icon material-icons-outlined"
-        >import_contacts</mat-icon
-      >
-      <p class="item__title">ライブラリ</p>
-      <div
+      ><div
         *ngIf="
           (isBook$ | async)?.length &&
           !loadingService.loading &&
@@ -16,16 +12,27 @@
         class="item__tour"
       >
         ライブラリーに登録されました
-      </div></a
-    >
-  </li>
-  <li class="item">
-    <a class="item__btn" routerLink="/calendar"
-      ><mat-icon class="item__icon material-icons-outlined"
-        >date_range</mat-icon
+      </div>
+      <mat-icon class="item__icon material-icons-outlined"
+        >import_contacts</mat-icon
       >
-      <p class="item__title">カレンダー</p></a
-    >
+      <p class="item__title">ライブラリ</p>
+    </a>
+  </li>
+  <li *ngIf="isReview$ | async as review" class="item">
+    <a class="item__btn" routerLink="/calendar"
+      ><div
+        *ngIf="user.thirdTour && review?.length"
+        [@rubberBand]="animState"
+        (@rubberBand.done)="animDone()"
+        class="item__tour"
+        (click)="linkCalender(user.thirdTour, review.length)"
+      >
+        カレンダーページで<br />過去のレビューが確認できます
+      </div>
+      <mat-icon class="item__icon material-icons-outlined">date_range</mat-icon>
+      <p class="item__title">カレンダー</p>
+    </a>
   </li>
   <li class="item">
     <a class="item__btn" routerLink="/add-books"

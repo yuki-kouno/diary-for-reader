@@ -7,14 +7,14 @@ import { switchMap, map, take } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import { Meta } from '@angular/platform-browser';
-import { headShakeAnimation } from 'angular-animations';
+import { rubberBandAnimation } from 'angular-animations';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-books',
   templateUrl: './list-books.component.html',
   styleUrls: ['./list-books.component.scss'],
-  animations: [headShakeAnimation()],
+  animations: [rubberBandAnimation()],
 })
 export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
   private subscriptions: Subscription;

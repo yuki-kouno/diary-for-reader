@@ -108,7 +108,7 @@
     border: 3px solid $tour-border;
     padding: 16px;
     bottom: 59px;
-    right: -25px;
+    right: -10px;
     background-color: rgba(237, 245, 245, 0.9);
     &::before {
       content: 'v';
@@ -119,7 +119,7 @@
       display: block;
       position: absolute;
       bottom: 3px;
-      right: 50px;
+      right: 35px;
       z-index: 50;
     }
     &::after {
@@ -132,7 +132,7 @@
       display: block;
       position: absolute;
       bottom: 24px;
-      right: 53px;
+      right: 38px;
       z-index: 50;
     }
   }
