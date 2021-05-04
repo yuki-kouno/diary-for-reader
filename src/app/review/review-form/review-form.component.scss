@@ -27,6 +27,7 @@ mat-form-field {
     padding: 16px;
     border-radius: 20px;
     background-color: rgb(237, 245, 245, 0.9);
+    z-index: 1000;
     &::before {
       content: '^';
       color: $tour-border;
