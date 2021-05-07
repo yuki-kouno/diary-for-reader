@@ -84,21 +84,29 @@ export const deleteUserAccount = functions
 export const resetGuestData = functions
   .region('asia-northeast1')
   .https.onRequest(async (req: any, res: any) => {
-    console.log(guestId);
-
-    const reviewsRef = db
-      .collectionGroup(`reviews`)
-      .where('uid', '==', guestId);
-
-    Promise.all([
-      deleteCollectionByReference(reviewsRef),
-      deleteCollectionByPath(`users/${guestId}/favoriteBooks`),
-      db.doc(`users/${guestId}`).update({
-        firstTour: true,
-        secondTour: true,
-        thirdTour: true,
-      }),
-    ]).catch((err) => console.log(err));
+    deleteGuestData();
 
     return res.status(200).send('success');
   });
+
+export const resetGuestDataByClient = functions
+  .region('asia-northeast1')
+  .https.onCall(async (req: any, res: any) => {
+    deleteGuestData();
+
+    return true;
+  });
+
+function deleteGuestData() {
+  const reviewsRef = db.collectionGroup(`reviews`).where('uid', '==', guestId);
+
+  Promise.all([
+    deleteCollectionByReference(reviewsRef),
+    deleteCollectionByPath(`users/${guestId}/favoriteBooks`),
+    db.doc(`users/${guestId}`).update({
+      firstTour: true,
+      secondTour: true,
+      thirdTour: true,
+    }),
+  ]).catch((err) => console.log(err));
+}
