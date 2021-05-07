@@ -9,6 +9,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { Meta } from '@angular/platform-browser';
 import { rubberBandAnimation } from 'angular-animations';
 import { UserService } from 'src/app/services/user.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-list-books',
@@ -17,6 +18,7 @@ import { UserService } from 'src/app/services/user.service';
   animations: [rubberBandAnimation()],
 })
 export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
+  readonly title = '本を検索';
   private subscriptions: Subscription;
   searchText: string;
   bookData$: Observable<Book[]> = this.route.paramMap.pipe(
@@ -37,12 +39,14 @@ export class ListBooksComponent implements OnInit, OnDestroy, AfterViewInit {
     public databaseBooks: DatabaseBooksService,
     public loadingService: LoadingService,
     public userService: UserService,
+    private seoService: SeoService,
     private meta: Meta
   ) {
     this.meta.addTags([
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
     ]);
+    this.seoService.setTitleAndMeta(this.title);
     this.loadingService.loading = true;
 
     this.databaseBooks

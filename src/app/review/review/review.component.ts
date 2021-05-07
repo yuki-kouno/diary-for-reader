@@ -50,14 +50,11 @@ export class ReviewComponent implements OnInit {
       { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
     ]);
     this.loaingService.loading = true;
-    this.book$.pipe(
-      tap((book) => {
-        this.seoService.setTitleAndMeta(
-          `${book.volumeInfo.title}`,
-          'レヴューページ'
-        );
-      })
-    );
+    this.book$.subscribe((book) => {
+      this.seoService.setTitleAndMeta(
+        `【 ${book.volumeInfo.title} 】 レビューページ`
+      );
+    });
   }
 
   onReviewListCount(event) {

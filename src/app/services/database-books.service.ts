@@ -5,7 +5,7 @@ import { Book } from '../interface/book';
 import { Observable } from 'rxjs';
 import { firestore } from 'firebase/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Injectable({
@@ -44,7 +44,8 @@ export class DatabaseBooksService {
           return ref.orderBy(sort, order);
         }
       )
-      .valueChanges();
+      .valueChanges()
+      .pipe(shareReplay(1));
   }
 
   checkFavoriteBookExists(): Observable<Book[]> {
@@ -55,20 +56,25 @@ export class DatabaseBooksService {
           return ref.limit(1);
         }
       )
-      .valueChanges();
+      .valueChanges()
+      .pipe(shareReplay(1));
   }
 
   getFavoriteBook(id: string): Observable<Book> {
     return this.db
       .doc<Book>(`users/${this.authService.uid}/favoriteBooks/${id}`)
-      .valueChanges();
+      .valueChanges()
+      .pipe(shareReplay(1));
   }
 
   getFavoriteBookIds(): Observable<string[]> {
     return this.db
       .collection<Book>(`users/${this.authService.uid}/favoriteBooks`)
       .valueChanges()
-      .pipe(map((books) => books.map((book) => book.id)));
+      .pipe(
+        map((books) => books.map((book) => book.id)),
+        shareReplay(1)
+      );
   }
 
   async removeFavoriteBook(id: string): Promise<void> {

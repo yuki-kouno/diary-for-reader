@@ -6,7 +6,7 @@ import { DatabaseBooksService } from 'src/app/services/database-books.service';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
 import { LoadingService } from 'src/app/services/loading.service';
-import { delay, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({

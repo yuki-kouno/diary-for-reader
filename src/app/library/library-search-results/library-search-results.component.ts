@@ -17,6 +17,7 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./library-search-results.component.scss'],
 })
 export class LibrarySearchResultsComponent implements OnInit, OnDestroy {
+  title = 'ライブラリ内検索';
   index: SearchIndex = this.searchLibraryService.index.item;
   searchText: string;
   uid: string = this.authService.uid;
@@ -34,7 +35,7 @@ export class LibrarySearchResultsComponent implements OnInit, OnDestroy {
     public loadingService: LoadingService
   ) {
     this.loadingService.loading = true;
-    this.seoService.setTitleAndMeta('ライブラリ内検索');
+    this.seoService.setTitleAndMeta(this.title);
   }
 
   openRemoveDialog(book, i) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { NewRelease } from '../interface/new-release';
 import { NewReleaseInfo } from '../interface/new-release-info';
 
@@ -18,7 +18,8 @@ export class DatabaseNewReleaseService {
       .pipe(
         map((data) => {
           return data.releaseData;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getBusinessDatas(): Observable<NewReleaseInfo[]> {
@@ -28,7 +29,8 @@ export class DatabaseNewReleaseService {
       .pipe(
         map((data) => {
           return data.releaseData;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getItDatas(): Observable<NewReleaseInfo[]> {
@@ -38,7 +40,8 @@ export class DatabaseNewReleaseService {
       .pipe(
         map((data) => {
           return data.releaseData;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getLifeDatas(): Observable<NewReleaseInfo[]> {
@@ -48,7 +51,8 @@ export class DatabaseNewReleaseService {
       .pipe(
         map((data) => {
           return data.releaseData;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getLiteratureDatas(): Observable<NewReleaseInfo[]> {
@@ -58,7 +62,8 @@ export class DatabaseNewReleaseService {
       .pipe(
         map((data) => {
           return data.releaseData;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getLightNovelDatas(): Observable<NewReleaseInfo[]> {
@@ -68,7 +73,8 @@ export class DatabaseNewReleaseService {
       .pipe(
         map((data) => {
           return data.releaseData;
-        })
+        }),
+        shareReplay(1)
       );
   }
 }

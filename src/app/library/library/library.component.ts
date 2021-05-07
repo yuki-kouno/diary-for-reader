@@ -4,6 +4,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/interface/book';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-library',
@@ -11,7 +12,7 @@ import { Book } from 'src/app/interface/book';
   styleUrls: ['./library.component.scss'],
 })
 export class LibraryComponent implements OnInit {
-  title = 'ライブラリ';
+  title = 'ライブラリー';
   bookDatas: {
     data: Observable<Book[]>;
     title: string;
@@ -35,9 +36,11 @@ export class LibraryComponent implements OnInit {
 
   constructor(
     private databaseBooks: DatabaseBooksService,
+    private seoService: SeoService,
     public loadingService: LoadingService
   ) {
     this.loadingService.loading = true;
+    this.seoService.setTitleAndMeta(this.title);
   }
 
   ngOnInit() {}

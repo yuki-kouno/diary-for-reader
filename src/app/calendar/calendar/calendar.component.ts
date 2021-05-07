@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ReviewDetailDialogComponent } from '../review-detail-dialog/review-detail-dialog.component';
 import { Router } from '@angular/router';
 import { LoadingService } from 'src/app/services/loading.service';
+import { SeoService } from 'src/app/services/seo.service';
 
 @Component({
   selector: 'app-calendar',
@@ -51,9 +52,11 @@ export class CalendarComponent implements OnInit {
     private datePipe: DatePipe,
     private matDialog: MatDialog,
     private router: Router,
+    private seoService: SeoService,
     public loadingService: LoadingService
   ) {
     this.loadingService.loading = true;
+    this.seoService.setTitleAndMeta(this.title);
   }
   ngOnInit() {
     this.getCalendarData();

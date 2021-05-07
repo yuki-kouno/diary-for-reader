@@ -6,6 +6,7 @@ import { firestore } from 'firebase/app';
 import { Book } from '../interface/book';
 import { DatePipe } from '@angular/common';
 import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,8 @@ export class DatabaseReviewsService {
             .orderBy('createdAt');
         }
       )
-      .valueChanges();
+      .valueChanges()
+      .pipe(shareReplay(1));
   }
 
   getAllReviews(bookId: string): Observable<Review[]> {
@@ -42,7 +44,8 @@ export class DatabaseReviewsService {
           return ref.orderBy('createdAt');
         }
       )
-      .valueChanges();
+      .valueChanges()
+      .pipe(shareReplay(1));
   }
 
   getReviewsOfAllBooks(): Observable<Review[]> {
@@ -51,7 +54,8 @@ export class DatabaseReviewsService {
       .collectionGroup<Review>(`reviews`, (ref) => {
         return ref.where('uid', '==', uid).orderBy('createdAt', 'asc');
       })
-      .valueChanges();
+      .valueChanges()
+      .pipe(shareReplay(1));
   }
 
   checkReviewExists(): Observable<Review[]> {
@@ -60,7 +64,8 @@ export class DatabaseReviewsService {
       .collectionGroup<Review>(`reviews`, (ref) => {
         return ref.where('uid', '==', uid).limit(1);
       })
-      .valueChanges();
+      .valueChanges()
+      .pipe(shareReplay(1));
   }
 
   createReview(
