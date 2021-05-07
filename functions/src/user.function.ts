@@ -9,6 +9,7 @@ import {
 import { sendEmail } from './send-email.function';
 
 const db = admin.firestore();
+const guestId = functions.config().guest.user_id;
 
 export const createUser = functions
   .region('asia-northeast1')
@@ -78,4 +79,26 @@ export const deleteUserAccount = functions
         return true;
       }
     });
+  });
+
+export const resetGuestData = functions
+  .region('asia-northeast1')
+  .https.onRequest(async (req: any, res: any) => {
+    console.log(guestId);
+
+    const reviewsRef = db
+      .collectionGroup(`reviews`)
+      .where('uid', '==', guestId);
+
+    Promise.all([
+      deleteCollectionByReference(reviewsRef),
+      deleteCollectionByPath(`users/${guestId}/favoriteBooks`),
+      db.doc(`users/${guestId}`).update({
+        firstTour: true,
+        secondTour: true,
+        thirdTour: true,
+      }),
+    ]).catch((err) => console.log(err));
+
+    return res.status(200).send('success');
   });
