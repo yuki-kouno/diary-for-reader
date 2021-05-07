@@ -3,7 +3,7 @@ import { User } from '../interface/user';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
-import { switchMap, first } from 'rxjs/operators';
+import { switchMap, first, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFireFunctions } from '@angular/fire/functions';
@@ -23,7 +23,8 @@ export class UserService {
       } else {
         return of(null);
       }
-    })
+    }),
+    shareReplay(1)
   );
 
   constructor(

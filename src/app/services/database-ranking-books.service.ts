@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { RankingBook } from '../interface/ranking-book';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { RankingBooksInfo } from '../interface/ranking-books-info';
 
 @Injectable({
@@ -18,7 +18,8 @@ export class DatabaseRankingBooksService {
       .pipe(
         map((data) => {
           return data.rankingBooksInfo;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getBusinessesRanking(): Observable<RankingBooksInfo[]> {
@@ -28,7 +29,8 @@ export class DatabaseRankingBooksService {
       .pipe(
         map((data) => {
           return data.rankingBooksInfo;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getHumanitiesRanking(): Observable<RankingBooksInfo[]> {
@@ -38,7 +40,8 @@ export class DatabaseRankingBooksService {
       .pipe(
         map((data) => {
           return data.rankingBooksInfo;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getliteraturesRanking(): Observable<RankingBooksInfo[]> {
@@ -48,7 +51,8 @@ export class DatabaseRankingBooksService {
       .pipe(
         map((data) => {
           return data.rankingBooksInfo;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getComicsRanking(): Observable<RankingBooksInfo[]> {
@@ -58,7 +62,8 @@ export class DatabaseRankingBooksService {
       .pipe(
         map((data) => {
           return data.rankingBooksInfo;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getHobbiesRanking(): Observable<RankingBooksInfo[]> {
@@ -68,7 +73,8 @@ export class DatabaseRankingBooksService {
       .pipe(
         map((data) => {
           return data.rankingBooksInfo;
-        })
+        }),
+        shareReplay(1)
       );
   }
   getNweReleaseRanking(): Observable<RankingBooksInfo[]> {
@@ -78,7 +84,8 @@ export class DatabaseRankingBooksService {
       .pipe(
         map((data) => {
           return data.rankingBooksInfo;
-        })
+        }),
+        shareReplay(1)
       );
   }
 }

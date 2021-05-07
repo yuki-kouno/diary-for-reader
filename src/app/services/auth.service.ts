@@ -4,7 +4,7 @@ import { User, auth } from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { take } from 'rxjs/operators';
+import { shareReplay, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,8 @@ export class AuthService {
   ) {
     this.afUser$.subscribe((user) => {
       this.uid = user && user.uid;
-    });
+    }),
+      shareReplay(1);
   }
 
   isProcessing: boolean;
