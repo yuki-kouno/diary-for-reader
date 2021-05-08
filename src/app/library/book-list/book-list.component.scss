@@ -39,15 +39,19 @@
     box-shadow: -2px 5px 10px rgba(128, 128, 128, 0.514);
   }
   &__tour {
-    width: 208px;
+    width: 140px;
     margin: 16px auto;
     position: absolute;
-    left: -59px;
+    left: -27px;
     z-index: 10;
     border: 3px solid $tour-border;
     padding: 16px;
     border-radius: 20px;
     background-color: rgb(237, 245, 245, 0.98);
+    @include tab {
+      left: -59px;
+      width: 208px;
+    }
     &::before {
       content: '>';
       color: $tour-border;
@@ -57,9 +61,12 @@
       display: block;
       position: absolute;
       top: -1px;
-      left: 90px;
+      left: 58px;
       z-index: 50;
       transform: rotate(-90deg);
+      @include tab {
+        left: 90px;
+      }
     }
     &::after {
       content: '>';
@@ -71,9 +78,12 @@
       display: block;
       position: absolute;
       top: 22px;
-      left: 66px;
+      left: 34px;
       z-index: 50;
       transform: rotate(-90deg);
+      @include tab {
+        left: 66px;
+      }
     }
   }
 }

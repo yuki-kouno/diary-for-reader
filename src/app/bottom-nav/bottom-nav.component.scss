@@ -25,6 +25,8 @@
   position: relative;
   width: 20%;
   text-align: center;
+  display: grid;
+  justify-content: center;
   &__title {
     font-size: 10px;
     font-weight: bold;
@@ -49,7 +51,6 @@
     border: 3px solid $tour-border;
     padding: 16px;
     bottom: 58px;
-    left: -7px;
     background-color: rgba(237, 245, 245, 0.98);
     &::before {
       content: 'v';
@@ -61,7 +62,7 @@
       display: block;
       position: absolute;
       bottom: 13px;
-      left: 28px;
+      left: 15px;
       z-index: 50;
     }
     &::after {
@@ -74,7 +75,7 @@
       display: block;
       position: absolute;
       bottom: 43px;
-      left: 23px;
+      left: 10px;
       z-index: 50;
     }
   }
