@@ -101,6 +101,7 @@ export class CalendarComponent implements OnInit {
           bookId: obj.event._def.extendedProps.bookId,
         },
         autoFocus: false,
+        maxHeight: '80vh',
       })
       .afterClosed()
       .subscribe((status) => {
