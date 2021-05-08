@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   algolia: {
     appId: 'DEVLVH1TY0',
     searchKey: '60de32dfc8db593e0bc7ec815e9c69cf',
