@@ -23,7 +23,12 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/robots.txt"
+            ],
             "styles": ["src/styles.scss"],
             "scripts": ["node_modules/node-vibrant/dist/vibrant.min.js"],
             "stylePreprocessorOptions": {
