@@ -42,13 +42,24 @@ p {
     font-weight: 300;
     margin-bottom: 16px;
   }
+  &__sns {
+    display: flex;
+    justify-content: space-around;
+  }
   &__twitter-logo {
     vertical-align: middle;
     height: 24px;
     width: 29.17px;
     font-size: 18px;
   }
+  &__github-logo {
+    vertical-align: middle;
+    height: 27px;
+    width: 27px;
+    font-size: 18px;
+  }
   &__nav {
+    width: 200px;
     text-align: center;
     @include tab {
       font-size: 0.7vw;
