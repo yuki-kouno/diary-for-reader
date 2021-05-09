@@ -27,3 +27,4 @@ Puppeteer - amazonの販売情報取得
 <br><br>
 <img height="32px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117563163-08fe2100-b0df-11eb-92ca-35b2ea434c56.png">
 SendGrid - welcomeメール・退会処理完了通知
+<br>
