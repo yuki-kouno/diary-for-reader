@@ -23,7 +23,7 @@ GoogleBooksApi - サービス内に登録する本のデータ取得
 Fullcalendar - カレンダー機能の実装
 <br><br>
 <img height="40px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117563084-7b223600-b0de-11eb-91c8-fafdfbcfd01c.png">
-Puppeteer - amazonの販売情報取得
+Puppeteer - amazonの販売情報取得 -> AmazonProductAdvertisingAPI変更予定
 <br><br>
 <img height="32px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117563163-08fe2100-b0df-11eb-92ca-35b2ea434c56.png">
 SendGrid - welcomeメール・退会処理完了通知
