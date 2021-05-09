@@ -1,11 +1,11 @@
 {
-  "name": "読書家のための日記帳",
-  "short_name": "読書家のための日記帳",
+  "name": "diary-for-reader",
+  "short_name": "diary-for-reader",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
-  "theme_color": "#edf5f5",
-  "background_color": "#ffffff",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

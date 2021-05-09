@@ -62,12 +62,6 @@ p {
     align-items: center;
     text-align: center;
   }
-  &__contact-icon {
-    display: inline-flex;
-    vertical-align: middle;
-    font-size: 20px;
-    margin-bottom: 2px;
-  }
 }
 .sp-none {
   @include sp {

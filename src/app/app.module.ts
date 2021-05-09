@@ -25,6 +25,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -47,6 +48,9 @@ FullCalendarModule.registerPlugins([
     AngularFireFunctionsModule,
     FullCalendarModule,
     MatProgressBarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
   ],
   providers: [
     {
