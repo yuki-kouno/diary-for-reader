@@ -30,4 +30,4 @@ SendGrid - welcomeメール・退会処理完了通知
 <br><br>
 GithubActions - 自動build/deploy
 
-GoogleAppsScript - バックアップ・CloudFunctions定期実行
+GoogleAppsScript - バックアップ・CloudFunctions定期実行...
