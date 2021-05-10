@@ -20,13 +20,12 @@
     </a>
   </li>
   <li *ngIf="isReview$ | async as review" class="item">
-    <a class="item__btn" routerLink="/calendar"
+    <a (click)="linkCalender(user.thirdTour, review.length)"
       ><div
         *ngIf="user.thirdTour && review?.length"
         [@rubberBand]="animState"
         (@rubberBand.done)="animDone()"
         class="item__tour"
-        (click)="linkCalender(user.thirdTour, review.length)"
       >
         カレンダーページで<br />過去のレビューが確認できます
       </div>
