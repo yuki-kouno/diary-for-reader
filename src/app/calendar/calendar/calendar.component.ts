@@ -10,6 +10,8 @@ import { ReviewDetailDialogComponent } from '../review-detail-dialog/review-deta
 import { Router } from '@angular/router';
 import { LoadingService } from 'src/app/services/loading.service';
 import { SeoService } from 'src/app/services/seo.service';
+import { map } from 'rxjs/operators';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-calendar',
@@ -73,32 +75,46 @@ export class CalendarComponent implements OnInit {
             review.createdAt.toDate(),
             DATE_FORMAT
           );
-          reviewArray.push({
-            date: transformDate,
-            title: [`${review.title} ${review.answer}`],
-            dialogTitle: review.title,
+          const obj = {
             question: review.question,
             answer: review.answer,
-            thumbnail: review.thumbnail,
+          };
+          const reviewObj = {
+            title: review.title,
             bookId: review.bookId,
-          });
+            thumbnail: review.thumbnail,
+            dialogTitle: review.title,
+            date: transformDate,
+            data: [obj],
+          };
+          const i = reviewArray.findIndex(
+            (element) =>
+              element.bookId === reviewObj.bookId &&
+              element.date === reviewObj.date
+          );
+          if (i > -1) {
+            reviewArray[i].data.push(obj);
+          } else {
+            reviewArray.push(reviewObj);
+          }
         });
+
         this.calendarOptions.events = reviewArray;
         this.loadingService.loading = false;
       });
   }
 
   openDialog(obj) {
-    const id = obj.event._def.extendedProps.bookId;
+    const event_def = obj.event._def.extendedProps;
+    const id = event_def.bookId;
     this.matDialog
       .open(ReviewDetailDialogComponent, {
         data: {
-          title: obj.event._def.title,
-          dialogTitle: obj.event._def.extendedProps.dialogTitle,
-          question: obj.event._def.extendedProps.question,
-          answer: obj.event._def.extendedProps.answer,
-          thumbnail: obj.event._def.extendedProps.thumbnail,
-          bookId: obj.event._def.extendedProps.bookId,
+          title: event_def.title,
+          bookId: event_def.bookId,
+          thumbnail: event_def.thumbnail,
+          dialogTitle: event_def.dialogTitle,
+          data: event_def.data,
         },
         autoFocus: false,
         maxHeight: '80vh',

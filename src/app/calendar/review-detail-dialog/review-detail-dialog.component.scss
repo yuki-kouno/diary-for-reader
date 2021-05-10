@@ -2,6 +2,7 @@
 @import 'material-custom';
 
 .book {
+  max-width: 920px;
   outline: none;
   @include tab {
     display: flex;
@@ -12,6 +13,9 @@
     width: 128px;
     margin-bottom: 8px;
     margin: 0 auto;
+    @include tab {
+      margin: 16px;
+    }
     &::before {
       content: '';
       position: absolute;
@@ -42,53 +46,50 @@
   }
   &__title {
     white-space: pre-line;
-    word-break: break-all;
+    word-break: break-word;
     color: #303030bd;
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 16px;
   }
   &__question {
     white-space: pre-line;
-    word-break: break-all;
+    word-break: break-word;
     color: #303030bd;
-    font-size: 13px;
+    font-size: 10px;
     margin-bottom: 4px;
-    max-height: 100px;
-    overflow: hidden;
-    &--text {
-      max-height: 92px;
-      overflow-y: scroll;
-      padding-bottom: 4px;
+    @include tab {
+      font-size: 13px;
     }
   }
   &__answer {
     color: #30303080;
     font-size: 14px;
     margin-bottom: 8px;
-    word-break: break-all;
+    margin-left: 8px;
+    margin-left: 8px;
+    word-break: break-word;
     white-space: pre-line;
-    max-height: 308px;
-    overflow: hidden;
-    &--text {
-      max-height: 300px;
-      overflow-y: scroll;
+    @include tab {
+      margin-bottom: 16px;
     }
   }
 }
 .buttons {
   display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
   &__ok {
+    margin: 0 8px;
     @include sp {
       padding: 0 8px;
     }
-    margin: 10px;
     color: white;
   }
-  justify-content: center;
   &__cancel {
+    color: #505050;
+    margin: 0 8px;
     @include sp {
       padding: 0 8px;
     }
-    margin: 10px;
   }
 }

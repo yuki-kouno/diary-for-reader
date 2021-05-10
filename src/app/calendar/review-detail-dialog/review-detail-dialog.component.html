@@ -1,38 +1,40 @@
-<div class="book">
-  <figure class="book__figure">
-    <img class="book__img" [src]="data.thumbnail" alt="" />
-  </figure>
-  <div class="info">
-    <p class="info__title">
-      {{ data.dialogTitle }}
-    </p>
-    <div class="info__question">
-      <p class="info__question--text">
-        {{ data.question }}
+<mat-dialog-content>
+  <div class="book">
+    <figure class="book__figure">
+      <img class="book__img" [src]="data.thumbnail" alt="" />
+    </figure>
+    <div class="info">
+      <p class="info__title">
+        {{ data.dialogTitle }}
       </p>
-    </div>
-    <div class="info__answer">
-      <p class="info__answer--text">
-        {{ data.answer }}
-      </p>
+      <ng-container *ngFor="let item of data.data">
+        <p class="info__question">
+          {{ item.question }}
+        </p>
+        <p class="info__answer">
+          {{ item.answer }}
+        </p>
+      </ng-container>
     </div>
   </div>
-</div>
-<div class="buttons">
-  <button
-    class="buttons__ok wrap-gradiant"
-    mat-flat-button
-    color="primary"
-    [matDialogClose]="true"
-  >
-    レヴュー
-  </button>
-  <button
-    class="buttons__cancel wrap-gradiant"
-    mat-flat-button
-    color="basic"
-    mat-dialog-close
-  >
-    キャンセル
-  </button>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <div class="buttons">
+    <button
+      class="buttons__ok wrap-gradiant"
+      mat-flat-button
+      color="primary"
+      [matDialogClose]="true"
+    >
+      レヴュー
+    </button>
+    <button
+      class="buttons__cancel wrap-gradiant"
+      mat-flat-button
+      color="basic"
+      mat-dialog-close
+    >
+      キャンセル
+    </button>
+  </div>
+</mat-dialog-actions>
