@@ -44,24 +44,28 @@ p {
   }
   &__sns {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
   }
   &__twitter-logo {
     vertical-align: middle;
+    margin: 0 8px;
     height: 24px;
     width: 29.17px;
     font-size: 18px;
   }
   &__github-logo {
     vertical-align: middle;
+    margin: 0 8px;
     height: 27px;
     width: 27px;
     font-size: 18px;
   }
   &__nav {
     width: 200px;
+    margin: 0 auto;
     text-align: center;
     @include tab {
+      margin: 0;
       font-size: 0.7vw;
       text-align-last: left;
     }
