@@ -1,6 +1,6 @@
 {
-  "name": "diary-for-reader",
-  "short_name": "diary-for-reader",
+  "name": "読書家のための日記帳",
+  "short_name": "読書家のための日記帳",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
