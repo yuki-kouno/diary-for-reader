@@ -262,6 +262,11 @@ textarea {
   color: mat-color($primary) !important;
   font-weight: bold;
 }
+.tooltipAsSortReview {
+  background-color: rgb(240, 240, 240);
+  color: #808080 !important;
+  font-weight: bold;
+}
 .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
   display: none;
 }

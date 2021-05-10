@@ -36,12 +36,12 @@ export class DatabaseReviewsService {
       .pipe(shareReplay(1));
   }
 
-  getAllReviews(bookId: string): Observable<Review[]> {
+  getAllReviews(bookId: string, order: any): Observable<Review[]> {
     return this.db
       .collection<Review>(
         `users/${this.authService.uid}/favoriteBooks/${bookId}/reviews`,
         (ref) => {
-          return ref.orderBy('createdAt');
+          return ref.orderBy('createdAt', order);
         }
       )
       .valueChanges()

@@ -43,7 +43,7 @@
       </ng-container>
     </form>
 
-    <div class="review-btns">
+    <div *ngIf="!loaingService.loading" class="review-btns">
       <button
         class="review-btns__questions wrap-gradient"
         mat-flat-button

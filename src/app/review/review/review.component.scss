@@ -90,3 +90,17 @@ mat-tab-group {
   text-align: center;
   color: #808080;
 }
+
+.order-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 10%;
+  transform: translateY(4px);
+  color: #808080;
+  width: 40px;
+  font-size: 40px;
+  z-index: 1000;
+  @include tab {
+    right: 20.5%;
+  }
+}

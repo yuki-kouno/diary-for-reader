@@ -19,6 +19,7 @@ import { RemoveReviewDialogComponent } from './remove-review-dialog/remove-revie
 import { AllReviewListComponent } from './all-review-list/all-review-list.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { QuestionDialogComponent } from './question-dialog/question-dialog.compo
     MatSnackBarModule,
     AutofocusFixModule.forRoot(),
     MatDividerModule,
+    MatTooltipModule,
   ],
   providers: [DatePipe],
 })
