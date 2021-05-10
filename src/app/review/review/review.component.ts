@@ -12,6 +12,7 @@ import { tap } from 'rxjs/operators';
 import { AllReviewListComponent } from '../all-review-list/all-review-list.component';
 import { LoadingService } from 'src/app/services/loading.service';
 import { Meta } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-review',
@@ -25,6 +26,7 @@ export class ReviewComponent implements OnInit {
   public allReviewListComponent: AllReviewListComponent;
   @ViewChild(ReviewFormComponent)
   public reviewFormComponet: ReviewFormComponent;
+  order = 'desc';
   nowDate: Date;
   bookId: string = this.route.snapshot.paramMap.get('book.id');
   book$: Observable<Book> = this.databaseBooks.getFavoriteBook(this.bookId);
@@ -32,8 +34,10 @@ export class ReviewComponent implements OnInit {
     .getReviews(this.bookId)
     .pipe(tap(() => (this.loaingService.loading = false)));
   allReviews$: Observable<Review[]> = this.databaseReviews.getAllReviews(
-    this.bookId
+    this.bookId,
+    this.order
   );
+  selected = new FormControl(0);
   reviewListCount = 0;
   allReviewCount = 0;
 
@@ -45,11 +49,11 @@ export class ReviewComponent implements OnInit {
     public loaingService: LoadingService,
     private meta: Meta
   ) {
+    this.loaingService.loading = true;
     this.meta.addTags([
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
     ]);
-    this.loaingService.loading = true;
     this.book$.subscribe((book) => {
       this.seoService.setTitleAndMeta(
         `【 ${book.volumeInfo.title} 】 レビューページ`
@@ -69,7 +73,13 @@ export class ReviewComponent implements OnInit {
     history.back();
   }
 
-  ngOnInit(): void {
-    this.nowDate = new Date();
+  orderAllReview(order) {
+    this.loaingService.loading = true;
+    this.order = order;
+    this.allReviews$ = this.databaseReviews
+      .getAllReviews(this.bookId, order)
+      .pipe(tap(() => (this.loaingService.loading = false)));
   }
+
+  ngOnInit(): void {}
 }

@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuestionDialogComponent } from '../question-dialog/question-dialog.component';
 import { rubberBandAnimation } from 'angular-animations';
 import { UserService } from 'src/app/services/user.service';
-import { Observable } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-review-form',
@@ -47,6 +47,7 @@ export class ReviewFormComponent implements OnInit {
     private cd: ChangeDetectorRef,
     public userService: UserService,
     public databaseReviewService: DatabaseReviewsService,
+    public loaingService: LoadingService,
     public dialog: MatDialog
   ) {}
 

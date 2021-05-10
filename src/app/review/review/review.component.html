@@ -22,7 +22,33 @@
       </div>
     </div>
   </div>
-  <mat-tab-group mat-align-tabs="center">
+  <ng-container
+    *ngIf="selected.value === 1 && (allReviews$ | async)?.length > 1"
+  >
+    <ng-container *ngIf="order === 'desc'; else asc"
+      ><mat-icon
+        matTooltip="古い順"
+        matTooltipClass="tooltipAsSortReview"
+        class="order-icon"
+        (click)="orderAllReview('asc')"
+        >expand_more</mat-icon
+      ></ng-container
+    >
+    <ng-template #asc
+      ><mat-icon
+        matTooltip="新しい順"
+        matTooltipClass="tooltipAsSortReview"
+        class="order-icon"
+        (click)="orderAllReview('desc')"
+        >expand_less</mat-icon
+      ></ng-template
+    >
+  </ng-container>
+  <mat-tab-group
+    mat-align-tabs="center"
+    [selectedIndex]="selected.value"
+    (selectedIndexChange)="selected.setValue($event)"
+  >
     <mat-tab label="今日">
       <ng-container *ngIf="(reviews$ | async)?.length > 0">
         <app-review-list
@@ -34,7 +60,7 @@
         ></app-review-list>
       </ng-container>
     </mat-tab>
-    <mat-tab label="すべて">
+    <mat-tab label="過去">
       <ng-container *ngIf="(allReviews$ | async)?.length > 0">
         <app-all-review-list
           *ngFor="let review of allReviews$ | async; last as last"
