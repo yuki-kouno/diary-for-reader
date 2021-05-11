@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { shareReplay, take } from 'rxjs/operators';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private loadingService: LoadingService
   ) {
     this.afUser$.subscribe((user) => {
       this.uid = user && user.uid;
@@ -82,11 +84,14 @@ export class AuthService {
           this.afUser$.pipe(take(1)).subscribe((user) => user.emailVerified)
         ) {
           this.router.navigate(['/add-books']);
+          this.loadingService.loading = false;
         } else {
+          this.loadingService.loading = false;
           return;
         }
       })
       .catch((error) => {
+        this.loadingService.loading = false;
         switch (error.code) {
           case 'auth/user-not-found':
             alert('このメールアドレスのユーザーは見つかりません');
@@ -113,10 +118,11 @@ export class AuthService {
     this.afAuth
       .signInWithPopup(provider)
       .finally(() => {
-        this.isProcessing = false;
         this.router.navigateByUrl('/add-books');
+        this.isProcessing = false;
       })
       .catch(() => {
+        this.loadingService.loading = false;
         this.snackBar.open('ログイン中にエラーが発生しました。');
       })
       .then(() => {
@@ -129,8 +135,8 @@ export class AuthService {
     this.afAuth
       .signOut()
       .finally(() => {
-        this.isProcessing = false;
         this.router.navigateByUrl('/welcome');
+        this.isProcessing = false;
       })
       .then(() => {
         this.snackBar.open('ログアウトしました');

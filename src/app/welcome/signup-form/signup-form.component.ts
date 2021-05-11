@@ -8,6 +8,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { LoadingService } from 'src/app/services/loading.service';
 import { PasswordService } from 'src/app/services/password.service';
 
 const regex: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]/;
