@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { RankingComponent } from './ranking/ranking.component';
 import { SwiperModule } from 'swiper/angular';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SwiperModule } from 'swiper/angular';
     HeaderComponent,
     AutofocusDirective,
     RankingComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { SwiperModule } from 'swiper/angular';
     HeaderComponent,
     AutofocusDirective,
     RankingComponent,
+    ConfirmationDialogComponent,
   ],
 })
 export class SheredModule {}

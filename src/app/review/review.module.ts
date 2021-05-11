@@ -20,6 +20,7 @@ import { AllReviewListComponent } from './all-review-list/all-review-list.compon
 import { MatDividerModule } from '@angular/material/divider';
 import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SheredModule } from '../shered/shered.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AutofocusFixModule.forRoot(),
     MatDividerModule,
     MatTooltipModule,
+    SheredModule,
   ],
   providers: [DatePipe],
 })
