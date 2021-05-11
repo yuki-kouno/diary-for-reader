@@ -18,6 +18,9 @@ export const createUser = functions
     return db.doc(`users/${user.uid}`).set({
       uid: user.uid,
       email: user.email,
+      name: user.displayName,
+      avatarURL: user.photoURL,
+      createdAt: new Date(),
       firstTour: true,
       secondTour: true,
       thirdTour: true,

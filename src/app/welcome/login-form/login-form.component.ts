@@ -8,6 +8,7 @@ import {
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ResetDialogComponent } from '../reset-dialog/reset-dialog.component';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-login-form',
@@ -31,12 +32,14 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {}
 
   logIn() {
+    this.loadingService.loading = true;
     this.authService.loginWithtEmail(this.logInForm.value);
   }
 
