@@ -16,6 +16,7 @@ import { QuestionDialogComponent } from '../question-dialog/question-dialog.comp
 import { rubberBandAnimation } from 'angular-animations';
 import { UserService } from 'src/app/services/user.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { ConfirmationDialogComponent } from 'src/app/shered/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-review-form',
@@ -100,9 +101,18 @@ export class ReviewFormComponent implements OnInit {
   }
 
   removeAnswer(index: number) {
-    this.answers.removeAt(index);
-    this.selectedQuestion.splice(index, 1);
-    this.editableCount -= 1;
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: '作業中の内容が失われますがよろしいですか？',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.answers.removeAt(index);
+        this.selectedQuestion.splice(index, 1);
+        this.editableCount -= 1;
+      } else {
+        return;
+      }
+    });
   }
 
   createReview(book: Book, index: number) {

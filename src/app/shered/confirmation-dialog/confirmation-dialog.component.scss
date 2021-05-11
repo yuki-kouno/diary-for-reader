@@ -1,0 +1,14 @@
+.text {
+  margin-bottom: 16px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  &__cancel {
+    margin: 10px;
+  }
+  &__ok {
+    margin: 10px;
+    color: white;
+  }
+}
