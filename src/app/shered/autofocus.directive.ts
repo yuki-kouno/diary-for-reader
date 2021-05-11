@@ -7,6 +7,8 @@ export class AutofocusDirective implements AfterViewInit {
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.focus();
+    if (window.innerWidth > 620) {
+      this.elementRef.nativeElement.focus();
+    }
   }
 }
