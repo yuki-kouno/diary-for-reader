@@ -227,10 +227,6 @@ textarea {
   cursor: pointer;
 }
 .fc .fc-more-popover {
-  width: 90vw;
-  @include tab {
-    width: 60vw;
-  }
   .fc-popover-body {
     .fc-daygrid-event-harness {
       margin: 4px;
