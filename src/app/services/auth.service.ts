@@ -124,9 +124,6 @@ export class AuthService {
       .catch(() => {
         this.loadingService.loading = false;
         this.snackBar.open('ログイン中にエラーが発生しました。');
-      })
-      .then(() => {
-        this.snackBar.open('ようこそ');
       });
   }
 

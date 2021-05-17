@@ -12,6 +12,7 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 import { SeoService } from 'src/app/services/seo.service';
 import { Meta } from '@angular/platform-browser';
 import { fadeInOnEnterAnimation } from 'angular-animations';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-welcome',
@@ -33,6 +34,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
   sceneThird = 1000;
 
   constructor(
+    public loadingService: LoadingService,
     private authService: AuthService,
     private dialog: MatDialog,
     private seoService: SeoService,
