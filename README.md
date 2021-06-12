@@ -15,19 +15,42 @@
 <img height="32px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117562499-5035e300-b0da-11eb-9737-15012e812ef3.png">
 Algolia - firestoreデータをワード検索で取得
 <br>
+functions:https://github.com/yuki-kouno/diary-for-reader/blob/master/functions/src/algolia.ts<br>
+functions:https://github.com/yuki-kouno/diary-for-reader/blob/master/functions/src/favorite-book.function.ts
+service:https://github.com/yuki-kouno/diary-for-reader/blob/master/src/app/services/search-library.service.ts<br>
+component:https://github.com/yuki-kouno/diary-for-reader/tree/master/src/app/library<br>
+本サービスでは実装していませんが、タグ検索やpagenationの併用も対応できます。
+<br>
 <br>
 <img height="32px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117562794-a86de480-b0dc-11eb-817e-3c27c06828ee.png">
 GoogleBooksApi - サービス内に登録する本のデータ取得
-<br><br>
+<br>
+service:https://github.com/yuki-kouno/diary-for-reader/blob/master/src/app/services/google-books-api.service.ts<br>
+component:https://github.com/yuki-kouno/diary-for-reader/tree/master/src/app/add-books/search-books
+<br>
+<br>
 <img height="32px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117563013-f0d9d200-b0dd-11eb-8803-6e071e169c26.png">
 Fullcalendar - カレンダー機能の実装
-<br><br>
+<br>
+component:https://github.com/yuki-kouno/diary-for-reader/tree/master/src/app/calendar/calendar
+<br>
+<br>
 <img height="40px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117563084-7b223600-b0de-11eb-91c8-fafdfbcfd01c.png">
 Puppeteer - amazonの販売情報取得 -> AmazonProductAdvertisingAPI変更予定
-<br><br>
+<br>
+functions:https://github.com/yuki-kouno/diary-for-reader/blob/master/functions/src/book-ranking-scraping.function.ts
+<br>
+<br>
 <img height="32px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117563163-08fe2100-b0df-11eb-92ca-35b2ea434c56.png">
 SendGrid - welcomeメール・退会処理完了通知
+<br>
+functions:https://github.com/yuki-kouno/diary-for-reader/blob/master/functions/src/send-email.function.ts
+functions:https://github.com/yuki-kouno/diary-for-reader/blob/master/functions/src/user.function.ts
+<br>
+<br>
+GithubActions - 自動build/deploy/OGP<br>
+yml:https://github.com/yuki-kouno/diary-for-reader/blob/master/.github/workflows/main.yml
 <br><br>
-GithubActions - 自動build/deploy/OGP
-
-GoogleAppsScript - バックアップ・CloudFunctions定期実行...
+GoogleAppsScript - バックアップ・CloudFunctions定期実行...<br>
+buckup:https://github.com/yuki-kouno/diary-for-reader/blob/master/functions/src/backup.function.ts<br>
+render:https://github.com/yuki-kouno/diary-for-reader/blob/master/functions/src/render.function.ts
