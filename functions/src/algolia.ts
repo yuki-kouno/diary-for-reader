@@ -8,11 +8,6 @@ const client = algoliasearch(config.algolia.app_id, config.algolia.secret_key);
 export class Algolia {
   private maxContentLength = 500;
 
-  /**
-   * データ内のTimestampや日付型をミリ秒に変換する
-   *
-   * @param data 変換データ
-   */
   private transformDate(data: any) {
     return Object.entries(data).reduce((obj, [key, value]) => {
       if (value instanceof admin.firestore.Timestamp) {
@@ -22,14 +17,6 @@ export class Algolia {
     }, data);
   }
 
-  /**
-   * 巨大なデータを分割してレコードに追加
-   *
-   * @param index インデックス名
-   * @param data 追加するデータ
-   * @param idKey IDが含まれるキー名(デフォルトは'id')
-   * @param largeConcentKey 巨大なデータが含まれるキー名
-   */
   private addDistributedRecords(
     index: SearchIndex,
     data: any,
@@ -50,15 +37,6 @@ export class Algolia {
     return Promise.all(records.map((record: any) => index.saveObject(record)));
   }
 
-  /**
-   * レコードを追加（更新）
-   *
-   * @param param.indexName レコード名
-   * @param param.data 追加するデータ
-   * @param param.isUpdate 追加(false) or 更新(true)
-   * @param param.idKey idのキー名(デフォルトは'id')
-   * @param param.largeConcentKey 巨大なデータが含まれるキー名
-   */
   async saveRecord(param: {
     indexName: string;
     data: any;
@@ -91,13 +69,6 @@ export class Algolia {
     }
   }
 
-  /**
-   * レコードを削除
-   *
-   * @param indexName 削除対象のインデックス名
-   * @param id 削除対象のid
-   * @param idKey idのキー名(デフォルトは'id')
-   */
   removeRecord(indexName: string, id: string, idKey: string = 'id') {
     const index = client.initIndex(indexName);
     return index.deleteBy({ filters: `${idKey}:${id}` });
