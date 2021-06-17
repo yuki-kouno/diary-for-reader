@@ -10,6 +10,63 @@
 
 ***
 
+# 実装内容
+
+### 認証
+
+- EメールとパスワードにでのログインとGoogleアカウントによるログイン
+- アカウント作成時のwelcomeメール
+- パスワードを忘れた場合のパスワードリセット
+- パスワード自動生成
+- ログイン状態とEメールアドレスの認証状態の監視による外部アクセスからのガード
+- 全てのデータを削除する退会
+- 退会完了通知メール
+
+![hb2cl-4rfae](https://user-images.githubusercontent.com/57104153/122393710-219c0980-cfb0-11eb-9fc8-a1f19261de18.gif)<br><br>
+
+### TOP画面
+
+- ツアー機能
+- Amazon新刊情報取得
+- スライド機能
+- 本の検索機能・登録
+
+
+![yxe7z-g00p9](https://user-images.githubusercontent.com/57104153/122399662-f4525a00-cfb5-11eb-9099-d2481f771fd0.gif)<br><br>
+
+### ライブラリー
+
+- ソート
+- ライブラリ内検索
+
+![ju82k-rdu8u](https://user-images.githubusercontent.com/57104153/122404456-367d9a80-cfba-11eb-8003-780422e2d5b6.gif)<br><br>
+
+###　レビュー
+
+- レビュー・編集・削除
+- 質問選択
+- 質問作成
+- 今日のレビューと過去のレビュー一覧のタブ切り替え
+- レヴュー一覧のソート
+
+![82kq0-is7t0](https://user-images.githubusercontent.com/57104153/122407728-cfadb080-cfbc-11eb-80be-82530d0af320.gif)<br><br>
+
+### カレンダー
+
+- カレンダー
+- 詳細モーダル
+
+![7npfn-f1c00](https://user-images.githubusercontent.com/57104153/122408938-b48f7080-cfbd-11eb-946c-9456dbefd733.gif)<br><br>
+
+### ランキング
+
+- 一時間毎に本の売れ筋ランキング情報取得
+
+![sj4fr-buwzp](https://user-images.githubusercontent.com/57104153/122410760-2b793900-cfbf-11eb-8aa7-61afd35a3683.gif)
+
+
+***
+
 ## 使用技術
 
 <img height="32px" alt="読書家のための日記帳画像" src="https://user-images.githubusercontent.com/57104153/117562499-5035e300-b0da-11eb-9737-15012e812ef3.png">
