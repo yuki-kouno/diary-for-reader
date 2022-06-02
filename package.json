@@ -43,7 +43,7 @@
     "i": "^0.3.6",
     "ngx-autofocus-fix": "^1.0.4",
     "node-vibrant": "^3.1.6",
-    "npm": "^7.11.1",
+    "npm": "^8.11.0",
     "puppeteer-core": "^9.0.0",
     "rxjs": "~6.5.5",
     "swiper": "^6.4.15",
